@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    width: 1360px;
+    overflow: hidden;
 }
 
 .navbar-logo{
@@ -20,7 +22,6 @@
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 50vw;
     justify-content: end;
     margin-right: 2rem;
 }

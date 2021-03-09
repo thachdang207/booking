@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import Navbar from "../Global/Navbar/Navbar"
 import {AccountContext} from "./accountContext";
 
 import styled from 'styled-components';
@@ -77,6 +78,7 @@ function Login() {
 
     return (
         <AccountContext.Provider value={contextValue}>
+        <Navbar />
         <div className="container">
             <div className="top-container">
                 <BackDrop 

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../Global/Navbar/Navbar';
 import Searchbar from '../Global/Searchbar/Searchbar'
 import Border from '../Global/Border'
+import Footer from '../Global/Footer'
 
 function Home() {
   return (
@@ -11,6 +12,10 @@ function Home() {
       <Border />
 
       <Searchbar/>
+
+      <Border />
+      
+      <Footer />
     </div>
   );
 }

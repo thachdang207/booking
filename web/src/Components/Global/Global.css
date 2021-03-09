@@ -1,0 +1,16 @@
+.footer{
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    font-family: inherit;
+}
+
+.border{
+    width: 70%;
+    border-bottom: 3px solid gray;
+    display: flex;
+    align-content: center;
+}

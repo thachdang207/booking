@@ -6,20 +6,20 @@ import PersonIcon from '@material-ui/icons/Person';
 
 export const MenuItems = [
     {
-        title: 'Trang chủ',
-        url: '#',
+        title: 'Home',
+        url: '/',
         cName: 'nav-links',
         icon: <HomeIcon/>
     },
     {
-        title: 'Liên hệ',
+        title: 'Contact',
         url: '#',
         cName: 'nav-links',
         icon: <PhoneIcon/>
     },
     {
-        title: 'Đăng ký',
-        url: '#',
+        title: 'Login',
+        url: '/login',
         cName: 'nav-links',
         icon: <PersonIcon/>
     }
