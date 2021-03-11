@@ -1,10 +1,9 @@
 import React from "react";
-import './Global.css'
 
 function Footer() {
     return (
-        <footer className="footer">
-            <div className="text-gray-200">VIBO.com &copy; 2021</div>
+        <footer className="bg-gray-900 flex items-center justify-center h-32 font-serif">
+            <div className="text-gray-200 ">VIBO.com &copy; 2020</div>
         </footer>
     );
 }

@@ -1,9 +1,11 @@
-.container{
+.login-container{
     margin: 30px;
     width: 380px;
     min-height: 550px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 19px;
     background-color: #fff;
     box-shadow: 0 0 4px rgba(15, 15, 15, 0.28);

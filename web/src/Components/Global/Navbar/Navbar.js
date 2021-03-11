@@ -3,16 +3,13 @@ import { MenuItems } from './MenuItems'
 import './Navbar.css'
 
 function Navbar() {
-    const [isClicked, toggleClick] = useState(false)
+    const [isClicked, toggleClick] = useState(false);
 
-    // const handleClick = () => {
-    //     toggleClick(!isClicked);
-    // }
     return (
         <div>
             <nav className="navbar-items">
                 <h1
-                    className="navbar-logo">Vibo.com
+                    className="navbar-logo">VIBO.com
                 </h1>
                 <div className="menu-icon" 
                     onClick={

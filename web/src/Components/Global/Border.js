@@ -1,10 +1,9 @@
 import React from "react";
-import './Global.css'
 
-function Border() {
+function Border({ borderColor = "", my = "20" }) {
     return (
         <div
-            className='border'
+            className={`border-t-2 w-2/3 my-8 my-${my} mx-auto ${borderColor}`}
         ></div>
     );
 }

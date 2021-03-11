@@ -1,12 +1,13 @@
 .navbar-items{
-    background: linear-gradient(90deg, rgb(94, 187, 245) 0%, rgb(38, 173, 222) 100%);
+    background: linear-gradient(90deg, rgb(94, 187, 245) 0%, rgb(24, 85, 176) 100%);
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    width: 1360px;
+    width: 100%;
     overflow: hidden;
+    font-weight: 600;
 }
 
 .navbar-logo{
@@ -14,6 +15,7 @@
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
+    font-weight: 800;
 }
 
 .nav-menu{

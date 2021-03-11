@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import Navbar from "../Global/Navbar/Navbar"
 import {AccountContext} from "./accountContext";
 
 import styled from 'styled-components';
@@ -11,13 +10,13 @@ import './Login.css'
 
 
 const BackDrop = styled(motion.div)`
-    width: 160%;
+    width: 260%;
     height: 550px;
     position: absolute;
     display: flex;
     flex-direction: column;
     border-radius: 50%;
-    top: -390px;
+    top: -350px;
     left: -190px;
     transform: rotate(60deg);
     background: rgb(34,193,195);
@@ -78,8 +77,7 @@ function Login() {
 
     return (
         <AccountContext.Provider value={contextValue}>
-        <Navbar />
-        <div className="container">
+        <div className="login-container">
             <div className="top-container">
                 <BackDrop 
                         initial={false} 
@@ -106,14 +104,18 @@ function Login() {
                         an account
                     </h2>
                     <h5 className="small-text">
-                        Please sign-in to continue!
+                        In order to access our services
                     </h5>
                 </div>}
             </div>
             {status === "signin" && <LoginForm />}
             {status === "signup" && <SignupForm />}
         </div>
+        <div>
+            <a className= "muted-link" href="/">Back to Home Page</a>
+        </div>
         </AccountContext.Provider>
+        
     );
 }
 
