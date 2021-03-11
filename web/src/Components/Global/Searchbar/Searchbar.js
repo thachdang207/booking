@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function Searchbar() {
-    const [initSearchData, setinitSearchData] = useState({
+    const [initSearchData, setInitSearchData] = useState({
         check_in: "",
         check_out: "",
         city: "",
@@ -38,7 +38,7 @@ function Searchbar() {
                                 type="date"
                                 value={initSearchData.check_in}
                                 onChange={(e) =>
-                                    setinitSearchData({
+                                    setInitSearchData({
                                         ...initSearchData,
                                         check_in: e.target.value
                                     })
@@ -55,7 +55,7 @@ function Searchbar() {
                                 type="date"
                                 value={initSearchData.check_out}
                                 onChange={(e) =>
-                                    setinitSearchData({
+                                    setInitSearchData({
                                         ...initSearchData,
                                         check_out: e.target.value
                                     })
@@ -69,7 +69,7 @@ function Searchbar() {
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.city}
                                 onChange={(e) =>
-                                    setinitSearchData({
+                                    setInitSearchData({
                                         ...initSearchData,
                                         city: e.target.value
                                     })
@@ -96,7 +96,7 @@ function Searchbar() {
                                 className="px-6 py-3 mt-2"
                                 value={initSearchData.guest}
                                 onChange={(e) =>
-                                    setinitSearchData({
+                                    setInitSearchData({
                                         ...initSearchData,
                                         guest: e.target.value
                                     })
