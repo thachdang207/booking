@@ -1,7 +1,13 @@
 
 import React from 'react'
 
-function Pagination() {
+Pagination.defaultProps = {
+    to: '0',
+    end: '10',
+    total: '100'
+}
+function Pagination(props) {
+    const { to, end, total } = props;
     return (
         <div class="container my-12 mx-auto px-4 md:px-12">
             <div class="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
@@ -17,11 +23,11 @@ function Pagination() {
                     <div>
                     <p class="text-sm text-gray-700">
                         Showing
-                        <span class="font-medium"> 1 </span>
+                        <span class="font-medium"> {to} </span>
                         to
-                        <span class="font-medium"> 10 </span>
+                        <span class="font-medium"> {end} </span>
                         of
-                        <span class="font-medium"> 97 </span>
+                        <span class="font-medium"> {total} </span>
                             results
                     </p>
                     </div>

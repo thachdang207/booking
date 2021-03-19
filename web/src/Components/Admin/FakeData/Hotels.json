@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "1",
+        "price": 300000
+    },
+    {
+        "id": 2,
+        "name": "Phòng Deluxe Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    },
+    {
+        "id": 3,
+        "name": "Phòng Deluxe Gia đình",
+        "theNumberOfPeople" : "3",
+        "price": 300000
+    },
+    {
+        "id": 4,
+        "name": "Phòng Deluxe Gia đình",
+        "theNumberOfPeople" : "3",
+        "price": 300000
+    },
+    {
+        "id": 5,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    },
+    {
+        "id": 6,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    },
+    {
+        "id": 7,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    },
+    {
+        "id": 8,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    },
+    {
+        "id": 9,
+        "name": "Phòng Tiêu Chuẩn Giường Đôi",
+        "theNumberOfPeople" : "2",
+        "price": 300000
+    }
+]

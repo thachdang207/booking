@@ -1,8 +1,8 @@
-import React, {Suspense} from 'react'
+import React from 'react'
 import Footer from '../../Global/Footer';
+import Content from './Content';
 import Header from './Header';
 import Nav from './Nav';
-const Card = React.lazy(() => import('../Card/Card'))
 
 function Layouts() {
     return (
@@ -10,9 +10,7 @@ function Layouts() {
             <div>
                 <Nav />
                 <Header />
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Card />
-                </Suspense>
+                <Content />
             </div>
             <Footer/>
         </div>
