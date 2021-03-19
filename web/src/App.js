@@ -1,8 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Login from './Components/Login/Login'
-import Home from './Components/Home/Home'
+import Login from './components/Login/Login'
+import Home from './components/Home/Home'
+
+import './assets/styles/App.css'
 
 function App() {
   return (

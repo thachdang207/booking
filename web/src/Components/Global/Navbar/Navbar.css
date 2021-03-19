@@ -1,5 +1,10 @@
+:root{
+    --primary: #2b5876;
+    --accent: #4e4376;
+}
+
 .navbar-items{
-    background: linear-gradient(90deg, rgb(94, 187, 245) 0%, rgb(24, 85, 176) 100%);
+    background: linear-gradient(90deg, var(--primary) 0%,  var(--accent) 100%);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -7,13 +12,11 @@
     font-size: 1.2rem;
     width: 100%;
     overflow: hidden;
-    font-weight: 600;
 }
 
-.navbar-logo{
-    color: #fff;
-    justify-self: start;
-    margin-left: 20px;
+.navbar-items h1{
+    color: rgb(255, 255, 255);
+    margin-right: 300px;
     cursor: pointer;
     font-weight: 800;
 }
@@ -24,31 +27,43 @@
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    justify-content: end;
     margin-right: 2rem;
+    font-family: Roboto Slab;
+    font-weight: 400;
+}
+
+.nav-menu li {
+    margin-bottom: 10px;
 }
 
 .nav-links{
-    color: white;
+    display: inline-block;
+    color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
-.nav-links:hover{
-    background-color: #0899c6;
-    border-radius: 4px;
-    transition: all 0.25s ease-out;
+.nav-links::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #FFF;
+    transition: width 0.3s;
+}
+
+.nav-links:hover::after {
+    width: 100%;
+    transition: width 0.3s;
 }
 
 .menu-icon{
     display:none;
+    color:rgb(255, 255, 255);
+    margin-right: 2px;
 }
 
-.fa-bars, .fa-times{
-    color: #fff;
-}
-
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1060px){
     .navbar-items{
         position: relative;
     }
@@ -61,15 +76,16 @@
         top: 80px;
         left: -100%;
         opacity: 1;
-        transition: all 0.5s ease-out;
+        transition: all 0.25s ease-out;
+        z-index: 10;
     }
 
-    .nav-menu.active{
-        background-color: rgb(131, 199, 228);
+    .nav-menu:active{
+        background-color: var(--accent);
         left: 0;
         opacity: 1;
         transition: all 0.5s ease-out;
-        z-index: 1;
+        z-index: 10;
     }
 
     .nav-links{
@@ -80,11 +96,11 @@
     }
 
     .nav-links:hover{
-        background-color: #0899c6;
+        background-color: var(--primary);
         border-radius: 0;
     }
 
-    .navbar-logo{
+    .navbar-items > h1{
         position: absolute;
         top: 0;
         left: 0;
@@ -99,10 +115,5 @@
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
         cursor: pointer;
-    }
-
-    .fa-times{
-        color: #fff;
-        font-size: 2rem;
     }
 }

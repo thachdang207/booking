@@ -16,15 +16,11 @@ const BackDrop = styled(motion.div)`
     display: flex;
     flex-direction: column;
     border-radius: 50%;
-    top: -350px;
-    left: -190px;
+    top: -330px;
+    left: -150px;
     transform: rotate(60deg);
     background: rgb(34,193,195);
-    background: linear-gradient(
-        58deg,
-    rgba(34,193,195,1) 20%,
-    rgba(65,45,253,1) 100%
-    );
+    background: linear-gradient(90deg, #2b5876 0%,  #4e4376 100%);
 `;
 
 const backDropVariants = {
@@ -87,32 +83,26 @@ function Login() {
                 />
                 {status === "signin" && <div className="header-container">
                     <h2 className="header-text">
-                        Welcome
+                        Xin chào
                     </h2>
-                    <h2 className="header-text">
-                        Back
-                    </h2>
-                    <h5 className="small-text">
-                        Please sign-in to continue!
-                    </h5>
+                    <h4 className="small-text">
+                        Hãy đăng nhập để tiếp tục nào!
+                    </h4>
                 </div>}
                 {status === "signup" && <div className="header-container">
-                    <h2 className="header-text">
-                        Create
-                    </h2>
-                    <h2 className="header-text">
-                        an account
-                    </h2>
-                    <h5 className="small-text">
-                        In order to access our services
-                    </h5>
+                    <h1 className="header-text">
+                        Tạo tài khoản
+                    </h1>
+                    <h4 className="small-text">
+                        Để có thể tận hưởng hết dịch vụ của chúng tôi
+                    </h4>
                 </div>}
             </div>
             {status === "signin" && <LoginForm />}
             {status === "signup" && <SignupForm />}
-        </div>
-        <div>
-            <a className= "muted-link" href="/">Back to Home Page</a>
+            <div>
+                <a className= "muted-link" href="/">Trở về trang chủ</a>
+            </div>
         </div>
         </AccountContext.Provider>
         
