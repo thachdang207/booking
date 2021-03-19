@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import 'antd/dist/antd.css';
+// import { DatePicker } from 'antd';
 
 import Login from './Components/Login/Login'
 import Home from './Components/Home/Home'
@@ -8,6 +10,7 @@ import Layouts from './Components/Admin/Layouts/Layouts';
 function App() {
   return (
     <div className="App">
+      {/* <DatePicker /> */}
       <Router>
         <Switch>
             {/* PUBLIC */}
