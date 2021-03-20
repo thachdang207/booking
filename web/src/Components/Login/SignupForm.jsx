@@ -39,6 +39,8 @@ function SignupForm(props){
     useEffect(() => {
         if (state.auth.isAuthenticated){
             history.push("/");
+        } else {
+            history.push("/login");
         }
     })
 

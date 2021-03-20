@@ -3,7 +3,7 @@ import {
     GET_HOTEL_IMAGES,
 } from "../actionTypes";
 
-const url = process.env.REACT_APP_BASE_URL;
+const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
 export const getHotelImages = (dispatch) => {
     axios(`${url}/hotels/images`)

@@ -3,7 +3,7 @@ import { setLoading } from "./commonActions";
 import axios from "axios";
 
 //-----------------------------------------
-const url = process.env.REACT_APP_BASE_URL;
+const url = process.env.REACT_APP_API_URL;
 
 export const signUp = (dispatch, user, setToken, setUserId) => {
     setLoading(dispatch, true);

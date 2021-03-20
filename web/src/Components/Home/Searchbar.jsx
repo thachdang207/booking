@@ -13,7 +13,7 @@ function Searchbar() {
 
     return (
         <section className="relative">
-            <div className="overlay w-full h-screen bg-gray-900 absolute z-10 opacity-50"></div>
+            <div className="overlay w-full h-screen bg-gray-900 absolute z-0 opacity-50"></div>
 
             <img
                 src="/assets/img/vietnam.jpeg"

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import './assets/styles/index.css';
 import './assets/styles/tailwind.css'
+import 'antd/dist/antd.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Provider} from 'react-redux';
 import {store} from './app/store'

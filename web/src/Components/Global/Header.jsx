@@ -1,43 +1,39 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faBars, faHome, faPhoneAlt, faUser } from '@fortawesome/free-solid-svg-icons'
-import './Navbar.css'
+import { faTimes, faBars, faHome, faUser} from '@fortawesome/free-solid-svg-icons'
+
+import './Global.css'
 
 
-function Navbar() {
+function Header() {
     const MenuItems = [
         {
-            title: 'Trang chủ',
+            title: 'Home',
             url: '/',
-            cName: 'nav-links',
+            cName: 'header-links',
             icon: <FontAwesomeIcon icon={faHome} />
         },
         {
-            title: 'Liên hệ',
-            url: '#',
-            cName: 'nav-links',
-            icon: <FontAwesomeIcon icon={faPhoneAlt} />
-        },
-        {
-            title: 'Đăng nhập',
+            title: 'Login',
             url: '/login',
-            cName: 'nav-links',
+            cName: 'header-links',
             icon: <FontAwesomeIcon icon={faUser} />
         }
     ]
     const [isClicked, toggleClick] = useState(false);
+    const handleClickChange = () => {
+        toggleClick(!isClicked);
+    }
 
     return (
         <div>
-            <nav className="navbar-items">
-                <h1>VIBO.com</h1>
+            <header className="header-items">
+                <h2>VIBO.com</h2>
                 <div className="menu-icon" 
-                    onClick={
-                        () => isClicked ? toggleClick(false) : toggleClick(true)
-                    }>
+                    onClick={handleClickChange}>
                     <FontAwesomeIcon icon={isClicked ? faTimes : faBars } />
                 </div>
-                <ul className={isClicked ? 'nav-menu active': 'nav-menu'}>
+                <ul className={isClicked ? 'header-menu active': 'header-menu'}>
                     {MenuItems.map((item, index) => {
                         return(
                         <li key={index}>
@@ -48,9 +44,9 @@ function Navbar() {
                         )
                     })}
                 </ul>
-            </nav>
+            </header>
         </div>
     );
 }
  
-export default Navbar;
+export default Header;
