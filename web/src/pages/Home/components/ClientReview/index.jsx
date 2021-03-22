@@ -1,12 +1,12 @@
 import React from "react";
 import ClientReviewCard from "./ClientReviewCard";
-import Title from "../Global/Title";
+import Title from "../../../GlobalComponents/Title";
 
 function ClientReviews() {
     return (
         <section className="reviews px-5 xl:px-48">
             <Title title="Mọi người nghĩ gì về chúng tôi?" />
-
+            <br />
             <div className="relative flex flex-col md:flex-row">
                 <ClientReviewCard
                     avatar="//vnn-imgs-f.vgcloud.vn/2020/12/20/16/con-duong-ong-putin-tro-thanh-tong-thong-lien-bang-nga.jpg"

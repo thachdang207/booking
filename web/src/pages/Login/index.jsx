@@ -83,25 +83,25 @@ function Login() {
                 />
                 {status === "signin" && <div className="header-container">
                     <h2 className="header-text">
-                        Xin chào
+                        Welcome back
                     </h2>
                     <h4 className="small-text">
-                        Hãy đăng nhập để tiếp tục nào!
+                        Please sign in to enjoy our services!
                     </h4>
                 </div>}
                 {status === "signup" && <div className="header-container">
                     <h1 className="header-text">
-                        Tạo tài khoản
+                        Create an account
                     </h1>
                     <h4 className="small-text">
-                        Để có thể tận hưởng hết dịch vụ của chúng tôi
+                        In order to access our services
                     </h4>
                 </div>}
             </div>
             {status === "signin" && <LoginForm />}
             {status === "signup" && <SignupForm />}
             <div>
-                <a className= "muted-link" href="/">Trở về trang chủ</a>
+                <a className= "muted-link" href="/">Back to Homepage</a>
             </div>
         </div>
         </AccountContext.Provider>

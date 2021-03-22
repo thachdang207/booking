@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faBars, faHome, faUser} from '@fortawesome/free-solid-svg-icons'
-
+import {Link} from 'react-router-dom'
 import './Global.css'
 
 
@@ -37,9 +37,11 @@ function Header() {
                     {MenuItems.map((item, index) => {
                         return(
                         <li key={index}>
-                            <a className={item.cName} href={item.url}>
-                                {item.icon}{" "}{item.title}
-                            </a>
+                            <Link to={item.url}>
+                                <button className={item.cName}>
+                                    {item.icon}{" "}{item.title}
+                                </button>
+                            </Link>
                         </li>
                         )
                     })}

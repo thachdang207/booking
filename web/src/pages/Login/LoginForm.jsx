@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from 'react';
-import {useSecureLs} from '../Global/UseSecureLs'
+import {useSecureLs} from '../GlobalComponents/UseSecureLs'
 import {useDispatch, useSelector} from 'react-redux'
 import {AccountContext} from './accountContext';
 import {signIn} from '../../redux/actions/auth.action'
 import {useHistory} from 'react-router-dom'
-import {Loading} from '../Global/Loading'
-import {ErrorMessage} from '../Global/ErrorMessage'
+import {Loading} from '../GlobalComponents/Loading'
+import {ErrorMessage} from '../GlobalComponents/ErrorMessage'
 
 import './Login.css'
 
@@ -71,19 +71,19 @@ function LoginForm(props){
                         }
                     />
                     <a href="#" class="muted-link">
-                        Quên mật khẩu
+                        Forgot password?
                     </a>
                     <button className="submit-button" type="submit">
-                        Đăng nhập
+                        Sign in
                     </button>
                 </form>
                 <a href="#" className="muted-link">
-                    Chưa có tài khoản ư?
+                    Don't have an account yet?
                     <a href="#" 
                         className="bold-link"
                         onClick={switchToSignup}
                     >
-                        Tạo tài khoản
+                        Sign up
                     </a>
                 </a>
             </div>

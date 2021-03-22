@@ -37,21 +37,19 @@
     margin: auto;
 }
 
-.header-links{
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-}
-
 .header-menu li {
     margin-bottom: 10px;
 }
 
 .header-links{
     display: inline-block;
-    color: #fff;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 0.5rem 1rem;
+}
+
+.header-links:hover{
+    text-decoration: none;
 }
 
 .header-links::after {

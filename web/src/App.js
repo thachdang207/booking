@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Login from './components/Login'
-import Home from './components/Home'
+import Login from './pages/Login'
+import Home from './pages/Home'
 
 import './assets/styles/App.css'
 

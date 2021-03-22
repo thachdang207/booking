@@ -12,14 +12,14 @@ export const GUEST_OPTIONS = [
 ];
 
 export const CITY_OPTIONS = [
-    { value: 'da-nang', label: 'Đà Nẵng' },
-    { value: 'hue', label: 'Huế' },
-    { value: 'da-lat', label: 'Đà Lạt' },
-    { value: 'ha-noi', label: 'Hà Nội' },
-    { value: 'quy-nhon', label: 'Quy Nhơn' },
-    { value: 'ho-chi-minh', label: 'Hồ Chí Minh' },
-    { value: 'nha-trang', label: 'Nha Trang' },
-    { value: 'vung-tau', label: 'Vũng Tàu' },
-    { value: 'ha-giang', label: 'Hà Giang' },
-    { value: 'ha-long', label: 'Hạ Long' },
+    { value: '1', label: 'Đà Nẵng' },
+    { value: '2', label: 'Huế' },
+    { value: '3', label: 'Đà Lạt' },
+    { value: '4', label: 'Hà Nội' },
+    { value: '5', label: 'Quy Nhơn' },
+    { value: '6', label: 'Hồ Chí Minh' },
+    { value: '7', label: 'Nha Trang' },
+    { value: '8', label: 'Vũng Tàu' },
+    { value: '9', label: 'Hà Giang' },
+    { value: '10', label: 'Hạ Long' },
 ]; 

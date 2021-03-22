@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from 'react';
-import {useSecureLs} from '../Global/UseSecureLs'
+import {useSecureLs} from '../GlobalComponents/UseSecureLs'
 import {useDispatch, useSelector} from 'react-redux'
 import {AccountContext} from './accountContext';
 import {signUp} from '../../redux/actions/auth.action'
 import {useHistory} from 'react-router-dom'
-import {Loading} from '../Global/Loading'
-import {ErrorMessage} from '../Global/ErrorMessage'
+import {Loading} from '../GlobalComponents/Loading'
+import {ErrorMessage} from '../GlobalComponents/ErrorMessage'
 
 import './Login.css'
 import JSONDATA from '../Home/data.json'
@@ -117,16 +117,16 @@ function SignupForm(props){
                         }
                     />
                     <button className="submit-button" type="submit">
-                        Tạo tài khoản
+                        Create
                     </button>
                 </form>
                 <a className="muted-link">
-                        Bạn đã có tài khoản rồi?
+                        Already have an accout?
                         <a 
                             className="bold-link"
                             onClick={switchToSignin}
                         >
-                            Đăng nhập
+                            Sign in
                         </a>
                 </a>
             </div>

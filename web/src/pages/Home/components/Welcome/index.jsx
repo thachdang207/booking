@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "./Slider";
-import { getHotelImages } from "../../redux/actions/hotel.action";
+import { getHotelImages } from "../../../../redux/actions/hotel.action";
 
 function Welcome() {
     const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function Welcome() {
                          consequuntur itaque tenetur ducimus eum vitae fugiat nisi, repellendus impedit ratione unde!
                     </p>
                 </div>
-
+                
                 <Slider images={state.hotel.images} />
             </div>
         </section>
