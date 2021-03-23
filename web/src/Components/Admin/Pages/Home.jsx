@@ -1,33 +1,36 @@
 import React from 'react'
+import { useHistory } from 'react-router';
 import Card from '../Components/Card/card';
 import Hotel from "../FakeData/Hotels.json";
 import Loading from '../Loading/Loading';
 import Pagination from '../Pagination/Pagination';
 // const Pagination = React.lazy(() => import('../Pagination/Pagination'))
 
-Home.defaultProps = {
-    hotels: Hotel
-};
-function Home(props) {
-    const { hotels } = props;
-    
+
+function Home() {
+    const history = useHistory();
+    const handleRoomEditClick = (room) => {
+        console.log('Edit: ', room);
+        const editPhotoUrl = `/admin/room/${room.id}`;
+        history.push(editPhotoUrl);
+    }
+
+    const handleRoomRemoveClick = (room) => {
+        console.log('Edit: ', room);
+        const editPhotoUrl = `/admin/room/${room.id}`;
+        history.push(editPhotoUrl);
+    }
+
     return (
-        <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 min-h-screen">
-                <div className="px-4 py-6 sm:px-0 min-h-screen">
-                    <div className="box-border p-4 border-4 bg-white rounded-md min-h-screen">
-                        <div className="container my-12 mx-auto px-4 md:px-12">
-                            <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                                <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                                    <Card hotels={hotels} />
-                                    <Pagination to={1} end={9} total={11} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        <>
+            { Hotel.map((room, index) => {
+                return <Card room={room} key={index}
+                    onEditClick = {handleRoomEditClick}
+                    onRemoveClick = {handleRoomRemoveClick}
+                />
+            })}
+            <Pagination to={1} end={9} total={11} />
+        </>
     )
 }
 
