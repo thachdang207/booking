@@ -23,7 +23,7 @@ const {RangePicker} = DatePicker;
 
 export default function Searchbar(props) {
     const initialValues = {
-        fromTo: '',
+        fromTo: [],
         cityId: null,
         guest: null,
     }
@@ -35,8 +35,6 @@ export default function Searchbar(props) {
         setDate(value);
         setDateString(dateString);
         initialValues.fromTo = dateString;
-
-        console.log("Change time: ", initialValues.fromTo)
     }
 
     const disablePastDates = (current) => {
@@ -44,7 +42,7 @@ export default function Searchbar(props) {
     }
 
     const validationSchema = Yup.object().shape({
-        fromToDay: Yup.string().required('This field is required').nullable(),
+        fromTo: Yup.array().required('This field is required').nullable(),
         cityId: Yup.number().required('This field is required').nullable(),
         guest: Yup.number().required('This field is required').nullable(),
     })
@@ -56,19 +54,21 @@ export default function Searchbar(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {isSubmitting} = formikProps;
+                const {values, errors, touched, isSubmitting} = formikProps;
+                console.log({values, errors, touched});
 
                 return (
                     <div className="flex items-center min-h-screen bg-gray-100 ">
                         <div className="container mx-auto">
                             <Form className="max-w-2xl mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
-                                <div class="text-center">
-                                    <h3 class="my-3 text-xl font-semibold text-gray-700 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
-                                    <p class="text-gray-400 dark:text-gray-400">From cozy country homes to funky city apartments</p>
+                                <div className="text-center">
+                                    <h3 className="my-3 text-xl font-semibold text-gray-700 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
+                                    <p className="text-gray-400 dark:text-gray-400">From cozy country homes to funky city apartments</p>
                                 </div>
                                 <div className="m-4">
                                     <div className="text-center block">
                                         <RangePicker
+                                            id="fromTo"
                                             format="MMM Do"
                                             allowClear="true"
                                             placeholder={["Check in", "Check out"]}
@@ -101,21 +101,20 @@ export default function Searchbar(props) {
                                     />    
 
                                     <FormGroup>
-                                        <Button 
-                                            type="submit"
-                                            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
-                                        >
-                                            {isSubmitting && <Spinner size="sm"/>}
-                                            {/* <Link
-                                                className="no-underline text-white"
-                                                to={`/search/from_to=${initialValues.fromTo}
-                                                &city=${initialValues.cityId}
-                                                &guest=${initialValues.guest}`}
+                                        {/* <Link
+                                            className="no-underline text-white"
+                                            to={`/search/from_to=${initialValues.fromTo}
+                                            &city=${initialValues.cityId}
+                                            &guest=${initialValues.guest}`}
+                                        > */}
+                                            <Button 
+                                                type="submit"
+                                                className="w-full px-3 py-4 text-white focus:outline-none"
                                             >
+                                                {isSubmitting && <Spinner size="sm"/>}
                                                 Find
-                                            </Link> */}
-                                            Find
-                                        </Button>
+                                            </Button>
+                                        {/* </Link> */}
                                     </FormGroup>
                                 </div>
                                 

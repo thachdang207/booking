@@ -10,20 +10,21 @@ import ClientReviews from './components/ClientReview'
 function Home() {
   useEffect(() =>{
     document.title = "VIBO | Homepage";
-  });
+  },[]);
 
   const handleSearch = (values) => {
-      console.log("Search form: ", values);
+      return new Promise (resolve => {
+        console.log("Search form: ", values);
+      })
   }
 
   return (
     <div>
       <Header />
-      <div>
-        <Searchbar
-          onSubmit={handleSearch}
-        />
-      </div>
+      
+      <Searchbar
+        onSubmit={handleSearch}
+      />
 
       <Border />
 

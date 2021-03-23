@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { SIGN_UP, SIGN_IN, CHECK_AUTH } from "../actionTypes";
 import { setLoading } from "./commonActions";
 import axios from "axios";
@@ -5,7 +6,7 @@ import axios from "axios";
 //-----------------------------------------
 const url = process.env.REACT_APP_API_URL;
 
-export const signUp = (dispatch, user, setToken, setUserId) => {
+export const signUp = (dispatch, user, setToken, setUserId, setIsAdmin) => {
     setLoading(dispatch, true);
     axios({
         method: "post",
@@ -19,6 +20,7 @@ export const signUp = (dispatch, user, setToken, setUserId) => {
             address: user.address,
             city: user.city,
             password: user.password,
+            is_admin: 0
         }
     })
         .then((response) => {
@@ -27,6 +29,9 @@ export const signUp = (dispatch, user, setToken, setUserId) => {
             );
             setUserId(
                 response.data.data.success ? response.data.data.user_id : null
+            );
+            setIsAdmin(
+                response.data.data.success ? response.data.data.is_admin : null
             );
             dispatch({
                 type: SIGN_UP,
@@ -40,7 +45,7 @@ export const signUp = (dispatch, user, setToken, setUserId) => {
 };
 //-----------------------------------------
 
-export const signIn = (dispatch, user, setToken, setUserId) => {
+export const signIn = (dispatch, user, setToken, setUserId, setIsAdmin) => {
     setLoading(dispatch, true);
     axios({
         method: "post",
@@ -60,6 +65,9 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
             setUserId(
                 response.data.data.success ? response.data.data.user_id : null
             );
+            setIsAdmin(
+                response.data.data.success ? response.data.data.is_admin : null
+            );
 
             localStorage.setItem("first_login", true);
 
@@ -75,16 +83,18 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
 };
 //-----------------------------------------
 
-export const checkAuth = (dispatch, _token, userId) => {
+export const checkAuth = (dispatch, _token, userId, isAdmin) => {
     let token = _token;
     let user_id = userId;
+    let is_admin = isAdmin == "1" || isAdmin == 1 ? true : false;
     token != null && token != "null" && token != "" // eslint-disable-line
         ? dispatch({
               type: CHECK_AUTH,
               payload: {
                   isAuthenticated: true,
                   user_id,
-                  token
+                  token,
+                  is_admin
               }
           })
         : dispatch({
@@ -92,7 +102,8 @@ export const checkAuth = (dispatch, _token, userId) => {
               payload: {
                   isAuthenticated: false,
                   user_id: null,
-                  token: null
+                  token: null,
+                  is_admin: null
               }
           });
 };

@@ -83,16 +83,22 @@ function Login() {
                 />
                 {status === "signin" && <div className="header-container">
                     <h2 className="header-text">
-                        Welcome back
+                        Welcome
+                    </h2>
+                    <h2 className="header-text">
+                        back
                     </h2>
                     <h4 className="small-text">
                         Please sign in to enjoy our services!
                     </h4>
                 </div>}
                 {status === "signup" && <div className="header-container">
-                    <h1 className="header-text">
-                        Create an account
-                    </h1>
+                    <h2 className="header-text">
+                        Create
+                    </h2>
+                    <h2 className="header-text">
+                        an account
+                    </h2>
                     <h4 className="small-text">
                         In order to access our services
                     </h4>

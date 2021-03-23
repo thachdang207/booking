@@ -101,10 +101,12 @@
         width: 100%;
         display: table;
         z-index: inherit;
+        text-decoration: none;
     }
 
     .header-links:hover{
         border-radius: 0;
+        text-decoration: none;
     }
 
     .header-items h2{

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from 'react';
 import {useSecureLs} from '../GlobalComponents/UseSecureLs'
@@ -22,28 +24,26 @@ function LoginForm(props){
         password: "",
     })
 
-    // eslint-disable-next-line no-unused-vars
     const [token, setToken] = useSecureLs("token");
-    // eslint-disable-next-line no-unused-vars
     const [userId, setUserId] = useSecureLs("user_id");
+    const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signIn(dispatch, user, setToken, setUserId);
+        signIn(dispatch, user, setToken, setUserId, setIsAdmin);
     }
 
     const history = useHistory();
     useEffect(() => {
         state.auth.isAuthenticated && history.push('/');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.auth.isAuthenticated]);
 
     useEffect(() =>{
         document.title = "VIBO | Login";
-    });
+    },[]);
 
     return (
-        <div class="inner-container">
+        <div className="inner-container">
             {state.auth.loading && <Loading />}
             {state.auth.success === false && (
                 <ErrorMessage erros={state.auth.errors} />

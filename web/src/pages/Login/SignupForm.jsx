@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from 'react';
 import {useSecureLs} from '../GlobalComponents/UseSecureLs'
 import {useDispatch, useSelector} from 'react-redux'
@@ -17,10 +19,9 @@ function SignupForm(props){
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
-    // eslint-disable-next-line no-unused-vars
     const [token, setToken] = useSecureLs("token");
-    // eslint-disable-next-line no-unused-vars
-    const [userId, setUserId] = useSecureLs("token");
+    const [userId, setUserId] = useSecureLs("user_id");
+    const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const [user, setUser] = useState({
         name: "",
@@ -32,7 +33,8 @@ function SignupForm(props){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signUp(dispatch, user, setToken, setUserId);
+        signUp(dispatch, user, setToken, setUserId, setIsAdmin);
+        console.log("Submit: ", user);
     };
 
     const history = useHistory();
@@ -42,11 +44,11 @@ function SignupForm(props){
         } else {
             history.push("/login");
         }
-    })
+    }, [state.auth.token])
 
     useEffect(() =>{
         document.title = "VIBO | Sign up";
-    });
+    },[]);
 
     return (
         <div class="inner-container">
@@ -121,7 +123,7 @@ function SignupForm(props){
                     </button>
                 </form>
                 <a className="muted-link">
-                        Already have an accout?
+                        Already have an account?
                         <a 
                             className="bold-link"
                             onClick={switchToSignin}
