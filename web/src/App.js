@@ -1,10 +1,11 @@
-import React from 'react'
+import React ,{ Suspense } from 'react'
 // import ProtectedRoute from './ProtectedRoute'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Logout from './pages/Logout'
+import {Loading} from './pages/GlobalComponents/Loading'
 
 // import AddHotel from './Admin/pages/AddHotel'
 // import EditHotel from './Admin/pages/EditHotel'
@@ -17,59 +18,64 @@ import Logout from './pages/Logout'
 
 import './assets/styles/App.css'
 
+const Admin = React.lazy(() => import('./pages/Admin'));
+
+
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
-            {/* PUBLIC */}
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/logout" component={Logout} />
-
-            {/* ADMIN */}
-            {/* <ProtectedRoute
-                exact
-                path="/hotel-management"
-                component={HotelManagement}
-            />
-            <ProtectedRoute
-                exact
-                path="/add-hotel"
-                component={AddHotel}
-            />
-            <ProtectedRoute
-                exact
-                path="/edit-hotel/:id"
-                component={EditHotel}
-            />
-            <ProtectedRoute
-                exact
-                path="/room-management"
-                component={RoomManagement}
-            />
-            <ProtectedRoute
-                exact
-                path="/review-management"
-                component={ReviewManagement}
-            />
-            <ProtectedRoute
-                exact
-                path="/edit-room/:id"
-                component={EditRoom}
-            />
-            <ProtectedRoute
-                exact
-                path="/add-room"
-                component={AddRoom}
-            />
-            <ProtectedRoute
-                exact
-                path="/booking-management"
-                component={BookingManagement}
-            /> */}
-        </Switch>
-      </Router>
+        <Suspense fallback={<Loading />}>
+            <BrowserRouter>
+                <Switch>
+                    {/* PUBLIC */}
+                    <Route  path="/admin" component={Admin} />
+                    <Route  path="/" component={Home} />
+                    <Route  path="/Login" component={Login} />
+                    <Route exact path="/logout" component={Logout} />
+                    {/* ADMIN */}
+                    {/* <ProtectedRoute
+                        exact
+                        path="/hotel-management"
+                        component={HotelManagement}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/add-hotel"
+                        component={AddHotel}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/edit-hotel/:id"
+                        component={EditHotel}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/room-management"
+                        component={RoomManagement}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/review-management"
+                        component={ReviewManagement}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/edit-room/:id"
+                        component={EditRoom}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/add-room"
+                        component={AddRoom}
+                    />
+                    <ProtectedRoute
+                        exact
+                        path="/booking-management"
+                        component={BookingManagement}
+                    /> */}
+                </Switch>
+            </BrowserRouter>
+        </Suspense>   
     </div>
   );
 }
