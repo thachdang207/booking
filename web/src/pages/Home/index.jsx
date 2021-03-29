@@ -4,6 +4,7 @@ import Searchbar from './components/Searchbar'
 import Border from '../GlobalComponents/Border'
 import Footer from '../GlobalComponents/Footer'
 import Welcome from './components/Welcome'
+import Hotels from './components/Hotels'
 import ClientReviews from './components/ClientReview'
 
 
@@ -22,13 +23,15 @@ function Home() {
     <div>
       <Header />
       
+      <Welcome />
+
       <Searchbar
         onSubmit={handleSearch}
       />
 
       <Border />
 
-      <Welcome />
+      <Hotels />
 
       <Border />
 

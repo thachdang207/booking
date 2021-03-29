@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faBars, faHome, faUser} from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
+import { useSelector } from "react-redux";
+
 import './Global.css'
 
 
+
 function Header() {
-    const MenuItems = [
-        {
-            title: 'Home',
-            url: '/',
-            cName: 'header-links',
-            icon: <FontAwesomeIcon icon={faHome} />
-        },
-        {
-            title: 'Login',
-            url: '/login',
-            cName: 'header-links',
-            icon: <FontAwesomeIcon icon={faUser} />
-        }
-    ]
+
+    const state = useSelector((state) => state);
     const [isClicked, toggleClick] = useState(false);
     const handleClickChange = () => {
         toggleClick(!isClicked);
@@ -34,17 +25,43 @@ function Header() {
                     <FontAwesomeIcon icon={isClicked ? faTimes : faBars } />
                 </div>
                 <ul className={isClicked ? 'header-menu active': 'header-menu'}>
-                    {MenuItems.map((item, index) => {
-                        return(
-                        <li key={index}>
-                            <Link to={item.url}>
-                                <button className={item.cName}>
-                                    {item.icon}{" "}{item.title}
-                                </button>
-                            </Link>
-                        </li>
-                        )
-                    })}
+                    {!state.auth.isAuthenticated ? (
+                        <>
+                            <li>
+                                <Link to="/">
+                                    <button className="header-links">
+                                        <FontAwesomeIcon icon={faHome} />{" "} Home
+                                    </button>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/login">
+                                    <button className="header-links">
+                                        <FontAwesomeIcon icon={faUser} />{" "} Login
+                                    </button>
+                                </Link>
+                            </li>
+                        </>
+                        
+                    ) : (
+                        <>
+                            <li>
+                                <Link to="/">
+                                    <button className="header-links">
+                                        <FontAwesomeIcon icon={faHome} />{" "} Home
+                                    </button>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/logout">
+                                    <button className="header-links">
+                                        Hi,{" "} Logout
+                                    </button>
+                                </Link>
+                            </li>
+                        </>
+                    )
+                    }
                 </ul>
             </header>
         </div>

@@ -28,7 +28,7 @@ function Pagination(props) {
                         <span class="font-medium"> {end} </span>
                         of
                         <span class="font-medium"> {total} </span>
-                            results
+                        results
                     </p>
                     </div>
                     <div>

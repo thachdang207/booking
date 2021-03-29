@@ -28,11 +28,11 @@ export default class SimpleSlider extends React.Component {
 
     render() {
         const { photoIndex, isOpen, images } = this.state;
-        // const url = process.env.REACT_APP_BASE_URL;
+        // const url = process.env.REACT_APP_API_URL;
 
         var settings = {
             infinite: true,
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
             speed: 2000,
@@ -100,7 +100,7 @@ export default class SimpleSlider extends React.Component {
                                         src={element}
                                         key={i}
                                         alt="slider"
-                                        className="h-80 w-full object-cover cursor-pointer"
+                                        className="h-96 w-full object-cover cursor-pointer p-1"
                                         onClick={() =>
                                             this.setState({
                                                 ...this.state,

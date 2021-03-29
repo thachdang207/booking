@@ -9,10 +9,10 @@ const url = process.env.REACT_APP_API_URL;
 export const signUp = (dispatch, user, setToken, setUserId, setIsAdmin) => {
     setLoading(dispatch, true);
     axios({
-        method: "post",
+        method: "POST",
         url: `${url}/customer/auth/sign-up`,
         headers: {
-            "Content-Type": " application/json"
+            "Content-Type": "application/json"
         },
         data: {
             name: user.name,
@@ -48,7 +48,7 @@ export const signUp = (dispatch, user, setToken, setUserId, setIsAdmin) => {
 export const signIn = (dispatch, user, setToken, setUserId, setIsAdmin) => {
     setLoading(dispatch, true);
     axios({
-        method: "post",
+        method: "POST",
         url: `${url}/customer/auth/sign-in`,
         headers: {
             "Content-Type": " application/json"

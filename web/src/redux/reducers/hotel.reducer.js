@@ -1,4 +1,5 @@
 import {
+    GET_FEATURED_HOTELS,
     GET_HOTEL_IMAGES,
     SET_SUCCESS,
     SET_LOADING
@@ -6,6 +7,7 @@ import {
 
 const initialState = {
     success: null,
+    featuredHotels: [],
     images: [],
     errors: null,
     loading: false,
@@ -17,6 +19,12 @@ export default function hotel(state = initialState, action) {
             return {
                 ...state,
                 images: action.payload.images
+            };
+        }
+        case GET_FEATURED_HOTELS: {
+            return {
+                ...state,
+                featuredHotels: action.payload.hotels
             };
         }
         case SET_LOADING: {

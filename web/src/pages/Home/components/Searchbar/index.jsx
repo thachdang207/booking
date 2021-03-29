@@ -54,8 +54,7 @@ export default function Searchbar(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {values, errors, touched, isSubmitting} = formikProps;
-                console.log({values, errors, touched});
+                const {isSubmitting} = formikProps;
 
                 return (
                     <div className="flex items-center min-h-screen bg-gray-100 ">

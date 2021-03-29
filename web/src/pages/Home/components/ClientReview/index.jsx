@@ -5,7 +5,7 @@ import Title from "../../../GlobalComponents/Title";
 function ClientReviews() {
     return (
         <section className="reviews px-5 xl:px-48">
-            <Title title="Mọi người nghĩ gì về chúng tôi?" />
+            <Title title="What people think about us" />
             <br />
             <div className="relative flex flex-col md:flex-row">
                 <ClientReviewCard

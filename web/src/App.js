@@ -1,4 +1,4 @@
-import React ,{ Suspense } from 'react'
+import React ,{ Suspense, useEffect } from 'react'
 // import ProtectedRoute from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -16,23 +16,38 @@ import {Loading} from './pages/GlobalComponents/Loading'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
 
+import AOS from "aos";
+import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
 const Admin = React.lazy(() => import('./pages/Admin'));
 
 
 function App() {
+    useEffect(() => {
+        AOS.init({
+            offset: 200,
+            duration: 500,
+            easing: "ease-in-sine",  
+        })
+    },[])
   return (
     <div className="App">
         <Suspense fallback={<Loading />}>
             <BrowserRouter>
                 <Switch>
                     {/* PUBLIC */}
-                    <Route  path="/admin" component={Admin} />
-                    <Route  path="/" component={Home} />
-                    <Route  path="/Login" component={Login} />
+                    <Route exact path="/admin" component={Admin} />
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/login" component={Login} />
                     <Route exact path="/logout" component={Logout} />
                     {/* ADMIN */}
+
+                    {/* <ProtectedRoute
+                        exact
+                        path="/hotel-management"
+                        component={Admin}
+                    /> */}
                     {/* <ProtectedRoute
                         exact
                         path="/hotel-management"

@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
-import 'antd/dist/antd.css';
 import { Upload, message, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import {
     Form,
-    Button,
     Select,
-    Cascader,
+    Button,
     DatePicker,
-    InputNumber,
-    TreeSelect,
     Switch,
     Row,
     Col
   } from 'antd';
+import {ROOM_TYPE_OPTIONS , GUEST_OPTIONS} from '../../../../constants/global'
+
 
 const { RangePicker } = DatePicker;
 const RoomEditForm = () => {
@@ -48,18 +46,18 @@ const RoomEditForm = () => {
                 status: 'done',
                 url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
               },
-              {
-                uid: '-xxx',
-                percent: 50,
-                name: 'image.png',
-                status: 'uploading',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-              {
-                uid: '-5',
-                name: 'image.png',
-                status: 'error',
-              },
+            //   {
+            //     uid: '-xxx',
+            //     percent: 50,
+            //     name: 'image.png',
+            //     status: 'uploading',
+            //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+            //   },
+            //   {
+            //     uid: '-5',
+            //     name: 'image.png',
+            //     status: 'error',
+            //   },
             ],
           }
     );
@@ -136,7 +134,7 @@ const RoomEditForm = () => {
                     <Radio.Button value="large">Large</Radio.Button>
                     </Radio.Group>
                 </Form.Item> */}
-                <Form.Item label="Input">
+                <Form.Item label="Image">
                 <Upload
                     // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                     listType="picture-card"
@@ -153,53 +151,21 @@ const RoomEditForm = () => {
                         footer={null}
                         onCancel={handleCancel}
                     >
-                        <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                        <img alt="example" style={{ width: '80%' }} src={previewImage} />
                     </Modal>
                 </Form.Item>
-                <Form.Item label="Select">
-                    <Select>
-                    <Select.Option value="demo">Demo</Select.Option>
+                <Form.Item label="Room type">
+                    <Select options={ROOM_TYPE_OPTIONS}>
                     </Select>
                 </Form.Item>
-                <Form.Item label="TreeSelect">
-                    <TreeSelect
-                    treeData={[
-                        {
-                        title: 'Light',
-                        value: 'light',
-                        children: [
-                            {
-                            title: 'Bamboo',
-                            value: 'bamboo',
-                            },
-                        ],
-                        },
-                    ]}
-                    />
-                </Form.Item>
-                <Form.Item label="Cascader">
-                    <Cascader
-                    options={[
-                        {
-                        value: 'zhejiang',
-                        label: 'Zhejiang',
-                        children: [
-                            {
-                            value: 'hangzhou',
-                            label: 'Hangzhou',
-                            },
-                        ],
-                        },
-                    ]}
-                    />
+                <Form.Item label="Guests">
+                    <Select options={GUEST_OPTIONS}>
+                    </Select>
                 </Form.Item>
                 <Form.Item label="RangePicker">
                     <RangePicker />
                 </Form.Item>
-                <Form.Item label="InputNumber">
-                    <InputNumber />
-                </Form.Item>
-                <Form.Item label="Switch">
+                <Form.Item label="Status">
                     <Switch />
                 </Form.Item>
                 <Row>

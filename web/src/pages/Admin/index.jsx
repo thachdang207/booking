@@ -6,7 +6,8 @@ import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
 import {Loading} from '../GlobalComponents/Loading';
 
 const Home = React.lazy(() => import('../Admin/pages/HomeAdmin'));
-const EditRoom = React.lazy(() => import('../Admin/pages/EditRoom'));
+const EditRoom = React.lazy(() => import('./pages/EditRoom'));
+const BookingManagement = React.lazy(() => import('../Admin/pages/BookingManagement'));
 
 function Layouts() {
     const match = useRouteMatch();
@@ -26,6 +27,7 @@ function Layouts() {
                                                     <Redirect exact from={match.url} to={`${match.url}/room/`} />
                                                     <Route exact path={`${match.url}/room/`} component={Home}/>
                                                     <Route path={`${match.url}/room/:roomId`} component={EditRoom}/>
+                                                    <Route path={`${match.url}/booking`} component={BookingManagement} />
                                                     <Route component={<h1>Not found</h1>} />
                                                 </Switch>
                                             </Suspense>

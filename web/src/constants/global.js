@@ -22,4 +22,9 @@ export const CITY_OPTIONS = [
     { value: '8', label: 'Vũng Tàu' },
     { value: '9', label: 'Hà Giang' },
     { value: '10', label: 'Hạ Long' },
-]; 
+];
+
+export const ROOM_TYPE_OPTIONS = [
+  { value: '1', label: 'Phòng tiêu chuẩn' },
+  { value: '2', label: 'Phòng deluxe' },
+];

@@ -20,11 +20,7 @@ function Welcome() {
                     </h2>
 
                     <p className="text-gray-600 mt-5">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis impedit ullam ex nostrum 
-                        rem accusamus modi necessitatibus nesciunt tempora aperiam quam, dignissimos rerum tenetur 
-                        voluptatum sunt excepturi, nulla officia explicabo saepe provident autem obcaecati voluptate
-                         culpa magnam. Sint id dolor maiores voluptatibus et consequatur,
-                         consequuntur itaque tenetur ducimus eum vitae fugiat nisi, repellendus impedit ratione unde!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio aliquam molestias qui, tempora adipisci rerum sit magnam voluptas sequi exercitationem quasi unde accusantium debitis illo?
                     </p>
                 </div>
                 
