@@ -6,7 +6,7 @@ import axios from "axios";
 //-----------------------------------------
 const url = process.env.REACT_APP_API_URL;
 
-export const signUp = (dispatch, user, setToken, setUserId, setIsAdmin) => {
+export const signUp = (dispatch, user, setToken, setUserId) => { //setIsAdmin
     setLoading(dispatch, true);
     axios({
         method: "POST",
@@ -15,37 +15,38 @@ export const signUp = (dispatch, user, setToken, setUserId, setIsAdmin) => {
             "Content-Type": "application/json"
         },
         data: {
-            name: user.name,
+            fullName: user.fullName,
             email: user.email,
             address: user.address,
             city: user.city,
             password: user.password,
-            is_admin: 0
+            // is_admin: 0
         }
     })
         .then((response) => {
             setToken(
-                response.data.data.success ? response.data.data.token : null
+                response.data.success ? response.data.accessToken : null
             );
             setUserId(
-                response.data.data.success ? response.data.data.user_id : null
+                response.data.success ? response.data.user.id : null
             );
-            setIsAdmin(
-                response.data.data.success ? response.data.data.is_admin : null
-            );
+            // setIsAdmin(
+            //     response.data.data.success ? response.data.data.is_admin : null
+            // );
             dispatch({
                 type: SIGN_UP,
-                payload: response.data.data
+                payload: response.data.user
             });
             setLoading(dispatch, false);
+            window.location.replace("/");
         })
         .catch((error) => {
-            window.location.replace("/");
+            console.log(error);
         });
 };
 //-----------------------------------------
 
-export const signIn = (dispatch, user, setToken, setUserId, setIsAdmin) => {
+export const signIn = (dispatch, user, setToken, setUserId) => { //setIsAdmin
     setLoading(dispatch, true);
     axios({
         method: "POST",
@@ -60,33 +61,33 @@ export const signIn = (dispatch, user, setToken, setUserId, setIsAdmin) => {
     })
         .then((response) => {
             setToken(
-                response.data.data.success ? response.data.data.token : null
+                response.data.success ? response.data.accessToken : null
             );
             setUserId(
-                response.data.data.success ? response.data.data.user_id : null
+                response.data.success ? response.data.user.id : null
             );
-            setIsAdmin(
-                response.data.data.success ? response.data.data.is_admin : null
-            );
-
+            // setIsAdmin(
+            //     response.data.data.success ? response.data.data.is_admin : null
+            // );
             localStorage.setItem("first_login", true);
 
             dispatch({
                 type: SIGN_IN,
-                payload: response.data.data
+                payload: response.data.user
             });
             setLoading(dispatch, false);
+            window.location.replace("/");
         })
         .catch((error) => {
-            window.location.replace("/");
+            console.log(error);
         });
 };
 //-----------------------------------------
 
-export const checkAuth = (dispatch, _token, userId, isAdmin) => {
+export const checkAuth = (dispatch, _token, userId) => { //isAdmin
     let token = _token;
     let user_id = userId;
-    let is_admin = isAdmin == "1" || isAdmin == 1 ? true : false;
+    // let is_admin = isAdmin == "1" || isAdmin == 1 ? true : false;
     token != null && token != "null" && token != "" // eslint-disable-line
         ? dispatch({
               type: CHECK_AUTH,
@@ -94,7 +95,7 @@ export const checkAuth = (dispatch, _token, userId, isAdmin) => {
                   isAuthenticated: true,
                   user_id,
                   token,
-                  is_admin
+                //   is_admin
               }
           })
         : dispatch({
@@ -103,7 +104,7 @@ export const checkAuth = (dispatch, _token, userId, isAdmin) => {
                   isAuthenticated: false,
                   user_id: null,
                   token: null,
-                  is_admin: null
+                //   is_admin: null
               }
           });
 };

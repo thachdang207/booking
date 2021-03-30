@@ -26,11 +26,11 @@ function LoginForm(props){
 
     const [token, setToken] = useSecureLs("token");
     const [userId, setUserId] = useSecureLs("user_id");
-    const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
+    // const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signIn(dispatch, user, setToken, setUserId, setIsAdmin);
+        signIn(dispatch, user, setToken, setUserId); //setIsAdmin
     }
 
     const history = useHistory();
@@ -46,7 +46,7 @@ function LoginForm(props){
         <div className="inner-container">
             {state.auth.loading && <Loading />}
             {state.auth.success === false && (
-                <ErrorMessage erros={state.auth.errors} />
+                <ErrorMessage errors={state.auth.errors} />
             )}
             <div className="box-container">
                 <form className="form-container" onSubmit={handleSubmit}>

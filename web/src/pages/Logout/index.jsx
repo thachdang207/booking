@@ -8,18 +8,20 @@ function Logout() {
     useEffect(() => {
         ls.remove("token");
         ls.remove("user_id");
-        ls.remove("is_admin");
+        ls.remove("first_login");
+        // ls.remove("is_admin");
         return () => {
             ls.remove("token");
             ls.remove("user_id");
-            ls.remove("is_admin");
+            ls.remove("first_login");
+            // ls.remove("is_admin");
         };
     }, []); // eslint-disable-line
 
     let history = useHistory();
     setTimeout(() => {
         history.push("/");
-    }, 3000);
+    }, 2000);
     return <div></div>;
 }
 

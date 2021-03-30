@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState} from "react";
+// import { useSelector } from "react-redux";
 
 export const ErrorMessage = ({ errors }) => {
-    const state = useSelector((state) => state);
+    // const state = useSelector((state) => state);
 
     const [hidden, setHidden] = useState(true);
 
-    useEffect(() => {
-        !state.users.success ? setHidden(false) : setHidden(true);
-        const timer = setTimeout(() => {
-            setHidden(true);
-        }, 5000);
-        return () => clearTimeout(timer);
-    }, [state.users]); // eslint-disable-line
+    // useEffect(() => {
+    //     !state.users.success ? setHidden(false) : setHidden(true);
+    //     const timer = setTimeout(() => {
+    //         setHidden(true);
+    //     }, 5000);
+    //     return () => clearTimeout(timer);
+    // }, [state.users]); // eslint-disable-line
 
     return (
         <div

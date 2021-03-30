@@ -25,6 +25,8 @@ function Home() {
       
       <Welcome />
 
+      <Border />
+
       <Searchbar
         onSubmit={handleSearch}
       />

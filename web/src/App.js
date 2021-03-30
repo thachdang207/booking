@@ -1,10 +1,6 @@
 import React ,{ Suspense, useEffect } from 'react'
 // import ProtectedRoute from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Logout from './pages/Logout'
 import {Loading} from './pages/GlobalComponents/Loading'
 
 // import AddHotel from './Admin/pages/AddHotel'
@@ -16,11 +12,17 @@ import {Loading} from './pages/GlobalComponents/Loading'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
 
+import Unauthorized from './pages/GlobalComponents/Unauthorizated'
+
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
 const Admin = React.lazy(() => import('./pages/Admin'));
+const Login = React.lazy(() => import('./pages/Login'));
+const Home = React.lazy(() => import('./pages/Home'));
+const Logout = React.lazy(() => import('./pages/Logout'));
 
 
 function App() {
@@ -88,6 +90,7 @@ function App() {
                         path="/booking-management"
                         component={BookingManagement}
                     /> */}
+                    <Route exact path="/401" component={Unauthorized} />
                 </Switch>
             </BrowserRouter>
         </Suspense>   

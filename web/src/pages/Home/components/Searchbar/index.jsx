@@ -57,12 +57,12 @@ export default function Searchbar(props) {
                 const {isSubmitting} = formikProps;
 
                 return (
-                    <div className="flex items-center min-h-screen bg-gray-100 ">
+                    <div className="flex items-center min-h-0 bg-white" data-aos="fade-up">
                         <div className="container mx-auto">
-                            <Form className="max-w-2xl mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
+                            <Form className="max-w-3xl mx-auto my-0 bg-gray-200 p-5 rounded-md shadow-sm">
                                 <div className="text-center">
-                                    <h3 className="my-3 text-xl font-semibold text-gray-700 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
-                                    <p className="text-gray-400 dark:text-gray-400">From cozy country homes to funky city apartments</p>
+                                    <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
+                                    <p className="text-gray-500 dark:text-gray-400">From cozy country homes to funky city apartments</p>
                                 </div>
                                 <div className="m-4">
                                     <div className="text-center block">

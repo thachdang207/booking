@@ -7,22 +7,22 @@ import {
 const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
 export const getHotelImages = (dispatch) => {
-    axios(`${url}/hotels/images`)
+    axios(`${url}/customer/locations`)
         .then((response) => {
             dispatch({
                 type: GET_HOTEL_IMAGES,
-                payload: response.data.data
+                payload: response.data
             });
         })
         .catch((error) => {});
 };
 //-----------------------------------------
 export const getFeaturedHotels = (dispatch) => {
-    axios(`${url}/hotels`)
+    axios(`${url}/customer/locations`)
         .then((response) => {
             dispatch({
                 type: GET_FEATURED_HOTELS,
-                payload: response.data.data
+                payload: response.data
             });
         })
         .catch((error) => {});

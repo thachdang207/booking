@@ -18,13 +18,13 @@ export default function hotel(state = initialState, action) {
         case GET_HOTEL_IMAGES: {
             return {
                 ...state,
-                images: action.payload.images
+                images: action.payload.data
             };
         }
         case GET_FEATURED_HOTELS: {
             return {
                 ...state,
-                featuredHotels: action.payload.hotels
+                featuredHotels: action.payload.data
             };
         }
         case SET_LOADING: {

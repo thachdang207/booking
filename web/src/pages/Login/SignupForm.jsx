@@ -21,10 +21,10 @@ function SignupForm(props){
     const state = useSelector((state) => state);
     const [token, setToken] = useSecureLs("token");
     const [userId, setUserId] = useSecureLs("user_id");
-    const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
+    // const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const [user, setUser] = useState({
-        name: "",
+        fullName: "",
         email: "",
         password: "",
         address: "",
@@ -33,7 +33,7 @@ function SignupForm(props){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signUp(dispatch, user, setToken, setUserId, setIsAdmin);
+        signUp(dispatch, user, setToken, setUserId); //setIsAdmin
         console.log("Submit: ", user);
     };
 
@@ -60,13 +60,13 @@ function SignupForm(props){
             <div className="box-container">
                 <form className="form-container" onSubmit={handleSubmit}>
                     <input
-                        id="name"
+                        id="fullName"
                         type="text" 
                         className="input"
                         placeholder="Full name"
                         aria-required="true"
                         onChange={(e) => 
-                            setUser({ ...user, name: e.target.value})
+                            setUser({ ...user, fullName: e.target.value})
                         }
                     />
                     <input

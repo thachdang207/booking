@@ -1,9 +1,11 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 
-const url = 'https://booking-nestjs.herokuapp.com';
 
-function HotelCard({ hotel: { id, name, min_price, star, image } }) {
+function HotelCard({ hotel: { id, name, price, images } }) {
+    const formattedPrice = price.slice(1);
     return (
         <div>
             <div
@@ -14,36 +16,31 @@ function HotelCard({ hotel: { id, name, min_price, star, image } }) {
                     <div className="relative ">
                         <img
                             src={
-                                image
-                                    ? `${url}/img/hotels/${image}`
-                                    : "http://placehold.it/800x700?text=hotel"
+                                "http://placehold.it/400x400?text=hotel"
                             }
                             className="w-full h-64 object-cover"
                             alt="hotel"
                         />
                         <div className="flex items-center justify-between w-full absolute bottom-0">
-                            <div className="absolute w-full h-full bg-gray-700 opacity-50"></div>
+                            <div className="absolute w-full h-full bg-gray-800 opacity-50"></div>
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
                                     <div className="">
-                                        {Array(star)
-                                            .fill()
-                                            .map((x, i) => (
-                                                <i
-                                                    className="fas fa-star fa-xs text-orange-400"
-                                                    key={i}
-                                                ></i>
-                                            ))}
+                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
+                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
+                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
+                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
+                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
                                     </div>
                                 </div>
                                 <div className="text-gray-100 font-semibold">
-                                    Starting From {min_price}$
+                                    Starting From {formattedPrice} VND
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <h2 className="p-5 uppercase text-xl font-bold font-serif  text-center text-orange-800 hover:text-orange-600">
+                    <h2 className="p-5 uppercase text-xl font-bold font-sans-roboto text-center text-indigo-800 hover:text-indigo-600 no-underline">
                         Hotel {name}
                     </h2>
                 </Link>

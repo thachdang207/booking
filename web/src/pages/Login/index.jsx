@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import Header from '../GlobalComponents/Header'
 import {AccountContext} from "./accountContext";
 
 import styled from 'styled-components';
@@ -73,7 +74,8 @@ function Login() {
 
     return (
         <AccountContext.Provider value={contextValue}>
-        <div className="login-container">
+        <Header />
+        <div className="login-container" data-aos="fade-up">
             <div className="top-container">
                 <BackDrop 
                         initial={false} 
@@ -106,12 +108,8 @@ function Login() {
             </div>
             {status === "signin" && <LoginForm />}
             {status === "signup" && <SignupForm />}
-            <div>
-                <a className= "muted-link" href="/">Back to Homepage</a>
-            </div>
         </div>
         </AccountContext.Provider>
-        
     );
 }
 
