@@ -70,16 +70,16 @@ function LoginForm(props){
                             setUser({...user, password: e.target.value})
                         }
                     />
-                    <a href="#" class="muted-link">
+                    <a className="muted-link">
                         Forgot password?
                     </a>
                     <button className="submit-button" type="submit">
                         Sign in
                     </button>
                 </form>
-                <a href="#" className="muted-link">
+                <a className="muted-link">
                     Don't have an account yet?
-                    <a href="#" 
+                    <a
                         className="bold-link"
                         onClick={switchToSignup}
                     >

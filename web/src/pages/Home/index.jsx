@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Header from '../GlobalComponents/Header';
 import Searchbar from './components/Searchbar'
 import Border from '../GlobalComponents/Border'
 import Footer from '../GlobalComponents/Footer'
@@ -21,8 +20,6 @@ function Home() {
 
   return (
     <div>
-      <Header />
-      
       <Welcome />
 
       <Border />

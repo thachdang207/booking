@@ -19,7 +19,7 @@ function Header() {
     return (
         <div>
             <header className="header-items">
-                <h2>VIBO.com</h2>
+                <p className="header-logo">VIBO.com</p>
                 <div className="menu-icon" 
                     onClick={handleClickChange}>
                     <FontAwesomeIcon icon={isClicked ? faTimes : faBars } />

@@ -6,7 +6,7 @@
 .login-container{
     margin: 80px;
     width: 380px;
-    min-height: 550px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,6 +85,10 @@
     font-weight: 500;
     text-decoration: none;
     margin: 10px;
+}
+
+.muted-link:hover{
+    text-decoration: none;
 }
 
 .bold-link{

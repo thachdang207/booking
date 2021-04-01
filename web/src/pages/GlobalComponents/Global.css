@@ -1,44 +1,36 @@
-:root{
-    --primary: #2b5876;
-    --accent: #4e4376;
-}
-
-
 .header-items{
-    background: linear-gradient(90deg, var(--primary) 0%,  var(--accent) 100%);
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: 50;
+    width: 100%;
 }
 
-.header-items h2{
-    color: #fff;
-    justify-self: start;
-    margin-left: 150px;
-    cursor: pointer;
+.header-logo{
+    color: rgb(255, 255, 255);
+    text-align: center;
     font-family: "Dosis", serif;
     font-weight: 800;
-    font-size: 25px;
+    font-size: 35px;
+    width: 20%;
 }
 
 .header-menu{
     display: grid;
-    grid-template-columns: repeat(3,auto);
-    grid-gap: 14px;
+    grid-template-columns: repeat(2,auto);
+    grid-gap: 20px;
     list-style: none;
     text-align: center;
     width: 50vw;
     justify-content: end;
-    margin-right: 2rem;
+    margin-right: 3rem;
     font-family: "Dosis", serif;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 30px;
     margin: auto;
-}
-
-.header-menu li {
-    margin-bottom: 10px;
+    width: 70%;
 }
 
 .header-links{
@@ -57,7 +49,7 @@
     content: '';
     width: 0;
     height: 2px;
-    background: #FFF;
+    background: rgb(255, 255, 255);
     transition: width 0.2s;
 }
 
@@ -68,12 +60,13 @@
 
 .menu-icon{
     display:none;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
-@media screen and (max-width: 1160px){
+@media screen and (max-width: 1360px){
     .header-items{
-        position: relative;
+        position: absolute;
+        background:rgba(0, 0, 0, 0.35);
     }
     .header-menu{
         display: flex;
@@ -84,15 +77,14 @@
         top: 80px;
         left: -100%;
         opacity: 1;
-        transition: all 0.5s ease-out;
+        transition: all 750ms ease-out;
     }
 
     .header-menu.active{
-        background: linear-gradient(90deg, var(--primary) 0%,  var(--accent) 100%);
         left: 0;
         opacity: 1;
-        transition: all 0.5s ease-out;
-        z-index: 50;
+        transition: all 750ms ease-out;
+        background:rgba(0, 0, 0, 0.35);
     }
 
     .header-links{
@@ -101,15 +93,13 @@
         width: 100%;
         display: table;
         z-index: inherit;
+    }
+
+    .header-links:hover, .header-links:active{
         text-decoration: none;
     }
 
-    .header-links:hover{
-        border-radius: 0;
-        text-decoration: none;
-    }
-
-    .header-items h2{
+    .header-logo{
         position: absolute;
         top: 0;
         left: 0;

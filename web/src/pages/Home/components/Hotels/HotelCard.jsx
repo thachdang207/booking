@@ -7,16 +7,18 @@ import { Link } from "react-router-dom";
 function HotelCard({ hotel: { id, name, price, images } }) {
     const formattedPrice = price.slice(1);
     return (
-        <div>
+        <div className="p-4">
             <div
-                className="bg-gray-100 rounded-sm  overflow-hidden shadow-lg mt-5"
+                className="bg-gray-100 h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"
             >
                 <Link to={`/hotel/${id}`}>
-                    <div className="relative ">
+                    <div className="relative">
                         <img
                             src={
-                                "http://placehold.it/400x400?text=hotel"
+                                images?
+                                images[0]:
+                                "http://placehold.it/500x500?text=hotel"
                             }
                             className="w-full h-64 object-cover"
                             alt="hotel"

@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import Header from '../GlobalComponents/Header'
 import {AccountContext} from "./accountContext";
+import {Link} from "react-router-dom"
 
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
@@ -12,12 +12,12 @@ import './Login.css'
 
 const BackDrop = styled(motion.div)`
     width: 260%;
-    height: 550px;
+    height: 650px;
     position: absolute;
     display: flex;
     flex-direction: column;
     border-radius: 50%;
-    top: -330px;
+    top: -280px;
     left: -150px;
     transform: rotate(60deg);
     background: rgb(34,193,195);
@@ -74,7 +74,6 @@ function Login() {
 
     return (
         <AccountContext.Provider value={contextValue}>
-        <Header />
         <div className="login-container" data-aos="fade-up">
             <div className="top-container">
                 <BackDrop 
@@ -108,6 +107,9 @@ function Login() {
             </div>
             {status === "signin" && <LoginForm />}
             {status === "signup" && <SignupForm />}
+            <Link to="/" className="hover:no-underline">
+                <p className="muted-link"> Back to homepage </p>
+            </Link>
         </div>
         </AccountContext.Provider>
     );
