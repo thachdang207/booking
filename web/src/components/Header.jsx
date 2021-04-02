@@ -1,6 +1,6 @@
 import React, { useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faBars, faHome, faUser} from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
 import { useSelector } from "react-redux";
 
@@ -12,12 +12,16 @@ function Header() {
 
     const state = useSelector((state) => state);
     const [isClicked, toggleClick] = useState(false);
+    const [isScrolling, setIsScrolling] = useState(false);
+    
     const handleClickChange = () => {
         toggleClick(!isClicked);
     }
 
+    
+
     return (
-        <div>
+        <div className={isScrolling ? 'header active' : 'header'}>
             <header className="header-items">
                 <p className="header-logo">VIBO.com</p>
                 <div className="menu-icon" 
@@ -30,14 +34,14 @@ function Header() {
                             <li>
                                 <Link to="/">
                                     <button className="header-links">
-                                        <FontAwesomeIcon icon={faHome} />{" "} Home
+                                        Home
                                     </button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/login">
                                     <button className="header-links">
-                                        <FontAwesomeIcon icon={faUser} />{" "} Login
+                                        Login
                                     </button>
                                 </Link>
                             </li>
@@ -48,7 +52,7 @@ function Header() {
                             <li>
                                 <Link to="/">
                                     <button className="header-links">
-                                        <FontAwesomeIcon icon={faHome} />{" "} Home
+                                        Home
                                     </button>
                                 </Link>
                             </li>

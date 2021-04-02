@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useHistory } from 'react-router';
 import Card from '../../components/Card';
 import Hotel from "../../components/FakeData/Hotels.json";
-import Pagination from '../../components/Pagination';
+import Pagination from '../../../../components/Pagination';
 // const Pagination = React.lazy(() => import('../Pagination/Pagination'))
 
 //Home admin is room management

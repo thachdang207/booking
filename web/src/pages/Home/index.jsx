@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import Searchbar from './components/Searchbar'
-import Border from '../GlobalComponents/Border'
-import Footer from '../GlobalComponents/Footer'
-import Welcome from './components/Welcome'
-import Hotels from './components/Hotels'
-import ClientReviews from './components/ClientReview'
+import Searchbar from './Searchbar'
+import Header from '../../components/Header'
+import Border from '../../components/Border'
+import Footer from '../../components/Footer'
+import Hero from './Hero'
+import Hotels from './Hotels'
+import ClientReviews from './ClientReview'
 
 
 function Home() {
@@ -20,7 +21,9 @@ function Home() {
 
   return (
     <div>
-      <Welcome />
+      <Header />
+
+      <Hero />
 
       <Border />
 

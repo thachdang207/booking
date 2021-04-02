@@ -1,7 +1,8 @@
 import React ,{ Suspense, useEffect } from 'react'
 // import ProtectedRoute from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import {Loading} from './pages/GlobalComponents/Loading'
+import {Loading} from './components/Loading'
+import Unauthorized from './components/Unauthorizated'
 
 // import AddHotel from './Admin/pages/AddHotel'
 // import EditHotel from './Admin/pages/EditHotel'
@@ -11,8 +12,6 @@ import {Loading} from './pages/GlobalComponents/Loading'
 // import BookingManagement from './Admin/pages/BookingManagement'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
-
-import Unauthorized from './pages/GlobalComponents/Unauthorizated'
 
 
 import AOS from "aos";

@@ -1,9 +1,9 @@
 import React, {Suspense} from 'react'
-import Footer from '../GlobalComponents/Footer';
+import Footer from '../../components/Footer';
 import Header from '../Admin/components/Layouts/Header';
 import Nav from '../Admin/components/Layouts/Nav';
 import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
-import {Loading} from '../GlobalComponents/Loading';
+import {Loading} from '../../components/Loading';
 
 const Home = React.lazy(() => import('../Admin/pages/HomeAdmin'));
 const EditRoom = React.lazy(() => import('./pages/EditRoom'));

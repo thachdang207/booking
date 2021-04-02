@@ -1,9 +1,9 @@
 .header-items{
     height: 80px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     z-index: 50;
     width: 100%;
 }
@@ -12,8 +12,8 @@
     color: rgb(255, 255, 255);
     text-align: center;
     font-family: "Dosis", serif;
-    font-weight: 800;
-    font-size: 35px;
+    font-weight: 900;
+    font-size: 40px;
     width: 20%;
 }
 
@@ -26,7 +26,6 @@
     width: 50vw;
     justify-content: end;
     margin-right: 3rem;
-    font-family: "Dosis", serif;
     font-weight: 600;
     font-size: 30px;
     margin: auto;
@@ -63,10 +62,10 @@
     color: rgb(255, 255, 255);
 }
 
-@media screen and (max-width: 1360px){
+@media screen and (max-width: 768px){
     .header-items{
-        position: absolute;
-        background:rgba(0, 0, 0, 0.35);
+        position: fixed;
+        background:rgba(0, 0, 0, 0.45);
     }
     .header-menu{
         display: flex;
@@ -84,7 +83,11 @@
         left: 0;
         opacity: 1;
         transition: all 750ms ease-out;
-        background:rgba(0, 0, 0, 0.35);
+        background:rgba(0, 0, 0, 0.45);
+    }
+
+    .header-menu li {
+        text-decoration: none;
     }
 
     .header-links{
@@ -100,10 +103,9 @@
     }
 
     .header-logo{
-        position: absolute;
         top: 0;
         left: 0;
-        transform: translate(25%, 50%);
+        transform: translate(50%, 20%);
     }
 
     .menu-icon{

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import HotelCard from "./HotelCard";
-import { getFeaturedHotels } from "../../../../redux/actions/hotel.action";
+import { getFeaturedHotels } from "../../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
 
 function Hotels() {

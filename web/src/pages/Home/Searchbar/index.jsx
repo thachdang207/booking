@@ -8,9 +8,9 @@ import {DatePicker} from 'antd'
 import moment from 'moment'
 import * as Yup from 'yup'
 
-import SelectField from '../../../../custom-fields/SelectField'
-import {CITY_OPTIONS} from '../../../../constants/global'
-import {GUEST_OPTIONS} from '../../../../constants/global'
+import SelectField from '../../../custom-fields/SelectField'
+import {CITY_OPTIONS} from '../../../constants/global'
+import {GUEST_OPTIONS} from '../../../constants/global'
 
 Searchbar.propTypes = {
     onSubmit: PropTypes.func,

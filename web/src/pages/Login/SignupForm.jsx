@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from 'react';
-import {useSecureLs} from '../GlobalComponents/UseSecureLs'
+import {useSecureLs} from '../../components/UseSecureLs'
 import {useDispatch, useSelector} from 'react-redux'
 import {AccountContext} from './accountContext';
 import {signUp} from '../../redux/actions/auth.action'
 import {useHistory} from 'react-router-dom'
-import {Loading} from '../GlobalComponents/Loading'
-import {ErrorMessage} from '../GlobalComponents/ErrorMessage'
+import {Loading} from '../../components/Loading'
+import {ErrorMessage} from '../../components/ErrorMessage'
 
 import './Login.css'
 import JSONDATA from '../Home/data.json'
