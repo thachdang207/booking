@@ -1,11 +1,20 @@
 /* eslint-disable no-sequences */
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from 'prop-types'
 import styled, { css } from "styled-components/macro"
 import { SLIDER_HOTEL } from '../../../constants/hotel'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5'
 
 import "./Hero.css"
+
+Hero.propTypes = {
+    onClick: PropTypes.func,
+}
+
+Hero.defaultProps = {
+    onClick: null,
+}
 
 const arrowButton = css`
     width: 50px;
@@ -38,7 +47,7 @@ const NextArrow = styled(IoArrowForward)`
     ${arrowButton}
 `;
 
-function Hero() {
+function Hero(props) {
     const slider = SLIDER_HOTEL;
 
     const [current, setCurrent] = useState(0)
@@ -90,12 +99,12 @@ function Hero() {
                                         alt={slide.alt}
                                         className="hero-image"
                                         data-aos="fade"
-                                        data-aos-duration="2000"
+                                        data-aos-duration="3000"
                                     />
                                     <div className="hero-content">
                                         <h1>{slide.title}</h1>
                                         <p>Starting from {" "}{slide.price}</p>
-                                        <button className="hero-button">
+                                        <button className="hero-button" onClick={props.onClick}>
                                             {slide.label}
                                             <Arrow />
                                         </button>

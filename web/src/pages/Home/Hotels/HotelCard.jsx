@@ -1,10 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 
 
-function HotelCard({ hotel: { id, name, price, images } }) {
+function HotelCard({ hotel: { id, name, price, score, images } }) {
     const formattedPrice = price.slice(1);
     return (
         <div className="p-4">
@@ -16,7 +14,7 @@ function HotelCard({ hotel: { id, name, price, images } }) {
                     <div className="relative">
                         <img
                             src={
-                                images?
+                                images ?
                                 images[0]:
                                 "http://placehold.it/500x500?text=hotel"
                             }
@@ -27,13 +25,9 @@ function HotelCard({ hotel: { id, name, price, images } }) {
                             <div className="absolute w-full h-full bg-gray-800 opacity-50"></div>
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
-                                    <div className="">
-                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
-                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
-                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
-                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
-                                        <FontAwesomeIcon icon={faStar} className="text-yellow-400"/>
-                                    </div>
+                                    <p className="text-white text-xl">
+                                        {score}
+                                    </p>
                                 </div>
                                 <div className="text-gray-100 font-semibold">
                                     Starting From {formattedPrice} VND

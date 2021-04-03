@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useRef } from 'react';
 import Searchbar from './Searchbar'
 import Header from '../../components/Header'
 import Border from '../../components/Border'
@@ -9,26 +9,35 @@ import ClientReviews from './ClientReview'
 
 
 function Home() {
-  useEffect(() =>{
+  useEffect(() => {
     document.title = "VIBO | Homepage";
-  },[]);
+  }, []);
+
+  const myRef = useRef(null);
+
+  const scrollToBook = () => {
+    myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  };
 
   const handleSearch = (values) => {
-      return new Promise (resolve => {
-        console.log("Search form: ", values);
-      })
+    return new Promise(resolve => {
+      console.log("Search form: ", values);
+    })
   }
 
   return (
-    <div>
+    <>
       <Header />
 
-      <Hero />
+      <Hero
+        onClick={scrollToBook}
+      />
 
       <Border />
 
       <Searchbar
         onSubmit={handleSearch}
+        refProp={myRef}
       />
 
       <Border />
@@ -40,9 +49,9 @@ function Home() {
       <ClientReviews />
 
       <Border />
-      
+
       <Footer />
-    </div>
+    </>
   );
 }
 

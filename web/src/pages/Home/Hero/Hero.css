@@ -22,7 +22,7 @@
 }
 
 .hero-slider{
-    background-color: #000d1a;
+    background: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
         rgba(0, 0, 0, 0.45) 20%,
         rgba(0, 0, 0, 0.75) 60%,
         rgba(0, 0, 0, 0.95) 100%
-    )
+    );
 }
 
 .hero-image{

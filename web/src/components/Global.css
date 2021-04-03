@@ -8,6 +8,10 @@
     width: 100%;
 }
 
+.header-items.active{
+    background: #000;
+}
+
 .header-logo{
     color: rgb(255, 255, 255);
     text-align: center;
@@ -37,24 +41,14 @@
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 0.5rem 1rem;
+    border-radius: 10px;
 }
 
 .header-links:hover{
-    text-decoration: none;
-}
-
-.header-links::after {
-    display: block;
-    content: '';
-    width: 0;
-    height: 2px;
-    background: rgb(255, 255, 255);
-    transition: width 0.2s;
-}
-
-.header-links:hover::after {
-    width: 100%;
-    transition: width 0.2s;
+    background: #fff;
+    color: #000;
+    transition: all 200ms linear;
+    transform: translateY(-4px);
 }
 
 .menu-icon{

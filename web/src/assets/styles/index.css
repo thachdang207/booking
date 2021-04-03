@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .show-menu {
     animation-name: show-menu-animation;
     animation-duration: .5s;
