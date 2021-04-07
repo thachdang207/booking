@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import HotelCard from "./HotelCard";
-import { getFeaturedHotels } from "../../../redux/actions/hotel.action";
+import { getHotels } from "../../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
 
 function Hotels() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
-    useEffect(() => getFeaturedHotels(dispatch), []); // eslint-disable-line
+    useEffect(() => getHotels(dispatch), []); // eslint-disable-line
 
     return (
-        <section className="px-24 py-10 xl:px-36">
+        <section className="px-12 py-10 xl:px-32">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {state && state.hotel.featuredHotels.map((hotel) => (
+                {state && state.hotel.hotels.map((hotel) => (
+                    !hotel.isFeatured ? (
                         <HotelCard hotel={hotel} key={hotel.id} />
-                    ))}
+                    ) : ""
+                ))}
             </div>
         </section>
     );

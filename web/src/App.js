@@ -1,8 +1,10 @@
 import React ,{ Suspense, useEffect } from 'react'
-// import ProtectedRoute from './ProtectedRoute'
+import { ProtectedRoute } from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import {Loading} from './components/Loading'
+import { Loading } from './components/Loading'
 import Unauthorized from './components/Unauthorizated'
+
+import UserProfile from './pages/User/UserProfile'
 
 // import AddHotel from './Admin/pages/AddHotel'
 // import EditHotel from './Admin/pages/EditHotel'
@@ -27,7 +29,6 @@ const Logout = React.lazy(() => import('./pages/Logout'));
 function App() {
     useEffect(() => {
         AOS.init({
-            offset: 200,
             duration: 500,
             easing: "ease-in-sine",  
         })
@@ -42,6 +43,14 @@ function App() {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/logout" component={Logout} />
+
+                    {/* USER */}
+
+                    <ProtectedRoute
+                        exact path="/user-profile/:id"
+                        component={UserProfile}
+                    />
+
                     {/* ADMIN */}
 
                     {/* <ProtectedRoute

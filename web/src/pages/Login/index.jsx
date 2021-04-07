@@ -17,7 +17,7 @@ const BackDrop = styled(motion.div)`
     display: flex;
     flex-direction: column;
     border-radius: 50%;
-    top: -280px;
+    top: -330px;
     left: -150px;
     transform: rotate(60deg);
     background: rgb(34,193,195);
@@ -41,7 +41,7 @@ const backDropVariants = {
 
 const expandingTransition = {
     type: "spring",
-    duration : 2.3,
+    duration : 2.5,
     stiffness : 30,
 }
 

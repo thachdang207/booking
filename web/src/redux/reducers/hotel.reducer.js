@@ -1,22 +1,22 @@
 import {
-    GET_FEATURED_HOTELS,
+    GET_HOTELS,
     SET_SUCCESS,
     SET_LOADING
 } from "../actionTypes";
 
 const initialState = {
     success: null,
-    featuredHotels: [],
+    hotels: [],
     errors: null,
     loading: false,
 };
 
 export default function hotel(state = initialState, action) {
     switch (action.type) {
-        case GET_FEATURED_HOTELS: {
+        case GET_HOTELS: {
             return {
                 ...state,
-                featuredHotels: action.payload.data
+                hotels: action.payload.data
             };
         }
         case SET_LOADING: {

@@ -122,7 +122,7 @@ function SignupForm(props){
                         Create
                     </button>
                 </form>
-                <a className="muted-link">
+                <p className="muted-link">
                         Already have an account?
                         <a 
                             className="bold-link"
@@ -130,7 +130,7 @@ function SignupForm(props){
                         >
                             Sign in
                         </a>
-                </a>
+                </p>
             </div>
         </div>
     );

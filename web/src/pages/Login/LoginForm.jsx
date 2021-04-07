@@ -70,14 +70,14 @@ function LoginForm(props){
                             setUser({...user, password: e.target.value})
                         }
                     />
-                    <a className="muted-link">
+                    <p className="muted-link">
                         Forgot password?
-                    </a>
+                    </p>
                     <button className="submit-button" type="submit">
                         Sign in
                     </button>
                 </form>
-                <a className="muted-link">
+                <p className="muted-link">
                     Don't have an account yet?
                     <a
                         className="bold-link"
@@ -85,7 +85,7 @@ function LoginForm(props){
                     >
                         Sign up
                     </a>
-                </a>
+                </p>
             </div>
         </div>
     );
