@@ -31,7 +31,6 @@
     justify-content: end;
     margin-right: 3rem;
     font-weight: 600;
-    font-size: 30px;
     margin: auto;
     width: 70%;
 }
@@ -121,7 +120,7 @@ button {
     border: 0;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     text-transform: uppercase;
     font-family: inherit;

@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {Formik, Form, FastField} from 'formik'
-import {Button, FormGroup, Spinner} from 'reactstrap'
-import {DatePicker} from 'antd'
+import { Formik, Form, FastField } from 'formik'
+import { Button, FormGroup, Spinner } from 'reactstrap'
+import { DatePicker } from 'antd'
 // import {Link} from 'react-router-dom'
 import moment from 'moment'
 import * as Yup from 'yup'
 
 import SelectField from '../../../custom-fields/SelectField'
-import {CITY_OPTIONS} from '../../../constants/global'
-import {GUEST_OPTIONS} from '../../../constants/global'
+import { CITY_OPTIONS } from '../../../constants/global'
+import { GUEST_OPTIONS } from '../../../constants/global'
 
 Searchbar.propTypes = {
     onSubmit: PropTypes.func,
@@ -21,7 +21,7 @@ Searchbar.defaultProps = {
     onSubmit: null,
     refProp: null
 }
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker;
 
 export default function Searchbar(props) {
     const initialValues = {
@@ -56,7 +56,7 @@ export default function Searchbar(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {isSubmitting} = formikProps;
+                const { isSubmitting } = formikProps;
 
                 return (
                     <div ref={props.refProp}>
@@ -85,22 +85,22 @@ export default function Searchbar(props) {
                                                     width: "auto",
                                                     cursor: "pointer",
                                                     textAlign: "left"
-                                                    }}
+                                                }}
                                             />
                                         </div>
                                         <br />
-                                        <FastField 
+                                        <FastField
                                             name="cityId"
                                             component={SelectField}
                                             placeholder="Which city do you want to go?"
                                             options={CITY_OPTIONS}
-                                        />   
-                                        <FastField 
+                                        />
+                                        <FastField
                                             name="guest"
                                             component={SelectField}
                                             placeholder="The number of guests?"
                                             options={GUEST_OPTIONS}
-                                        />    
+                                        />
 
                                         <FormGroup>
                                             {/* <Link
@@ -109,17 +109,17 @@ export default function Searchbar(props) {
                                                 &city=${initialValues.cityId}
                                                 &guest=${initialValues.guest}`}
                                             > */}
-                                                <Button 
-                                                    type="submit"
-                                                    className="w-full px-3 py-4 text-white focus:outline-none"
-                                                >
-                                                    {isSubmitting && <Spinner size="sm"/>}
+                                            <Button
+                                                type="submit"
+                                                className="w-full px-3 py-4 text-white focus:outline-none"
+                                            >
+                                                {isSubmitting && <Spinner size="sm" />}
                                                     Find
                                                 </Button>
                                             {/* </Link> */}
                                         </FormGroup>
                                     </div>
-                                    
+
                                 </Form>
                             </div>
                         </div>

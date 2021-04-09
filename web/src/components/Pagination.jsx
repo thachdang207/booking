@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap'
+import { Button, Badge } from 'reactstrap'
 import './Global.css'
 
 Pagination.propTypes = {
@@ -16,8 +16,8 @@ function Pagination(props) {
     //Total is number of total values
     const totalPages = Math.ceil(total / count)
     const handlePageChange = (newPage) => {
-            onPageChange(newPage);
-            console.log(pagination);
+        onPageChange(newPage);
+        console.log(pagination);
     }
 
     return (
@@ -25,13 +25,19 @@ function Pagination(props) {
             className="slider-button-container"
         >
             <Button
+                color="dark"
                 className="px-3 mx-3"
                 disabled={page <= 1}
                 onClick={() => handlePageChange(page - 1)}
             >
                 Prev
             </Button>
+            <h3>
+                <Badge>{pagination.page}</Badge>
+            </h3>
+
             <Button
+                color="dark"
                 className="px-3 mx-3"
                 disabled={page >= totalPages}
                 onClick={() => handlePageChange(page + 1)}

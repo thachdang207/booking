@@ -32,9 +32,9 @@ function Hotels() {
                 ))}
             </div>
             <Pagination
-                    pagination={pagination}
-                    onPageChange={handlePageChange}
-                />
+                pagination={pagination}
+                onPageChange={handlePageChange}
+            />
         </section>
     );
 }

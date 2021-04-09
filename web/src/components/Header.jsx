@@ -74,7 +74,7 @@ function Header() {
                                 <br />
                             </li>
                             <ul
-                                className="absolute font-sans right-0 md:mt-16 mr-10 xl:mr-20 w-48 h-32 rounded-sm  shadow-lg py-1 bg-gray-100 text-xl"
+                                className="absolute font-sans right-0 md:mt-12 mr-8 xl:mr-16 w-56 h-32 rounded-sm  shadow-lg py-1 bg-gray-100 text-xl"
                                 onClick={() => setDropDown(!dropDown)}
                                 onMouseLeave={() => setDropDown(false)}
                                 style={
