@@ -73,8 +73,8 @@ function Header() {
                                 </span>
                                 <br />
                             </li>
-                            <div
-                                className="absolute right-0 md:mt-16 mr-10 xl:mr-20 w-48 rounded-sm  shadow-lg py-0.5 bg-gray-100 text-lg"
+                            <ul
+                                className="absolute font-sans right-0 md:mt-16 mr-10 xl:mr-20 w-48 h-32 rounded-sm  shadow-lg py-1 bg-gray-100 text-xl"
                                 onClick={() => setDropDown(!dropDown)}
                                 onMouseLeave={() => setDropDown(false)}
                                 style={
@@ -85,7 +85,7 @@ function Header() {
                             >
                                 <li>
                                     <Link to={`/user-profile/${id}`}
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
+                                        className="block px-4 py-3 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
                                     >
                                         <button>
                                             Your profile
@@ -94,14 +94,14 @@ function Header() {
                                 </li>
                                 <li>
                                     <Link to="/logout"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
+                                        className="block px-4 py-3 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
                                     >
                                         <button>
-                                            Hi,{" "} Logout
+                                            Logout
                                         </button>
                                     </Link>
                                 </li>
-                            </div>
+                            </ul>
                         </>
                     )}
                 </ul>

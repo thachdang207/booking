@@ -9,6 +9,11 @@ const initialState = {
     hotels: [],
     errors: null,
     loading: false,
+    pagination: {
+        page: null,
+        count: null,
+        total: null,
+    }
 };
 
 export default function hotel(state = initialState, action) {
@@ -16,7 +21,12 @@ export default function hotel(state = initialState, action) {
         case GET_HOTELS: {
             return {
                 ...state,
-                hotels: action.payload.data
+                hotels: action.payload.data,
+                pagination: {
+                    page: action.payload.page,
+                    count: action.payload.count,
+                    total: action.payload.total,
+                }
             };
         }
         case SET_LOADING: {

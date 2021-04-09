@@ -1,22 +1,40 @@
-import React, { useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import HotelCard from "./HotelCard";
 import { getHotels } from "../../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
+import Pagination from "../../../components/Pagination";
 
 function Hotels() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
-    useEffect(() => getHotels(dispatch), []); // eslint-disable-line
+
+    const [pagination, setPagination] = useState({
+        page: 1,
+        count: 10,
+        total: 596,
+    });
+
+    const handlePageChange = (newPage) => {
+        setPagination({
+            ...pagination,
+            page: newPage
+        });
+    }
+
+    useEffect(() => getHotels(dispatch, pagination.page), [pagination]);
 
     return (
-        <section className="px-12 py-10 xl:px-32">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <section className="px-32 py-12 xl:px-48">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                 {state && state.hotel.hotels.map((hotel) => (
-                    !hotel.isFeatured ? (
-                        <HotelCard hotel={hotel} key={hotel.id} />
-                    ) : ""
+                    <HotelCard hotel={hotel} key={hotel.id} />
                 ))}
             </div>
+            <Pagination
+                    pagination={pagination}
+                    onPageChange={handlePageChange}
+                />
         </section>
     );
 }

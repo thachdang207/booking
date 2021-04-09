@@ -62,7 +62,7 @@ export default function Searchbar(props) {
                     <div ref={props.refProp}>
                         <div className="flex items-center min-h-0 bg-white" data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="max-w-3xl mx-auto my-0 bg-gray-200 p-5 rounded-md shadow-sm">
+                                <Form className="max-w-4xl mx-auto my-20 bg-gray-200 p-8 rounded-md shadow-sm">
                                     <div className="text-center">
                                         <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
                                         <p className="text-gray-500 dark:text-gray-400">From cozy country homes to funky city apartments</p>

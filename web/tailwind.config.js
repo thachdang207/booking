@@ -165,6 +165,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        '"Montserrat"',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

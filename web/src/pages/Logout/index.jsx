@@ -29,7 +29,7 @@ function Logout() {
     let history = useHistory();
     setTimeout(() => {
         history.push("/");
-    }, 2000);
+    }, 500);
     return <div></div>;
 }
 

@@ -5,8 +5,8 @@ import {
 
 const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
-export const getHotels = (dispatch) => {
-    axios(`${url}/customer/locations`)
+export const getHotels = (dispatch, page) => {
+    axios(`${url}/customer/locations?page=${page}`)
         .then((response) => {
             dispatch({
                 type: GET_HOTELS,

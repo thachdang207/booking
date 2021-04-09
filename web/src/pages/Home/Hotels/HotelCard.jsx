@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-function HotelCard({ hotel: { id, name, price, score, images} }) {
+function HotelCard({ hotel: { id, name, price, score, images } }) {
     const formattedPrice = price.slice(1);
     return (
-        <div className="p-1">
+        <div className="p-2">
             <div
                 className="bg-gray-100 h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"
@@ -15,8 +15,8 @@ function HotelCard({ hotel: { id, name, price, score, images} }) {
                         <img
                             src={
                                 images ?
-                                images[0]:
-                                "http://placehold.it/500x500?text=hotel"
+                                    images[0] :
+                                    "http://placehold.it/500x500?text=hotel"
                             }
                             className="w-full h-72 object-cover"
                             alt="hotel"
