@@ -1,4 +1,5 @@
 import {
+    GET_HOTEL,
     GET_HOTELS,
     SET_SUCCESS,
     SET_LOADING
@@ -7,6 +8,7 @@ import {
 const initialState = {
     success: null,
     hotels: [],
+    hotel: { rooms: [] },
     errors: null,
     loading: false,
     pagination: {
@@ -18,6 +20,12 @@ const initialState = {
 
 export default function hotel(state = initialState, action) {
     switch (action.type) {
+        case GET_HOTEL: {
+            return {
+                ...state,
+                hotel: action.payload
+            };
+        }
         case GET_HOTELS: {
             return {
                 ...state,
@@ -38,7 +46,7 @@ export default function hotel(state = initialState, action) {
         case SET_SUCCESS: {
             return {
                 ...state,
-                success: action.payload
+                success: action.payload.success
             };
         }
         default:

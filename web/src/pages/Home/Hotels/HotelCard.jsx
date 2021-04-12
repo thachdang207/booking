@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Badge } from "reactstrap"
 
 
 function HotelCard({ hotel: { id, name, price, score, images } }) {
@@ -25,9 +26,9 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                             <div className="absolute w-full h-full bg-gray-800 opacity-50"></div>
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
-                                    <p className="text-white text-xl">
-                                        {score}
-                                    </p>
+                                    <h3>
+                                        <Badge color="primary">{score}</Badge>
+                                    </h3>
                                 </div>
                                 <div className="text-gray-100 font-semibold">
                                     Starting from {formattedPrice} VND
@@ -36,7 +37,7 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                         </div>
                     </div>
 
-                    <p className="p-4 text-lg font-bold font-sans-roboto text-center text-indigo-800 hover:text-indigo-600">
+                    <p className="p-4 text-lg uppercase font-bold font-sans-roboto text-center text-indigo-800 hover:text-indigo-600">
                         {name}
                     </p>
                 </Link>

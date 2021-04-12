@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+    GET_HOTEL,
     GET_HOTELS,
 } from "../actionTypes";
 
@@ -17,4 +18,22 @@ export const getHotels = (dispatch, page) => {
             console.log(error)
         });
 };
+//-----------------------------------------
+
+export const getHotel = (dispatch, id) => {
+    axios(`${url}/customer/locations/${id}`)
+        .then((response) => {
+            dispatch({
+                type: GET_HOTEL,
+                payload: response.data
+            });
+        })
+        .catch((error) => {
+            dispatch({
+                type: GET_HOTEL,
+                payload: error.response.data
+            });
+        });
+};
+
 

@@ -14,7 +14,7 @@ import UserProfile from './pages/User/UserProfile'
 // import BookingManagement from './Admin/pages/BookingManagement'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
-
+import Hotel from './pages/Hotel'
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -27,6 +27,7 @@ const Logout = React.lazy(() => import('./pages/Logout'));
 
 
 function App() {
+
     useEffect(() => {
         AOS.init({
             duration: 500,
@@ -39,10 +40,10 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     {/* PUBLIC */}
-                    <Route exact path="/admin" component={Admin} />
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/logout" component={Logout} />
+                    <Route exact path="/hotel/:id" component={Hotel} />
 
                     {/* USER */}
 
@@ -52,28 +53,27 @@ function App() {
                     />
 
                     {/* ADMIN */}
-
-                    {/* <ProtectedRoute
-                        exact
-                        path="/hotel-management"
+                    
+                    <ProtectedRoute
+                        exact path='/admin'
                         component={Admin}
-                    /> */}
+                    />
                     {/* <ProtectedRoute
                         exact
                         path="/hotel-management"
                         component={HotelManagement}
-                    />
-                    <ProtectedRoute
+                    /> */}
+                    {/* <ProtectedRoute
                         exact
                         path="/add-hotel"
                         component={AddHotel}
-                    />
-                    <ProtectedRoute
+                    /> */}
+                    {/* <ProtectedRoute
                         exact
                         path="/edit-hotel/:id"
                         component={EditHotel}
-                    />
-                    <ProtectedRoute
+                    /> */}
+                    {/* <ProtectedRoute
                         exact
                         path="/room-management"
                         component={RoomManagement}

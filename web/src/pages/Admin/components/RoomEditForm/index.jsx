@@ -9,8 +9,8 @@ import {
     Switch,
     Row,
     Col
-  } from 'antd';
-import {ROOM_TYPE_OPTIONS , GUEST_OPTIONS} from '../../../../constants/global'
+} from 'antd';
+import { ROOM_TYPE_OPTIONS, GUEST_OPTIONS } from '../../../../constants/global'
 
 
 const { RangePicker } = DatePicker;
@@ -22,49 +22,49 @@ const RoomEditForm = () => {
             previewImage: '',
             previewTitle: '',
             fileList: [
-              {
-                uid: '-1',
-                name: 'image.png',
-                status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-              {
-                uid: '-2',
-                name: 'image.png',
-                status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-              {
-                uid: '-3',
-                name: 'image.png',
-                status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-              {
-                uid: '-4',
-                name: 'image.png',
-                status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-            //   {
-            //     uid: '-xxx',
-            //     percent: 50,
-            //     name: 'image.png',
-            //     status: 'uploading',
-            //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            //   },
-            //   {
-            //     uid: '-5',
-            //     name: 'image.png',
-            //     status: 'error',
-            //   },
+                {
+                    uid: '-1',
+                    name: 'image.png',
+                    status: 'done',
+                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                },
+                {
+                    uid: '-2',
+                    name: 'image.png',
+                    status: 'done',
+                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                },
+                {
+                    uid: '-3',
+                    name: 'image.png',
+                    status: 'done',
+                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                },
+                {
+                    uid: '-4',
+                    name: 'image.png',
+                    status: 'done',
+                    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                },
+                //   {
+                //     uid: '-xxx',
+                //     percent: 50,
+                //     name: 'image.png',
+                //     status: 'uploading',
+                //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                //   },
+                //   {
+                //     uid: '-5',
+                //     name: 'image.png',
+                //     status: 'error',
+                //   },
             ],
-          }
+        }
     );
     const onFormLayoutChange = ({ size }) => {
-      setComponentSize(size);
+        setComponentSize(size);
     };
-  
+
     const getBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -76,20 +76,20 @@ const RoomEditForm = () => {
     const handleCancel = () => setLoadingState({ previewVisible: false });
 
     const handlePreview = async file => {
-      if (!file.url && !file.preview) {
-        file.preview = await getBase64(file.originFileObj);
-      }
-  
-      setLoadingState({
-        previewImage: file.url || file.preview,
-        previewVisible: true,
-        previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
-      });
+        if (!file.url && !file.preview) {
+            file.preview = await getBase64(file.originFileObj);
+        }
+
+        setLoadingState({
+            previewImage: file.url || file.preview,
+            previewVisible: true,
+            previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
+        });
     };
-  
+
     const handleChange = ({ fileList }) => setLoadingState({ fileList });
-    
-      
+
+
     const beforeUpload = (file) => {
         const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
         if (!isJpgOrPng) {
@@ -104,10 +104,10 @@ const RoomEditForm = () => {
 
 
     const uploadButton = (
-    <div>
-        <PlusOutlined />
-        <div style={{ marginTop: 8 }}>Upload</div>
-      </div>
+        <div>
+            <PlusOutlined />
+            <div style={{ marginTop: 8 }}>Upload</div>
+        </div>
     );
 
     const { previewVisible, previewImage, fileList, previewTitle } = loadingState;
@@ -135,15 +135,15 @@ const RoomEditForm = () => {
                     </Radio.Group>
                 </Form.Item> */}
                 <Form.Item label="Image">
-                <Upload
-                    // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                    listType="picture-card"
-                    fileList={fileList}
-                    beforeUpload={beforeUpload}
-                    onPreview={handlePreview}
-                    onChange={handleChange}
+                    <Upload
+                        // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        listType="picture-card"
+                        fileList={fileList}
+                        beforeUpload={beforeUpload}
+                        onPreview={handlePreview}
+                        onChange={handleChange}
                     >
-                    {fileList.length >= 8 ? null : uploadButton}
+                        {fileList.length >= 8 ? null : uploadButton}
                     </Upload>
                     <Modal
                         visible={previewVisible}
@@ -176,7 +176,7 @@ const RoomEditForm = () => {
                     </Col>
                 </Row>
             </Form>
-      </div>
+        </div>
     );
 };
 

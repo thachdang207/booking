@@ -17,7 +17,6 @@ function Pagination(props) {
     const totalPages = Math.ceil(total / count)
     const handlePageChange = (newPage) => {
         onPageChange(newPage);
-        console.log(pagination);
     }
 
     return (

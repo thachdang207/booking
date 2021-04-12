@@ -1,17 +1,16 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import Footer from '../../components/Footer';
-import Nav from '../Admin/components/Layouts/Nav';
-import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
-import { Loading } from '../../components/Loading';
-import Home from '../Admin/pages/HomeAdmin'
+import { useRouteMatch, Switch, Route } from 'react-router-dom'
+import HomeAdmin from '../Admin/pages/HomeAdmin'
 import EditRoom from '../Admin/pages/EditRoom'
 import BookingManagement from '../Admin/pages/BookingManagement'
+import RoomManagement from '../Admin/pages/RoomManagement'
+import Nav from './components/Layouts/Nav'
 
-// const Home = React.lazy(() => import('../Admin/pages/HomeAdmin'));
 
-function Layouts() {
+function Admin() {
     const match = useRouteMatch();
-    console.log({match});
+    console.log({ match });
     return (
         <div className="h-full min-h-screen flex flex-col md:flex-col justify-between">
             <div>
@@ -22,15 +21,12 @@ function Layouts() {
                             <div className="box-border p-4 border-4 bg-white rounded-md min-h-screen">
                                 <div className="container my-12 mx-auto px-4 md:px-12">
                                     <div className="flex flex-wrap -mx-1 md:w-full lg:w-full">
-                                        <Suspense fallback={<Loading />}>
-                                            <Switch>
-                                                <Redirect exact from={match.url} to={`${match.url}/room`} />
-                                                <Route exact path={`${match.url}/room`} component={Home} />
-                                                <Route path={`${match.url}/room/:roomId`} component={EditRoom} />
-                                                <Route exact path={`${match.url}/booking`} component={BookingManagement} />
-                                                <Route component={<h1>Not found</h1>} />
-                                            </Switch>
-                                        </Suspense>
+                                        <Switch>
+                                            <Route exact path={`${match.url}`} component={HomeAdmin} />
+                                            <Route exact path={`${match.url}/room`} component={RoomManagement} />
+                                            <Route exact path={`${match.url}/room/:roomId`} component={EditRoom} />
+                                            <Route excat path={`${match.url}/booking`} component={BookingManagement} />
+                                        </Switch>
                                     </div>
                                 </div>
                             </div>
@@ -43,4 +39,4 @@ function Layouts() {
     );
 }
 
-export default Layouts;
+export default Admin;

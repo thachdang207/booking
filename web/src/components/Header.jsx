@@ -36,7 +36,7 @@ function Header() {
     return (
         <div>
             <header className={isScrolling ? 'header-items active' : 'header-items'}>
-                <p className="header-logo">VIBO.com</p>
+                <a href="/" className="header-logo">VIBO.com</a>
                 <div className="menu-icon"
                     onClick={handleClickChange}>
                     <FontAwesomeIcon icon={isClicked ? faTimes : faBars} />

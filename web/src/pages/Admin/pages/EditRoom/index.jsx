@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import RoomEditForm from "../../components/RoomEditForm"
 
 
@@ -8,7 +8,7 @@ function EditRoom() {
     })
 
     return (
-        <RoomEditForm />                           
+        <RoomEditForm />
     )
 }
 

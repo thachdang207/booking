@@ -19,6 +19,13 @@
     font-weight: 900;
     font-size: 40px;
     width: 20%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-logo:hover{
+    text-decoration: none;
+    color: #fff;
 }
 
 .header-menu{

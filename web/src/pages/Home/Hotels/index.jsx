@@ -21,8 +21,13 @@ function Hotels() {
             page: newPage
         });
     }
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            getHotels(dispatch, pagination.page)
+        });
 
-    useEffect(() => getHotels(dispatch, pagination.page), [pagination]);
+        return () => clearTimeout(timer);
+    }, [pagination]);
 
     return (
         <section className="px-32 py-12 xl:px-48">
