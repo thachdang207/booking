@@ -6,9 +6,9 @@ import { Badge } from "reactstrap"
 function HotelCard({ hotel: { id, name, price, score, images } }) {
     const formattedPrice = price.slice(1);
     return (
-        <div className="p-2">
+        <div className="p-0 xl:p-2">
             <div
-                className="bg-gray-100 h-96 rounded-xl overflow-hidden shadow-lg mt-0"
+                className="bg-gray-100 h-72 xl:h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"
             >
                 <Link to={`/hotel/${id}`} className="no-underline hover:no-underline">
@@ -19,7 +19,7 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                                     images[0] :
                                     "http://placehold.it/500x500?text=hotel"
                             }
-                            className="w-full h-72 object-cover"
+                            className="w-full h-48 xl:h-72 object-cover"
                             alt="hotel"
                         />
                         <div className="flex items-center justify-between w-full absolute bottom-0">

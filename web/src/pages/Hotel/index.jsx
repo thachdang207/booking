@@ -41,7 +41,7 @@ function Hotel(props) {
                 });
             }
         }, 3000);
-        document.title = `${state.hotel.hotel.name} Hotel`;
+        document.title = `${state.hotel.hotel.name}`;
         return () => clearTimeout(timer);
     }, [state.hotel.hotel]); // eslint-disable-line
     return (
@@ -50,7 +50,7 @@ function Hotel(props) {
             <HotelHero hotel={state.hotel.hotel} />
 
             <div>
-                <p>
+                <p className="relative font-sans text-lg m-10 px-12 py-10 lg:px-48" data-aos="fade-up">
                     {state.hotel.hotel.description}
                 </p>
             </div>

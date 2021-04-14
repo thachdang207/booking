@@ -8,11 +8,10 @@ import { useSecureLs } from './UseSecureLs'
 
 import './Global.css'
 
-function Header() {
+function StaticHeader() {
 
     const state = useSelector((state) => state);
     const [isClicked, toggleClick] = useState(false);
-    const [isScrolling, setIsScrolling] = useState(false);
     const [dropDown, setDropDown] = useState(false);
     const [id] = useSecureLs("user_id")
 
@@ -20,20 +19,10 @@ function Header() {
         toggleClick(!isClicked);
     }
 
-    const navOnScrolling = () => {
-        if (window.scrollY >= 20) {
-            setIsScrolling(true);
-        } else {
-            setIsScrolling(false);
-        }
-    }
-
-    window.addEventListener("scroll", navOnScrolling);
-
 
     return (
         <div>
-            <header className={isScrolling ? 'header-items active' : 'header-items'}>
+            <header className='static-header-items'>
                 <a href="/" className="header-logo">VIBO.com</a>
                 <div className="menu-icon"
                     onClick={handleClickChange}>
@@ -72,7 +61,7 @@ function Header() {
                                 <br />
                             </li>
                             <ul
-                                className="absolute font-sans right-0 md:mt-12 mr-8 xl:mr-16 w-56 h-32 rounded-sm  shadow-lg py-1 bg-gray-100 text-xl"
+                                className="absolute right-0 md:mt-12 mr-8 xl:mr-16 w-56 h-32 rounded-sm shadow-lg py-1 bg-gray-100 text-xl"
                                 onClick={() => setDropDown(!dropDown)}
                                 onMouseLeave={() => setDropDown(false)}
                                 style={
@@ -108,4 +97,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default StaticHeader;

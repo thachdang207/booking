@@ -30,7 +30,7 @@ function Hotels() {
     }, [pagination]);
 
     return (
-        <section className="px-32 py-12 xl:px-48">
+        <section className="px-20 py-12 md:px-20 sm:px-12">
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                 {state && state.hotel.hotels.map((hotel) => (
                     <HotelCard hotel={hotel} key={hotel.id} />

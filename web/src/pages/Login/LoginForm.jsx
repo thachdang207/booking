@@ -2,24 +2,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from 'react';
-import {useSecureLs} from '../../components/UseSecureLs'
-import {useDispatch, useSelector} from 'react-redux'
-import {AccountContext} from './accountContext';
-import {signIn} from '../../redux/actions/auth.action'
-import {useHistory} from 'react-router-dom'
-import {Loading} from '../../components/Loading'
-import {ErrorMessage} from '../../components/ErrorMessage'
+import { useSecureLs } from '../../components/UseSecureLs'
+import { useDispatch, useSelector } from 'react-redux'
+import { AccountContext } from './accountContext';
+import { signIn } from '../../redux/actions/auth.action'
+import { useHistory } from 'react-router-dom'
+import { Loading } from '../../components/Loading'
+import ErrorMessage from '../../components/ErrorMessage'
 
 import './Login.css'
 
-function LoginForm(props){
+function LoginForm(props) {
 
-    const {switchToSignup} = useContext(AccountContext);
+    const { switchToSignup } = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
-    const [user ,setUser] = useState({
+    const [user, setUser] = useState({
         email: "",
         password: "",
     })
@@ -38,9 +38,9 @@ function LoginForm(props){
         state.auth.isAuthenticated && history.push('/');
     }, [state.auth.isAuthenticated]);
 
-    useEffect(() =>{
+    useEffect(() => {
         document.title = "VIBO | Login";
-    },[]);
+    }, []);
 
     return (
         <div className="inner-container">
@@ -52,22 +52,22 @@ function LoginForm(props){
                 <form className="form-container" onSubmit={handleSubmit}>
                     <input
                         id="email"
-                        type="email" 
+                        type="email"
                         className="input"
                         aria-required="true"
                         placeholder="Email"
                         onChange={(e) =>
-                            setUser({...user, email: e.target.value})
+                            setUser({ ...user, email: e.target.value })
                         }
                     />
                     <input
                         id="password"
                         type="password"
-                        aria-required="true" 
+                        aria-required="true"
                         className="input"
                         placeholder="Password"
                         onChange={(e) =>
-                            setUser({...user, password: e.target.value})
+                            setUser({ ...user, password: e.target.value })
                         }
                     />
                     <p className="muted-link">

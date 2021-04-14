@@ -35,10 +35,14 @@ export const signUp = (dispatch, user, setToken, setUserId) => { //setIsAdmin
             // );
             dispatch({
                 type: SIGN_UP,
-                payload: response.data.user
+                payload: {
+                    user: response.data.user,
+                    success: response.data.success,
+                    errors: response.data.errors,
+                }
             });
             setLoading(dispatch, false);
-            window.location.replace("/");
+            // window.location.replace("/");
         })
         .catch((error) => {
             console.log(error);
@@ -73,10 +77,14 @@ export const signIn = (dispatch, user, setToken, setUserId) => { //setIsAdmin
 
             dispatch({
                 type: SIGN_IN,
-                payload: response.data.user
+                payload: {
+                    user: response.data.user,
+                    success: response.data.success,
+                    errors: response.data.errors,
+                }
             });
             setLoading(dispatch, false);
-            window.location.replace("/");
+            // window.location.replace("/");
         })
         .catch((error) => {
             console.log(error);

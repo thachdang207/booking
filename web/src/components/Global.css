@@ -12,6 +12,17 @@
     background: #000;
 }
 
+.static-header-items{
+    background: #000;
+    position: relative;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+    width: 100%;
+}
+
 .header-logo{
     color: rgb(255, 255, 255);
     text-align: center;
@@ -141,4 +152,6 @@ button {
     padding: 2rem;
     margin: auto;
 }
+
+
  

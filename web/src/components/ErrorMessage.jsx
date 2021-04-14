@@ -1,18 +1,22 @@
-import React, { useState} from "react";
-// import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-export const ErrorMessage = ({ errors }) => {
-    // const state = useSelector((state) => state);
+function ErrorMessage({ errors }) {
+    const state = useSelector((state) => state);
 
     const [hidden, setHidden] = useState(true);
 
-    // useEffect(() => {
-    //     !state.users.success ? setHidden(false) : setHidden(true);
-    //     const timer = setTimeout(() => {
-    //         setHidden(true);
-    //     }, 5000);
-    //     return () => clearTimeout(timer);
-    // }, [state.users]); // eslint-disable-line
+    useEffect(() => {
+        !state.user.success ? setHidden(false) : setHidden(true);
+        !state.hotel.success ? setHidden(false) : setHidden(true);
+        // !state.rooms.success ? setHidden(false) : setHidden(true);
+        // !state.bookings.success ? setHidden(false) : setHidden(true);
+        // !state.reviews.success ? setHidden(false) : setHidden(true);
+        const timer = setTimeout(() => {
+            setHidden(true);
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, [state.user, state.hotel]); // eslint-disable-line
 
     return (
         <div
@@ -84,3 +88,5 @@ export const ErrorMessage = ({ errors }) => {
         </div>
     );
 }
+
+export default ErrorMessage;

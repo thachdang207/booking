@@ -46,7 +46,7 @@ export default function hotel(state = initialState, action) {
         case SET_SUCCESS: {
             return {
                 ...state,
-                success: action.payload.success
+                success: action.payload
             };
         }
         default:
