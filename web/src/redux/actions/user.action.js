@@ -12,7 +12,7 @@ const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
 
 export const getUser = (dispatch, token, id) => {
-    axios(`${url}/api/users/${id}`, {
+    axios(`${url}/customer/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
     })
         .then((response) => {
@@ -29,7 +29,7 @@ export const updateUserInfo = (dispatch, token, formData) => {
     setLoading(dispatch, true);
     axios
         .post(
-            `${url}/api/users/${formData.get("id")}/update-personal-info`,
+            `${url}/customer/users/${formData.get("id")}/update-personal-info`,
             formData,
             {
                 headers: { Authorization: `Bearer ${token}` }
@@ -58,7 +58,7 @@ export const updateUserEmail = (
 
     axios
         .put(
-            `${url}/api/users/${id}/update-email`,
+            `${url}/customer/users/${id}/update-email`,
             {
                 email,
                 newEmail,
@@ -91,7 +91,7 @@ export const updateUserPassword = (
 
     axios
         .put(
-            `${url}/api/users/${id}/update-password`,
+            `${url}/customer/users/${id}/update-password`,
             {
                 password,
                 newPassword,

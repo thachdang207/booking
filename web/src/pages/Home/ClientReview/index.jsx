@@ -2,7 +2,7 @@ import React from "react";
 import ClientReviewCard from "./ClientReviewCard";
 import Title from "../../../components/Title";
 
-function ClientReviews() {
+function ClientReview() {
     return (
         <section className="reviews px-5 xl:px-48">
             <Title title="What people think about us" />
@@ -43,4 +43,4 @@ function ClientReviews() {
     );
 }
 
-export default ClientReviews;
+export default ClientReview;

@@ -5,15 +5,17 @@ import Border from '../../components/Border'
 import Footer from '../../components/Footer'
 import Hero from './Hero'
 import Hotels from './Hotels'
-import ClientReviews from './ClientReview'
+import ClientReview from './ClientReview'
+import Citys from './Citys'
 
 
 function Home() {
-  useEffect(() => {
-    document.title = "VIBO | Homepage";
-  }, []);
-
   const myRef = useRef(null);
+
+  useEffect(() => {
+    document.title = 'VIBO | Homepage';
+  });
+
 
   const scrollToBook = () => {
     myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -42,11 +44,15 @@ function Home() {
 
       <Border />
 
+      <Citys />
+
+      <Border />
+
       <Hotels />
 
       <Border />
 
-      <ClientReviews />
+      <ClientReview />
 
       <Border />
 

@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { useSecureLs } from './UseSecureLs'
@@ -12,7 +11,6 @@ function StaticHeader() {
 
     const state = useSelector((state) => state);
     const [isClicked, toggleClick] = useState(false);
-    const [dropDown, setDropDown] = useState(false);
     const [id] = useSecureLs("user_id")
 
     const handleClickChange = () => {
@@ -32,15 +30,15 @@ function StaticHeader() {
                     {!state.auth.isAuthenticated ? (
                         <>
                             <li>
-                                <Link to="/">
-                                    <button className="header-links">
+                                <Link to="/" className="header-links">
+                                    <button>
                                         Home
                                     </button>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/login">
-                                    <button className="header-links">
+                                <Link to="/login" className="header-links">
+                                    <button>
                                         Login
                                     </button>
                                 </Link>
@@ -48,47 +46,24 @@ function StaticHeader() {
                         </>
                     ) : (
                         <>
-                            <li
-                                aria-label="dropdown button"
-                                className="mr-5 text-white hover:text-gray-400 "
-                                onClick={() => setDropDown(!dropDown)}
-                            >
-                                <span className="pb-2 pl-24">
-                                    <FontAwesomeIcon icon={faCaretDown}
-                                        className="fa-lg fa-2x cursor-pointer"
-                                    />
-                                </span>
-                                <br />
+                            <li>
+                                <Link to={`/user-profile/${id}`}
+                                    className="header-links"
+                                >
+                                    <button>
+                                        Your profile
+                                    </button>
+                                </Link>
                             </li>
-                            <ul
-                                className="absolute right-0 md:mt-12 mr-8 xl:mr-16 w-56 h-32 rounded-sm shadow-lg py-1 bg-gray-100 text-xl"
-                                onClick={() => setDropDown(!dropDown)}
-                                onMouseLeave={() => setDropDown(false)}
-                                style={
-                                    !dropDown
-                                        ? { display: "none" }
-                                        : { display: "block" }
-                                }
-                            >
-                                <li>
-                                    <Link to={`/user-profile/${id}`}
-                                        className="block px-4 py-3 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
-                                    >
-                                        <button>
-                                            Your profile
-                                        </button>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/logout"
-                                        className="block px-4 py-3 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
-                                    >
-                                        <button>
-                                            Logout
-                                        </button>
-                                    </Link>
-                                </li>
-                            </ul>
+                            <li>
+                                <Link to="/logout"
+                                    className="header-links"
+                                >
+                                    <button>
+                                        Logout
+                                    </button>
+                                </Link>
+                            </li>
                         </>
                     )}
                 </ul>

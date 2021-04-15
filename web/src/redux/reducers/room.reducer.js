@@ -1,14 +1,23 @@
 import {
-    GET_HOTEL,
-    GET_ALL_HOTELS,
+    GET_ROOM,
+    GET_ALL_ROOMS,
     SET_SUCCESS,
     SET_LOADING
 } from "../actionTypes";
 
 const initialState = {
+    room: {
+        id: null,
+        name: "",
+        description: "",
+        price: "",
+        capicity: "",
+        locationId: "",
+        created_at: "",
+        updated_at: ""
+    },
+    allRooms: [],
     success: null,
-    hotels: [],
-    hotel: { rooms: [] },
     errors: null,
     loading: false,
     pagination: {
@@ -18,18 +27,18 @@ const initialState = {
     }
 };
 
-export default function hotel(state = initialState, action) {
+export default function room(state = initialState, action) {
     switch (action.type) {
-        case GET_HOTEL: {
+        case GET_ROOM: {
             return {
                 ...state,
-                hotel: action.payload
+                room: action.payload.data,
             };
         }
-        case GET_ALL_HOTELS: {
+        case GET_ALL_ROOMS: {
             return {
                 ...state,
-                hotels: action.payload.data,
+                allRooms: action.payload.data,
                 pagination: {
                     page: action.payload.page,
                     count: action.payload.count,
@@ -37,16 +46,16 @@ export default function hotel(state = initialState, action) {
                 }
             };
         }
-        case SET_LOADING: {
-            return {
-                ...state,
-                loading: action.payload
-            };
-        }
         case SET_SUCCESS: {
             return {
                 ...state,
                 success: action.payload
+            };
+        }
+        case SET_LOADING: {
+            return {
+                ...state,
+                loading: action.payload
             };
         }
         default:

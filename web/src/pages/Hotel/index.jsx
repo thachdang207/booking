@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Border from "../../components/Border";
 import Title from "../../components/Title";
-import Header from "../../components/Header"
+import StaticHeader from "../../components/StaticHeader"
 
 import HotelHero from "./HotelHero";
+import HotelRoom from './HotelRoom'
 import HotelGoogleMap from './HotelGoogleMap'
 
 import { getHotel } from "../../redux/actions/hotel.action";
@@ -22,10 +23,7 @@ function Hotel(props) {
 
     useEffect(() => {
         getHotel(dispatch, id);
-    }, []); // eslint-disable-line
-
-    useEffect(() => {
-        setUserId(userId);
+        setUserId(userId)
     }, []); // eslint-disable-line
 
     let history = useHistory();
@@ -46,28 +44,37 @@ function Hotel(props) {
     }, [state.hotel.hotel]); // eslint-disable-line
     return (
         <>
-            <Header />
+            <StaticHeader />
             <HotelHero hotel={state.hotel.hotel} />
 
-            <div>
-                <p className="relative font-sans text-lg m-10 px-12 py-10 lg:px-48" data-aos="fade-up">
+            <Border />
+            <div className="relative font-serif text-lg m-10 px-12 pb-10 lg:px-48" data-aos="fade-up">
+                <h1 className="flex justify-center font-semibold pb-10">
+                    About {state.hotel.hotel.name}
+                </h1>
+                <p>
                     {state.hotel.hotel.description}
                 </p>
             </div>
 
+            <Border/>
+
             {state.hotel.hotel && (
-                <Title title={`${state.hotel.hotel.name}'s Rooms`} />
+                <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up"/>
             )}
+
+            <HotelRoom cityId={state.hotel.hotel.cityId} />
 
             <Border my="16" />
 
             {state.hotel.hotel && (
                 <Title
                     title={`Where to find ${state.hotel.hotel.name} Hotel`}
+                    data-aos="fade-up"
                 />
             )}
 
-            <div className="relative w-full" style={{ height: "400px" }}>
+            <div className="relative w-full" style={{ height: "400px" }} data-aos="fade-up">
                 <HotelGoogleMap
                     x={16.12203728}
                     y={108.31017494}

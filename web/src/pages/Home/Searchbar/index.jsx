@@ -60,15 +60,15 @@ export default function Searchbar(props) {
 
                 return (
                     <div ref={props.refProp}>
-                        <div className="flex items-center min-h-0 bg-white" data-aos="fade-up">
+                        <div className="items-center min-h-0 bg-white" data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="max-w-sm lg:max-w-4xl mx-auto my-5 xl:my-20 bg-gray-200 p-8 rounded-md shadow-sm">
+                                <Form className="sm:max-w-sm md:max-w-xl lg:max-w-6xl mx-auto my-5 xl:my-20 bg-gray-200 p-8 rounded-md shadow-sm">
                                     <div className="text-center">
                                         <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
                                         <p className="text-gray-500 dark:text-gray-400">From cozy country homes to funky city apartments</p>
                                     </div>
-                                    <div className="m-4">
-                                        <div className="text-center block">
+                                    <div className="block w-full">
+                                        <div className="inline-block w-1/4">
                                             <RangePicker
                                                 id="fromTo"
                                                 format="MMM Do"
@@ -80,29 +80,30 @@ export default function Searchbar(props) {
                                                 size="large"
                                                 style={{
                                                     height: "auto",
-                                                    marginLeft: "auto",
-                                                    marginRight: "auto",
                                                     width: "auto",
                                                     cursor: "pointer",
-                                                    textAlign: "left"
                                                 }}
                                             />
                                         </div>
-                                        <br />
-                                        <FastField
-                                            name="cityId"
-                                            component={SelectField}
-                                            placeholder="Which city do you want to go?"
-                                            options={CITY_OPTIONS}
-                                        />
-                                        <FastField
-                                            name="guest"
-                                            component={SelectField}
-                                            placeholder="The number of guests?"
-                                            options={GUEST_OPTIONS}
-                                        />
-
-                                        <FormGroup>
+                                        <div className="inline-block w-1/4">
+                                            <FastField
+                                                name="cityId"
+                                                component={SelectField}
+                                                placeholder="City"
+                                                options={CITY_OPTIONS}
+                                            />
+                                        </div>
+                                        <div className="inline-block w-1/4">
+                                            <FastField
+                                                name="guest"
+                                                component={SelectField}
+                                                placeholder="Guest"
+                                                options={GUEST_OPTIONS}
+                                            />
+                                        </div>
+                                        <FormGroup
+                                            className="w-1/4 inline-block"
+                                        >
                                             {/* <Link
                                                 className="no-underline text-white"
                                                 to={`/search/from_to=${initialValues.fromTo}
@@ -111,7 +112,7 @@ export default function Searchbar(props) {
                                             > */}
                                             <Button
                                                 type="submit"
-                                                className="w-full px-3 py-4 text-white focus:outline-none"
+                                                className="w-full text-white focus:outline-none"
                                             >
                                                 {isSubmitting && <Spinner size="sm" />}
                                                     Find

@@ -3,7 +3,10 @@ export const SIGN_IN = "SIGN_IN";
 export const CHECK_AUTH = "CHECK_AUTH";
 
 export const GET_HOTEL = "GET_HOTEL";
-export const GET_HOTELS = "GET_HOTELS";
+export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
+
+export const GET_ROOM = "GET_ROOM";
+export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
 
 export const GET_USER = "GET_USER";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";

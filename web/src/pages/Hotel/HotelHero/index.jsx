@@ -1,27 +1,58 @@
 import React from "react";
+import Slider from "react-slick";
 import { Badge } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 function HotelHero({ hotel: { name, price, score, images, address} }) {
-    return (
-        <div className="flex flex-col justify-center items-center relative">
-            <div
-                className="absolute z-10 w-full h-full top-0"
-            ></div>
-            <img
-                src={
-                    images ?
-                        images[0] :
-                        "http://placehold.it/500x500?text=hotel"
+    var settings = {
+        autoplay: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 4000,
+        autoplaySpeed: 4000,
+        arrows: true,
+        className: "overflow-x-hidden",
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2
                 }
-                alt="hotel"
-                className="w-full h-screen object-cover"
-            />
+            },
+
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    };
+    return (
+        <div className="flex justify-center items-center relative">
+            <div className="relative w-full h-96 top-0 z-10">
+                <Slider {...settings}>
+                    {images && images.map((image, key) => {
+                        return (
+                            <img
+                                src={image}
+                                key={key}
+                                alt="hotel"
+                                className="object-cover w-96 h-96 px-0.5"
+                            />
+                        )
+                    }
+                    )}
+                </Slider>
+            </div>  
             <div className="flex items-center justify-between w-full absolute bottom-0">
                 <div
                     className="flex flex-col md:flex-row md:items-center md:justify-between py-2 px-8 lg:px-48 w-full
                         z-10"
                     style={{
-                        boxShadow: "inset 0px -100px 25px rgba(0, 0, 0, 0.7)"
+                        boxShadow: "inset 0px -100px 25px rgba(0, 0, 0, 0.5)"
                     }}
                 >   
                     <div className="text-gray-100">
@@ -29,7 +60,8 @@ function HotelHero({ hotel: { name, price, score, images, address} }) {
                             {name}
                         </h1>
                         <span className="text-md">
-                            {address}
+                            <FontAwesomeIcon icon={faMapMarkerAlt} />
+                            {" "}{address}
                         </span>
                     </div>
                     <div className="text-gray-100 text-xl mt-2 md:mt-0">

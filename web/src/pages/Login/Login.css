@@ -140,7 +140,8 @@
 }
 
 .submit-button:focus , .submit-button:hover{
-    filter: brightness(1.4);
+    filter: brightness(1.25);
+    transform: translateY(-2px);
 }
 
 

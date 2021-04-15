@@ -37,7 +37,7 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                         </div>
                     </div>
 
-                    <p className="p-4 text-lg uppercase font-bold font-sans-roboto text-center text-indigo-800 hover:text-indigo-600">
+                    <p className="p-4 text-lg uppercase font-bold font-sans-roboto text-center text-gray-800 hover:text-gray-600">
                         {name}
                     </p>
                 </Link>

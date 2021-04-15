@@ -29,7 +29,7 @@ function Login() {
             <div className="login-container" data-aos="fade-up">
                 <div className="top-container">
                     {status === "signin" && <div className="header-container">
-                        <h2 className="header-text">
+                    <h2 className="header-text">
                             Welcome back
                     </h2>
                         <h4 className="small-text">
@@ -37,7 +37,8 @@ function Login() {
                     </h4>
                     </div>}
                     {status === "signup" && <div className="header-container">
-                        <h2 className="header-text">
+                    
+                    <h2 className="header-text">
                             Create an account
                     </h2>
                         <h4 className="small-text">

@@ -64,7 +64,7 @@
 .header-links:hover{
     background: #fff;
     color: #000;
-    transition: all 200ms linear;
+    transition: all 100ms linear;
     transform: translateY(-4px);
 }
 

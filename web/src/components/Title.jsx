@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 function Title({ title }) {
     return (
@@ -9,11 +7,6 @@ function Title({ title }) {
                 {title}
             </h2>
             <br />
-            <div className="text-center">
-                <FontAwesomeIcon icon={faStar}/>
-                <FontAwesomeIcon icon={faStar}/>
-                <FontAwesomeIcon icon={faStar}/>
-            </div>
         </div>
     );
 }

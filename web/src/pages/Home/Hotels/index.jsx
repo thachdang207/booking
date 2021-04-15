@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import HotelCard from "./HotelCard";
-import { getHotels } from "../../../redux/actions/hotel.action";
+import { getAllHotels } from "../../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../../../components/Pagination";
+import Title from "../../../components/Title"
 
 function Hotels() {
     const dispatch = useDispatch();
@@ -23,14 +24,15 @@ function Hotels() {
     }
     useEffect(() => {
         const timer = setTimeout(() => {
-            getHotels(dispatch, pagination.page)
-        });
+            getAllHotels(dispatch, pagination.page)
+        }, 500);
 
         return () => clearTimeout(timer);
     }, [pagination]);
 
     return (
         <section className="px-20 py-12 md:px-20 sm:px-12">
+            <Title title="Featured Hotels" />
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                 {state && state.hotel.hotels.map((hotel) => (
                     <HotelCard hotel={hotel} key={hotel.id} />

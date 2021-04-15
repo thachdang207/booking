@@ -15,6 +15,7 @@ import UserProfile from './pages/User/UserProfile'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
 import Hotel from './pages/Hotel'
+import Room from './pages/Room'
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -44,6 +45,7 @@ function App() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/logout" component={Logout} />
                     <Route exact path="/hotel/:id" component={Hotel} />
+                    <Route exact path="/room/:id" component={Room} />
 
                     {/* USER */}
 
