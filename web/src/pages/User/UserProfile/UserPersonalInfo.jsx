@@ -58,7 +58,7 @@ function UserPersonalInfo({ user, id }) {
                     <img
                         src={
                             user && user.image
-                                ? `${process.env.REACT_APP_API_URL}/img/users/${user.image}`
+                                ? user.image
                                 : "http://placehold.it/300x300?text=avatar"
                         }
                         alt="avatar"

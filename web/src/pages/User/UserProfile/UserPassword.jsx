@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserPassword } from "../../../redux/actions/user.action";
 
-function UserPassword({ id }) {
+function UserPassword() {
     const dispatch = useDispatch();
     const [userPassword, setUserPassword] = useState({
         password: "",
@@ -12,7 +12,7 @@ function UserPassword({ id }) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        updateUserPassword(dispatch, id, userPassword);
+        updateUserPassword(dispatch, userPassword);
     };
 
     return (

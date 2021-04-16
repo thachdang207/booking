@@ -13,7 +13,7 @@ function UserProfileMain() {
     let { id } = useParams();
 
     useEffect(() => {
-        getUser(dispatch, state.auth.token, id);
+        getUser(dispatch, state.auth.token);
         document.title = `Profile`;
     }, []); // eslint-disable-line
 

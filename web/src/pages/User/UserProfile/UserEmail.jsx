@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserEmail } from "../../../redux/actions/user.action";
 
-function UserEmail({ id }) {
+function UserEmail() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
@@ -14,7 +14,7 @@ function UserEmail({ id }) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        updateUserEmail(dispatch, state.auth.token, id, userEmail);
+        updateUserEmail(dispatch, state.auth.token, userEmail);
     };
 
     return (

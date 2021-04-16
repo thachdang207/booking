@@ -5,7 +5,7 @@ import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
 import EditRoom from '../Admin/pages/EditRoom'
 import BookingManagement from '../Admin/pages/BookingManagement'
 import RoomManagement from '../Admin/pages/RoomManagement'
-import HomeAdmin from '../Admin/pages/HomeAdmin'
+// import HomeAdmin from '../Admin/pages/HomeAdmin'
 import Nav from './components/Layouts/Nav'
 
 
@@ -31,8 +31,8 @@ function Admin() {
                                     <div className="flex flex-wrap -mx-1 md:w-full lg:w-full">
                                         <Switch>
                                             {/* <Redirect exact from={`${match.url}`} to={`${match.url}/room/`}/> */}
-                                            <Route exact path={`${match.url}`} component={HomeAdmin} />
-                                            <Route exact path={`${match.url}/room/`} component={RoomManagement} />
+                                            <Route path={`${match.url}`} component={RoomManagement} />
+                                            <Route path={`${match.url}/room/`} component={RoomManagement} />
                                             <Route path={`${match.url}/room/:roomId`} component={EditRoom} />
                                             <Route exact path={`${match.url}/booking`} component={BookingManagement} />
                                             <Route component={Error} />

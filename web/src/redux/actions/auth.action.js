@@ -20,7 +20,7 @@ export const signUp = (dispatch, user, setToken, setUserId) => { //setIsAdmin
             address: user.address,
             city: user.city,
             password: user.password,
-            // is_admin: 0
+            // is_admin: false
         }
     })
         .then((response) => {
