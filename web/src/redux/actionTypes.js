@@ -10,7 +10,6 @@ export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
 
 export const GET_USER = "GET_USER";
 export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
-export const UPDATE_USER_EMAIL = "UPDATE_USER_EMAIL";
 export const UPDATE_USER_PASSWORD = "UPDATE_USER_PASSWORD";
 
 export const SET_LOADING = "SET_LOADING";

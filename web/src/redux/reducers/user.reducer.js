@@ -1,7 +1,6 @@
 import {
     GET_USER,
     UPDATE_USER_INFO,
-    UPDATE_USER_EMAIL,
     UPDATE_USER_PASSWORD,
     SET_LOADING,
     SET_SUCCESS
@@ -18,19 +17,10 @@ export default function user(state = initialState, action) {
         case GET_USER: {
             return {
                 ...state,
-                user: action.payload.success ? action.payload.user : null,
-                errors: action.payload.success ? null : action.payload.errors
+                user: action.payload.user,
             };
         }
         case UPDATE_USER_INFO: {
-            return {
-                ...state,
-                success: action.payload.success ? true : false,
-                user: action.payload.success ? action.payload.user : null,
-                errors: action.payload.success ? null : action.payload.errors
-            };
-        }
-        case UPDATE_USER_EMAIL: {
             return {
                 ...state,
                 success: action.payload.success ? true : false,

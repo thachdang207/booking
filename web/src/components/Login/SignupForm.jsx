@@ -8,7 +8,6 @@ import { AccountContext } from './accountContext';
 import { signUp } from '../../redux/actions/auth.action'
 import { useHistory } from 'react-router-dom'
 import { Loading } from '../../components/Loading'
-import { Checkbox } from 'antd'
 import ErrorMessage from '../../components/ErrorMessage'
 
 import './Login.css'
@@ -30,7 +29,6 @@ function SignupForm(props) {
         password: "",
         address: "",
         city: "",
-        isAdmin: false,
     })
 
     const handleSubmit = (e) => {
@@ -120,14 +118,6 @@ function SignupForm(props) {
                             setUser({ ...user, password: e.target.value })
                         }
                     />
-                    <Checkbox 
-                        id="isAdmin"
-                        onChange={(e) => 
-                            setUser({...user, isAdmin: e.target.checked})}
-                        className="py-2 justify-center"
-                    >
-                        <p className="text-lg font-sans">Connect with us as an owner 🤓</p>
-                    </Checkbox>
                     <button className="submit-button" type="submit">
                         Create
                     </button>
