@@ -1,6 +1,6 @@
 import React from "react";
 import ClientReviewCard from "./ClientReviewCard";
-import Title from "../../../components/Title";
+import Title from "../../Global/Title";
 
 function ClientReview() {
     return (

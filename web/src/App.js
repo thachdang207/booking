@@ -1,10 +1,10 @@
 import React ,{ Suspense, useEffect } from 'react'
 import { ProtectedRoute } from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Loading } from './components/Loading'
-import Unauthorized from './components/Unauthorizated'
+import { Loading } from './components/Global/Loading'
+import Unauthorized from './components/Global/Unauthorizated'
 
-import UserProfile from './pages/User/UserProfile'
+import UserProfile from './components/User/UserProfile'
 
 // import AddHotel from './Admin/pages/AddHotel'
 // import EditHotel from './Admin/pages/EditHotel'
@@ -14,17 +14,17 @@ import UserProfile from './pages/User/UserProfile'
 // import BookingManagement from './Admin/pages/BookingManagement'
 // import AddRoom from './Admin/pages/AddRoom'
 // import EditRoom from './Admin/pages/EditRoom'
-import Hotel from './pages/Hotel'
-import Room from './pages/Room'
+import Hotel from './components/Hotel'
+import Room from './components/Room'
 
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
-const Admin = React.lazy(() => import('./pages/Admin'));
-const Login = React.lazy(() => import('./pages/Login'));
-const Home = React.lazy(() => import('./pages/Home'));
-const Logout = React.lazy(() => import('./pages/Logout'));
+const Admin = React.lazy(() => import('./components/Admin'));
+const Login = React.lazy(() => import('./components/Login'));
+const Home = React.lazy(() => import('./components/Home'));
+const Logout = React.lazy(() => import('./components/Logout'));
 
 
 function App() {

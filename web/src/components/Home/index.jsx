@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Searchbar from './Searchbar'
-import Header from '../../components/Header'
-import Border from '../../components/Border'
-import Footer from '../../components/Footer'
+import Header from '../Global/Header'
+import Border from '../Global/Border'
+import Footer from '../Global/Footer'
 import Hero from './Hero'
 import Hotels from './Hotels'
 import ClientReview from './ClientReview'

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-import Border from "../../components/Border";
-import Title from "../../components/Title";
-import StaticHeader from "../../components/StaticHeader"
+import Footer from "../Global/Footer";
+import Border from "../Global/Border";
+import Title from "../Global/Title";
+import StaticHeader from "../Global/StaticHeader"
 
 import HotelHero from "./HotelHero";
 import HotelRoom from './HotelRoom'
@@ -12,7 +12,7 @@ import { getHotel } from "../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { useSecureLs } from "../../components/UseSecureLs";
+import { useSecureLs } from "../Global/UseSecureLs";
 
 function Hotel(props) {
     const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '../../../components/Title'
+import Title from '../../Global/Title'
 import Slider from "react-slick";
 import { CITY_OPTIONS } from '../../../constants/global'
 

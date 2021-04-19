@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import HotelCard from "./HotelCard";
 import { getAllHotels } from "../../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
-import Pagination from "../../../components/Pagination";
-import Title from "../../../components/Title"
+import Pagination from "../../Global/Pagination";
+import Title from "../../Global/Title"
 
 function Hotels() {
     const dispatch = useDispatch();

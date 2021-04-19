@@ -1,12 +1,12 @@
 import React from "react";
-import Footer from "../../../components/Footer";
-import StaticHeader from "../../../components/StaticHeader";
+import Footer from "../../Global/Footer";
+import StaticHeader from "../../Global/StaticHeader";
 import UserSiderBar from "../UserSiderBar";
 import UserProfileMain from "./UserProfileMain";
-import ErrorMessage from "../../../components/ErrorMessage";
-import SuccessMessage from "../../../components/SuccessMessage";
+import ErrorMessage from "../../Global/ErrorMessage";
+import SuccessMessage from "../../Global/SuccessMessage";
 import { useSelector } from "react-redux";
-import { Loading } from "../../../components/Loading";
+import { Loading } from "../../Global/Loading";
 
 function UserProfile(props) {
     const state = useSelector((state) => state);

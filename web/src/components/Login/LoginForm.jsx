@@ -2,13 +2,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from 'react';
-import { useSecureLs } from '../../components/UseSecureLs'
+import { useSecureLs } from '../Global/UseSecureLs'
 import { useDispatch, useSelector } from 'react-redux'
 import { AccountContext } from './accountContext';
 import { signIn } from '../../redux/actions/auth.action'
 import { useHistory } from 'react-router-dom'
-import { Loading } from '../../components/Loading'
-import ErrorMessage from '../../components/ErrorMessage'
+import { Loading } from '../Global/Loading'
+import ErrorMessage from '../Global/ErrorMessage'
 
 import './Login.css'
 

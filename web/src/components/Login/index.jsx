@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import StaticHeader from '../../components/StaticHeader'
+import StaticHeader from '../Global/StaticHeader'
 import { AccountContext } from "./accountContext";
 
 import './Login.css'
