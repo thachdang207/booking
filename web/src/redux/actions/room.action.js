@@ -7,15 +7,13 @@ import { setLoading } from "./commonActions";
 const url = process.env.REACT_APP_API_URL;
 
 //-------------------------------------------------
-export const getRoom = async (dispatch, cityId) => {
+export const getRoom = async (dispatch, hotelId) => {
     setLoading(dispatch, true);
-    try{
-        const response = await axios.get(`${url}/customer/locations`, {
+    try {
+        console.log(hotelId);
+        const response = await axios.get(`${url}/customer/locations/${hotelId}`, {
             params : {
-                limit: 10,
-                sort: 'score,DESC',
                 join: ['locationType', 'city', 'rooms', 'serviceTypes'],
-                filter: `cityId||$eq||${cityId}`
             }
         });
         dispatch({

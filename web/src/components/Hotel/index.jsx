@@ -5,7 +5,6 @@ import Title from "../Global/Title";
 import StaticHeader from "../Global/StaticHeader"
 
 import HotelHero from "./HotelHero";
-import HotelRoom from './HotelRoom'
 import HotelGoogleMap from './HotelGoogleMap'
 
 import { getHotel } from "../../redux/actions/hotel.action";
@@ -13,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useSecureLs } from "../Global/UseSecureLs";
+import { Table, Button } from "reactstrap"
+import { Link } from "react-router-dom"
 
 function Hotel(props) {
     const dispatch = useDispatch();
@@ -20,6 +21,21 @@ function Hotel(props) {
     let { id } = useParams();
     const [_user_id] = useSecureLs("user_id");
     const [userId, setUserId] = useState(_user_id);
+
+    const formatPrice = (price) => {
+        let priceString= '';
+        price = Math.floor(price);
+        while (price > 999) {
+            var num = price % 1000;
+            priceString += '.' + num ;
+            price = Math.floor(price/ 1000);
+            if (price <= 999) {
+                priceString = price + '' + priceString;
+                break;
+            }
+        }
+        return priceString;
+    }
 
     useEffect(() => {
         getHotel(dispatch, id);
@@ -62,8 +78,37 @@ function Hotel(props) {
             {state.hotel.hotel && (
                 <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up"/>
             )}
-
-            <HotelRoom cityId={state.hotel.hotel.cityId} />
+            <div className="lg:mx-20 xl:mx-40">
+                <Table striped bordered hover data-aos="fade-up" responsive="xl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Maximum guests</th>
+                            <th>Price</th>
+                            <th>Book</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {state.hotel.hotel && state.hotel.hotel.rooms.map((room) => {
+                            return (
+                                <tr>
+                                    <td>{room.name}</td>
+                                    <td>{room.capacity}</td>
+                                    <td>{formatPrice(room.price)} {" "} VND </td>
+                                    <td>
+                                        <Link
+                                            to={`/room/${room.id}`}
+                                            className="no-underline"
+                                        >
+                                            <Button>Book</Button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+            </div>
 
             <Border my="16" />
 

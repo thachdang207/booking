@@ -11,6 +11,8 @@ export const getAllHotels = async (dispatch, page) => {
         const response = await axios.get(`${url}/customer/locations`,{
             params: {
                 page: `${page}`,
+                sort: 'score,DESC',
+                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
             }
         });
         dispatch({
@@ -25,7 +27,11 @@ export const getAllHotels = async (dispatch, page) => {
 
 export const getHotel = async (dispatch, id) => {
     try{
-        const response = await axios.get(`${url}/customer/locations/${id}`);
+        const response = await axios.get(`${url}/customer/locations/${id}` ,{
+            params : {
+                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+            }
+        });
         dispatch({
             type: GET_HOTEL,
             payload: response.data
