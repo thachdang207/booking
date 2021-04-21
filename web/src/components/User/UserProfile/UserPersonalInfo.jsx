@@ -8,7 +8,7 @@ const Title = Modal.Title;
 const Body = Modal.Body;
 const Footer = Modal.Footer;
 
-function UserPersonalInfo(props , {user, id }) {
+function UserPersonalInfo(props, user, id) {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 

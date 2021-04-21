@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import AdminLoginForm from "./AdminLoginForm"
 import StaticHeader from '../Global/StaticHeader'
 import { AccountContext } from "./accountContext";
 
@@ -21,7 +22,13 @@ function Login() {
         }, 100)
     }
 
-    const contextValue = { switchToSignup, switchToSignin };
+    const switchToAdminLogin = () => {
+        setTimeout(() => {
+            setStatus("adminLogin");
+        }, 100)
+    }
+
+    const contextValue = { switchToSignup, switchToSignin, switchToAdminLogin };
 
     return (
         <AccountContext.Provider value={contextValue}>
@@ -45,9 +52,18 @@ function Login() {
                             In order to access our services
                     </h4>
                     </div>}
+                    {status === "adminLogin" && <div className="header-container">
+                    <h2 className="header-text">
+                            Connect us as an owner
+                    </h2>
+                        <h4 className="small-text">
+                            To share your services!
+                    </h4>
+                    </div>}
                 </div>
                 {status === "signin" && <LoginForm />}
                 {status === "signup" && <SignupForm />}
+                {status === "adminLogin" && <AdminLoginForm />}
                 <br/>
             </div>
         </AccountContext.Provider>

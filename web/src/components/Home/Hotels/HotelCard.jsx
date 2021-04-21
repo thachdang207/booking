@@ -6,7 +6,7 @@ import { Badge } from "reactstrap"
 function HotelCard({ hotel: { id, name, price, score, images } }) {
     const formattedPrice = price.slice(1);
     return (
-        <div className="p-0 xl:p-2">
+        <div className="p-0 lg:p-3">
             <div
                 className="bg-gray-100 h-72 xl:h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"

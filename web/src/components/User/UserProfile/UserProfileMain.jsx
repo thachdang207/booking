@@ -16,7 +16,6 @@ function UserProfileMain() {
         setModalShow(true);
     }
 
-
     useEffect(() => {
         getUser(dispatch, state.auth.token);
         document.title = `Profile`;

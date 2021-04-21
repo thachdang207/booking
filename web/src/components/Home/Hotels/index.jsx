@@ -31,7 +31,7 @@ function Hotels() {
     }, [pagination]);
 
     return (
-        <section className="px-20 py-12 md:px-20 sm:px-12">
+        <section className="px-20 py-12 md:px-40 lg:px-56">
             <Title title="Featured Hotels" />
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                 {state && state.hotel.hotels.map((hotel) => (

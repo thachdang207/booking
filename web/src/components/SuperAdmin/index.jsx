@@ -1,15 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Footer from '../Global/Footer';
-import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
-import EditRoom from './pages/EditRoom'
-import BookingManagement from './pages/BookingManagement'
-import RoomManagement from './pages/RoomManagement'
-// import HomeAdmin from './pages/HomeAdmin'
-import Nav from './components/Layouts/Nav'
+import { useRouteMatch, Switch, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import CreateLocation from './pages/CreateLocation'
 
-
-function Admin() {
+function SuperAdmin() {
     const match = useRouteMatch();
     console.log({ match });
     const Error = () => {
@@ -22,7 +18,6 @@ function Admin() {
     return (
         <div className="h-full min-h-screen flex flex-col md:flex-col justify-between">
             <div>
-                <Nav />
                 <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
                     <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 min-h-screen">
                         <div className="px-4 py-6 sm:px-0 min-h-screen">
@@ -30,11 +25,8 @@ function Admin() {
                                 <div className="container my-12 mx-auto px-4 md:px-12">
                                     <div className="flex flex-wrap -mx-1 md:w-full lg:w-full">
                                         <Switch>
-                                            {/* <Redirect exact from={`${match.url}`} to={`${match.url}/room/`}/> */}
-                                            <Route exact path={`${match.url}`} component={RoomManagement} />
-                                            <Route path={`${match.url}/room/`} exact component={RoomManagement} />
-                                            <Route path={`${match.url}/room/:id`} exact component={EditRoom} />
-                                            <Route path={`${match.url}/booking`} exact component={BookingManagement} />
+                                            <Route exact path={`${match.url}`} component={Home} />
+                                            <Route path={`${match.url}/create-location/`} exact component={CreateLocation} />
                                             <Route exact component={Error} />
                                         </Switch>
                                     </div>
@@ -49,4 +41,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default SuperAdmin;

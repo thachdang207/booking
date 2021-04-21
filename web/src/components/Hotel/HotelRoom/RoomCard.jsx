@@ -15,7 +15,7 @@ function RoomCard({ room }) {
                     <div className="absolute bottom-0 text-gray-100 flex">
                         <div className="bg-orange-600 py-2 px-6 rounded-tr-lg flex flex-col items-center">
                             <span className="line-through text-gray-300 text-sm">
-                                {parseFloat(room.price) + 100} $
+                                {parseFloat(room.price) + 100}
                             </span>
                             <span className="text-xl">{room.price}</span>
                         </div>

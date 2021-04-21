@@ -1,5 +1,6 @@
 import React ,{ Suspense, useEffect } from 'react'
 import { ProtectedRoute } from './ProtectedRoute'
+import { SuperAdminProtectedRoute } from './SuperAdminProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Loading } from './components/Global/Loading'
 import Unauthorized from './components/Global/Unauthorizated'
@@ -22,6 +23,8 @@ import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
 const Admin = React.lazy(() => import('./components/Admin'));
+const SuperAdmin = React.lazy(() => import('./components/SuperAdmin'));
+const SuperAdminLogin = React.lazy(() => import('./components/SuperAdmin/pages/Login'));
 const Login = React.lazy(() => import('./components/Login'));
 const Home = React.lazy(() => import('./components/Home'));
 const Logout = React.lazy(() => import('./components/Logout'));
@@ -100,6 +103,18 @@ function App() {
                         path="/booking-management"
                         component={BookingManagement}
                     /> */}
+
+                    {/* SUPER - ADMIN */}
+                    
+                    <SuperAdminProtectedRoute
+                        exact path='/super-admin'
+                        component={SuperAdmin}
+                    />
+                    <Route 
+                        exact path='/super-admin-login'
+                        component={SuperAdminLogin}
+                    />
+
                     <Route exact path="/401" component={Unauthorized} />
                 </Switch>
             </BrowserRouter>

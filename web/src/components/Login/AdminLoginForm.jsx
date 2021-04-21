@@ -5,7 +5,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useSecureLs } from '../Global/UseSecureLs'
 import { useDispatch, useSelector } from 'react-redux'
 import { AccountContext } from './accountContext';
-import { signIn } from '../../redux/actions/auth.action'
+import { adminLogin } from '../../redux/actions/auth.action'
 import { useHistory } from 'react-router-dom'
 import { Loading } from '../Global/Loading'
 import ErrorMessage from '../Global/ErrorMessage'
@@ -14,7 +14,7 @@ import './Login.css'
 
 function LoginForm(props) {
 
-    const { switchToSignup, switchToAdminLogin } = useContext(AccountContext);
+    const { switchToSignup, switchToSignin } = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -26,20 +26,19 @@ function LoginForm(props) {
 
     const [token, setToken] = useSecureLs("token");
     const [userId, setUserId] = useSecureLs("user_id");
-    // const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signIn(dispatch, user, setToken, setUserId); //setIsAdmin
+        adminLogin(dispatch, user, setToken, setUserId); //setIsAdmin
     }
 
     const history = useHistory();
     useEffect(() => {
-        state.auth.isAuthenticated && history.push('/');
+        state.auth.isAuthenticated && history.push('/admin');
     }, [state.auth.isAuthenticated]);
 
     useEffect(() => {
-        document.title = "VIBO | Login";
+        document.title = "VIBO | Login as an owner";
     }, []);
 
     return (
@@ -71,10 +70,10 @@ function LoginForm(props) {
                         }
                     />
                     <p className="muted-link">
-                        Connect with us as an owner?
+                        Continue as a customer
                         <a
                             className="bold-link"
-                            onClick={switchToAdminLogin}
+                            onClick={switchToSignin}
                         >
                             Sign in
                         </a>

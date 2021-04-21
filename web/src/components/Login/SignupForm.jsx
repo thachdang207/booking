@@ -15,7 +15,7 @@ import JSONDATA from '../Home/data.json'
 
 
 function SignupForm(props) {
-    const { switchToSignin } = useContext(AccountContext);
+    const { switchToSignin, switchToAdminLogin } = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -118,6 +118,15 @@ function SignupForm(props) {
                             setUser({ ...user, password: e.target.value })
                         }
                     />
+                    <p className="muted-link">
+                        Connect with us as an owner?
+                        <a
+                            className="bold-link"
+                            onClick={switchToAdminLogin}
+                        >
+                            Sign in
+                        </a>
+                    </p>
                     <button className="submit-button" type="submit">
                         Create
                     </button>

@@ -1,6 +1,10 @@
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_IN = "SIGN_IN";
+export const ADMIN_LOGIN = "ADMIN_LOGIN"
 export const CHECK_AUTH = "CHECK_AUTH";
+
+export const SADMIN_SIGN_IN= "SADMIN_SIGN_IN";
+export const SADMIN_CHECK_AUTH= "SADMIN_CHECK_AUTH";
 
 export const GET_HOTEL = "GET_HOTEL";
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";

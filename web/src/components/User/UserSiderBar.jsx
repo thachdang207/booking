@@ -24,7 +24,7 @@ function UserSiderBar() {
     }, [state.auth.user_id]); // eslint-disable-line
 
     return (
-        <div className="md:block w-full md:w-4/12 xl:w-3/12 bg-gray-200 pt-5 lg:p-6 rounded-sm ">
+        <div className="hidden md:block w-full md:w-4/12 xl:w-3/12 bg-gray-200 pt-5 lg:p-6 rounded-sm ">
             <Link
                 to={`/user-profile/${id}`}
             >

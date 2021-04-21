@@ -3,6 +3,7 @@ import auth from "./auth.reducer";
 import hotel from "./hotel.reducer"
 import user from "./user.reducer"
 import room from "./room.reducer"
+import sAdmin from "./sAdmin.reducer"
 
 
 export default combineReducers({
@@ -10,4 +11,5 @@ export default combineReducers({
     hotel,
     user,
     room,
+    sAdmin,
 });
