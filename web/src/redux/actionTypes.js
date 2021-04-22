@@ -7,7 +7,10 @@ export const SADMIN_SIGN_IN= "SADMIN_SIGN_IN";
 export const SADMIN_CHECK_AUTH= "SADMIN_CHECK_AUTH";
 
 export const GET_HOTEL = "GET_HOTEL";
+export const GET_CITY_HOTELS = "GET_CITY_HOTELS";
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
+
+export const GET_CITIES = "GET_CITIES";
 
 export const GET_ROOM = "GET_ROOM";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";

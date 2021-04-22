@@ -1,15 +1,3 @@
-import halong from '../assets/images/city/halong.jpeg'
-import hanoi from '../assets/images/city/hanoi.jpeg'
-import danang from '../assets/images/city/danang.jpeg'
-import hue from '../assets/images/city/hue.jpeg'
-import hagiang from '../assets/images/city/hagiang.jpeg'
-import hochiminh from '../assets/images/city/hochiminh.jpeg'
-import vungtau from '../assets/images/city/vungtau.jpeg'
-import dalat from '../assets/images/city/dalat.jpeg'
-import nhatrang from '../assets/images/city/nhatrang.jpeg'
-import quynhon from '../assets/images/city/quynhon.jpeg'
-
-
 export const GUEST_OPTIONS = [
   { value: '1', label: '1' },
   { value: '2', label: '2' },
@@ -23,17 +11,14 @@ export const GUEST_OPTIONS = [
   { value: '10', label: '10' },
 ];
 
+
+
 export const CITY_OPTIONS = [
-    { value: '1', label: 'Đà Nẵng', image: danang },
-    { value: '2', label: 'Huế', image: hue  },
-    { value: '3', label: 'Đà Lạt', image: dalat  },
-    { value: '4', label: 'Hà Nội', image: hanoi },
-    { value: '5', label: 'Quy Nhơn', image: quynhon  },
-    { value: '6', label: 'Hồ Chí Minh', image: hochiminh  },
-    { value: '7', label: 'Nha Trang', image: nhatrang  },
-    { value: '8', label: 'Vũng Tàu', image: vungtau  },
-    { value: '9', label: 'Hà Giang', image: hagiang  },
-    { value: '10', label: 'Hạ Long', image: halong  },
+    { value: '1', label: 'Đà Nẵng'},
+    { value: '2', label: 'Đà Lạt'},
+    { value: '3', label: 'Hồ Chí Minh'},
+    { value: '4', label: 'Nha Trang'},
+    { value: '5', label: 'Hội An'},
 ];
 
 export const ROOM_TYPE_OPTIONS = [

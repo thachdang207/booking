@@ -1,13 +1,15 @@
 import {
     GET_HOTEL,
     GET_ALL_HOTELS,
+    GET_CITY_HOTELS,
     SET_SUCCESS,
     SET_LOADING
 } from "../actionTypes";
 
 const initialState = {
     success: null,
-    hotels: [],
+    allHotels: [],
+    cityHotels: [],
     hotel: { rooms: [] },
     errors: null,
     loading: false,
@@ -29,7 +31,18 @@ export default function hotel(state = initialState, action) {
         case GET_ALL_HOTELS: {
             return {
                 ...state,
-                hotels: action.payload.data,
+                allHotels: action.payload.data,
+                pagination: {
+                    page: action.payload.page,
+                    count: action.payload.count,
+                    total: action.payload.total,
+                }
+            };
+        }
+        case GET_CITY_HOTELS: {
+            return {
+                ...state,
+                cityHotels: action.payload.data,
                 pagination: {
                     page: action.payload.page,
                     count: action.payload.count,

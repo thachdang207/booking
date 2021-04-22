@@ -37,6 +37,20 @@ function Hotel(props) {
         return priceString;
     }
 
+    function getRandom(arr, n) {
+        var result = new Array(n),
+            len = arr.length,
+            taken = new Array(len);
+        if (n > len)
+            n--;
+        while (n--) {
+            var x = Math.floor(Math.random() * len);
+            result[n] = arr[x in taken ? taken[x] : x];
+            taken[x] = --len in taken ? taken[len] : len;
+        }
+        return result;
+    }
+
     useEffect(() => {
         getHotel(dispatch, id);
         setUserId(userId)
@@ -79,9 +93,10 @@ function Hotel(props) {
                 <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up"/>
             )}
             <div className="lg:mx-20 xl:mx-40">
-                <Table striped bordered hover data-aos="fade-up" responsive="xl">
+                <Table striped bordered hover data-aos="fade-up">
                     <thead>
                         <tr>
+                            <th>Services</th>
                             <th>Name</th>
                             <th>Maximum guests</th>
                             <th>Price</th>
@@ -91,7 +106,20 @@ function Hotel(props) {
                     <tbody>
                         {state.hotel.hotel && state.hotel.hotel.rooms.map((room) => {
                             return (
-                                <tr>
+                                <tr key={room.id}>
+                                    <td className="grid grid-cols-5">
+                                        {getRandom(state.hotel.hotel.serviceTypes, Math.floor(Math.random() * 10) + 1).map((service, key) => {
+                                            return(
+                                                <div key={key}>
+                                                    <img 
+                                                        src={service.icon}
+                                                        alt="service"
+                                                        className="relative w-6 h-6 object-contain"
+                                                    ></img>
+                                                </div>
+                                            )
+                                        })}
+                                    </td>
                                     <td>{room.name}</td>
                                     <td>{room.capacity}</td>
                                     <td>{formatPrice(room.price)} {" "} VND </td>
