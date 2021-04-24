@@ -1,0 +1,157 @@
+.header-items{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 50;
+    width: 100%;
+}
+
+.header-items.active{
+    background: #000;
+}
+
+.static-header-items{
+    background: #000;
+    position: relative;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+    width: 100%;
+}
+
+.header-logo{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: "Dosis", serif;
+    font-weight: 900;
+    font-size: 40px;
+    width: 20%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-logo:hover{
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-menu{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 20px;
+    list-style: none;
+    text-align: center;
+    width: 50vw;
+    justify-content: end;
+    margin-right: 3rem;
+    font-weight: 600;
+    margin: auto;
+    width: 70%;
+}
+
+.header-links{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.header-links:hover{
+    background: #fff;
+    color: #000;
+    transition: all 100ms linear;
+    transform: translateY(-4px);
+}
+
+.menu-icon{
+    display:none;
+    color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 768px){
+    .header-items{
+        position: fixed;
+        background:rgba(0, 0, 0, 0.45);
+    }
+    .header-menu{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 350px;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 750ms ease-out;
+    }
+
+    .header-menu.active{
+        left: 0;
+        opacity: 1;
+        transition: all 750ms ease-out;
+        background:rgba(0, 0, 0, 0.45);
+    }
+
+    .header-menu li {
+        text-decoration: none;
+    }
+
+    .header-links{
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+        z-index: inherit;
+    }
+
+    .header-links:hover, .header-links:active{
+        text-decoration: none;
+    }
+
+    .header-logo{
+        top: 0;
+        left: 0;
+        transform: translate(50%, 20%);
+    }
+
+    .menu-icon{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+}
+
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+}
+
+.slider-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: auto;
+}
+
+
+ 
