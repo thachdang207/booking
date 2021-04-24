@@ -24,7 +24,7 @@ function Card(props) {
         if(onRemoveClick) onRemoveClick(room);
     }
     return (
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 transform hover:-translate-y-1 hover:scale-110"
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 transform hover:-translate-y-1 hover:scale-105"
             onMouseOver={() => setHoverCard(room.id)} 
             onMouseLeave={() => setHoverCard(0)} 
             key={room.id}

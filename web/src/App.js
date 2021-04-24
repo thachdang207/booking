@@ -62,7 +62,7 @@ function App() {
                     {/* ADMIN */}
                     
                     <ProtectedRoute
-                        exact path='/admin'
+                        path='/admin'
                         component={Admin}
                     />
                     {/* <ProtectedRoute
