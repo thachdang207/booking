@@ -2,11 +2,10 @@
 import React from 'react'
 import Footer from '../Global/Footer';
 import { useRouteMatch, Switch, Route, Redirect } from 'react-router-dom'
-import EditRoom from '../Admin/pages/EditRoom'
-import BookingManagement from '../Admin/pages/BookingManagement'
-import RoomManagement from '../Admin/pages/RoomManagement'
-// import HomeAdmin from '../Admin/pages/HomeAdmin'
-import Nav from './components/Layouts/Nav'
+import Nav from './components/Layouts/Nav.jsx'
+// import RoomEditForm from './components/RoomEditForm';
+import EditRoom from './pages/EditRoom';
+import RoomManagement from './pages/RoomManagement';
 
 
 function Admin() {
@@ -29,13 +28,13 @@ function Admin() {
                             <div className="box-border p-4 border-4 bg-white rounded-md min-h-screen">
                                 <div className="container my-12 mx-auto px-4 md:px-12">
                                     <div className="flex flex-wrap -mx-1 md:w-full lg:w-full">
-                                        <Switch>
+                                        <Switch>  
                                             {/* <Redirect exact from={`${match.url}`} to={`${match.url}/room/`}/> */}
-                                            <Route path={`${match.url}`} component={RoomManagement} />
-                                            <Route path={`${match.url}/room/`} component={RoomManagement} />
-                                            <Route path={`${match.url}/room/:roomId`} component={EditRoom} />
-                                            <Route exact path={`${match.url}/booking`} component={BookingManagement} />
-                                            <Route component={Error} />
+                                                <Route exact path={`${match.url}`} component={RoomManagement} />
+                                                <Route exact path={`${match.url}/room/`} component={RoomManagement} />
+                                                <Route exact path={`${match.url}/room/:id`} component={EditRoom} />
+                                                {/* <Route exact path={`${match.url}/booking`} component={BookingManagement} /> */}
+                                                <Route component={Error} />
                                         </Switch>
                                     </div>
                                 </div>

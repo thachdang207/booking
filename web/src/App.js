@@ -21,7 +21,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
-const Admin = React.lazy(() => import('./components/Admin'));
+const Admin = React.lazy(() => import('./components/Admin/index.jsx'));
 const Login = React.lazy(() => import('./components/Login'));
 const Home = React.lazy(() => import('./components/Home'));
 const Logout = React.lazy(() => import('./components/Logout'));
@@ -57,9 +57,10 @@ function App() {
                     {/* ADMIN */}
                     
                     <ProtectedRoute
-                        exact path='/admin'
-                        component={Admin}
-                    />
+                        path='/admin'
+                    >
+                        <Admin />
+                    </ProtectedRoute>
                     {/* <ProtectedRoute
                         exact
                         path="/hotel-management"

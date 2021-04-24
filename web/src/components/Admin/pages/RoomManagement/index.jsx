@@ -10,15 +10,16 @@ function RoomManagement() {
 
     const history = useHistory();
     const handleRoomEditClick = (room) => {
-        console.log('Edit: ', room);
         const editPhotoUrl = `/admin/room/${room.id}`;
+        console.log('Edit: ', editPhotoUrl);
         history.push(editPhotoUrl);
     }
 
     const handleRoomRemoveClick = (room) => {
         console.log('Edit: ', room);
-        const editPhotoUrl = `/admin/room/${room.id}`;
-        history.push(editPhotoUrl);
+        // const editPhotoUrl = `/admin/room/${room.id}`;
+        // console.log(editPhotoUrl);
+        // history.push(editPhotoUrl);
     }
 
     return (
