@@ -8,28 +8,28 @@ import {
 const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
 export const getAllHotels = async (dispatch, page) => {
-    try{
-        const response = await axios.get(`${url}/customer/locations`,{
+    try {
+        const response = await axios.get(`${url}/customer/locations`, {
             params: {
-                page: `${page}`,
-                sort: 'score,DESC',
-                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+                "page": `${page}`,
+                "sort": 'score,DESC',
+                "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
             }
         });
         dispatch({
             type: GET_ALL_HOTELS,
             payload: response.data
         })
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 };
 //-----------------------------------------
 
 export const getHotel = async (dispatch, id) => {
-    try{
-        const response = await axios.get(`${url}/customer/locations/${id}` ,{
-            params : {
+    try {
+        const response = await axios.get(`${url}/customer/locations/${id}`, {
+            params: {
                 join: ['locationType', 'city', 'rooms', 'serviceTypes'],
             }
         });
@@ -37,7 +37,7 @@ export const getHotel = async (dispatch, id) => {
             type: GET_HOTEL,
             payload: response.data
         })
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 };
@@ -46,9 +46,9 @@ export const getHotel = async (dispatch, id) => {
 //-----------------------------------------
 
 export const getCityHotels = async (dispatch, cityId) => {
-    try{
-        const response = await axios.get(`${url}/customer/locations` ,{
-            params : {
+    try {
+        const response = await axios.get(`${url}/customer/locations`, {
+            params: {
                 join: ['locationType', 'city', 'rooms', 'serviceTypes'],
                 sort: 'score,DESC',
                 filter: `cityId||$eq||${cityId}`
@@ -58,7 +58,7 @@ export const getCityHotels = async (dispatch, cityId) => {
             type: GET_CITY_HOTELS,
             payload: response.data
         })
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 };

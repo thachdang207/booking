@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import { SADMIN_SIGN_IN, SADMIN_CHECK_AUTH } from '../actionTypes'
+import {SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, CREATE_LOCATION} from '../actionTypes'
 import { setLoading } from "./commonActions";
 import axios from "axios";
 
@@ -65,3 +65,25 @@ checkAuth = (dispatch, _token, _sAdmin_id) => {
             }
         });
 };
+//-----------------------------------------
+
+export const createLocation = (dispatch, token, formData) => {
+    setLoading(dispatch, true);
+    axios
+        .post(
+            `${url}/super-admin/locations`,
+            formData, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+        .then((response) => {
+            dispatch({
+                type: CREATE_LOCATION,
+                payload: response.data
+            });
+            setLoading(dispatch, false);
+        })
+        .catch((error) => {
+            setLoading(dispatch, true);
+        });
+};
+

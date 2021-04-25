@@ -5,6 +5,7 @@ export const CHECK_AUTH = "CHECK_AUTH";
 
 export const SADMIN_SIGN_IN= "SADMIN_SIGN_IN";
 export const SADMIN_CHECK_AUTH= "SADMIN_CHECK_AUTH";
+export const CREATE_LOCATION = "CREATE_LOCATION";
 
 export const GET_HOTEL = "GET_HOTEL";
 export const GET_CITY_HOTELS = "GET_CITY_HOTELS";
