@@ -92,11 +92,12 @@ export const signIn = (dispatch, user, setToken, setUserId) => { //setIsAdmin
 };
 //-----------------------------------------
 
-export const checkAuth = (dispatch, _token, userId) => { //isAdmin
+export let checkAuth;
+    checkAuth = (dispatch, _token, userId) => { //isAdmin
     let token = _token;
     let user_id = userId;
     // let is_admin = isAdmin == "1" || isAdmin == 1 ? true : false;
-    token != null && token != "null" && token != "" // eslint-disable-line
+    token != null && token !== "null" && token !== "" // eslint-disable-line
         ? dispatch({
               type: CHECK_AUTH,
               payload: {

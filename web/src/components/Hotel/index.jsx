@@ -23,12 +23,12 @@ function Hotel(props) {
     const [userId, setUserId] = useState(_user_id);
 
     const formatPrice = (price) => {
-        let priceString= '';
+        let priceString = '';
         price = Math.floor(price);
         while (price > 999) {
             var num = price % 1000;
-            priceString += '.' + num ;
-            price = Math.floor(price/ 1000);
+            priceString += '.' + num;
+            price = Math.floor(price / 1000);
             if (price <= 999) {
                 priceString = price + '' + priceString;
                 break;
@@ -87,10 +87,10 @@ function Hotel(props) {
                 </p>
             </div>
 
-            <Border/>
+            <Border />
 
             {state.hotel.hotel && (
-                <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up"/>
+                <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up" />
             )}
             <div className="lg:mx-20 xl:mx-40">
                 <Table striped bordered hover data-aos="fade-up">
@@ -109,9 +109,9 @@ function Hotel(props) {
                                 <tr key={room.id}>
                                     <td className="grid grid-cols-5">
                                         {getRandom(state.hotel.hotel.serviceTypes, Math.floor(Math.random() * 10) + 1).map((service, key) => {
-                                            return(
+                                            return (
                                                 <div key={key}>
-                                                    <img 
+                                                    <img
                                                         src={service.icon}
                                                         alt="service"
                                                         className="relative w-6 h-6 object-contain"

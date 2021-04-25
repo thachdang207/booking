@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
-import { useSelector } from "react-redux";
-import { useSecureLs } from './UseSecureLs'
+import React, {useState} from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTimes, faBars} from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom'
+import {useSelector} from "react-redux";
+import {useSecureLs} from './UseSecureLs'
 
 import './Global.css'
 
@@ -34,8 +34,8 @@ function Header() {
             <header className={isScrolling ? 'header-items active' : 'header-items'}>
                 <a href="/" className="header-logo">VIBO.com</a>
                 <div className="menu-icon"
-                    onClick={handleClickChange}>
-                    <FontAwesomeIcon icon={isClicked ? faTimes : faBars} />
+                     onClick={handleClickChange}>
+                    <FontAwesomeIcon icon={isClicked ? faTimes : faBars}/>
                 </div>
                 <ul className={isClicked ? 'header-menu active' : 'header-menu'}>
                     {!state.auth.isAuthenticated ? (
@@ -59,7 +59,7 @@ function Header() {
                         <>
                             <li>
                                 <Link to={`/user-profile/${id}`}
-                                    className="header-links"
+                                      className="header-links"
                                 >
                                     <button>
                                         Your profile
@@ -68,7 +68,7 @@ function Header() {
                             </li>
                             <li>
                                 <Link to="/logout"
-                                    className="header-links"
+                                      className="header-links"
                                 >
                                     <button>
                                         Logout

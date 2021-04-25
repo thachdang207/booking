@@ -26,7 +26,6 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
             setUserId(
                 response.data.success ? response.data.user.id : null
             );
-            localStorage.setItem("first_login", true);
 
             dispatch({
                 type: SADMIN_SIGN_IN,
@@ -44,24 +43,25 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
 };
 //-----------------------------------------
 
-export const checkAuth = (dispatch, _token, userId) => {
-    let token = _token;
-    let user_id = userId;
-    token != null && token != "null" && token != "" // eslint-disable-line
+export let checkAuth;
+checkAuth = (dispatch, _token, _sAdmin_id) => {
+    let sAdmin_token = _token;
+    let sAdmin_id = _sAdmin_id;
+    sAdmin_token != null && sAdmin_token !== "null" && sAdmin_token !== ""
         ? dispatch({
-              type: SADMIN_CHECK_AUTH,
-              payload: {
-                  isAuthenticated: true,
-                  user_id,
-                  token,
-              }
-          })
+            type: SADMIN_CHECK_AUTH,
+            payload: {
+                isAuthenticated: true,
+                sAdmin_id,
+                sAdmin_token,
+            }
+        })
         : dispatch({
-              type: SADMIN_CHECK_AUTH,
-              payload: {
-                  isAuthenticated: false,
-                  user_id: null,
-                  token: null,
-              }
-          });
+            type: SADMIN_CHECK_AUTH,
+            payload: {
+                isAuthenticated: false,
+                sAdmin_id: null,
+                sAdmin_token: null,
+            }
+        });
 };

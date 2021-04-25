@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { signIn } from "../../../../redux/actions/sAdmin.action";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Loading } from "../../../Global/Loading";
+import React, {useState, useEffect} from "react";
+import {signIn} from "../../../../redux/actions/sAdmin.action";
+import {useSelector, useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {Loading} from "../../../Global/Loading";
 import ErrorMessage from "../../../Global/ErrorMessage";
-import { useSecureLs } from "../../../Global/UseSecureLs";
+import {useSecureLs} from "../../../Global/UseSecureLs";
 
 function SuperAdminLogin() {
     const dispatch = useDispatch();
@@ -14,8 +14,8 @@ function SuperAdminLogin() {
         email: "",
         password: ""
     });
-    const [token, setToken] = useSecureLs("token"); // eslint-disable-line
-    const [userId, setUserId] = useSecureLs("user_id"); // eslint-disable-line
+    const [token, setToken] = useSecureLs("sAdmin_token"); // eslint-disable-line
+    const [userId, setUserId] = useSecureLs("sAdmin_id"); // eslint-disable-line
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -30,17 +30,17 @@ function SuperAdminLogin() {
         document.title = `Super Admin Login`;
     }, []); // eslint-disable-line
     return (
-        <div className="bg-gray-100 flex flex-col justify-center items-center py-32">
-            {state.sAdmin.loading && <Loading />}
+        <div className="w-full bg-gray-100 flex flex-col justify-center items-center py-24">
+            {state.sAdmin.loading && <Loading/>}
             {state.sAdmin.success === false && (
-                <ErrorMessage errors={state.sAdmin.errors} />
+                <ErrorMessage errors={state.sAdmin.errors}/>
             )}
             <h1 className="text-3xl font-semibold text-center">
                 Sign In To Your Account
             </h1>
 
             <form
-                className="w-11/12 sm:w-10/12 lg:w-6/12 xl:w-4/12 bg-gray-200 p-10 rounded-sm  mt-10 border shadow-lg"
+                className="w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12 bg-gray-200 p-10 rounded-sm  mt-10 border shadow-lg"
                 onSubmit={onSubmitHandler}
             >
                 <label htmlFor="email" className="block">
@@ -53,7 +53,7 @@ function SuperAdminLogin() {
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
                     aria-required="true"
                     onChange={(e) =>
-                        setUser({ ...user, email: e.target.value })
+                        setUser({...user, email: e.target.value})
                     }
                 />
 
@@ -67,7 +67,7 @@ function SuperAdminLogin() {
                     className="p-2 w-full border border-gray-400 focus:outline-none focus:border-black"
                     aria-required="true"
                     onChange={(e) =>
-                        setUser({ ...user, password: e.target.value })
+                        setUser({...user, password: e.target.value})
                     }
                 />
 

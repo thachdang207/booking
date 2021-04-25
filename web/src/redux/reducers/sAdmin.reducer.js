@@ -2,17 +2,17 @@ import { SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, SET_LOADING } from "../actionTypes";
 import SecureLS from "secure-ls";
 
 let ls = new SecureLS({ encodingType: "aes", isCompression: false });
-let _token;
-let _user_id;
+let _sAdmin_token;
+let _sAdmin_id;
 try {
-    _token = ls.get("token");
-    _user_id = ls.get("user_id");
+    _sAdmin_token = ls.get("sAdmin_token");
+    _sAdmin_id = ls.get("sAdmin_id");
 } catch (error) {}
 const initialState = {
     isAuthenticated:
-        _token !== null && _token !== "null" && _token !== "" ? true : false,
-    token: _token || null,
-    user_id: _user_id || null,
+        _sAdmin_token !== null && _sAdmin_token !== "null" &&_sAdmin_token !== "",
+    token: _sAdmin_token || null,
+    user_id: _sAdmin_id || null,
     loading: false,
     success: null,
     errors: null
@@ -23,8 +23,8 @@ export default function sAdmin(state = initialState, action) {
         case SADMIN_SIGN_IN: {
             return {
                 ...state,
-                success: action.payload.success ? true : false,
-                isAuthenticated: action.payload.success ? true : false,
+                success: !!action.payload.success,
+                isAuthenticated: !!action.payload.success,
                 token: action.payload.success ? action.payload.accessToken : null,
                 user_id: action.payload.success ? action.payload.user.id : null,
                 // is_admin: action.payload.success
