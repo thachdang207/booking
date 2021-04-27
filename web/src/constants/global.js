@@ -11,8 +11,6 @@ export const GUEST_OPTIONS = [
   { value: '10', label: '10' },
 ];
 
-
-
 export const CITY_OPTIONS = [
     { value: '1', label: 'Đà Nẵng'},
     { value: '2', label: 'Đà Lạt'},

@@ -71,9 +71,9 @@ export const createLocation = (dispatch, token, formData) => {
     setLoading(dispatch, true);
     axios
         .post(
-            `${url}/super-admin/locations`,
-            formData, {
-                headers: { Authorization: `Bearer ${token}` }
+            `${url}/super-admin/locations`,formData,{
+                headers: { Authorization: `Bearer ${token}` },
+                "Content-Type": ` application/json`
             })
         .then((response) => {
             dispatch({

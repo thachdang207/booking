@@ -12,7 +12,6 @@ import {useSelector} from "react-redux";
 function SuperAdmin() {
     const state = useSelector((state) => state);
     const match = useRouteMatch();
-    console.log({match});
 
     const history = useHistory();
     useEffect(() => {

@@ -21,7 +21,6 @@ function SignupForm(props) {
     const state = useSelector((state) => state);
     const [token, setToken] = useSecureLs("token");
     const [userId, setUserId] = useSecureLs("user_id");
-    // const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const [user, setUser] = useState({
         fullName: "",
@@ -33,7 +32,7 @@ function SignupForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signUp(dispatch, user, setToken, setUserId); //setIsAdmin
+        signUp(dispatch, user, setToken, setUserId);
         console.log("Submit: ", user);
     };
 
