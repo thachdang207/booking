@@ -18,6 +18,7 @@ export const GET_CITIES = "GET_CITIES";
 export const GET_LOCATION_TYPES = "GET_LOCATION_TYPES";
 
 export const GET_ROOM = "GET_ROOM";
+export const GET_SPECIFIC_ROOM ="GET_SPECIFIC_ROOM"
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
 
 export const GET_USER = "GET_USER";
@@ -25,5 +26,5 @@ export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export const UPDATE_USER_PASSWORD = "UPDATE_USER_PASSWORD";
 
 export const SET_LOADING = "SET_LOADING";
-export const CONFRIM_DELETE = "CONFRIM_DELETE";
+export const CONFIRM_DELETE = "CONFIRM_DELETE";
 export const SET_SUCCESS = "SET_SUCCESS";

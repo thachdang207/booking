@@ -1,4 +1,4 @@
-import { SET_LOADING, CONFRIM_DELETE, SET_SUCCESS } from "../actionTypes";
+import { SET_LOADING, CONFIRM_DELETE, SET_SUCCESS } from "../actionTypes";
 
 //-----------------------------------------
 export const setLoading = (dispatch, bool) => {
@@ -10,7 +10,7 @@ export const setLoading = (dispatch, bool) => {
 //-----------------------------------------
 export const confirmDelete = (dispatch, i, bool) => {
     dispatch({
-        type: CONFRIM_DELETE,
+        type: CONFIRM_DELETE,
         payload: { i, bool }
     });
 };

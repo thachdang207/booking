@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
     GET_ROOM,
+    GET_SPECIFIC_ROOM,
 } from "../actionTypes";
 import { setLoading } from "./commonActions";
 
@@ -18,6 +19,19 @@ export const getRoom = async (dispatch, hotelId) => {
         });
         dispatch({
             type: GET_ROOM,
+            payload: response.data
+        })
+    } catch(error){
+        console.log(error);
+    }
+};
+
+export const getSpecificRoom = async (dispatch, roomId) => {
+    setLoading(dispatch, true);
+    try {
+        const response = await axios.get(`${url}/customer/rooms/${roomId}`);
+        dispatch({
+            type: GET_SPECIFIC_ROOM,
             payload: response.data
         })
     } catch(error){

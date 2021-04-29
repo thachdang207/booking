@@ -1,5 +1,6 @@
 import {
     GET_ROOM,
+    GET_SPECIFIC_ROOM,
     GET_ALL_ROOMS,
     SET_SUCCESS,
     SET_LOADING
@@ -32,7 +33,12 @@ export default function room(state = initialState, action) {
         case GET_ROOM: {
             return {
                 ...state,
-                room: action.payload.data,
+            };
+        }
+        case GET_SPECIFIC_ROOM: {
+            return {
+                ...state,
+                room: action.payload,
             };
         }
         case GET_ALL_ROOMS: {

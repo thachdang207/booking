@@ -6,6 +6,7 @@ import StaticHeader from "../Global/StaticHeader"
 
 import HotelHero from "./HotelHero";
 import HotelGoogleMap from './HotelGoogleMap'
+import BookingModal from "./BookingModal";
 
 import {getHotel} from "../../redux/actions/hotel.action";
 import {useSelector, useDispatch} from "react-redux";
@@ -13,7 +14,6 @@ import {useParams} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import {useSecureLs} from "../Global/UseSecureLs";
 import {Table, Button} from "reactstrap"
-import {Link} from "react-router-dom"
 
 function Hotel(props) {
     const dispatch = useDispatch();
@@ -37,22 +37,8 @@ function Hotel(props) {
         return priceString;
     }
 
-    function getRandom(arr, n) {
-        let result = new Array(n),
-            len = arr.length,
-            taken = new Array(len);
-        if (n > len)
-            n--;
-        while (n--) {
-            let x = Math.floor(Math.random() * len);
-            result[n] = arr[x in taken ? taken[x] : x];
-            taken[x] = --len in taken ? taken[len] : len;
-        }
-        return result;
-    }
-
     useEffect(() => {
-        getHotel(dispatch, id);
+        getHotel(dispatch, id)
         setUserId(userId)
     }, []); // eslint-disable-line
 
@@ -124,12 +110,7 @@ function Hotel(props) {
                                 <td>{room.capacity}</td>
                                 <td>{formatPrice(room.price)} {" "} VND</td>
                                 <td>
-                                    <Link
-                                        to={`/room/${room.id}`}
-                                        className="no-underline"
-                                    >
-                                        <Button>Book</Button>
-                                    </Link>
+                                    <BookingModal room={room}/>
                                 </td>
                             </tr>
                         )
