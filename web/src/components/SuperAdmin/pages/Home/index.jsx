@@ -10,6 +10,7 @@ export default function Home() {
     return (
         <div>
             <h1>This is Super admin Home page</h1>
+
             <div className="flex flex-col">
                 <Link
                     className="hover:no-underline"

@@ -2,6 +2,7 @@ import React ,{ Suspense, useEffect } from 'react'
 import { ProtectedRoute } from './ProtectedRoute'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Loading } from './components/Global/Loading'
+import RedirectPage from "./components/Global/RedirectPage";
 import Unauthorized from './components/Global/Unauthorizated'
 
 import UserProfile from './components/User/UserProfile'
@@ -60,6 +61,7 @@ function App() {
                         component={SuperAdmin}
                     />
 
+                    <Route exact path="/404" component={RedirectPage} />
                     <Route exact path="/401" component={Unauthorized} />
                 </Switch>
             </BrowserRouter>

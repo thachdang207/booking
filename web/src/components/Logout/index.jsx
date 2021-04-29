@@ -30,7 +30,7 @@ function Logout() {
     setTimeout(() => {
         history.push("/");
     }, 500);
-    return <div></div>;
+    return <></>;
 }
 
 export default Logout;

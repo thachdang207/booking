@@ -11,6 +11,9 @@ function Nav() {
                     <div className="flex items-center">
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
+                                <Link to="/admin" className="text-gray-300 hover:bg-gray-700 hover:text-white hover:no-underline px-3 py-2 rounded-md text-sm font-medium">
+                                    <button>Home</button>
+                                </Link>
                                 <Link to="/admin/room" className="text-gray-300 hover:bg-gray-700 hover:text-white hover:no-underline px-3 py-2 rounded-md text-sm font-medium">
                                     <button>Room</button>
                                 </Link>

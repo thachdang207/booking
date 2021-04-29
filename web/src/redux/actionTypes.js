@@ -3,6 +3,9 @@ export const SIGN_IN = "SIGN_IN";
 export const ADMIN_LOGIN = "ADMIN_LOGIN"
 export const CHECK_AUTH = "CHECK_AUTH";
 
+export const GET_ADMIN_INFO = "GET_ADMIN_INFO";
+
+
 export const SADMIN_SIGN_IN= "SADMIN_SIGN_IN";
 export const SADMIN_CHECK_AUTH= "SADMIN_CHECK_AUTH";
 export const CREATE_LOCATION = "CREATE_LOCATION";

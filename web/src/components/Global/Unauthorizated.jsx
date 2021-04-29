@@ -20,7 +20,7 @@ function Unauthorized(props) {
     return (
         <>
             <Header />
-            <div className="min-h-screen flex justify-center items-center capitalize">
+            <div className="min-h-screen flex justify-center items-center uppercase text-6xl">
                 {props.location.state
                     ? props.location.state.message
                     : "You are not authorized, please log in again"}
