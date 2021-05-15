@@ -12,11 +12,11 @@ export const GUEST_OPTIONS = [
 ];
 
 export const CITY_OPTIONS = [
-    { value: '1', label: 'Đà Nẵng'},
-    { value: '2', label: 'Đà Lạt'},
-    { value: '3', label: 'Hồ Chí Minh'},
+    { value: '1', label: 'Đà Lạt'},
+    { value: '2', label: 'Hội An'},
+    { value: '3', label: 'Đà Nẵng'},
     { value: '4', label: 'Nha Trang'},
-    { value: '5', label: 'Hội An'},
+    { value: '5', label: 'Hồ Chí Minh'},
 ];
 
 export const ROOM_TYPE_OPTIONS = [

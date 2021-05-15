@@ -1,20 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useContext, useEffect } from 'react';
-import { useSecureLs } from '../Global/UseSecureLs'
-import { useDispatch, useSelector } from 'react-redux'
-import { AccountContext } from './accountContext';
-import { signIn } from '../../redux/actions/auth.action'
-import { useHistory } from 'react-router-dom'
-import { Loading } from '../Global/Loading'
+import React, {useState, useContext, useEffect} from 'react';
+import {useSecureLs} from '../Global/UseSecureLs'
+import {useDispatch, useSelector} from 'react-redux'
+import {AccountContext} from './accountContext';
+import {signIn} from '../../redux/actions/auth.action'
+import {useHistory} from 'react-router-dom'
+import {Loading} from '../Global/Loading'
 import ErrorMessage from '../Global/ErrorMessage'
 
 import './Login.css'
 
-function LoginForm(props) {
+function LoginForm() {
 
-    const { switchToSignup, switchToAdminLogin } = useContext(AccountContext);
+    const {switchToSignup, switchToAdminLogin} = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -26,7 +26,6 @@ function LoginForm(props) {
 
     const [token, setToken] = useSecureLs("token");
     const [userId, setUserId] = useSecureLs("user_id");
-    // const [isAdmin, setIsAdmin] = useSecureLs("is_admin");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,9 +43,9 @@ function LoginForm(props) {
 
     return (
         <div className="inner-container">
-            {state.auth.loading && <Loading />}
+            {state.auth.loading && <Loading/>}
             {state.auth.success === false && (
-                <ErrorMessage errors={state.auth.errors} />
+                <ErrorMessage errors={state.auth.errors}/>
             )}
             <div className="box-container">
                 <form className="form-container" onSubmit={handleSubmit}>
@@ -57,7 +56,7 @@ function LoginForm(props) {
                         aria-required="true"
                         placeholder="Email"
                         onChange={(e) =>
-                            setUser({ ...user, email: e.target.value })
+                            setUser({...user, email: e.target.value})
                         }
                     />
                     <input
@@ -67,18 +66,20 @@ function LoginForm(props) {
                         className="input"
                         placeholder="Password"
                         onChange={(e) =>
-                            setUser({ ...user, password: e.target.value })
+                            setUser({...user, password: e.target.value})
                         }
                     />
-                    <p className="muted-link">
-                        Connect with us as an owner?
-                        <a
-                            className="bold-link"
-                            onClick={switchToAdminLogin}
-                        >
-                            Sign in
-                        </a>
-                    </p>
+                    <div className="flex flex-row items-center">
+                        <p className="muted-link">
+                            Connect with us as an owner?
+                            <a
+                                className="bold-link"
+                                onClick={switchToAdminLogin}
+                            >
+                                Sign in
+                            </a>
+                        </p>
+                    </div>
                     <button className="submit-button" type="submit">
                         Sign in
                     </button>

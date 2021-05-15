@@ -6,36 +6,22 @@ import StaticHeader from "../Global/StaticHeader"
 
 import HotelHero from "./HotelHero";
 import HotelGoogleMap from './HotelGoogleMap'
-import BookingModal from "./BookingModal";
-
 import {getHotel} from "../../redux/actions/hotel.action";
 import {useSelector, useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import {useSecureLs} from "../Global/UseSecureLs";
-import {Table, Button} from "reactstrap"
+import Searchbar from "./Searchbar";
+import {getAvailableRoom} from "../../redux/actions/room.action";
+import Rooms from "./Rooms";
 
-function Hotel(props) {
+function Hotel() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     let {id} = useParams();
     const [_user_id] = useSecureLs("user_id");
     const [userId, setUserId] = useState(_user_id);
-
-    const formatPrice = (price) => {
-        let priceString = '';
-        price = Math.floor(price);
-        while (price > 999) {
-            let num = price % 1000;
-            priceString += '.' + num;
-            price = Math.floor(price / 1000);
-            if (price <= 999) {
-                priceString = price + '' + priceString;
-                break;
-            }
-        }
-        return priceString;
-    }
+    const [isFinding, setIsFinding] = useState(false);
 
     useEffect(() => {
         getHotel(dispatch, id)
@@ -58,6 +44,15 @@ function Hotel(props) {
         document.title = `${state.hotel.hotel.name}`;
         return () => clearTimeout(timer);
     }, [state.hotel.hotel]); // eslint-disable-line
+
+    const handleSearch = (values) => {
+        return new Promise(() => {
+            getAvailableRoom(dispatch, state.hotel.hotel.id, values.startTime, values.endTime)
+            setIsFinding(true);
+            console.log("Search form: ", values);
+        })
+    }
+
     return (
         <>
             <StaticHeader/>
@@ -65,59 +60,22 @@ function Hotel(props) {
 
             <Border/>
             <div className="relative font-serif text-lg m-10 px-12 pb-10 lg:px-48" data-aos="fade-up">
-                <h1 className="flex justify-center font-semibold pb-10">
-                    About {state.hotel.hotel.name}
-                </h1>
+                <Title className="flex justify-center pb-10"
+                       title={`About ${state.hotel.hotel.name}`}
+                />
                 <p>
                     {state.hotel.hotel.description}
                 </p>
             </div>
 
             <Border/>
+            <Searchbar onSubmit={handleSearch}/>
 
+            <hr/>
             {state.hotel.hotel && (
                 <Title title={`${state.hotel.hotel.name}'s Rooms`} data-aos="fade-up"/>
             )}
-            <div className="lg:mx-20 xl:mx-40">
-                <Table striped bordered hover data-aos="fade-up">
-                    <thead>
-                    <tr>
-                        <th>Services</th>
-                        <th>Name</th>
-                        <th>Maximum guests</th>
-                        <th>Price</th>
-                        <th>Book</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {state.hotel.hotel && state.hotel.hotel.rooms.map((room) => {
-                        return (
-                            <tr key={room.id}>
-                                <td className="grid grid-cols-5">
-                                    {state.hotel.hotel.serviceTypes.map((service, key) => {
-                                        return (
-                                            <div key={key}>
-                                                <img
-                                                    src={service.icon}
-                                                    alt="service"
-                                                    className="relative w-6 h-6 object-contain"
-                                                />
-                                            </div>
-                                        )
-                                    })}
-                                </td>
-                                <td>{room.name}</td>
-                                <td>{room.capacity}</td>
-                                <td>{formatPrice(room.price)} {" "} VND</td>
-                                <td>
-                                    <BookingModal room={room}/>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                    </tbody>
-                </Table>
-            </div>
+            <Rooms rooms={isFinding ? state.room.availableRooms : state.hotel.hotel.rooms}/>
 
             <Border my="16"/>
 

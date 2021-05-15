@@ -1,10 +1,10 @@
 /* eslint-disable no-sequences */
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import PropTypes from 'prop-types'
-import styled, { css } from "styled-components/macro"
-import { SLIDER_HOTEL } from '../../../constants/hotel'
-import { IoMdArrowRoundForward } from 'react-icons/io'
-import { IoArrowForward, IoArrowBack } from 'react-icons/io5'
+import styled, {css} from "styled-components/macro"
+import {SLIDER_HOTEL} from '../../../constants/hotel'
+import {IoMdArrowRoundForward} from 'react-icons/io'
+import {IoArrowForward, IoArrowBack} from 'react-icons/io5'
 
 import "./Hero.css"
 
@@ -17,34 +17,34 @@ Hero.defaultProps = {
 }
 
 const arrowButton = css`
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    cursor: pointer;
-    background-color: #000d1a;
-    border-radius: 50px;
-    padding: 10px;
-    margin-right: 1rem;
-    user-select: none;
-    transition: 300ms;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #000d1a;
+  border-radius: 50px;
+  padding: 10px;
+  margin-right: 1rem;
+  user-select: none;
+  transition: 300ms;
 
-    &:hover{
-        color: rgb(0, 0, 0);
-        background-color: #fff;
-        tranform: scale(1.15)
-    }
+  &:hover {
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    transform: scale(1.15)
+  }
 `;
 
 const Arrow = styled(IoMdArrowRoundForward)`
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 `;
 
 const PrevArrow = styled(IoArrowBack)`
-    ${arrowButton}
+  ${arrowButton}
 `;
 
 const NextArrow = styled(IoArrowForward)`
-    ${arrowButton}
+  ${arrowButton}
 `;
 
 function Hero(props) {
@@ -106,7 +106,7 @@ function Hero(props) {
                                         <p>Starting from {" "}{slide.price}</p>
                                         <button className="hero-button" onClick={props.onClick}>
                                             {slide.label}
-                                            <Arrow />
+                                            <Arrow/>
                                         </button>
                                     </div>
                                 </div>
@@ -115,8 +115,8 @@ function Hero(props) {
                     )
                 })};
                 <div className="slider-button">
-                    <PrevArrow onClick={prevSlide} />
-                    <NextArrow onClick={nextSlide} />
+                    <PrevArrow onClick={prevSlide}/>
+                    <NextArrow onClick={nextSlide}/>
                 </div>
             </div>
         </section>

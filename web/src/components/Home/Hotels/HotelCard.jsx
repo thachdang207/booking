@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Badge } from "reactstrap"
+import {Link} from "react-router-dom";
+import {Badge} from "reactstrap"
 
 
-function HotelCard({ hotel: { id, name, price, score, images } }) {
-    const formattedPrice = price.slice(1);
+function HotelCard({hotel: {id, name, price, score, images}}) {
+    const formatPrice = (price) => {
+        if(price !== null) return price.slice(1)
+        else return 0
+    }
     return (
-        <div className="p-0 lg:p-3">
+        <div className="p-0 lg:p-1">
             <div
                 className="bg-gray-100 h-72 xl:h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"
@@ -23,7 +26,7 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                             alt="hotel"
                         />
                         <div className="flex items-center justify-between w-full absolute bottom-0">
-                            <div className="absolute w-full h-full bg-gray-800 opacity-50"></div>
+                            <div className="absolute w-full h-full bg-gray-800 opacity-50"/>
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
                                     <h3>
@@ -31,13 +34,13 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                                     </h3>
                                 </div>
                                 <div className="text-gray-100 font-semibold">
-                                    Starting from {formattedPrice} VND
+                                    Around {formatPrice(price)} VND
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <p className="p-4 text-lg uppercase font-bold font-sans-roboto text-center text-gray-800 hover:text-gray-600">
+                    <p className="p-4 text-xl uppercase font-bold font-sans text-center text-gray-800 hover:text-gray-600">
                         {name}
                     </p>
                 </Link>

@@ -1,6 +1,7 @@
 import {
     GET_ROOM,
     GET_SPECIFIC_ROOM,
+    GET_AVAILABLE_ROOM,
     GET_ALL_ROOMS,
     SET_SUCCESS,
     SET_LOADING
@@ -12,12 +13,13 @@ const initialState = {
         name: "",
         description: "",
         price: "",
-        capicity: "",
+        capacity: "",
         locationId: "",
         created_at: "",
         updated_at: ""
     },
     allRooms: [],
+    availableRooms: [],
     success: null,
     errors: null,
     loading: false,
@@ -39,6 +41,12 @@ export default function room(state = initialState, action) {
             return {
                 ...state,
                 room: action.payload,
+            };
+        }
+        case GET_AVAILABLE_ROOM: {
+            return {
+                ...state,
+                availableRooms: action.payload,
             };
         }
         case GET_ALL_ROOMS: {

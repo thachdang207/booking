@@ -8,21 +8,22 @@ function Logout() {
     const state = useSelector((state) => state);
 
     useEffect(() => {
-        ls.remove("token");
-        ls.remove("user_id");
-        ls.remove("first_login");
+        ls.removeAll();
         state.auth.isAuthenticated = false;
         state.auth.token = null;
         state.auth.user_id = null;
-        // ls.remove("is_admin");
+
+        state.sAdmin.isAuthenticated = false;
+        state.sAdmin.token = null;
+        state.sAdmin.user_id = null;
         return () => {
-            ls.remove("token");
-            ls.remove("user_id");
-            ls.remove("first_login");
+            ls.removeAll();
             state.auth.isAuthenticated = false;
             state.auth.token = null;
             state.auth.user_id = null;
-            // ls.remove("is_admin");
+            state.sAdmin.isAuthenticated = false;
+            state.sAdmin.token = null;
+            state.sAdmin.user_id = null;
         };
     }, []); // eslint-disable-line
 

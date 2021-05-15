@@ -3,11 +3,12 @@ import {
     UPDATE_USER_INFO,
     UPDATE_USER_PASSWORD,
     SET_LOADING,
-    SET_SUCCESS
+    SET_SUCCESS, GET_BOOKING_HISTORIES
 } from "../actionTypes";
 
 const initialState = {
     success: null,
+    bookings: [],
     user: null,
     errors: null
 };
@@ -18,6 +19,12 @@ export default function user(state = initialState, action) {
             return {
                 ...state,
                 user: action.payload.user,
+            };
+        }
+        case GET_BOOKING_HISTORIES: {
+            return {
+                ...state,
+                bookings: action.payload,
             };
         }
         case UPDATE_USER_INFO: {

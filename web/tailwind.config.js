@@ -165,7 +165,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        '"Montserrat"',
+          'Montserrat', 'sans-serif'
       ],
       serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: [

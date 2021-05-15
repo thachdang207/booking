@@ -60,7 +60,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', 'Dosis', 'Roboto Slab', 'Poppins', sans-serif;
+    font-family: 'Dosis', 'Roboto Slab', 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

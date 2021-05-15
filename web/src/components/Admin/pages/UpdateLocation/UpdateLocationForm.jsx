@@ -3,25 +3,25 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {Formik, Form, FastField} from 'formik'
 import {Button, FormGroup, Spinner} from 'reactstrap'
-import * as Yup from 'yup'
+import PropTypes from 'prop-types'
 
 import SelectField from '../../../../custom-fields/SelectField'
 import InputField from '../../../../custom-fields/InputField'
-import TimeField from '../../../../custom-fields/TimeField'
 import {CITY_OPTIONS} from '../../../../constants/global'
-import {createLocation} from '../../../../redux/actions/sAdmin.action'
 import {getLocationTypes} from "../../../../redux/actions/city.action";
-import PropTypes from "prop-types";
+import {TimePicker} from "antd";
 
-CreateLocationForm.propTypes = {
-    onSubmit: PropTypes.func,
-}
+const {RangePicker} = TimePicker;
 
-CreateLocationForm.defaultProps = {
+UpdateLocationForm.defaultProps = {
     onSubmit: null,
 }
 
-export default function CreateLocationForm(props) {
+UpdateLocationForm.propTypes = {
+    onSubmit: PropTypes.func,
+}
+
+export default function UpdateLocationForm(props) {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
@@ -30,16 +30,16 @@ export default function CreateLocationForm(props) {
         name: '',
         address: '',
         city: '',
-        workingTime: '',
+        workingTime: {
+            startTime: '',
+            endTime: '',
+        },
         contactPhoneNumber: '',
         contactEmail: '',
         price: '',
         description: '',
         thumbnail: '',
-        images: [],
-        isFeatured: false,
     }
-    const [location, setLocation] = useState(initialValues);
 
     const locationTypeOptions = [];
 
@@ -55,86 +55,26 @@ export default function CreateLocationForm(props) {
 
     useEffect(() => {
         getLocationTypes(dispatch);
-        document.title = "Create new location";
+        document.title = "Update location information";
     }, [])
-
-    const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Name is required').nullable(),
-        locationTypeId: Yup.string().required('Location type is required').nullable(),
-        city: Yup.string().required('City is required').nullable(),
-    })
-
-    const onSubmitHandler = () => {
-        const formData = new FormData();
-
-        formData.append("_method", "PUT");
-        formData.append("locationTypeId", location.locationTypeId);
-        formData.append("name", location.name);
-        formData.append("contactPhoneNumber", location.contactPhoneNumber);
-        formData.append("contactEmail", location.contactEmail);
-        formData.append("address", location.address);
-        formData.append("city", location.city);
-        formData.append("price", location.price);
-        formData.append("description", location.description);
-        formData.append("thumbnail", location.thumbnail);
-        formData.append("isFeatured", location.isFeatured);
-        formData.append("image", location.image);
-
-        for (let value of formData.values()) {
-            console.log(value);
-        }
-        createLocation(dispatch, state.sAdmin.token, formData);
-    }
 
     const [time, setTime] = useState("");
     const [timeString, setTimeString] = useState("");
 
-    const onTimeSelection = (value, timeString) => {
-        setTime(value);
-        setTimeString(timeString);
-        console.log(timeString);
-    }
-
-    const handleSubmit = (values) => {
-        setTimeout(() => {
-            setLocation({
-                ...location,
-                name: values.name,
-                address: values.address,
-                city: values.city,
-                locationTypeId: state.city.locationTypes[values.locationTypeId - 1].id,
-                contactPhoneNumber: values.contactPhoneNumber,
-                contactEmail: values.contactEmail,
-                price: values.price,
-                description: values.description,
-            })
-        }, 500)
-        console.log("Location: ", location);
-    }
-
-    const timeStyle = {
-        height: "auto",
-        width: "100%",
-        cursor: "pointer",
-        borderRadius: "3px",
-        marginBottom: "12px",
-    }
     return (
         <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {values, isSubmitting} = formikProps;
-                console.log(values);
+                const {values, setValues, isSubmitting} = formikProps;
                 return (
-                    <div className="w-full xl:px-32 lg:px-16 md:px-3 sm:p-0 items-center min-h-screen bg-white">
+                    <div className="w-full xl:px-40 lg:px-36 md:px-23 sm:p-0 items-center min-h-screen bg-white">
                         <div className="text-center">
-                            <h1 className="my-3 font-semibold font-serif text-gray-800 dark:text-gray-200">Create
-                                new Location</h1>
+                            <h1 className="my-3 font-semibold font-serif text-gray-800 dark:text-gray-200">Update
+                                Location Information</h1>
                         </div>
-                        <div className="w-full xl:p-10 lg:p-5 md:p-1 items-center min-h-screen bg-white"
+                        <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
                              data-aos="fade-up">
                             <div className="container mx-auto">
                                 <Form className="max-w-full mx-auto bg-gray-200 p-16 rounded-md shadow-sm">
@@ -167,13 +107,29 @@ export default function CreateLocationForm(props) {
                                             placeholder="Location Type"
                                             options={locationTypeOptions}
                                         />
-                                        <FastField
-                                            name="workingTime"
+                                        <RangePicker
+                                            format="HH:mm"
+                                            id="workingTime"
+                                            allowClear="true"
+                                            onChange={(value, timeString) => {
+                                                setTime(value);
+                                                setTimeString(timeString);
+                                                setValues({
+                                                    ...values,
+                                                    workingTime: {
+                                                        startTime: timeString[0],
+                                                        endTime: timeString[1],
+                                                    },
+                                                });
+                                            }}
                                             size="large"
-                                            style={timeStyle}
-                                            onBlur={formikProps.handleBlur("workingTime")}
-                                            component={TimeField}
-                                            onChange={onTimeSelection}
+                                            style={{
+                                                height: "auto",
+                                                width: "100%",
+                                                cursor: "pointer",
+                                                borderRadius: "3px",
+                                                marginBottom: "12px",
+                                            }}
                                         />
                                         <div className="block w-full">
                                             <div className="inline-block w-1/2">
@@ -202,23 +158,22 @@ export default function CreateLocationForm(props) {
                                             placeholder="Description"
                                         />
                                         <FormGroup>
-                                            {/* <Link
-                                                className="no-underline text-white"
-                                                to={`/search/from_to=${initialValues.fromTo}
-                                                &city=${initialValues.cityId}
-                                                &guest=${initialValues.guest}`}
-                                            > */}
                                             <Button
                                                 type="submit"
                                                 className="w-full pt-1 text-white focus:outline-none"
+                                                color="primary"
+                                                onClick={() => {
+                                                    setValues({
+                                                        ...values,
+                                                        locationTypeId: state.city.locationTypes[values.locationTypeId - 1].id,
+                                                    });
+                                                }}
                                             >
                                                 {isSubmitting && <Spinner size="sm"/>}
-                                                Create
+                                                Update
                                             </Button>
-                                            {/* </Link> */}
                                         </FormGroup>
                                     </div>
-
                                 </Form>
                             </div>
                         </div>

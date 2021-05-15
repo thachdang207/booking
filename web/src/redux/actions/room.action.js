@@ -1,9 +1,10 @@
 import axios from "axios";
 import {
+    GET_AVAILABLE_ROOM,
     GET_ROOM,
     GET_SPECIFIC_ROOM,
 } from "../actionTypes";
-import { setLoading } from "./commonActions";
+import {setLoading} from "./commonActions";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -13,7 +14,7 @@ export const getRoom = async (dispatch, hotelId) => {
     try {
         console.log(hotelId);
         const response = await axios.get(`${url}/customer/locations/${hotelId}`, {
-            params : {
+            params: {
                 join: ['locationType', 'city', 'rooms', 'serviceTypes'],
             }
         });
@@ -21,7 +22,7 @@ export const getRoom = async (dispatch, hotelId) => {
             type: GET_ROOM,
             payload: response.data
         })
-    } catch(error){
+    } catch (error) {
         console.log(error);
     }
 };
@@ -34,7 +35,24 @@ export const getSpecificRoom = async (dispatch, roomId) => {
             type: GET_SPECIFIC_ROOM,
             payload: response.data
         })
-    } catch(error){
+    } catch (error) {
         console.log(error);
     }
+};
+
+export const getAvailableRoom = (dispatch, locationId, startTime, endTime) => {
+    axios.get(`${url}/customer/locations/${locationId}/bookings`, {
+        params: {
+            startTime: startTime,
+            endTime: endTime,
+        }
+    })
+        .then((response) => {
+            dispatch({
+                type: GET_AVAILABLE_ROOM,
+                payload: response.data
+            });
+        })
+        .catch((error) => {
+        });
 };

@@ -58,7 +58,7 @@ function Header() {
                     ) : (
                         <>
                             <li>
-                                <Link to={`/user-profile/${id}`}
+                                <Link to={`/user/${id}`}
                                       className="header-links"
                                 >
                                     <button>

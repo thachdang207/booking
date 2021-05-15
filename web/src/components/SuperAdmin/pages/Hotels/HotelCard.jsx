@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Badge } from "reactstrap"
+import {Link} from "react-router-dom";
+import {Badge} from "reactstrap"
 
 
-function HotelCard({ hotel: { id, name, price, score, images } }) {
+function HotelCard({hotel: {id, name, price, score, images}}) {
     const formattedPrice = price.slice(1);
     return (
-        <div className="p-0 lg:p-3">
+        <div className="p-0 lg:p-1">
             <div
                 className="bg-gray-100 h-72 xl:h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"
             >
-                <Link to={`/hotel/${id}`} className="no-underline hover:no-underline">
+                <Link to={`/super-admin/create-owner/${id}`} className="no-underline hover:no-underline">
                     <div className="relative">
                         <img
                             src={
@@ -23,7 +23,7 @@ function HotelCard({ hotel: { id, name, price, score, images } }) {
                             alt="hotel"
                         />
                         <div className="flex items-center justify-between w-full absolute bottom-0">
-                            <div className="absolute w-full h-full bg-gray-800 opacity-50"></div>
+                            <div className="absolute w-full h-full bg-gray-800 opacity-50"/>
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
                                     <h3>

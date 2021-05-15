@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormFeedback, FormGroup } from 'reactstrap'
+import {FormFeedback, FormGroup, Label} from 'reactstrap'
 import Select from 'react-select'
 import { ErrorMessage } from 'formik'
 
@@ -24,7 +24,7 @@ SelectField.defaultProps = {
 
 function SelectField(props) {
     const {
-        field, form, options, placeholder, disabled
+        field, form, options, placeholder, disabled, label
     } = props;
 
     const { name, value } = field;
@@ -53,7 +53,7 @@ function SelectField(props) {
     return (
         <div>
             <FormGroup>
-
+                {label && <Label for={name}>{label}</Label>}
                 <Select
                     id={name}
                     {...field}

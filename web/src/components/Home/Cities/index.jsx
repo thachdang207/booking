@@ -1,40 +1,63 @@
-import React, {useEffect} from 'react'
-import Title from '../../Global/Title'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCities } from '../../../redux/actions/city.action'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react';
+import {getCities} from "../../../redux/actions/city.action";
+import {useDispatch, useSelector} from "react-redux";
+import CityCard from "./CityCard";
+import Slider from "react-slick"
+import Title from "../../Global/Title";
 
 function Cities() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
     useEffect(() => {
-        getCities(dispatch);
-    },[dispatch]);
-    
+        const timer = setTimeout(() => {
+            getCities(dispatch);
+        }, 3000)
+        return () => clearTimeout(timer)
+    }, []);
+
+    const settings = {
+        autoplay: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        speed: 3000,
+        autoplaySpeed: 3000,
+        arrows: true,
+        className: "overflow-x-hidden",
+        responsive: [
+            {
+                breakpoint: 1424,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    };
     return (
-        <> 
-            <Title title="The most attractive destinations in Vietnam" />
-            <div className="flex mx-auto px-8 py-5" data-aos="fade-up">
-                {state.city && state.city.cities.map((city) => {
-                    return(
-                        <Link to={`/city/${city.id}`} key={city.id} className="no-underline hover:no-underline text-black hover:text-gray-700 px-8 mx-auto">
-                            <div className="w-full mx-auto cursor-pointer px-4">
-                                <div className="w-60 h-60 flex items-center justify-center">
-                                    <img src={city.thumbnail} alt="city" className="w-56 h-56 object-cover rounded-full hover:shadow-2xl"/>
-                                </div>
-                                <p className="mx-16 mt-3 text-lg font-semibold font-serif">
-                                    {city.name}
-                                </p>
-                                {/* <span className="text-md font-sans font-bold mx-10"
-                                >{city.averagePrice.slice(1)} VND </span> */}
-                            </div>
-                        </Link>
+        <div>
+            <Title title="The most attractive destinations in Vietnam"/>
+            <Slider {...settings}>
+                {state && state.city.cities.map((city) => (
+                        <CityCard key={city.id} city={city}/>
                     )
-                })}
-            </div>
-        </>
-    )
+                )}
+            </Slider>
+        </div>
+    );
 }
 
 export default Cities;

@@ -1,4 +1,4 @@
-import {SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, CREATE_LOCATION, SET_LOADING} from "../actionTypes";
+import {SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, SET_LOADING, CREATE_OWNER} from "../actionTypes";
 import SecureLS from "secure-ls";
 
 let ls = new SecureLS({ encodingType: "aes", isCompression: false });
@@ -13,7 +13,6 @@ const initialState = {
         _sAdmin_token !== null && _sAdmin_token !== "null" &&_sAdmin_token !== "",
     token: _sAdmin_token || null,
     user_id: _sAdmin_id || null,
-    locations: [],
     loading: false,
     success: null,
     errors: null
@@ -28,9 +27,6 @@ export default function sAdmin(state = initialState, action) {
                 isAuthenticated: !!action.payload.success,
                 token: action.payload.success ? action.payload.accessToken : null,
                 user_id: action.payload.success ? action.payload.user.id : null,
-                // is_admin: action.payload.success
-                //     ? action.payload.is_admin
-                //     : false,
                 errors: action.payload.success ? null : action.payload.errors
             };
         }
@@ -40,14 +36,12 @@ export default function sAdmin(state = initialState, action) {
                 isAuthenticated: action.payload.isAuthenticated,
                 token: action.payload.accessToken,
                 user_id: action.payload.user.id,
-                // is_admin: action.payload.is_admin,
             };
         }
-        case CREATE_LOCATION: {
+        case CREATE_OWNER: {
             return {
                 ...state,
                 success: action.payload.success,
-                locations: action.payload.success ? action.payload.locations : null,
                 errors: action.payload.success ? null : action.payload.errors
             };
         }

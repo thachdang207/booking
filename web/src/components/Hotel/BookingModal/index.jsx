@@ -1,35 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DatePicker} from "antd"
-import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from "reactstrap";
+import {Modal, ModalHeader, ModalBody, ModalFooter, Button, Alert} from "reactstrap";
 import moment from "moment";
+import {countDiffDate, formatDate, formatPrice, formatStrDate} from "../../../constants/function";
+import {bookRoom} from "../../../redux/actions/booking.action";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const {RangePicker} = DatePicker;
 
 function BookingModal({room: {id, name, price, capacity}}) {
     const initialValues = {
-        fromTo: [],
+        startTime: "",
+        endTime: "",
         roomId: id,
-        status: "",
     }
-
-    const formatPrice = (price) => {
-        let priceString = '';
-        price = Math.floor(price);
-        while (price > 999) {
-            let num = price % 1000;
-            priceString += '.' + num;
-            price = Math.floor(price / 1000);
-            if (price <= 999) {
-                priceString = price + '' + priceString;
-                break;
-            }
-        }
-        return priceString;
-    }
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state);
 
     const [show, setShow] = useState(false);
     const [bookingReq, setBookingReq] = useState(initialValues)
     const toggleShow = () => setShow(!show);
+
+    const [visible, setVisible] = useState(false);
+    const showAlert = () => setVisible(!visible);
 
     const [date, setDate] = useState("");
     const [dateString, setDateString] = useState("");
@@ -37,26 +31,34 @@ function BookingModal({room: {id, name, price, capacity}}) {
     const onDateSelection = (value, dateStr) => {
         setDate(value)
         setDateString(dateStr)
-        console.log(dateStr)
+        setBookingReq({
+            ...bookingReq,
+            startTime: formatStrDate(dateStr[0]),
+            endTime: formatStrDate(dateStr[1]),
+        })
     }
 
     const disablePastDates = (current) => {
         return current && current < moment().endOf("day");
     }
-
+    const history = useHistory();
     const onSubmitBooking = () => {
-        setBookingReq({
-            ...bookingReq,
-            fromTo: dateString,
-            status: "Pending"
-        })
-        console.log(bookingReq)
-        alert("Your request is pending.")
+        if (state.auth.isAuthenticated) {
+            showAlert();
+            setTimeout(() => {
+                bookRoom(dispatch, state.hotel.hotel.id, state.auth.token, bookingReq);
+                toggleShow();
+            }, 3000)
+        } else history.push("/login");
     }
+    let diffDate = countDiffDate(bookingReq.startTime, bookingReq.endTime)
+
     return (
         <div>
             <Button onClick={toggleShow}>Book</Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
+                <Alert color="success" isOpen={visible}> Your booking request has been sent, please wait until the host
+                    accepts the offer! </Alert>
                 <ModalHeader className="font-bold">
                     {name}
                 </ModalHeader>
@@ -65,12 +67,10 @@ function BookingModal({room: {id, name, price, capacity}}) {
                         ? `${capacity} People` : `${capacity} Person`}</p>
                     <p className="font-bold"><span className="font-light">Price: </span>{formatPrice(price)} VND</p>
                     <RangePicker
-                        showTime={{format: 'HH:mm'}}
-                        format="YYYY-MM-DD HH:mm"
+                        format="YYYY-MM-DD"
                         id="fromTo"
                         allowClear="true"
                         placeholder={["Check in", "Check out"]}
-                        defaultValue={moment()}
                         onChange={onDateSelection}
                         disabledDate={current => disablePastDates(current)}
                         size="large"
@@ -78,8 +78,26 @@ function BookingModal({room: {id, name, price, capacity}}) {
                             height: "auto",
                             width: "100%",
                             cursor: "pointer",
+                            marginBottom: "10px"
                         }}
                     />
+                    <p className="font-semibold">
+                        <span className="font-light">From: </span>
+                        {bookingReq.startTime ? formatDate(bookingReq.startTime) : ""}
+                    </p>
+                    <p className="font-semibold">
+                        <span className="font-light">To: </span>
+                        {bookingReq.endTime ? formatDate(bookingReq.endTime) : ""}
+                    </p>
+                    <p className="font-bold">
+                        {bookingReq.startTime ? diffDate > 1 ? `${diffDate} days` : `${diffDate} day` : `${0} day`}
+                    </p>
+                    <p className="font-bold">
+                        <span className="font-light">Total price: </span>
+                        {bookingReq.startTime
+                            ? formatPrice(price * diffDate)
+                            : formatPrice(price)} VND
+                    </p>
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={onSubmitBooking}>Book</Button>

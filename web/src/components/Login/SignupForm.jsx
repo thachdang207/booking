@@ -52,7 +52,6 @@ function SignupForm(props) {
     return (
         <div className="inner-container">
             {state.auth.loading && <Loading />}
-
             {state.auth.success === false && (
                 <ErrorMessage errors={state.auth.errors} />
             )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import Searchbar from './Searchbar'
 import Header from '../Global/Header'
 import Border from '../Global/Border'
@@ -8,57 +8,55 @@ import Hotels from './Hotels'
 import ClientReview from './ClientReview'
 import Cities from './Cities'
 
-
 function Home() {
-  const myRef = useRef(null);
+    const myRef = useRef(null);
+    useEffect(() => {
+        document.title = 'VIBO | Homepage';
+    });
 
-  useEffect(() => {
-    document.title = 'VIBO | Homepage';
-  });
 
+    const scrollToBook = () => {
+        myRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})
+    };
 
-  const scrollToBook = () => {
-    myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  };
+    const handleSearch = (values) => {
+        return new Promise(() => {
+            console.log("Search form: ", values);
+        })
+    }
 
-  const handleSearch = (values) => {
-    return new Promise(resolve => {
-      console.log("Search form: ", values);
-    })
-  }
+    return (
+        <>
+            <Header/>
 
-  return (
-    <>
-      <Header />
+            <Hero
+                onClick={scrollToBook}
+            />
 
-      <Hero
-        onClick={scrollToBook}
-      />
+            <Border/>
 
-      <Border />
+            <Searchbar
+                onSubmit={handleSearch}
+                refProp={myRef}
+            />
 
-      <Searchbar
-        onSubmit={handleSearch}
-        refProp={myRef}
-      />
+            <Border/>
 
-      <Border />
+            <Cities />
 
-      <Cities />
+            <Border/>
 
-      <Border />
+            <Hotels/>
 
-      <Hotels />
+            <Border/>
 
-      <Border />
+            <ClientReview/>
 
-      <ClientReview />
+            <Border/>
 
-      <Border />
-
-      <Footer />
-    </>
-  );
+            <Footer/>
+        </>
+    );
 }
 
 export default Home;

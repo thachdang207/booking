@@ -45,9 +45,7 @@
     grid-gap: 20px;
     list-style: none;
     text-align: center;
-    width: 50vw;
     justify-content: end;
-    margin-right: 3rem;
     font-weight: 600;
     margin: auto;
     width: 70%;
@@ -154,4 +152,3 @@ button {
 }
 
 
- 

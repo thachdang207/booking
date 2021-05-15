@@ -18,7 +18,7 @@ function UserPassword() {
     return (
         <div className="mt-10">
             <h2 className="font-semibold">
-                <i className="fas fa-unlock-alt mr-2"></i> Change your password
+                <i className="fas fa-unlock-alt mr-2"/> Change your password
             </h2>
             <form
                 action=""

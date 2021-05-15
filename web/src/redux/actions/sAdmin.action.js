@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import {SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, CREATE_LOCATION} from '../actionTypes'
+import {SADMIN_SIGN_IN, SADMIN_CHECK_AUTH, CREATE_OWNER} from '../actionTypes'
 import { setLoading } from "./commonActions";
 import axios from "axios";
 
@@ -65,25 +65,45 @@ checkAuth = (dispatch, _token, _sAdmin_id) => {
             }
         });
 };
-//-----------------------------------------
 
-export const createLocation = (dispatch, token, formData) => {
+export const createOwner = (dispatch, token, user, setToken, setUserId) => {
     setLoading(dispatch, true);
-    axios
-        .post(
-            `${url}/super-admin/locations`,formData,{
-                headers: { Authorization: `Bearer ${token}` }
-            })
+    axios({
+        method: "POST",
+        url: `${url}/super-admin/users`,
+        headers: { Authorization: `Bearer ${token}` },
+        data: {
+            fullName: user.fullName,
+            email: user.email,
+            password: user.password,
+            locationId: user.locationId,
+        }
+    })
         .then((response) => {
+            setToken(
+                response.data.success ? response.data.accessToken : null
+            );
+            setUserId(
+                response.data.success ? response.data.user.id : null
+            );
+
             dispatch({
-                type: CREATE_LOCATION,
-                payload: response.data
+                type: CREATE_OWNER,
+                payload: {
+                    user: response.data.user,
+                    success: response.data.success,
+                }
             });
             setLoading(dispatch, false);
         })
         .catch((error) => {
-            setLoading(dispatch, true);
-            console.log(error.message)
+            setLoading(dispatch, false);
+            dispatch({
+                type: CREATE_OWNER,
+                payload: {
+                    errors: error.response.data.message
+                }
+            });
         });
 };
 
