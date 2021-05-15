@@ -14,6 +14,12 @@ function CreateOwner() {
     const [admin_token, setAdminToken] = useSecureLs("admin_token")
     const [admin_id, setAdminId] = useSecureLs("admin_id")
     const history = useHistory();
+
+    useEffect(() => {
+        !state.sAdmin.isAuthenticated
+        && history.push("/super-admin/login");
+    }, [state.sAdmin.isAuthenticated]); // eslint-disable-line
+
     useEffect(() => {
         state.sAdmin.errors = null;
     }, [state.sAdmin.errors]);

@@ -5,7 +5,7 @@ import {useSecureLs} from "../../../Global/UseSecureLs";
 import CreateOwnerForLocationForm from "./CreateOwnerForLocationForm";
 import ErrorMessage from "../../../Global/ErrorMessage";
 import {Loading} from "../../../Global/Loading";
-import {useHistory} from "react-router-dom";
+import {useHistory, useRouteMatch} from "react-router-dom";
 
 function CreateOwnerForLocation() {
     const state = useSelector((state) => state)
@@ -15,6 +15,12 @@ function CreateOwnerForLocation() {
     const [admin_id, setAdminId] = useSecureLs("admin_id")// eslint-disable-line
 
     const history = useHistory();
+
+    useEffect(() => {
+        !state.sAdmin.isAuthenticated
+        && history.push("/super-admin/login");
+    }, [state.sAdmin.isAuthenticated]); // eslint-disable-line
+
     useEffect(() => {
         state.sAdmin.errors = null;
     }, [state.sAdmin.errors]);
