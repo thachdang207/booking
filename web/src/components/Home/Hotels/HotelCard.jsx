@@ -9,7 +9,7 @@ function HotelCard({hotel: {id, name, price, score, images}}) {
         else return 0
     }
     return (
-        <div className="p-0 lg:p-1">
+        <div className="p-1 lg:p-2 transform hover:-translate-y-1 hover:scale-105">
             <div
                 className="bg-gray-100 h-72 xl:h-96 rounded-xl overflow-hidden shadow-lg mt-0"
                 data-aos="fade-up"

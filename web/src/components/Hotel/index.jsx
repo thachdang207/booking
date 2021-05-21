@@ -25,8 +25,12 @@ function Hotel() {
 
     useEffect(() => {
         getHotel(dispatch, id)
-        setUserId(userId)
     }, []); // eslint-disable-line
+
+    useEffect(() => {
+        setUserId(userId)
+    }, []);
+
 
     let history = useHistory();
     useEffect(() => {
@@ -52,6 +56,8 @@ function Hotel() {
             console.log("Search form: ", values);
         })
     }
+    const defaultLat = "16.06748182";
+    const defaultLng = "108.24510790";
 
     return (
         <>
@@ -88,10 +94,11 @@ function Hotel() {
 
             <div className="relative w-full" style={{height: "500px"}} data-aos="fade-up">
                 <HotelGoogleMap
-                    x={16.12203728}
-                    y={108.31017494}
+                    x={state.hotel.hotel.coordinates !== undefined ? state.hotel.hotel.coordinates.latitude : defaultLat}
+                    y={state.hotel.hotel.coordinates !== undefined ? state.hotel.hotel.coordinates.longitude : defaultLng}
                 />
             </div>
+
 
             <Border/>
 
