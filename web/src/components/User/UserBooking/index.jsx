@@ -4,12 +4,14 @@ import {Table, Button} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {getBookingHistories} from "../../../redux/actions/user.action";
 import {formatDate} from "../../../constants/function";
+import {useSecureLs} from "../../Global/UseSecureLs";
 
-function UserBooking(props) {
+function UserBooking() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
+    const [token] = useSecureLs("token")
     useEffect(() => {
-        getBookingHistories(dispatch, state.auth.token);
+        getBookingHistories(dispatch, token);
         document.title = `Booking Histories`
     }, []);
 

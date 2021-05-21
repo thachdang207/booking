@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Footer from '../Global/Footer';
-import {useRouteMatch, Switch, Route, Redirect} from 'react-router-dom'
+import {useRouteMatch, Switch, Route} from 'react-router-dom'
 import EditRoom from './pages/EditRoom'
 import BookingManagement from './pages/BookingManagement'
 import RoomManagement from './pages/RoomManagement'

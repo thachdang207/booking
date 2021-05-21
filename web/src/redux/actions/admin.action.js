@@ -1,4 +1,11 @@
-import {UPDATE_LOCATION, GET_ADMIN_INFO, GET_BOOKING_REQUEST, RESPONSE_BOOKING_REQUEST} from '../actionTypes'
+import {
+    UPDATE_LOCATION,
+    GET_ADMIN_INFO,
+    GET_BOOKING_REQUEST,
+    RESPONSE_BOOKING_REQUEST,
+    CREATE_ROOM,
+    UPDATE_ROOM
+} from '../actionTypes'
 import axios from "axios";
 import {setLoading} from "./commonActions";
 
@@ -86,3 +93,47 @@ export const updateLocation = (dispatch, token, locationData, locationId) => {
             console.log(error.message)
         });
 };
+
+export const createRoom = (dispatch, token, roomData) => {
+    axios
+        .post(`${url}/admin/room/create`,
+            {
+                name: roomData.name,
+                price: roomData.price,
+                description: roomData.description,
+                capacity: roomData.capacity,
+            },
+            {
+                headers: {Authorization: `Bearer ${token}`}
+            })
+        .then((response) => {
+            dispatch({
+                type: CREATE_ROOM,
+                payload: response.data
+            });
+        })
+        .catch((error) => {
+        });
+}
+
+export const updateRoom = (dispatch, token, roomId, roomData) => {
+    axios
+        .put(`${url}/admin/room/${roomId}/update`,
+            {
+                name: roomData.name,
+                price: roomData.price,
+                description: roomData.description,
+                capacity: roomData.capacity,
+            },
+            {
+                headers: {Authorization: `Bearer ${token}`}
+            })
+        .then((response) => {
+            dispatch({
+                type: UPDATE_ROOM,
+                payload: response.data
+            });
+        })
+        .catch((error) => {
+        });
+}

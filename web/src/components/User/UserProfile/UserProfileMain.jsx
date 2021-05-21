@@ -5,15 +5,17 @@ import {useSelector, useDispatch} from "react-redux";
 import {getUser, updateUserInfo} from "../../../redux/actions/user.action";
 import {setSuccess} from "../../../redux/actions/commonActions";
 import {getCities} from "../../../redux/actions/city.action";
+import {useSecureLs} from "../../Global/UseSecureLs";
 
 function UserProfileMain() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
+    const [token] = useSecureLs("token")
 
     useEffect(() => {
         const timer = setTimeout(() => {
             getCities(dispatch);
-            getUser(dispatch, state.auth.token);
+            getUser(dispatch, token);
             document.title = `Profile`;
         }, 3000);
         return () => clearTimeout(timer);
@@ -27,7 +29,7 @@ function UserProfileMain() {
     }, [state.user.success]); // eslint-disable-line
 
     const onSubmitHandler = (values) => {
-        updateUserInfo(dispatch, state.auth.token, values);
+        updateUserInfo(dispatch, token, values);
         const timer = setTimeout(() => {
             window.location.reload();
         }, 3000);

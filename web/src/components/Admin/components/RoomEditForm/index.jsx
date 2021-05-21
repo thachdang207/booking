@@ -1,37 +1,89 @@
-import React from 'react'
-import {
-    Form,
-    Select,
-    Button,
-    Switch,
-    Row,
-    Col
-} from 'antd';
-import { ROOM_TYPE_OPTIONS, GUEST_OPTIONS } from '../../../../constants/global'
+import React, {useState} from "react";
+import {FormGroup, Spinner, Button} from "reactstrap"
+import PropTypes from "prop-types";
+import {Formik, FastField, Form} from "formik";
+import InputField from "../../../../custom-fields/InputField";
+import Title from "../../../Global/Title";
+import SelectField from "../../../../custom-fields/SelectField";
+import {GUEST_OPTIONS} from "../../../../constants/global";
 
-const RoomEditForm = () => {
+RoomEditForm.defaultProps = {
+    onSubmit: null,
+}
+
+RoomEditForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+}
+
+function RoomEditForm(props) {
+    const initialValues = {
+        price: '',
+        name: '',
+        capacity: '',
+        description: '',
+    }
+    const [show, setShow] = useState(false);
+    const toggleShow = () => setShow(!show);
+
+
     return (
-        <div className=" flex flex-col my-1 px-1 w-full md:w-full lg:my-4 lg:px-4 lg:w-full">
-                <Form.Item label="Room type">
-                    <Select options={ROOM_TYPE_OPTIONS}>
-                    </Select>
-                </Form.Item>
-                <Form.Item label="Guests">
-                    <Select options={GUEST_OPTIONS}>
-                    </Select>
-                </Form.Item>
-                <Form.Item label="Status">
-                    <Switch />
-                </Form.Item>
-                <Row>
-                    <Col span={12} offset={12}>
-                        <Form.Item >
-                            <Button>Edit</Button>
-                        </Form.Item>
-                    </Col>
-                </Row>
-        </div>
+        <Formik
+            initialValues={initialValues}
+            onSubmit={props.onSubmit}
+        >
+            {formikProps => {
+                const {values, isSubmitting} = formikProps;
+                console.log(values);
+                return (
+                    <div className="flex justify-center items-center">
+                        <Title title="Edit room information"/>
+                        <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
+                            <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
+                                <div className="container mx-auto">
+                                    <Form className="max-w-full mx-auto p-16">
+                                        <div className="flex flex-col w-full">
+                                            <FastField
+                                                name="name"
+                                                component={InputField}
+                                                placeholder="Name"
+                                            />
+                                            <FastField
+                                                name="price"
+                                                component={InputField}
+                                                placeholder="Price"
+                                            />
+                                            <FastField
+                                                name="description"
+                                                component={InputField}
+                                                placeholder="Description"
+                                            />
+                                            <FastField
+                                                name="capacity"
+                                                component={SelectField}
+                                                placeholder="Capacity"
+                                                options={GUEST_OPTIONS}
+                                            />
+                                            <FormGroup>
+                                                <Button
+                                                    type="submit"
+                                                    className="w-full"
+                                                    color="primary"
+                                                    onClick={toggleShow}
+                                                >
+                                                    {isSubmitting && <Spinner size="sm"/>}
+                                                    Update
+                                                </Button>
+                                            </FormGroup>
+                                        </div>
+                                    </Form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }}
+        </Formik>
     );
-};
+}
 
 export default RoomEditForm;

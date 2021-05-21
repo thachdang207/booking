@@ -6,7 +6,7 @@ import {responseBookingRequests, getAdmin, getBookingRequests} from "../../../..
 import {formatDate} from "../../../../constants/function";
 import {useSecureLs} from "../../../Global/UseSecureLs";
 
-function BookingManagement(props) {
+function BookingManagement() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [adminToken] = useSecureLs("admin_token")
