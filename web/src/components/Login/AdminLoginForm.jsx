@@ -24,8 +24,8 @@ function LoginForm(props) {
         password: "",
     })
 
-    const [token, setToken] = useSecureLs("token");
-    const [userId, setUserId] = useSecureLs("user_id");
+    const [token, setToken] = useSecureLs("admin_token");
+    const [userId, setUserId] = useSecureLs("admin_id");
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -4,23 +4,25 @@ import {setSuccess} from "../../../../redux/actions/commonActions";
 import {getAdmin} from "../../../../redux/actions/admin.action";
 import AdminInfo from "../../components/AdminInfo";
 import LocationInfo from "../../components/LocationInfo";
+import {useSecureLs} from "../../../Global/UseSecureLs";
 
 function HomeAdmin() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
+    const [adminToken] = useSecureLs("admin_token")
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            getAdmin(dispatch, state.auth.token);
+            getAdmin(dispatch, adminToken);
             document.title = `Profile`;
-        }, 3000);
+        }, 1000);
         return () => clearTimeout(timer);
     }, []); // eslint-disable-line
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setSuccess(dispatch, null);
-        }, 3000);
+        }, 1000);
         return () => clearTimeout(timer);
     }, [state.admin.success]); // eslint-disable-line
 

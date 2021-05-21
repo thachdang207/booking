@@ -1,11 +1,21 @@
-import React, { useEffect } from 'react'
-import { useHistory } from 'react-router';
+import React, {useEffect} from 'react'
+import {useHistory} from 'react-router-dom';
 import Card from '../../components/Card';
-import Hotel from "../../components/FakeData/Hotels.json";
+import {getAdmin} from "../../../../redux/actions/admin.action";
+import {useDispatch, useSelector} from "react-redux";
+import {useSecureLs} from "../../../Global/UseSecureLs";
+import AddRoom from "../AddRoom";
 
 function RoomManagement() {
+    const state = useSelector((state) => state);
+    const [adminToken] = useSecureLs("admin_token")
+    const dispatch = useDispatch()
     useEffect(() => {
-        document.title = `VIBO | Room management`;
+        const timer = setTimeout(() => {
+            getAdmin(dispatch, adminToken);
+            document.title = `VIBO | Room management`;
+        },1000)
+        return () => clearTimeout(timer)
     }, []);
 
     const history = useHistory();
@@ -22,14 +32,15 @@ function RoomManagement() {
     }
 
     return (
-        <>
-            { Hotel.map((room, index) => {
+        <div className="flex flex-wrap">
+            {state.admin && state.admin.user.location.rooms.map((room, index) => {
                 return <Card room={room} key={index}
-                    onEditClick={handleRoomEditClick}
-                    onRemoveClick={handleRoomRemoveClick}
+                             onEditClick={handleRoomEditClick}
+                             onRemoveClick={handleRoomRemoveClick}
                 />
             })}
-        </>
+            <AddRoom/>
+        </div>
     )
 }
 

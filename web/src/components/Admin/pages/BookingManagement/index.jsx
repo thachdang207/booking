@@ -4,28 +4,31 @@ import {Table, Button} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {responseBookingRequests, getAdmin, getBookingRequests} from "../../../../redux/actions/admin.action"
 import {formatDate} from "../../../../constants/function";
+import {useSecureLs} from "../../../Global/UseSecureLs";
 
 function BookingManagement(props) {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
+    const [adminToken] = useSecureLs("admin_token")
     const onAcceptRequest = (bookingId) => {
         const timer = setTimeout(() => {
-            responseBookingRequests(dispatch, state.auth.token, bookingId, "ACCEPTED")
+            responseBookingRequests(dispatch, adminToken, bookingId, "ACCEPTED")
         }, 2000)
-        return clearTimeout(timer);
+        return () => clearTimeout(timer);
     }
 
     const onDeclineRequest = (bookingId) => {
         const timer = setTimeout(() => {
-            responseBookingRequests(dispatch, state.auth.token, bookingId, "EJECTED")
+            responseBookingRequests(dispatch, adminToken, bookingId, "REJECTED")
         }, 2000)
-        return clearTimeout(timer);
+        return () => clearTimeout(timer);
     }
+
     useEffect(() => {
-        getAdmin(dispatch, state.auth.token);
-        getBookingRequests(dispatch, state.auth.token);
+        getAdmin(dispatch, adminToken);
+        getBookingRequests(dispatch, adminToken);
         document.title = `Booking Requests`
-    }, []);
+    },[adminToken]);
 
     return (
         <div>
@@ -58,13 +61,13 @@ function BookingManagement(props) {
                                     <td>{formatDate(booking.endTime)}</td>
                                     <td>{booking.status}</td>
                                     <td>
-                                        <Button onClick={onAcceptRequest}>
+                                        <Button color="primary" onClick={onAcceptRequest}>
                                             Accept
                                         </Button>
                                     </td>
                                     <td>
-                                        <Button onClick={onDeclineRequest}>
-                                            Eject
+                                        <Button color="danger" onClick={onDeclineRequest}>
+                                            Reject
                                         </Button>
                                     </td>
                                 </tr>
