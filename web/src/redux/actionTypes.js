@@ -37,3 +37,4 @@ export const UPDATE_USER_PASSWORD = "UPDATE_USER_PASSWORD";
 export const SET_LOADING = "SET_LOADING";
 export const CONFIRM_DELETE = "CONFIRM_DELETE";
 export const SET_SUCCESS = "SET_SUCCESS";
+export const SET_ERROR = "SET_ERROR";

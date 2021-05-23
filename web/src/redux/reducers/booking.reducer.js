@@ -1,7 +1,8 @@
 import {
     BOOK,
     SET_SUCCESS,
-    SET_LOADING
+    SET_LOADING,
+    SET_ERROR
 } from "../actionTypes";
 
 const initialState = {
@@ -31,6 +32,12 @@ export default function book(state = initialState, action) {
             return {
                 ...state,
                 success: action.payload
+            };
+        }
+        case SET_ERROR: {
+            return {
+                ...state,
+                errors: action.payload
             };
         }
         default:

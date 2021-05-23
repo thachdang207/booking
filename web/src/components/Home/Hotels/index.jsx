@@ -10,7 +10,7 @@ function Hotels() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [pagination, setPagination] = useState({
-        page: 3,
+        page: 2,
         count: 10,
         total: 606,
     });

@@ -22,7 +22,7 @@ function SuccessMessage({message}) {
             className={
                 hidden
                     ? "hidden"
-                    : "w-11/12 md:w-1/2 text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm fixed top-0 left-1/2 transform -translate-x-1/2 translate-y-0 z-50 mt-5"
+                    : "w-full md:w-11/12 text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm fixed top-0 left-1/2 transform -translate-x-1/2 translate-y-0 z-50 mt-5"
             }
             role="alert"
         >

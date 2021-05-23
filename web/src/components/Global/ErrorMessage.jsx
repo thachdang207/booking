@@ -17,7 +17,6 @@ function ErrorMessage({errors}) {
         state.user.success,
         state.book.success,
     ]); // eslint-disable-line
-
     return (
         <div
             className={
@@ -56,19 +55,19 @@ function ErrorMessage({errors}) {
                             default:
                                 return "Error";
                         }
-                    } else if (typeof errors === "object") {
-                        return Object.keys(errors).map((error, i) => {
-                            return (
-                                <div
-                                    key={i}
-                                    dangerouslySetInnerHTML={{
-                                        __html: `${
-                                            errors[Object.keys(errors)[i]]
-                                        }`
-                                    }}
-                                />
-                            );
-                        });
+                    // } else if (typeof errors === "object") {
+                    //     return Object.keys(errors).map((error, i) => {
+                    //         return (
+                    //             <div
+                    //                 key={i}
+                    //                 dangerouslySetInnerHTML={{
+                    //                     __html: `${
+                    //                         errors[Object.keys(errors)[i]]
+                    //                     }`
+                    //                 }}
+                    //             />
+                    //         );
+                    //     });
                     } else if (typeof errors === "string") return errors;
                     else return "Error";
                 })()}

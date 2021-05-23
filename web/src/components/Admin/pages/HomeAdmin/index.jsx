@@ -28,9 +28,9 @@ function HomeAdmin() {
     }, [state.admin.success]); // eslint-disable-line
 
     const history = useHistory();
-    useEffect(() => {
-        !state.auth.isAuthenticated && history.push("/login");
-    }, [state.auth.isAuthenticated]);
+    // useEffect(() => {
+    //     !state.auth.isAuthenticated && history.push("/login");
+    // }, [state.auth.isAuthenticated]);
 
     return (
         <>

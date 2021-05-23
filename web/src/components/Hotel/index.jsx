@@ -50,11 +50,9 @@ function Hotel() {
     }, [state.hotel.hotel]); // eslint-disable-line
 
     const handleSearch = (values) => {
-        return new Promise(() => {
-            getAvailableRoom(dispatch, state.hotel.hotel.id, values.startTime, values.endTime)
-            setIsFinding(true);
-            console.log("Search form: ", values);
-        })
+        getAvailableRoom(dispatch, state.hotel.hotel.id, values.startTime, values.endTime)
+        setIsFinding(true);
+        console.log("Search form: ", values);
     }
     const defaultLat = "16.06748182";
     const defaultLng = "108.24510790";

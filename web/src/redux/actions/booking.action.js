@@ -1,6 +1,6 @@
 import axios from "axios";
 import {BOOK} from "../actionTypes";
-import {setLoading} from "./commonActions";
+import {setError, setLoading, setSuccess} from "./commonActions";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -9,7 +9,7 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
     axios({
         method: "POST",
         url: `${url}/customer/locations/${hotelId}/book`,
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {Authorization: `Bearer ${token}`},
         data: {
             startTime: bookData.startTime,
             endTime: bookData.endTime,
@@ -21,10 +21,14 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
                 type: BOOK,
                 payload: {
                     bookData: response.data,
-                    success: response.data.success,
                 }
             });
             setLoading(dispatch, false);
+            setTimeout(() => {
+                setSuccess(dispatch, null);
+                setError(dispatch, null);
+            }, 3000)
+
         })
         .catch((error) => {
             console.log(error.response.data.message)
@@ -35,5 +39,9 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
                 }
             });
             setLoading(dispatch, false);
+            setTimeout(() => {
+                setSuccess(dispatch, null);
+                setError(dispatch, null);
+            }, 3000)
         });
 };

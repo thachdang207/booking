@@ -16,7 +16,7 @@ function UserBooking() {
     }, []);
 
     return (
-        <div className="w-full md:w-9/12 xl:w-10/12 bg-gray-200 rounded-sm">
+        <div className="w-full md:w-14/16 xl:w-15/16 bg-gray-200 rounded-sm">
             {state.user.user && (
                 <Title title={`${state.user.user.fullName}'s Booking Histories`} data-aos="fade-up"/>
             )}
@@ -25,12 +25,12 @@ function UserBooking() {
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Booking created Day</th>
                         <th>Hotel</th>
                         <th>Room</th>
                         <th>Check-in</th>
                         <th>Check-out</th>
                         <th>Status</th>
-                        <th>{}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,16 +40,12 @@ function UserBooking() {
                                 <td className="grid grid-cols-5">
                                     {key + 1}
                                 </td>
+                                <th>{formatDate(booking.createdAt)}</th>
                                 <td>{booking.location.name}</td>
                                 <td>{booking.room.name}</td>
                                 <td>{formatDate(booking.startTime)}</td>
                                 <td>{formatDate(booking.endTime)}</td>
                                 <td>{booking.status}</td>
-                                <td>
-                                    <Button>
-                                        Delete
-                                    </Button>
-                                </td>
                             </tr>
                         )
                     })}

@@ -1,4 +1,4 @@
-import { SET_LOADING, CONFIRM_DELETE, SET_SUCCESS } from "../actionTypes";
+import {SET_LOADING, CONFIRM_DELETE, SET_SUCCESS, SET_ERROR} from "../actionTypes";
 
 //-----------------------------------------
 export const setLoading = (dispatch, bool) => {
@@ -22,3 +22,10 @@ export const setSuccess = (dispatch, bool) => {
         payload: bool
     });
 };
+
+export const setError = (dispatch, bool) => {
+    dispatch({
+        type: SET_ERROR,
+        payload: bool
+    });
+}

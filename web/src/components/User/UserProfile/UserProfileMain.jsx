@@ -17,14 +17,14 @@ function UserProfileMain() {
             getCities(dispatch);
             getUser(dispatch, token);
             document.title = `Profile`;
-        }, 3000);
+        }, 1000);
         return () => clearTimeout(timer);
     }, []); // eslint-disable-line
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setSuccess(dispatch, null);
-        }, 3000);
+        }, 1000);
         return () => clearTimeout(timer);
     }, [state.user.success]); // eslint-disable-line
 
@@ -32,7 +32,7 @@ function UserProfileMain() {
         updateUserInfo(dispatch, token, values);
         const timer = setTimeout(() => {
             window.location.reload();
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
     };
 
