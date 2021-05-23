@@ -1,10 +1,15 @@
 export const formatPrice = (price) => {
-    let priceString = '';
     price = Math.floor(price);
+    let priceString = ""
     while (price > 999) {
         let num = price % 1000;
-        priceString += '.' + num;
-        price = Math.floor(price / 1000);
+        if (num < 10) {
+            num = '00' + num
+        } else if (num < 100) {
+            num = '0' + num;
+        }
+        priceString = '.' + num + priceString;
+        price = Math.floor(price/ 1000);
         if (price <= 999) {
             priceString = price + '' + priceString;
             break;

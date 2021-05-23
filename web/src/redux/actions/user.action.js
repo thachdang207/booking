@@ -29,7 +29,11 @@ export const getUser = (dispatch, token) => {
 // -----------------------------------------
 export const getBookingHistories = (dispatch, token) => {
     axios(`${url}/customer/booking-histories`, {
-        headers: {Authorization: `Bearer ${token}`}
+        headers: {Authorization: `Bearer ${token}`,
+        params: {
+            "order": "createdAt",
+        }
+    }
     })
         .then((response) => {
             dispatch({

@@ -50,23 +50,24 @@ function BookingModal({room: {id, name, price, capacity}}) {
     const onSubmitBooking = () => {
         if (state.auth.isAuthenticated) {
             bookRoom(dispatch, state.hotel.hotel.id, state.auth.token, bookingReq);
-            setTimeout(() => {
-                state.book.errors
-                    ? showErrorAlert()
-                    : showSuccessAlert()
-            }, 500)
+            const timer = setTimeout(() => {
+                state.book.success
+                    ? showSuccessAlert()
+                    : showErrorAlert()
+            }, 1000)
             setTimeout(() => {
                 toggleShow();
-            }, 5000)
+            }, 3000)
+            return () => clearTimeout(timer);
         } else {
-            setError(true);
             setTimeout(() => {
                 history.push("/login")
-            }, 5000);
+            }, 1000);
         }
     }
 
     let diffDate = countDiffDate(bookingReq.startTime, bookingReq.endTime)
+
 
     return (
         <div>

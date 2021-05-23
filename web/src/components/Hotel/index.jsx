@@ -94,8 +94,12 @@ function Hotel() {
 
             <div className="relative w-full" style={{height: "500px"}} data-aos="fade-up">
                 <HotelGoogleMap
-                    x={state.hotel.hotel.coordinates !== undefined ? state.hotel.hotel.coordinates.latitude : defaultLat}
-                    y={state.hotel.hotel.coordinates !== undefined ? state.hotel.hotel.coordinates.longitude : defaultLng}
+                    x={(state.hotel.hotel.coordinates !== undefined && state.hotel.hotel.coordinates !== null)
+                        ? state.hotel.hotel.coordinates.latitude
+                        : defaultLat}
+                    y={(state.hotel.hotel.coordinates !== undefined && state.hotel.hotel.coordinates !== null)
+                        ? state.hotel.hotel.coordinates.longitude
+                        : defaultLng}
                 />
             </div>
 
