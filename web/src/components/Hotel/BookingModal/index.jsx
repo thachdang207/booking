@@ -6,6 +6,8 @@ import {countDiffDate, formatDate, formatPrice, formatStrDate} from "../../../co
 import {bookRoom} from "../../../redux/actions/booking.action";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
+import ErrorMessage from "../../Global/ErrorMessage";
+import SuccessMessage from "../../Global/SuccessMessage";
 
 const {RangePicker} = DatePicker;
 
@@ -22,8 +24,11 @@ function BookingModal({room: {id, name, price, capacity}}) {
     const [bookingReq, setBookingReq] = useState(initialValues)
     const toggleShow = () => setShow(!show);
 
-    const [visible, setVisible] = useState(false);
-    const showAlert = () => setVisible(!visible);
+    const [success, setSuccess] = useState(false);
+    const showSuccessAlert = () => setSuccess(true);
+
+    const [error, setError] = useState(false);
+    const showErrorAlert = () => setError(true);
 
     const [date, setDate] = useState("");
     const [dateString, setDateString] = useState("");
@@ -44,21 +49,32 @@ function BookingModal({room: {id, name, price, capacity}}) {
     const history = useHistory();
     const onSubmitBooking = () => {
         if (state.auth.isAuthenticated) {
-            showAlert();
+            bookRoom(dispatch, state.hotel.hotel.id, state.auth.token, bookingReq);
             setTimeout(() => {
-                bookRoom(dispatch, state.hotel.hotel.id, state.auth.token, bookingReq);
+                state.book.errors
+                    ? showErrorAlert()
+                    : showSuccessAlert()
+            }, 500)
+            setTimeout(() => {
                 toggleShow();
-            }, 3000)
-        } else history.push("/login");
+            }, 5000)
+        } else {
+            setError(true);
+            setTimeout(() => {
+                history.push("/login")
+            }, 5000);
+        }
     }
+
     let diffDate = countDiffDate(bookingReq.startTime, bookingReq.endTime)
 
     return (
         <div>
             <Button onClick={toggleShow}>Book</Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
-                <Alert color="success" isOpen={visible}> Your booking request has been sent, please wait until the host
-                    accepts the offer! </Alert>
+                {success && <SuccessMessage message="Your booking request has been sent, please wait until the host
+                    accepts the offer! "/>}
+                {error && <ErrorMessage errors={state.book.errors}/>}
                 <ModalHeader className="font-bold">
                     {name}
                 </ModalHeader>

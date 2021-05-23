@@ -27,10 +27,11 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
             setLoading(dispatch, false);
         })
         .catch((error) => {
+            console.log(error.response.data.message)
             dispatch({
                 type: BOOK,
                 payload: {
-                    errors: error.response.data.errors,
+                    errors: error.response.data.message,
                 }
             });
             setLoading(dispatch, false);

@@ -7,15 +7,15 @@ function SuccessMessage({message}) {
     const [hidden, setHidden] = useState(true);
 
     useEffect(() => {
-        state.user.success
-            ? setHidden(false)
-            : setHidden(true);
+        state.user.success && setHidden(false);
+        state.book.success && setHidden(false);
         const timer = setTimeout(() => {
             setHidden(true);
         }, 5000);
         return () => clearTimeout(timer);
     }, [
         state.user.success,
+        state.book.success
     ]); // eslint-disable-line
     return (
         <div
@@ -26,8 +26,8 @@ function SuccessMessage({message}) {
             }
             role="alert"
         >
-            <span className="block sm:inline">{message}</span>
-            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <span className="block sm:inline uppercase">{message}</span>
+            <span className="absolute top-0 bottom-0 right-0 px-2 py-3">
                 <svg
                     className="fill-current h-6 w-6 text-green-500 hover:text-green-700"
                     role="button"

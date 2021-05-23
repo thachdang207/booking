@@ -7,12 +7,16 @@ function ErrorMessage({errors}) {
     const [hidden, setHidden] = useState(true);
 
     useEffect(() => {
-        !state.user.success ? setHidden(false) : setHidden(true);
+        !state.user.success && setHidden(false);
+        !state.book.success && setHidden(false);
         const timer = setTimeout(() => {
             setHidden(true);
         }, 5000);
         return () => clearTimeout(timer);
-    }, [state.user]); // eslint-disable-line
+    }, [
+        state.user.success,
+        state.book.success,
+    ]); // eslint-disable-line
 
     return (
         <div

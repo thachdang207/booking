@@ -29,7 +29,7 @@ export const getPageHotels = async (dispatch, page) => {
         const response = await axios.get(`${url}/customer/locations`, {
             params: {
                 "page": `${page}`,
-                // "sort": 'score,DESC',
+                "sort": 'score,DESC',
                 "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
             }
         });
