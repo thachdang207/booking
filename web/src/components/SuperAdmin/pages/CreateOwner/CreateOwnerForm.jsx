@@ -23,7 +23,7 @@ export default function CreateOwnerForm(props) {
     }
 
     useEffect(() => {
-        document.title = "Create an owner for location";
+        document.title = "Create a new owner";
     }, [])
 
     const validationSchema = Yup.object().shape({

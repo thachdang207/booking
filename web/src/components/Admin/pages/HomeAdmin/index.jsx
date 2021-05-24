@@ -5,7 +5,7 @@ import {getAdmin} from "../../../../redux/actions/admin.action";
 import AdminInfo from "../../components/AdminInfo";
 import LocationInfo from "../../components/LocationInfo";
 import {useSecureLs} from "../../../Global/UseSecureLs";
-import {useHistory} from "react-router-dom";
+// import {useHistory} from "react-router-dom";
 
 function HomeAdmin() {
     const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function HomeAdmin() {
         return () => clearTimeout(timer);
     }, [state.admin.success]); // eslint-disable-line
 
-    const history = useHistory();
+    // const history = useHistory();
     // useEffect(() => {
     //     !state.auth.isAuthenticated && history.push("/login");
     // }, [state.auth.isAuthenticated]);

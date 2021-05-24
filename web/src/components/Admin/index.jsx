@@ -24,19 +24,17 @@ function Admin() {
             <div>
                 <Nav/>
                 <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
-                    <div className="max-w-full mx-auto py-6 sm:px-6 md:px-12 lg:px-20 xl:px-40 min-h-screen">
+                    <div className="max-w-full mx-auto py-6 sm:px-6 md:px-12 lg:px-16 xl:px-20 min-h-screen">
                         <div className="py-5 sm:px-0.5 min-h-screen">
                             <div className="box-border py-3 border-4 bg-white rounded-md min-h-screen">
-                                <div className="container my-8 mx-auto">
-                                    <Switch>
-                                        <Route exact path={`${match.url}`} component={HomeAdmin}/>
-                                        <Route path={`${match.url}/room/`} exact component={RoomManagement}/>
-                                        <Route path={`${match.url}/update-location/`} exact component={UpdateLocation}/>
-                                        <Route path={`${match.url}/room/:id`} exact component={EditRoom}/>
-                                        <Route path={`${match.url}/booking`} exact component={BookingManagement}/>
-                                        <Route exact component={Error}/>
-                                    </Switch>
-                                </div>
+                                <Switch>
+                                    <Route exact path={`${match.url}`} component={HomeAdmin}/>
+                                    <Route path={`${match.url}/room/`} exact component={RoomManagement}/>
+                                    <Route path={`${match.url}/update-location/`} exact component={UpdateLocation}/>
+                                    <Route path={`${match.url}/room/:id`} exact component={EditRoom}/>
+                                    <Route path={`${match.url}/booking`} exact component={BookingManagement}/>
+                                    <Route exact component={Error}/>
+                                </Switch>
                             </div>
                         </div>
                     </div>

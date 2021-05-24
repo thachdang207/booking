@@ -45,6 +45,11 @@ function SuperAdmin() {
                                                 Create new owner
                                             </Link>
                                         </BreadcrumbItem>
+                                        <BreadcrumbItem>
+                                            <Link to="/logout">
+                                                Logout
+                                            </Link>
+                                        </BreadcrumbItem>
                                     </Breadcrumb>
                                     <Switch>
                                         <Route exact from={`${match.url}`} component={HomeSuperAdmin}/>

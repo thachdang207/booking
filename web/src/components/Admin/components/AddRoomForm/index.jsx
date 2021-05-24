@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Modal, ModalFooter, ModalBody, ModalHeader, FormGroup, Spinner, Button} from "reactstrap"
+import {Modal, ModalFooter, ModalBody, FormGroup, Spinner, Button} from "reactstrap"
 import PropTypes from "prop-types";
 import {Formik, FastField, Form} from "formik";
 import InputField from "../../../../custom-fields/InputField";
@@ -45,7 +45,7 @@ function AddRoomForm(props) {
                 const {values, isSubmitting} = formikProps;
                 console.log(values);
                 return (
-                    <div className="flex justify-center items-center">
+                    <div>
                         <FontAwesomeIcon
                             icon={faPlusCircle}
                             style={{
@@ -62,9 +62,8 @@ function AddRoomForm(props) {
                             centered
                             isOpen={show} toggle={toggleShow}
                         >
-                            <ModalHeader>
-                                <Title title="Create a new room"/>
-                            </ModalHeader>
+                            <Title title="Create a new room" className="w-full"/>
+                            <hr/>
                             <ModalBody>
                                 <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
                                     <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">

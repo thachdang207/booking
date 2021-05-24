@@ -29,6 +29,10 @@ function CreateOwnerForLocation() {
         state.sAdmin.success && history.push("/super-admin");
     },[state.sAdmin.success]);
 
+    useEffect(() => {
+        document.title = "Create an owner"
+    },[])
+
     const handleCreate = (values) => {
         createOwner(dispatch, superAdminToken, values, setAdminToken, setAdminId)
     }

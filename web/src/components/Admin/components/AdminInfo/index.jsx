@@ -2,7 +2,7 @@ import React from 'react';
 
 function AdminInfo({user:{image, fullName, email}}) {
     return (
-        <div className="w-4/12 bg-gray-200 px-5 mx-3 rounded-sm font-sans">
+        <div className="w-4/12 h-screen bg-gray-200 px-5 ml-20 my-3 rounded-sm font-sans">
             <div className="relative m-auto">
                 <img
                     src={

@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
-import HotelCard from "./HotelCard";
 import {getPageHotels} from "../../../../redux/actions/hotel.action";
 import {useSelector, useDispatch} from "react-redux";
 import Pagination from "../../../Global/Pagination";
 import Title from "../../../Global/Title"
+import {Table, Button} from "reactstrap";
+import {Link} from "react-router-dom";
 
-function Hotels() {
+export default function Hotels() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [pagination, setPagination] = useState({
@@ -32,12 +33,41 @@ function Hotels() {
 
 
     return (
-        <section className="px-4 py-12 md:px-10 lg:px-16">
-            <Title title="Featured Hotels"/>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
-                {state && state.hotel.pageHotels.map((hotel) => (
-                    <HotelCard hotel={hotel} key={hotel.id}/>
-                ))}
+        <section className="px-4 md:px-10 lg:px-16">
+            <Title title="Hotels"/>
+            <div className="sm:mx-0 md:mx-2 lg:mx-3 xl:mx-4">
+                <Table striped bordered hover>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hotel name</th>
+                        <th>Address</th>
+                        <th>Price</th>
+                        <th>Create owner</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {state.hotel.pageHotels && state.hotel.pageHotels.map((hotel, key) => {
+                        return (
+                            <tr key={key}>
+                                <td className="grid grid-cols-5">
+                                    {key + 1}
+                                </td>
+                                <th>{hotel.name}</th>
+                                <td>{hotel.address}</td>
+                                <td>{hotel.price}</td>
+                                <td>
+                                    <Link to={`/super-admin/create-owner/${hotel.id}`}>
+                                        <Button color="primary">
+                                            Create
+                                        </Button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+                </Table>
             </div>
             <Pagination
                 pagination={pagination}
@@ -46,5 +76,3 @@ function Hotels() {
         </section>
     );
 }
-
-export default Hotels;
