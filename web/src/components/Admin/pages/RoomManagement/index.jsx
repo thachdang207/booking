@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {getAdmin} from "../../../../redux/actions/admin.action";
 import {useDispatch, useSelector} from "react-redux";
 import {useSecureLs} from "../../../Global/UseSecureLs";
@@ -18,19 +18,6 @@ function RoomManagement() {
         }, 1000)
         return () => clearTimeout(timer)
     }, []);
-
-    const history = useHistory();
-    const handleRoomEditClick = (room) => {
-        console.log('Edit: ', room);
-        const editPhotoUrl = `/admin/room/${room.id}`;
-        history.push(editPhotoUrl);
-    }
-
-    const handleRoomRemoveClick = (room) => {
-        console.log('Edit: ', room);
-        const editPhotoUrl = `/admin/room/${room.id}`;
-        history.push(editPhotoUrl);
-    }
 
     return (
         <div className="">
@@ -57,14 +44,18 @@ function RoomManagement() {
                                 <td>{room.capacity}</td>
                                 <td>{formatPrice(room.price)} VND</td>
                                 <td>
-                                    <Button color="primary" onClick={handleRoomEditClick}>
-                                        Edit
-                                    </Button>
+                                    <Link to={`/admin/room/${room.id}`}>
+                                        <Button color="primary">
+                                            Edit
+                                        </Button>
+                                    </Link>
                                 </td>
                                 <td>
-                                    <Button color="danger" onClick={handleRoomRemoveClick}>
-                                        Delete
-                                    </Button>
+                                    <Link>
+                                        <Button color="danger">
+                                            Delete
+                                        </Button>
+                                    </Link>
                                 </td>
                             </tr>
                         )
