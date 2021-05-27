@@ -28,7 +28,7 @@ function BookingManagement() {
         getAdmin(dispatch, adminToken);
         getBookingRequests(dispatch, adminToken);
         document.title = `Booking Requests`
-    },[adminToken]);
+    }, [adminToken]);
 
     return (
         <div>
@@ -60,16 +60,31 @@ function BookingManagement() {
                                     <td>{formatDate(booking.startTime)}</td>
                                     <td>{formatDate(booking.endTime)}</td>
                                     <td>{booking.status}</td>
-                                    <td>
-                                        <Button color="primary" onClick={onAcceptRequest}>
-                                            Accept
-                                        </Button>
-                                    </td>
-                                    <td>
-                                        <Button color="danger" onClick={onDeclineRequest}>
-                                            Reject
-                                        </Button>
-                                    </td>
+                                    {booking.status === "PENDING" ? (
+                                        <>
+                                            <td>
+                                                <Button color="primary" onClick={onAcceptRequest}>
+                                                    Accept
+                                                </Button>
+                                            </td>
+                                            <td>
+                                                <Button color="danger" onClick={onDeclineRequest}>
+                                                    Reject
+                                                </Button>
+                                            </td>
+                                        </>
+                                        ) : (
+                                            <>
+                                                <td>
+                                                    <Button disabled>
+                                                        {booking.status}
+                                                    </Button>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </>
+                                        )}
                                 </tr>
                             )
                         })}
