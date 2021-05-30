@@ -37,8 +37,8 @@ export const getBookingHistories = (dispatch, token) => {
             "order": "-createdAt",
         }
     })
-        .then((response) => {
-            dispatch({
+        .then(async (response) => {
+            await dispatch({
                 type: GET_BOOKING_HISTORIES,
                 payload: response.data.results
             });
@@ -62,8 +62,8 @@ export const updateUserInfo = (dispatch, token, userInfo) => {
                 headers: {Authorization: `Bearer ${token}`}
             }
         )
-        .then((response) => {
-            dispatch({
+        .then(async (response) => {
+            await dispatch({
                 type: UPDATE_USER_INFO,
                 payload: response.data.data
             });
@@ -92,8 +92,8 @@ export const updateUserPassword = (
                 headers: {Authorization: `Bearer ${token}`}
             }
         )
-        .then((response) => {
-            dispatch({
+        .then(async (response) => {
+            await dispatch({
                 type: UPDATE_USER_PASSWORD,
                 payload: response.data.data
             });

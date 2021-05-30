@@ -6,26 +6,28 @@ import {
 
 const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
-export const getCities = async (dispatch) => {
-    await axios.get(`${url}/app/config`)
-        .then((response) => {
-            dispatch({
+export const getCities = (dispatch) => {
+    axios.get(`${url}/app/config`)
+        .then(async (response) => {
+            await dispatch({
                 type: GET_CITIES,
                 payload: response.data
             });
         })
-        .catch((error) => {});
+        .catch((error) => {
+        });
 };
 
 //-----------------------------------------
-export const getLocationTypes = async (dispatch) => {
-    try{
-        const response = await axios.get(`${url}/app/config`);
-        dispatch({
-            type: GET_LOCATION_TYPES,
-            payload: response.data
+export const getLocationTypes = (dispatch) => {
+    axios.get(`${url}/app/config`)
+        .then(async (response) => {
+            await dispatch({
+                type: GET_LOCATION_TYPES,
+                payload: response.data
+            })
         })
-    }catch(error){
-        console.log(error)
-    }
+        .catch((error) => {
+            console.log(error)
+        })
 };

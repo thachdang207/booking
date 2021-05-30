@@ -16,8 +16,8 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
             roomId: bookData.roomId,
         }
     })
-        .then((response) => {
-            dispatch({
+        .then(async (response) => {
+            await dispatch({
                 type: BOOK,
                 payload: {
                     bookData: response.data,
@@ -30,9 +30,9 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
             }, 3000)
 
         })
-        .catch((error) => {
+        .catch(async (error) => {
             console.log(error.response.data.message)
-            dispatch({
+            await dispatch({
                 type: BOOK,
                 payload: {
                     errors: error.response.data.message,

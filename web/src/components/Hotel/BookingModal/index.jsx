@@ -64,7 +64,7 @@ function BookingModal({room: {id, name, price, capacity}}) {
         bookRoom(dispatch, state.hotel.hotel.id, token, bookingReq);
         setTimeout(() => {
             toggleShow();
-        }, 4000)
+        }, 3500)
     }
 
     const onOpenBookingModal = () => {

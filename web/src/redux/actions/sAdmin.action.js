@@ -19,7 +19,7 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
             password: user.password
         }
     })
-        .then((response) => {
+        .then(async (response) => {
             setToken(
                 response.data.success ? response.data.accessToken : null
             );
@@ -27,7 +27,7 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
                 response.data.success ? response.data.user.id : null
             );
 
-            dispatch({
+            await dispatch({
                 type: SADMIN_SIGN_IN,
                 payload: {
                     user: response.data.user,
@@ -44,11 +44,11 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
 //-----------------------------------------
 
 export let checkAuth;
-checkAuth = (dispatch, _token, _sAdmin_id) => {
+checkAuth = async (dispatch, _token, _sAdmin_id) => {
     let sAdmin_token = _token;
     let sAdmin_id = _sAdmin_id;
     sAdmin_token != null && sAdmin_token !== "null" && sAdmin_token !== ""
-        ? dispatch({
+        ? await dispatch({
             type: SADMIN_CHECK_AUTH,
             payload: {
                 isAuthenticated: true,
@@ -56,7 +56,7 @@ checkAuth = (dispatch, _token, _sAdmin_id) => {
                 sAdmin_token,
             }
         })
-        : dispatch({
+        : await dispatch({
             type: SADMIN_CHECK_AUTH,
             payload: {
                 isAuthenticated: false,
@@ -79,15 +79,15 @@ export const createOwner = (dispatch, token, user, setToken, setUserId) => {
             locationId: user.locationId,
         }
     })
-        .then((response) => {
-            setToken(
+        .then(async (response) => {
+            await setToken(
                 response.data.success ? response.data.accessToken : null
             );
-            setUserId(
+            await setUserId(
                 response.data.success ? response.data.user.id : null
             );
 
-            dispatch({
+            await dispatch({
                 type: CREATE_OWNER,
                 payload: {
                     user: response.data.user,
@@ -96,9 +96,9 @@ export const createOwner = (dispatch, token, user, setToken, setUserId) => {
             });
             setLoading(dispatch, false);
         })
-        .catch((error) => {
+        .catch(async (error) => {
             setLoading(dispatch, false);
-            dispatch({
+            await dispatch({
                 type: CREATE_OWNER,
                 payload: {
                     errors: error.response.data.message

@@ -7,56 +7,54 @@ import {
 } from "../actionTypes";
 
 const url = process.env.REACT_APP_API_URL;
-export const getAllHotels = async (dispatch) => {
-    try {
-        const response = await axios.get(`${url}/customer/locations`, {
-            params: {
-                "sort": 'score,DESC',
-                "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
-            }
-        });
-        dispatch({
+export const getAllHotels = (dispatch) => {
+    axios.get(`${url}/customer/locations`, {
+        params: {
+            "sort": 'score,DESC',
+            "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
+        }
+    }).then(async (response) => {
+        await dispatch({
             type: GET_ALL_HOTELS,
             payload: response.data
         })
-    } catch (error) {
-        console.log(error)
-    }
+    }).catch((e) => {
+        console.log(e)
+    })
 };
 //-----------------------------------------
-export const getPageHotels = async (dispatch, page) => {
-    try {
-        const response = await axios.get(`${url}/customer/locations`, {
-            params: {
-                "page": `${page}`,
-                "sort": 'score,DESC',
-                "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
-            }
-        });
-        dispatch({
+export const getPageHotels = (dispatch, page) => {
+    axios.get(`${url}/customer/locations`, {
+        params: {
+            "page": `${page}`,
+            "sort": 'score,DESC',
+            "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
+        }
+    }).then(async (response) => {
+        await dispatch({
             type: GET_PAGE_HOTELS,
             payload: response.data
         })
-    } catch (error) {
-        console.log(error)
-    }
+    }).catch((e) => {
+        console.log(e)
+    });
 };
 //-----------------------------------------
 
 export const getHotel = async (dispatch, id) => {
-    try {
-        const response = await axios.get(`${url}/customer/locations/${id}`, {
-            params: {
-                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
-            }
-        });
-        dispatch({
+    axios.get(`${url}/customer/locations/${id}`, {
+        params: {
+            join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+        }
+    }).then(async (response) => {
+        await dispatch({
             type: GET_HOTEL,
             payload: response.data
         })
-    } catch (error) {
-        console.log(error)
-    }
+    })
+        .catch((error) => {
+            console.log(error)
+        })
 };
 
 

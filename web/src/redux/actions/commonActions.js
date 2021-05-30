@@ -8,23 +8,23 @@ export const setLoading = (dispatch, bool) => {
     });
 };
 //-----------------------------------------
-export const confirmDelete = (dispatch, i, bool) => {
-    dispatch({
+export const confirmDelete = async (dispatch, i, bool) => {
+    await dispatch({
         type: CONFIRM_DELETE,
         payload: { i, bool }
     });
 };
 
 //-----------------------------------------
-export const setSuccess = (dispatch, bool) => {
-    dispatch({
+export const setSuccess = async (dispatch, bool) => {
+    await dispatch({
         type: SET_SUCCESS,
         payload: bool
     });
 };
 
-export const setError = (dispatch, bool) => {
-    dispatch({
+export const setError = async (dispatch, bool) => {
+    await dispatch({
         type: SET_ERROR,
         payload: bool
     });

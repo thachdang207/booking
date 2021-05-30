@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
-import { SIGN_UP, SIGN_IN, CHECK_AUTH, ADMIN_LOGIN } from "../actionTypes";
-import { setLoading } from "./commonActions";
+import {SIGN_UP, SIGN_IN, CHECK_AUTH, ADMIN_LOGIN} from "../actionTypes";
+import {setLoading} from "./commonActions";
 import axios from "axios";
 
 //-----------------------------------------
@@ -22,14 +22,14 @@ export const signUp = (dispatch, user, setToken, setUserId) => {
             password: user.password,
         }
     })
-        .then((response) => {
-            setToken(
+        .then(async (response) => {
+            await setToken(
                 response.data.success ? response.data.accessToken : null
             );
-            setUserId(
+            await setUserId(
                 response.data.success ? response.data.user.id : null
             );
-            dispatch({
+            await dispatch({
                 type: SIGN_UP,
                 payload: {
                     user: response.data.user,
@@ -38,9 +38,9 @@ export const signUp = (dispatch, user, setToken, setUserId) => {
             });
             setLoading(dispatch, false);
         })
-        .catch((error) => {
+        .catch(async (error) => {
             setLoading(dispatch, false);
-            dispatch({
+            await dispatch({
                 type: SIGN_UP,
                 payload: {
                     errors: error.response.data.message
@@ -63,16 +63,16 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
             password: user.password
         }
     })
-        .then((response) => {
-            setToken(
+        .then(async (response) => {
+            await setToken(
                 response.data.success ? response.data.accessToken : null
             );
-            setUserId(
+            await setUserId(
                 response.data.success ? response.data.user.id : null
             );
             localStorage.setItem("first_login", true);
 
-            dispatch({
+            await dispatch({
                 type: SIGN_IN,
                 payload: {
                     user: response.data.user,
@@ -81,8 +81,8 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
             });
             setLoading(dispatch, false);
         })
-        .catch((e) => {
-            dispatch({
+        .catch(async (e) => {
+            await dispatch({
                 type: SIGN_IN,
                 payload: {
                     errors: e.response.data.message
@@ -94,26 +94,26 @@ export const signIn = (dispatch, user, setToken, setUserId) => {
 //-----------------------------------------
 
 export let checkAuth;
-    checkAuth = (dispatch, _token, userId) => {
+checkAuth = async (dispatch, _token, userId) => {
     let token = _token;
     let user_id = userId;
     token != null && token !== "null" && token !== "" // eslint-disable-line
-        ? dispatch({
-              type: CHECK_AUTH,
-              payload: {
-                  isAuthenticated: true,
-                  user_id,
-                  token,
-              }
-          })
-        : dispatch({
-              type: CHECK_AUTH,
-              payload: {
-                  isAuthenticated: false,
-                  user_id: null,
-                  token: null,
-              }
-          });
+        ? await dispatch({
+            type: CHECK_AUTH,
+            payload: {
+                isAuthenticated: true,
+                user_id,
+                token,
+            }
+        })
+        : await dispatch({
+            type: CHECK_AUTH,
+            payload: {
+                isAuthenticated: false,
+                user_id: null,
+                token: null,
+            }
+        });
 };
 
 //-----------------------------------------
@@ -131,15 +131,15 @@ export const adminLogin = (dispatch, user, setToken, setUserId) => {
             password: user.password
         }
     })
-        .then((response) => {
-            setToken(
+        .then(async (response) => {
+            await setToken(
                 response.data.success ? response.data.accessToken : null
             );
-            setUserId(
+            await setUserId(
                 response.data.success ? response.data.user.id : null
             );
 
-            dispatch({
+            await dispatch({
                 type: ADMIN_LOGIN,
                 payload: {
                     user: response.data.user,
@@ -148,9 +148,9 @@ export const adminLogin = (dispatch, user, setToken, setUserId) => {
             });
             setLoading(dispatch, false);
         })
-        .catch((error) => {
+        .catch(async (error) => {
             setLoading(dispatch, false);
-            dispatch({
+            await dispatch({
                 type: ADMIN_LOGIN,
                 payload: {
                     errors: error.response.data.message
