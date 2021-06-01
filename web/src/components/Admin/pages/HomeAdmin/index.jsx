@@ -5,6 +5,7 @@ import {getAdmin} from "../../../../redux/actions/admin.action";
 import AdminInfo from "../../components/AdminInfo";
 import LocationInfo from "../../components/LocationInfo";
 import {useSecureLs} from "../../../Global/UseSecureLs";
+import {Loading} from "../../../Global/Loading";
 // import {useHistory} from "react-router-dom";
 
 function HomeAdmin() {
@@ -34,6 +35,7 @@ function HomeAdmin() {
 
     return (
         <>
+            {state.admin.loading && <Loading />}
             {state.admin.user && (
                 <div className="flex flex-row w-full">
                     <AdminInfo user={state.admin.user} />

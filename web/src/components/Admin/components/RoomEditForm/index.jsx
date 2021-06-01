@@ -6,6 +6,8 @@ import InputField from "../../../../custom-fields/InputField";
 import Title from "../../../Global/Title";
 import SelectField from "../../../../custom-fields/SelectField";
 import {GUEST_OPTIONS} from "../../../../constants/global";
+import {Loading} from "../../../Global/Loading";
+import {useSelector} from "react-redux";
 
 RoomEditForm.defaultProps = {
     onSubmit: null,
@@ -16,6 +18,7 @@ RoomEditForm.propTypes = {
 }
 
 function RoomEditForm(props) {
+    const state = useSelector((state) => state);
     const initialValues = {
         price: '',
         name: '',
@@ -34,6 +37,7 @@ function RoomEditForm(props) {
                 return (
                     <div className="justify-center items-center">
                         <Title title="Edit room information"/>
+                        {state.admin.loading && <Loading />}
                         <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
                             <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
                                 <div className="container mx-auto">

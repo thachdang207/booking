@@ -10,6 +10,7 @@ import InputField from '../../../../custom-fields/InputField'
 import {CITY_OPTIONS} from '../../../../constants/global'
 import {getLocationTypes} from "../../../../redux/actions/city.action";
 import {TimePicker} from "antd";
+import {Loading} from "../../../Global/Loading";
 
 const {RangePicker} = TimePicker;
 
@@ -74,6 +75,7 @@ export default function UpdateLocationForm(props) {
                             <h1 className="my-3 font-semibold font-serif text-gray-800 dark:text-gray-200">Update
                                 Location Information</h1>
                         </div>
+                        {state.admin.loading && <Loading />}
                         <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
                              data-aos="fade-up">
                             <div className="container mx-auto">

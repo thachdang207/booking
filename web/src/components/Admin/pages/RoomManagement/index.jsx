@@ -6,6 +6,7 @@ import {useSecureLs} from "../../../Global/UseSecureLs";
 import AddRoom from "../AddRoom";
 import {Button, Table} from "reactstrap";
 import {formatPrice} from "../../../../constants/function";
+import {Loading} from "../../../Global/Loading";
 
 function RoomManagement() {
     const state = useSelector((state) => state);
@@ -23,6 +24,7 @@ function RoomManagement() {
         <div className="">
             <div className="sm:mx-0 md:mx-2 lg:mx-3 xl:mx-4">
                 <Table striped bordered hover>
+                    {state.admin.loading && <Loading />}
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -40,7 +42,7 @@ function RoomManagement() {
                                 <td className="w-3">
                                     {key + 1}
                                 </td>
-                                <th>{room.name}</th>
+                                <td className="font-bold">{room.name}</td>
                                 <td>{room.capacity}</td>
                                 <td>{formatPrice(room.price)} VND</td>
                                 <td>
@@ -61,9 +63,9 @@ function RoomManagement() {
                         )
                     })}
                     <AddRoom/>
-                    <th className="uppercase font-semibold text-xl">
-                        Create a new room
-                    </th>
+                    <td className="uppercase font-semibold text-xl">
+                            Create a new room
+                    </td>
                     </tbody>
                 </Table>
             </div>

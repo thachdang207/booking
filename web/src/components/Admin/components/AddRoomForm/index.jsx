@@ -9,6 +9,8 @@ import {GUEST_OPTIONS} from "../../../../constants/global";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 import * as Yup from "yup";
+import {Loading} from "../../../Global/Loading";
+import {useSelector} from "react-redux";
 
 AddRoomForm.defaultProps = {
     onSubmit: null,
@@ -19,6 +21,7 @@ AddRoomForm.propTypes = {
 }
 
 function AddRoomForm(props) {
+    const state = useSelector((state) => state);
     const initialValues = {
         price: '',
         name: '',
@@ -62,6 +65,7 @@ function AddRoomForm(props) {
                             centered
                             isOpen={show} toggle={toggleShow}
                         >
+                            {state.admin.loading && <Loading />}
                             <Title title="Create a new room" className="w-full"/>
                             <hr/>
                             <ModalBody>

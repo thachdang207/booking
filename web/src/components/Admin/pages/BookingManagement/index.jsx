@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {responseBookingRequests, getAdmin, getBookingRequests} from "../../../../redux/actions/admin.action"
 import {formatDate} from "../../../../constants/function";
 import {useSecureLs} from "../../../Global/UseSecureLs";
+import {Loading} from "../../../Global/Loading";
 
 function BookingManagement() {
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function BookingManagement() {
                 {state.admin && (
                     <Title title={`${state.admin.user.location.name}'s Booking Requests`} data-aos="fade-up"/>
                 )}
+                {state.admin.loading && <Loading />}
                 <div className="sm:mx-0 md:mx-6 lg:mx-8 xl:mx-10">
                     <Table striped bordered hover>
                         <thead>
@@ -56,7 +58,7 @@ function BookingManagement() {
                                     <td className="grid grid-cols-5">
                                         {key + 1}
                                     </td>
-                                    <td>{booking.room.name}</td>
+                                    <td className="font-bold">{booking.room.name}</td>
                                     <td>{formatDate(booking.startTime)}</td>
                                     <td>{formatDate(booking.endTime)}</td>
                                     <td>{booking.status}</td>

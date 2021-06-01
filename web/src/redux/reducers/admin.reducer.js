@@ -7,7 +7,8 @@ const initialState = {
     success: null,
     requests: [],
     user: null,
-    errors: null
+    errors: null,
+    loading: false,
 };
 
 export default function admin(state = initialState, action) {

@@ -13,6 +13,7 @@ import {setLoading} from "./commonActions";
 const url = process.env.REACT_APP_API_URL;
 
 export const getAdmin = (dispatch, token) => {
+    setLoading(dispatch, true);
     axios(`${url}/admin/users/me`, {
         headers: {Authorization: `Bearer ${token}`}
     })
@@ -23,12 +24,14 @@ export const getAdmin = (dispatch, token) => {
                     user: response.data
                 }
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
 };
 
 export const getBookingRequests = (dispatch, token) => {
+    setLoading(dispatch, true);
     axios(`${url}/admin/bookings`, {
         headers: {Authorization: `Bearer ${token}`}
     })
@@ -37,12 +40,14 @@ export const getBookingRequests = (dispatch, token) => {
                 type: GET_BOOKING_REQUEST,
                 payload: response.data.results
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
 };
 
 export const responseBookingRequests = (dispatch, token, bookingId, status) => {
+    setLoading(dispatch, true);
     axios
         .put(`${url}/admin/bookings/${bookingId}`,
             {
@@ -52,6 +57,7 @@ export const responseBookingRequests = (dispatch, token, bookingId, status) => {
                 headers: {Authorization: `Bearer ${token}`}
             })
         .then(async (response) => {
+            setLoading(dispatch, false);
             await dispatch({
                 type: RESPONSE_BOOKING_REQUEST,
                 payload: response.data.results
@@ -95,6 +101,7 @@ export const updateLocation = (dispatch, token, locationData, locationId) => {
 };
 
 export const createRoom = (dispatch, token, roomData) => {
+    setLoading(dispatch, true);
     axios
         .post(`${url}/admin/room/create`,
             {
@@ -111,12 +118,14 @@ export const createRoom = (dispatch, token, roomData) => {
                 type: CREATE_ROOM,
                 payload: response.data
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
 }
 
 export const updateRoom = (dispatch, token, roomId, roomData) => {
+    setLoading(dispatch, true);
     axios
         .put(`${url}/admin/room/${roomId}/update`,
             {
@@ -133,6 +142,7 @@ export const updateRoom = (dispatch, token, roomId, roomData) => {
                 type: UPDATE_ROOM,
                 payload: response.data
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
