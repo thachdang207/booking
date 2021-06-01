@@ -14,6 +14,7 @@ import {useSecureLs} from "../Global/UseSecureLs";
 import Searchbar from "./Searchbar";
 import {getAvailableRoom} from "../../redux/actions/room.action";
 import Rooms from "./Rooms";
+import {Loading} from "../Global/Loading";
 
 function Hotel() {
     const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function Hotel() {
 
     return (
         <>
+            {state.hotel.loading && <Loading />}
             <StaticHeader/>
             <HotelHero hotel={state.hotel.hotel}/>
 

@@ -20,7 +20,7 @@ export const getRoom = (dispatch, hotelId) => {
             type: GET_ROOM,
             payload: response.data
         })
-
+        setLoading(dispatch, false);
     })
         .catch((error) => {
             console.log(error);
@@ -30,10 +30,11 @@ export const getRoom = (dispatch, hotelId) => {
 export const getSpecificRoom = (dispatch, roomId) => {
     setLoading(dispatch, true);
     axios.get(`${url}/customer/rooms/${roomId}`).then(async (response) => {
-        dispatch({
+        await dispatch({
             type: GET_SPECIFIC_ROOM,
             payload: response.data
         })
+        setLoading(dispatch, false)
     })
         .catch((error) => {
             console.log(error);
@@ -53,6 +54,7 @@ export const getAvailableRoom = (dispatch, locationId, startTime, endTime) => {
                 type: GET_AVAILABLE_ROOM,
                 payload: response.data
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });

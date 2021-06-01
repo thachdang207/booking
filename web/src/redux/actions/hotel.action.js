@@ -5,6 +5,7 @@ import {
     GET_PAGE_HOTELS,
     GET_CITY_HOTELS,
 } from "../actionTypes";
+import {setLoading} from "./commonActions";
 
 const url = process.env.REACT_APP_API_URL;
 export const getAllHotels = (dispatch) => {
@@ -24,6 +25,7 @@ export const getAllHotels = (dispatch) => {
 };
 //-----------------------------------------
 export const getPageHotels = (dispatch, page) => {
+    setLoading(dispatch, true);
     axios.get(`${url}/customer/locations`, {
         params: {
             "page": `${page}`,
@@ -35,6 +37,7 @@ export const getPageHotels = (dispatch, page) => {
             type: GET_PAGE_HOTELS,
             payload: response.data
         })
+        setLoading(dispatch, false);
     }).catch((e) => {
         console.log(e)
     });
@@ -42,6 +45,7 @@ export const getPageHotels = (dispatch, page) => {
 //-----------------------------------------
 
 export const getHotel = async (dispatch, id) => {
+    setLoading(dispatch, true);
     axios.get(`${url}/customer/locations/${id}`, {
         params: {
             join: ['locationType', 'city', 'rooms', 'serviceTypes'],
@@ -50,7 +54,8 @@ export const getHotel = async (dispatch, id) => {
         await dispatch({
             type: GET_HOTEL,
             payload: response.data
-        })
+        });
+        setLoading(dispatch, false);
     })
         .catch((error) => {
             console.log(error)
@@ -61,6 +66,7 @@ export const getHotel = async (dispatch, id) => {
 //-----------------------------------------
 
 export const getCityHotels = async (dispatch, cityId, page) => {
+    setLoading(dispatch, true);
     try {
         const response = await axios.get(`${url}/customer/locations`, {
             params: {
@@ -74,6 +80,7 @@ export const getCityHotels = async (dispatch, cityId, page) => {
             type: GET_CITY_HOTELS,
             payload: response.data
         })
+        setLoading(dispatch, false);
     } catch (error) {
         console.log(error)
     }

@@ -8,6 +8,8 @@ import Title from "../Global/Title"
 import {useParams} from "react-router-dom";
 import StaticHeader from "../Global/StaticHeader";
 import {getCities} from "../../redux/actions/city.action";
+import {setLoading} from "../../redux/actions/commonActions";
+import {Loading} from "../Global/Loading";
 
 function City() {
     const dispatch = useDispatch();
@@ -42,6 +44,7 @@ function City() {
     return (
         <>
             <StaticHeader/>
+            {state.hotel.loading && <Loading />}
             <section className="px-10 py-12 md:px-40 lg:px-56">
                 <Title title={`Hotels`}/>
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
