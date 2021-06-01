@@ -25,7 +25,7 @@ function UserBooking() {
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Booking created Day</th>
+                        <th>Created Day</th>
                         <th>Hotel</th>
                         <th>Room</th>
                         <th>Check-in</th>
@@ -40,12 +40,12 @@ function UserBooking() {
                                 <td className="grid grid-cols-5">
                                     {key + 1}
                                 </td>
-                                <th>{formatDate(booking.createdAt)}</th>
-                                <td>{booking.location.name}</td>
+                                <td>{formatDate(booking.createdAt)}</td>
+                                <th>{booking.location.name}</th>
                                 <td>{booking.room.name}</td>
                                 <td>{formatDate(booking.startTime)}</td>
                                 <td>{formatDate(booking.endTime)}</td>
-                                <td>{booking.status}</td>
+                                <th>{booking.status}</th>
                             </tr>
                         )
                     })}

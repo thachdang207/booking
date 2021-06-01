@@ -30,9 +30,10 @@ function UserProfileMain() {
 
     const onSubmitHandler = (values) => {
         updateUserInfo(dispatch, token, values);
+
         const timer = setTimeout(() => {
             window.location.reload();
-        }, 2000);
+        },2000);
         return () => clearTimeout(timer);
     };
 

@@ -10,7 +10,8 @@ const initialState = {
     success: null,
     bookings: [],
     user: null,
-    errors: null
+    errors: null,
+    loading: false,
 };
 
 export default function user(state = initialState, action) {

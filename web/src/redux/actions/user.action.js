@@ -12,22 +12,25 @@ const url = process.env.REACT_APP_API_URL;
 //-----------------------------------------
 
 export const getUser = (dispatch, token) => {
+    setLoading(dispatch, true);
     axios(`${url}/customer/users/me`, {
         headers: {Authorization: `Bearer ${token}`}
     })
-        .then((response) => {
-            dispatch({
+        .then(async (response) => {
+            await dispatch({
                 type: GET_USER,
                 payload: {
                     user: response.data
                 }
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
 };
 // -----------------------------------------
 export const getBookingHistories = (dispatch, token) => {
+    setLoading(dispatch, true);
     axios(`${url}/customer/booking-histories`,
         {
         headers: {
@@ -42,6 +45,7 @@ export const getBookingHistories = (dispatch, token) => {
                 type: GET_BOOKING_HISTORIES,
                 payload: response.data.results
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });
@@ -49,6 +53,7 @@ export const getBookingHistories = (dispatch, token) => {
 // -----------------------------------------
 
 export const updateUserInfo = (dispatch, token, userInfo) => {
+    setLoading(dispatch, true);
     axios
         .put(
             `${url}/customer/users/me`,
@@ -67,6 +72,7 @@ export const updateUserInfo = (dispatch, token, userInfo) => {
                 type: UPDATE_USER_INFO,
                 payload: response.data.data
             });
+            setLoading(dispatch, false);
         })
         .catch((error) => {
         });

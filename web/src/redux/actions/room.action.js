@@ -41,6 +41,7 @@ export const getSpecificRoom = (dispatch, roomId) => {
 };
 
 export const getAvailableRoom = (dispatch, locationId, startTime, endTime) => {
+    setLoading(dispatch, true);
     axios.get(`${url}/customer/locations/${locationId}/bookings`, {
         params: {
             startTime: startTime,

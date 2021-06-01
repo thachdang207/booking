@@ -9,6 +9,7 @@ import {useHistory} from "react-router-dom";
 import ErrorMessage from "../../Global/ErrorMessage";
 import SuccessMessage from "../../Global/SuccessMessage";
 import {useSecureLs} from "../../Global/UseSecureLs";
+import {Loading} from "../../Global/Loading";
 
 const {RangePicker} = DatePicker;
 
@@ -85,6 +86,7 @@ function BookingModal({room: {id, name, price, capacity}}) {
         <div>
             <Button onClick={onOpenBookingModal}>Book</Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
+                {state.book.loading && <Loading/>}
                 {successAlert && <SuccessMessage message="Your booking request has been sent, please wait until the host
                     accepts the offer! "/>}
                 {errorAlert && <ErrorMessage errors={state.book.errors}/>}

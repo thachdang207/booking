@@ -8,6 +8,7 @@ import SelectField from "../../../custom-fields/SelectField";
 import {CITY_OPTIONS} from "../../../constants/global";
 import {useDispatch, useSelector} from "react-redux";
 import {getCities} from "../../../redux/actions/city.action";
+import {Loading} from "../../Global/Loading";
 
 UserPersonalInfo.defaultProps = {
     onSubmit: null,
@@ -49,7 +50,6 @@ function UserPersonalInfo(props) {
                         ...values,
                         cityId: state.city.cities[values.cityId - 1].id,
                     })
-                    window.location.reload();
                 }
                 return (
                     <div>
@@ -60,6 +60,7 @@ function UserPersonalInfo(props) {
                             centered
                             isOpen={modal} toggle={toggle}
                         >
+                            {state.user.loading && <Loading/>}
                             <ModalHeader>
                                 <Title title="Update personal information"/>
                             </ModalHeader>
