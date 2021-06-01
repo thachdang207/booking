@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Title from "../../Global/Title";
-import {Table} from "reactstrap";
+import {Table, Button} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {getBookingHistories} from "../../../redux/actions/user.action";
 import {formatDate} from "../../../constants/function";
@@ -12,8 +12,11 @@ function UserBooking() {
     const [token] = useSecureLs("token")
     useEffect(() => {
         getBookingHistories(dispatch, token);
-        document.title = `Booking Histories`
     }, []);
+
+    useEffect(() => {
+        document.title = `Booking Histories`
+    })
 
     return (
         <div className="w-full md:w-14/16 xl:w-15/16 bg-gray-200 rounded-sm">
@@ -45,13 +48,13 @@ function UserBooking() {
                                 <td>{booking.room.name}</td>
                                 <td>{formatDate(booking.startTime)}</td>
                                 <td>{formatDate(booking.endTime)}</td>
-                                <td className={
+                                <td><Button disabled color={
                                     booking.status === "PENDING"
-                                        ? "text-gray-800"
+                                        ? "dark"
                                         : (booking.status === "ACCEPTED"
-                                                ? "text-green-800"
-                                                : "text-red-800")
-                                }>{booking.status}</td>
+                                                ? "success"
+                                                : "danger")
+                                }>{booking.status} </Button></td>
                             </tr>
                         )
                     })}

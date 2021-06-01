@@ -13,13 +13,16 @@ function UserProfileMain() {
     const [token] = useSecureLs("token")
 
     useEffect(() => {
-        document.title = `Profile`;
         const timer = setTimeout(() => {
             getCities(dispatch);
             getUser(dispatch, token);
         }, 1000);
         return () => clearTimeout(timer);
     }, []); // eslint-disable-line
+
+    useEffect(() => {
+        document.title = `Profile`;
+    })
 
     useEffect(() => {
         const timer = setTimeout(() => {
