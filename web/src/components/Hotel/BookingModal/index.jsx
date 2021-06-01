@@ -52,7 +52,7 @@ function BookingModal({room: {id, name, price, capacity}}) {
             state.book.success === true
                 ? setSuccessAlert(true)
                 : setErrorAlert(true)
-        },100)
+        }, 100)
         const timer = setTimeout(() => {
             setSuccessAlert(false);
             setErrorAlert(false);
@@ -84,7 +84,8 @@ function BookingModal({room: {id, name, price, capacity}}) {
 
     return (
         <div>
-            <Button onClick={onOpenBookingModal}>Book</Button>
+            <Button className="transform hover:scale-110" outline color="primary"
+                    onClick={onOpenBookingModal}>Book</Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
                 {state.book.loading && <Loading/>}
                 {successAlert && <SuccessMessage message="Your booking request has been sent, please wait until the host
@@ -131,7 +132,7 @@ function BookingModal({room: {id, name, price, capacity}}) {
                     </p>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={onSubmitBooking}>Book</Button>
+                    <Button color="primary" onClick={onSubmitBooking}>Book</Button>
                     <Button onClick={toggleShow}>Close</Button>
                 </ModalFooter>
             </Modal>

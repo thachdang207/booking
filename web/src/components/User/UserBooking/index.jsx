@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Title from "../../Global/Title";
-import {Table, Button} from "reactstrap";
+import {Table} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {getBookingHistories} from "../../../redux/actions/user.action";
 import {formatDate} from "../../../constants/function";
@@ -41,19 +41,25 @@ function UserBooking() {
                                     {key + 1}
                                 </td>
                                 <td>{formatDate(booking.createdAt)}</td>
-                                <th>{booking.location.name}</th>
+                                <td className="font-bold">{booking.location.name}</td>
                                 <td>{booking.room.name}</td>
                                 <td>{formatDate(booking.startTime)}</td>
                                 <td>{formatDate(booking.endTime)}</td>
-                                <th>{booking.status}</th>
+                                <td className={
+                                    booking.status === "PENDING"
+                                        ? "text-gray-800"
+                                        : (booking.status === "ACCEPTED"
+                                                ? "text-green-800"
+                                                : "text-red-800")
+                                }>{booking.status}</td>
                             </tr>
                         )
                     })}
-                    </tbody>
-                </Table>
-            </div>
-        </div>
-    );
-}
+                        </tbody>
+                        </Table>
+                        </div>
+                        </div>
+                        );
+                    }
 
 export default UserBooking;

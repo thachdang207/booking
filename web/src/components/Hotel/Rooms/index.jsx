@@ -18,7 +18,7 @@ function Rooms({rooms}) {
     <div className="lg:mx-20 xl:mx-40">
         <Table striped bordered hover data-aos="fade-up">
             <thead>
-            <tr>
+            <tr className="text-xl">
                 <th>Services</th>
                 <th>Name</th>
                 <th>Maximum guests</th>
@@ -43,9 +43,9 @@ function Rooms({rooms}) {
                                 )
                             })}
                         </td>
-                        <td>{room.name}</td>
+                        <td className="font-bold">{room.name}</td>
                         <td>{room.capacity}</td>
-                        <td>{formatPrice(room.price)} {" "} VND</td>
+                        <td className="font-medium">{formatPrice(room.price)} {" "} VND</td>
                         <td>
                             <BookingModal room={room}/>
                         </td>

@@ -53,7 +53,7 @@ function UserPersonalInfo(props) {
                 }
                 return (
                     <div>
-                        <Button onClick={toggle} color="dark">Change Personal Information</Button>
+                        <Button onClick={toggle} color="primary">Change Personal Information</Button>
                         <Modal
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"

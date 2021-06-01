@@ -1,11 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Badge} from "reactstrap"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 
 
-function HotelCard({hotel: {id, name, price, score, images}}) {
+function HotelCard({hotel: {id, name, price, score, images, address}}) {
     const formatPrice = (price) => {
-        if(price !== null) return price.slice(1)
+        if (price !== null) return price.slice(1)
         else return 0
     }
     return (
@@ -39,9 +41,13 @@ function HotelCard({hotel: {id, name, price, score, images}}) {
                             </div>
                         </div>
                     </div>
-
                     <p className="p-4 text-xl uppercase font-bold font-sans text-center text-gray-800 hover:text-gray-600">
                         {name}
+                        <br/>
+                        <span className="text-sm font-semibold mx-3">
+                            <FontAwesomeIcon className="text-blue-800" icon={faMapMarkerAlt}/>
+                            {" "} {address}
+                        </span>
                     </p>
                 </Link>
             </div>

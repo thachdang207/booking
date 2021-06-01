@@ -113,6 +113,7 @@ export default function Searchbar(props) {
                                             <Button
                                                 type="submit"
                                                 className="w-full text-white focus:outline-none"
+                                                color="primary"
                                             >
                                                 {isSubmitting && <Spinner size="sm" />}
                                                     Find

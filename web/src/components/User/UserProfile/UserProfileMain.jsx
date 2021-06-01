@@ -13,10 +13,10 @@ function UserProfileMain() {
     const [token] = useSecureLs("token")
 
     useEffect(() => {
+        document.title = `Profile`;
         const timer = setTimeout(() => {
             getCities(dispatch);
             getUser(dispatch, token);
-            document.title = `Profile`;
         }, 1000);
         return () => clearTimeout(timer);
     }, []); // eslint-disable-line
@@ -40,7 +40,7 @@ function UserProfileMain() {
     return (
         <div className="w-full md:w-9/12 xl:w-10/12 md:ml-5 bg-gray-200 p-5 rounded-sm ">
             {state.user.user && (
-                <div className="relative px-auto">
+                <div className="relative mx-auto p-4">
                     <img
                         src={
                             state.user.user.image

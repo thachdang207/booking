@@ -78,6 +78,7 @@ export default function Searchbar(props) {
                                             className="md:w-1/4 inline-block"
                                         >
                                             <Button
+                                                color="primary"
                                                 type="submit"
                                                 className="w-full text-white focus:outline-none"
                                             >
