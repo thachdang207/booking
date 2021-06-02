@@ -33,7 +33,10 @@ export const getAdmin = (dispatch, token) => {
 export const getBookingRequests = (dispatch, token) => {
     setLoading(dispatch, true);
     axios(`${url}/admin/bookings`, {
-        headers: {Authorization: `Bearer ${token}`}
+        headers: {Authorization: `Bearer ${token}`},
+        params: {
+            "order": "-createdAt",
+        }
     })
         .then(async (response) => {
             await dispatch({
@@ -51,7 +54,7 @@ export const responseBookingRequests = (dispatch, token, bookingId, status) => {
     axios
         .put(`${url}/admin/bookings/${bookingId}`,
             {
-                status,
+                status: status
             },
             {
                 headers: {Authorization: `Bearer ${token}`}

@@ -15,10 +15,13 @@ function RoomManagement() {
     useEffect(() => {
         const timer = setTimeout(() => {
             getAdmin(dispatch, adminToken);
-            document.title = `VIBO | Room management`;
         }, 1000)
         return () => clearTimeout(timer)
     }, []);
+
+    useEffect(() => {
+        document.title = `Room management`;
+    })
 
     return (
         <div className="">

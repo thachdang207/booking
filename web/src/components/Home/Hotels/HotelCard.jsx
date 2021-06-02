@@ -44,7 +44,7 @@ function HotelCard({hotel: {id, name, price, score, images, address}}) {
                     <p className="p-4 text-xl uppercase font-bold font-sans text-center text-gray-800 hover:text-gray-600">
                         {name}
                         <br/>
-                        <span className="text-sm font-semibold mx-3">
+                        <span className="hidden lg:inline-block text-sm font-semibold mx-3">
                             <FontAwesomeIcon className="text-blue-800" icon={faMapMarkerAlt}/>
                             {" "} {address}
                         </span>

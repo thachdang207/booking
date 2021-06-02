@@ -31,7 +31,6 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
 
         })
         .catch(async (error) => {
-            console.log(error.response.data.message)
             await dispatch({
                 type: BOOK,
                 payload: {
