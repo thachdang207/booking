@@ -16,10 +16,13 @@ function HomeAdmin() {
     useEffect(() => {
         const timer = setTimeout(() => {
             getAdmin(dispatch, adminToken);
-            document.title = `Profile`;
         }, 1000);
         return () => clearTimeout(timer);
     }, []); // eslint-disable-line
+
+    useEffect(() => {
+        document.title = `Hotel profile`
+    })
 
     useEffect(() => {
         const timer = setTimeout(() => {

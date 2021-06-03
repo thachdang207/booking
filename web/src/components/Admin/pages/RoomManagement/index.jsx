@@ -27,7 +27,7 @@ function RoomManagement() {
         <div className="">
             <div className="sm:mx-0 md:mx-2 lg:mx-3 xl:mx-4">
                 <Table striped bordered hover>
-                    {state.admin.loading && <Loading />}
+                    {state.admin.loading && <Loading/>}
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -65,10 +65,10 @@ function RoomManagement() {
                             </tr>
                         )
                     })}
-                    <AddRoom/>
-                    <td className="uppercase font-semibold text-xl">
-                            Create a new room
-                    </td>
+                    <tr className="uppercase font-semibold text-xl">
+                        <AddRoom/>
+                        <td> Create a new room </td>
+                    </tr>
                     </tbody>
                 </Table>
             </div>
