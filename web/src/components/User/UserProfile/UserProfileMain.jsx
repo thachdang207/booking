@@ -59,7 +59,7 @@ function UserProfileMain() {
                     <p>{state.user.user.city}</p>
                     <p>{state.user.user.phoneNumber}</p>
 
-                    <UserPersonalInfo onSubmit={onSubmitHandler}/>
+                    <UserPersonalInfo onSubmit={onSubmitHandler} user={state.user.user}/>
                 </div>
             )}
         </div>

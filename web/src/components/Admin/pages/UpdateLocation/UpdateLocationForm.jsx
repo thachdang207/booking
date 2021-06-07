@@ -11,15 +11,18 @@ import {CITY_OPTIONS} from '../../../../constants/global'
 import {getLocationTypes} from "../../../../redux/actions/city.action";
 import {TimePicker} from "antd";
 import {Loading} from "../../../Global/Loading";
+import {nullOrNot} from "../../../../constants/function";
 
 const {RangePicker} = TimePicker;
 
 UpdateLocationForm.defaultProps = {
     onSubmit: null,
+    location: null,
 }
 
 UpdateLocationForm.propTypes = {
-    onSubmit: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired
 }
 
 export default function UpdateLocationForm(props) {
@@ -27,19 +30,19 @@ export default function UpdateLocationForm(props) {
     const state = useSelector((state) => state);
 
     const initialValues = {
-        locationTypeId: null,
-        name: '',
-        address: '',
-        city: '',
+        locationTypeId: props.location.locationTypeId,
+        name: props.location.name,
+        address: props.location.address,
+        city: props.location.city,
         workingTime: {
             startTime: '',
             endTime: '',
         },
-        contactPhoneNumber: '',
-        contactEmail: '',
-        price: '',
-        description: '',
-        thumbnail: '',
+        contactPhoneNumber: props.location.contactPhoneNumber,
+        contactEmail: props.location.contactEmail,
+        price: props.location.price,
+        description: props.location.description,
+        thumbnail: props.location.thumbnail,
     }
 
     const locationTypeOptions = [];
@@ -58,6 +61,7 @@ export default function UpdateLocationForm(props) {
         getLocationTypes(dispatch);
         document.title = "Update location information";
     }, [])
+
 
     const [time, setTime] = useState("");
     const [timeString, setTimeString] = useState("");
@@ -85,6 +89,7 @@ export default function UpdateLocationForm(props) {
                                             name="name"
                                             component={InputField}
                                             placeholder="Name"
+                                            value={values.name}
                                         />
                                         <div className="block w-full">
                                             <div className="inline-block w-2/3">
@@ -92,6 +97,7 @@ export default function UpdateLocationForm(props) {
                                                     name="address"
                                                     component={InputField}
                                                     placeholder="Address"
+                                                    value={values.address}
                                                 />
                                             </div>
                                             <div className="inline-block w-1/3">
@@ -139,6 +145,7 @@ export default function UpdateLocationForm(props) {
                                                     name="contactEmail"
                                                     component={InputField}
                                                     placeholder="Email"
+                                                    value={nullOrNot(values.contactEmail)}
                                                 />
                                             </div>
                                             <div className="inline-block w-1/2">
@@ -146,6 +153,7 @@ export default function UpdateLocationForm(props) {
                                                     name="contactPhoneNumber"
                                                     component={InputField}
                                                     placeholder="Phone Number"
+                                                    value={nullOrNot(values.contactPhoneNumber)}
                                                 />
                                             </div>
                                         </div>
@@ -153,11 +161,14 @@ export default function UpdateLocationForm(props) {
                                             name="price"
                                             component={InputField}
                                             placeholder="Average Price"
+                                            value={values.price.slice(1)}
                                         />
                                         <FastField
                                             name="description"
                                             component={InputField}
                                             placeholder="Description"
+                                            value={values.description}
+                                            type="textarea"
                                         />
                                         <FormGroup>
                                             <Button

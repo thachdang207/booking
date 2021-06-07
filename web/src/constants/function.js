@@ -35,3 +35,8 @@ export const countDiffDate = (date1, date2) => {
     return Math.round(Math.abs((firstDate - secondDate) / oneDay));
 }
 
+export const nullOrNot = (prop) => {
+    if(prop !== null) return prop
+    else return ""
+}
+

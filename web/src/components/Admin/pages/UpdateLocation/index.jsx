@@ -14,6 +14,11 @@ function UpdateLocation() {
     useEffect(() =>{
        getAdmin(dispatch, adminToken);
     },[])
+
+    useEffect(() => {
+        document.title = `Update location`
+    });
+    
     const handleSubmit = (values) => {
         updateLocation(dispatch, adminToken, values, state.admin.user.location.id);
         history.push("/admin")
@@ -21,7 +26,7 @@ function UpdateLocation() {
 
     return (
         <div>
-            <UpdateLocationForm onSubmit={handleSubmit}/>
+            <UpdateLocationForm onSubmit={handleSubmit} location={state.admin.user.location}/>
         </div>
     );
 }

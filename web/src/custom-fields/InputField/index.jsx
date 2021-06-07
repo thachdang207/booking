@@ -11,9 +11,11 @@ InputField.propTypes = {
     label: PropTypes.string,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
+    value: PropTypes.any,
 }
 
 InputField.defaultProps = {
+    value: '',
     type: "text",
     label: '',
     placeholder: '',
@@ -22,7 +24,7 @@ InputField.defaultProps = {
 
 function InputField(props) {
     const {
-        field, form, type, label, placeholder, disabled
+        field, form, type, value, label, placeholder, disabled
     } = props;
 
     const { name } = field;
@@ -37,6 +39,7 @@ function InputField(props) {
                 <Input
                     id={name}
                     {...field}
+                    value={value}
 
                     type={type}
                     disabled={disabled}

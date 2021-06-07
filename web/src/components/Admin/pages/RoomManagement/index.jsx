@@ -7,6 +7,7 @@ import AddRoom from "../AddRoom";
 import {Button, Table} from "reactstrap";
 import {formatPrice} from "../../../../constants/function";
 import {Loading} from "../../../Global/Loading";
+import EditRoom from "../EditRoom";
 
 function RoomManagement() {
     const state = useSelector((state) => state);
@@ -49,25 +50,19 @@ function RoomManagement() {
                                 <td>{room.capacity}</td>
                                 <td>{formatPrice(room.price)} VND</td>
                                 <td>
-                                    <Link to={`/admin/room/${room.id}`}>
-                                        <Button color="primary">
-                                            Edit
-                                        </Button>
-                                    </Link>
+                                    <EditRoom id={room.id} room={room}/>
                                 </td>
                                 <td>
-                                    <Link>
-                                        <Button color="danger">
-                                            Delete
-                                        </Button>
-                                    </Link>
+                                    <Button color="danger">
+                                        Delete
+                                    </Button>
                                 </td>
                             </tr>
                         )
                     })}
                     <tr className="uppercase font-semibold text-xl">
                         <td><AddRoom/></td>
-                        <td> Create a new room </td>
+                        <td> Create a new room</td>
                     </tr>
                     </tbody>
                 </Table>

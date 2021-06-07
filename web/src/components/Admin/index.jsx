@@ -2,7 +2,6 @@
 import React from 'react'
 import Footer from '../Global/Footer';
 import {useRouteMatch, Switch, Route} from 'react-router-dom'
-import EditRoom from './pages/EditRoom'
 import BookingManagement from './pages/BookingManagement'
 import RoomManagement from './pages/RoomManagement'
 import HomeAdmin from './pages/HomeAdmin'
@@ -32,7 +31,6 @@ function Admin() {
                                     <Route exact path={`${match.url}`} component={HomeAdmin}/>
                                     <Route path={`${match.url}/room/`} exact component={RoomManagement}/>
                                     <Route path={`${match.url}/update-location/`} exact component={UpdateLocation}/>
-                                    <Route path={`${match.url}/room/:id`} exact component={EditRoom}/>
                                     <Route path={`${match.url}/booking`} exact component={BookingManagement}/>
                                     <Route exact component={Error}/>
                                 </Switch>

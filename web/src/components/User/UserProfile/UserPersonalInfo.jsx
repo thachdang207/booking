@@ -9,13 +9,16 @@ import {CITY_OPTIONS} from "../../../constants/global";
 import {useDispatch, useSelector} from "react-redux";
 import {getCities} from "../../../redux/actions/city.action";
 import {Loading} from "../../Global/Loading";
+import {nullOrNot} from "../../../constants/function";
 
 UserPersonalInfo.defaultProps = {
     onSubmit: null,
+    user: null,
 }
 
 UserPersonalInfo.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
 }
 
 function UserPersonalInfo(props) {
@@ -31,9 +34,9 @@ function UserPersonalInfo(props) {
 
     const initialValues = {
         avatar: "",
-        fullName: "",
-        phoneNumber: "",
-        address: "",
+        fullName: props.user.fullName,
+        phoneNumber: props.user.phoneNumber,
+        address: props.user.address,
         cityId: null,
     }
 
@@ -74,16 +77,19 @@ function UserPersonalInfo(props) {
                                                         name="fullName"
                                                         component={InputField}
                                                         placeholder="Name"
+                                                        value={values.fullName}
                                                     />
                                                     <FastField
                                                         name="address"
                                                         component={InputField}
                                                         placeholder="Address"
+                                                        value={values.address}
                                                     />
                                                     <FastField
                                                         name="phoneNumber"
                                                         component={InputField}
                                                         placeholder="Phone Number"
+                                                        value={nullOrNot(values.phoneNumber)}
                                                     />
                                                     <FastField
                                                         name="cityId"

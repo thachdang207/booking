@@ -30,7 +30,7 @@ function LocationInfo({location: {images, name, address}}) {
         ]
     };
     return (
-        <div className="w-8/12 h-screen bg-gray-200 p-5 mr-20 my-3 rounded-sm">
+        <div className="w-8/12 h-screen p-5 mr-20 my-3 rounded-sm">
             <div className="relative mx-auto">
                 <Slider {...settings}>
                     {images && images.map((image, key) => {

@@ -45,8 +45,7 @@ function AddRoomForm(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {values, isSubmitting} = formikProps;
-                console.log(values);
+                const {isSubmitting} = formikProps;
                 return (
                     <div>
                         <FontAwesomeIcon

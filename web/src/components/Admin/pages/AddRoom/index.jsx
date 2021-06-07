@@ -9,7 +9,10 @@ function AddRoom() {
     const [adminToken] = useSecureLs("admin_token")
     const onSubmitHandler = (values) => {
         createRoom(dispatch, adminToken, values);
-        console.log(values);
+        const timer = setTimeout(() => {
+            window.location.reload();
+        },1000);
+        return () => clearTimeout(timer);
     }
 
     return (

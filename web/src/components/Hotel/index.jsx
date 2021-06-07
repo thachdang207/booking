@@ -26,11 +26,8 @@ function Hotel() {
 
     useEffect(() => {
         getHotel(dispatch, id)
-    }, []); // eslint-disable-line
-
-    useEffect(() => {
         setUserId(userId)
-    }, []);
+    }, []); // eslint-disable-line
 
 
     let history = useHistory();
