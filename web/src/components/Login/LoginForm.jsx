@@ -69,15 +69,15 @@ function LoginForm() {
                             setUser({...user, password: e.target.value})
                         }
                     />
-                    <div className="flex flex-row items-center">
+                    <div className="flex flex-row items-center justify-center">
                         <p className="muted-link">
                             Connect with us as an owner?
-                            <a
+                            <span
                                 className="bold-link"
                                 onClick={switchToAdminLogin}
                             >
                                 Sign in
-                            </a>
+                            </span>
                         </p>
                     </div>
                     <button className="submit-button" type="submit">
@@ -86,12 +86,12 @@ function LoginForm() {
                 </form>
                 <p className="muted-link">
                     Don't have an account yet?
-                    <a
+                    <span
                         className="bold-link"
                         onClick={switchToSignup}
                     >
                         Sign up
-                    </a>
+                    </span>
                 </p>
             </div>
         </div>

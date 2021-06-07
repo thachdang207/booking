@@ -116,27 +116,18 @@ function SignupForm(props) {
                             setUser({ ...user, password: e.target.value })
                         }
                     />
-                    <p className="muted-link">
-                        Connect with us as an owner?
-                        <a
-                            className="bold-link"
-                            onClick={switchToAdminLogin}
-                        >
-                            Sign in
-                        </a>
-                    </p>
                     <button className="submit-button" type="submit">
                         Create
                     </button>
                 </form>
                 <p className="muted-link">
                     Already have an account?
-                        <a
+                        <span
                         className="bold-link"
                         onClick={switchToSignin}
                     >
                         Sign in
-                        </a>
+                        </span>
                 </p>
             </div>
         </div>

@@ -69,27 +69,29 @@ function LoginForm(props) {
                             setUser({ ...user, password: e.target.value })
                         }
                     />
-                    <p className="muted-link">
-                        Continue as a customer
-                        <a
-                            className="bold-link"
-                            onClick={switchToSignin}
-                        >
+                    <div className="flex flex-row items-center justify-center">
+                        <p className="muted-link">
+                            Continue as a customer?
+                            <span
+                                className="bold-link"
+                                onClick={switchToSignin}
+                            >
                             Sign in
-                        </a>
-                    </p>
+                        </span>
+                        </p>
+                    </div>
                     <button className="submit-button" type="submit">
                         Sign in
                     </button>
                 </form>
                 <p className="muted-link">
                     Don't have an account yet?
-                    <a
+                    <span
                         className="bold-link"
                         onClick={switchToSignup}
                     >
                         Sign up
-                    </a>
+                    </span>
                 </p>
             </div>
         </div>
