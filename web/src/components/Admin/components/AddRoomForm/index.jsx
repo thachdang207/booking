@@ -52,8 +52,8 @@ function AddRoomForm(props) {
                         <FontAwesomeIcon
                             icon={faPlusCircle}
                             style={{
-                                width: "50%",
-                                height: "50%",
+                                width: "20px",
+                                height: "20px",
                                 cursor: "pointer",
                                 margin: "10px"
                             }}

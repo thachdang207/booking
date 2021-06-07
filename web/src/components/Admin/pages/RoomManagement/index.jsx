@@ -66,7 +66,7 @@ function RoomManagement() {
                         )
                     })}
                     <tr className="uppercase font-semibold text-xl">
-                        <AddRoom/>
+                        <td><AddRoom/></td>
                         <td> Create a new room </td>
                     </tr>
                     </tbody>
