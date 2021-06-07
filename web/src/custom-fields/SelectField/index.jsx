@@ -13,9 +13,11 @@ SelectField.propTypes = {
     label: PropTypes.string,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
+    defaultValue: PropTypes.any,
 }
 
 SelectField.defaultProps = {
+    defaultValue: '',
     options: '',
     label: '',
     placeholder: '',
@@ -24,7 +26,7 @@ SelectField.defaultProps = {
 
 function SelectField(props) {
     const {
-        field, form, options, placeholder, disabled, label
+        field, form, options, defaultValue, placeholder, disabled, label
     } = props;
 
     const { name, value } = field;
@@ -59,6 +61,7 @@ function SelectField(props) {
                     {...field}
                     value={selectedOption}
                     onChange={handleSelectedOptionChange}
+                    defaultValue={defaultValue}
 
                     placeholder={placeholder}
                     isDisabled={disabled}

@@ -11,7 +11,7 @@ import {CITY_OPTIONS} from '../../../../constants/global'
 import {getLocationTypes} from "../../../../redux/actions/city.action";
 import {TimePicker} from "antd";
 import {Loading} from "../../../Global/Loading";
-import {nullOrNot} from "../../../../constants/function";
+import {findLabel, findValue, nullOrNot} from "../../../../constants/function";
 
 const {RangePicker} = TimePicker;
 
@@ -45,15 +45,15 @@ export default function UpdateLocationForm(props) {
         thumbnail: props.location.thumbnail,
     }
 
-    const locationTypeOptions = [];
+    const LOCATION_TYPES_OPTIONS = [];
 
     useEffect(() => {
         state.city.locationTypes.map((type) => {
-            locationTypeOptions.push({
+            LOCATION_TYPES_OPTIONS.push({
                 value: state.city.locationTypes.indexOf(type) + 1,
                 label: type.name,
             });
-            return locationTypeOptions;
+            return LOCATION_TYPES_OPTIONS;
         })
     }, [state.city.locationTypes]);
 
@@ -73,13 +73,14 @@ export default function UpdateLocationForm(props) {
         >
             {formikProps => {
                 const {values, setValues, isSubmitting} = formikProps;
+                const locationTypeName = values.locationTypeId === "0aea2461-d162-4fa8-8fbb-c90fdba946fa" ? "Hotel" : "Homestay";
                 return (
                     <div className="w-full xl:px-40 lg:px-36 md:px-23 sm:p-0 items-center min-h-screen bg-white">
                         <div className="text-center">
                             <h1 className="my-3 font-semibold font-serif text-gray-800 dark:text-gray-200">Update
                                 Location Information</h1>
                         </div>
-                        {state.admin.loading && <Loading />}
+                        {state.admin.loading && <Loading/>}
                         <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
                              data-aos="fade-up">
                             <div className="container mx-auto">
@@ -106,6 +107,10 @@ export default function UpdateLocationForm(props) {
                                                     component={SelectField}
                                                     placeholder="City"
                                                     options={CITY_OPTIONS}
+                                                    defaultValue={{
+                                                        value: findValue(CITY_OPTIONS, values.city.name),
+                                                        label: values.city.name
+                                                    }}
                                                 />
                                             </div>
                                         </div>
@@ -113,7 +118,11 @@ export default function UpdateLocationForm(props) {
                                             name="locationTypeId"
                                             component={SelectField}
                                             placeholder="Location Type"
-                                            options={locationTypeOptions}
+                                            options={LOCATION_TYPES_OPTIONS}
+                                            defaultValue={{
+                                                value: findValue(LOCATION_TYPES_OPTIONS, locationTypeName),
+                                                label: locationTypeName,
+                                            }}
                                         />
                                         <RangePicker
                                             format="HH:mm"

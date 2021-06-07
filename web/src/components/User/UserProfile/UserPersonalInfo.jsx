@@ -48,12 +48,14 @@ function UserPersonalInfo(props) {
         >
             {formikProps => {
                 const {values, setValues, isSubmitting} = formikProps;
+                console.log(values);
                 const onClickHandler = () => {
                     setValues({
                         ...values,
                         cityId: state.city.cities[values.cityId - 1].id,
                     })
                 }
+
                 return (
                     <div>
                         <Button onClick={toggle} color="primary">Change Personal Information</Button>

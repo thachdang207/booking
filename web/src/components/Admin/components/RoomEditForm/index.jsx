@@ -43,7 +43,7 @@ function RoomEditForm(props) {
                             centered
                             isOpen={show} toggle={toggleShow}
                         >
-                            {state.admin.loading && <Loading />}
+                            {state.admin.loading && <Loading/>}
                             <Title title="Update room information" className="w-full"/>
                             <hr/>
                             <ModalBody>
@@ -76,6 +76,10 @@ function RoomEditForm(props) {
                                                         component={SelectField}
                                                         placeholder="Capacity"
                                                         options={GUEST_OPTIONS}
+                                                        defaultValue={{
+                                                            value: values.capacity.toString(),
+                                                            label: values.capacity.toString()
+                                                        }}
                                                     />
                                                     <FormGroup>
                                                         <Button

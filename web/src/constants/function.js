@@ -40,3 +40,20 @@ export const nullOrNot = (prop) => {
     else return ""
 }
 
+
+export const findValue = (obj, prop) => {
+    if(prop !== null){
+        return obj.find(o => {
+            return o.label === prop;
+        })
+    }
+}
+
+export const findLabel = (obj, prop) => {
+    if(prop !== null) {
+        return obj.find(o => {
+            return o.value === prop;
+        })
+    }
+}
+

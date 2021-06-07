@@ -19,7 +19,3 @@ export const CITY_OPTIONS = [
     { value: '5', label: 'Hồ Chí Minh'},
 ];
 
-export const ROOM_TYPE_OPTIONS = [
-  { value: '1', label: 'Phòng tiêu chuẩn' },
-  { value: '2', label: 'Phòng deluxe' },
-];
