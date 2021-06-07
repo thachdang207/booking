@@ -58,9 +58,16 @@ export default function Hotels() {
                                 <td>{hotel.price}</td>
                                 <td>
                                     <Link to={`/super-admin/create-owner/${hotel.id}`}>
-                                        <Button color="primary">
-                                            Create
-                                        </Button>
+
+                                        {hotel.userId !== null ? (
+                                            <Button color="primary">
+                                                Create
+                                            </Button>
+                                        ): (
+                                            <Button disabled>
+                                                Created
+                                            </Button>
+                                        )}
                                     </Link>
                                 </td>
                             </tr>

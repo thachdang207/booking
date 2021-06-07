@@ -12,6 +12,7 @@ import UpdateLocation from "./pages/UpdateLocation";
 
 function Admin() {
     const match = useRouteMatch();
+
     const Error = () => {
         return (
             <h1>

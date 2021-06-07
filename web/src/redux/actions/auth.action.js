@@ -146,6 +146,7 @@ export const adminLogin = (dispatch, user, setToken, setUserId) => {
                     success: response.data.success,
                 }
             });
+            localStorage.setItem("first_login", true);
             setLoading(dispatch, false);
         })
         .catch(async (error) => {
