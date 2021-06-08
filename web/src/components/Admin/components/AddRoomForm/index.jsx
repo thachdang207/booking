@@ -45,7 +45,7 @@ function AddRoomForm(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {isSubmitting} = formikProps;
+                const {values, isSubmitting} = formikProps;
                 return (
                     <div>
                         <FontAwesomeIcon
@@ -77,22 +77,26 @@ function AddRoomForm(props) {
                                                         name="name"
                                                         component={InputField}
                                                         placeholder="Name"
+                                                        value={values.name}
                                                     />
                                                     <FastField
                                                         name="price"
                                                         component={InputField}
                                                         placeholder="Price"
+                                                        value={values.price}
                                                     />
                                                     <FastField
                                                         name="description"
                                                         component={InputField}
                                                         placeholder="Description"
+                                                        value={values.description}
                                                     />
                                                     <FastField
                                                         name="capacity"
                                                         component={SelectField}
                                                         placeholder="Capacity"
                                                         options={GUEST_OPTIONS}
+
                                                     />
                                                     <FormGroup>
                                                         <Button

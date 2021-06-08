@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import {Badge} from 'reactstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
+import {isTruthy} from "../../../constants/function";
 
 function HotelHero({hotel: {name, price, score, images, address}}) {
     const settings = {
@@ -65,7 +66,7 @@ function HotelHero({hotel: {name, price, score, images, address}}) {
                         </span>
                     </div>
                     <div className="text-gray-100 text-xl mt-2 md:mt-0 font-bold">
-                        Just around {" "} {price !== null ? price.slice(1) : price} VND
+                        Just around {" "} {(price !== null || price !== undefined) ? price.slice(1) : price} VND
                         <h3>
                             <Badge color="primary">{score}</Badge>
                         </h3>

@@ -16,6 +16,10 @@ function HomeSuperAdmin() {
         state.sAdmin.errors = null;
     }, []);
 
+    useEffect(() => {
+        document.title = "Hotels"
+    })
+
     return (
         <div>
             <Hotels/>

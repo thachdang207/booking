@@ -57,3 +57,7 @@ export const findLabel = (obj, prop) => {
     }
 }
 
+export const isTruthy = (prop) => {
+    return !(prop === false || prop === null || prop === undefined || isNaN(prop) || prop === 0);
+}
+

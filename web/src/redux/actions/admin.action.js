@@ -35,7 +35,7 @@ export const getBookingRequests = (dispatch, token) => {
     axios(`${url}/admin/bookings`, {
         headers: {Authorization: `Bearer ${token}`},
         params: {
-            "order": "createdAt",
+            "order": "-createdAt",
         }
     })
         .then(async (response) => {
