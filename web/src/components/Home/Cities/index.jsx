@@ -48,14 +48,14 @@ function Cities() {
         ]
     };
     return (
-        <div>
+        <div className="w-3/4" style={{margin: "0 auto"}}>
             <Title title="The most attractive destinations in Vietnam"/>
-            <Slider {...settings}>
-                {state && state.city.cities.map((city) => (
-                        <CityCard key={city.id} city={city}/>
-                    )
-                )}
-            </Slider>
+                <Slider {...settings}>
+                    {state && state.city.cities.map((city) => (
+                            <CityCard key={city.id} city={city}/>
+                        )
+                    )}
+                </Slider>
         </div>
     );
 }

@@ -5,7 +5,7 @@ export default function CityCard({city: {id, thumbnail, name}}) {
 
     return (
         <div>
-            <div className="flex mx-auto px-10" data-aos="fade-up">
+            <div className="mx-auto px-10" data-aos="fade-up">
                 <div>
                     <Link to={`/city/${id}`}
                           className="no-underline hover:no-underline text-black hover:text-gray-700">
