@@ -66,7 +66,7 @@ function HotelHero({hotel: {name, price, score, images, address}}) {
                         </span>
                     </div>
                     <div className="text-gray-100 text-xl mt-2 md:mt-0 font-bold">
-                        Just around {" "} {(price !== null || price !== undefined) ? price.slice(1) : price} VND
+                        Just around {" "} {price}
                         <h3>
                             <Badge color="primary">{score}</Badge>
                         </h3>
