@@ -20,6 +20,7 @@ export const GET_HOTEL = "GET_HOTEL";
 export const GET_CITY_HOTELS = "GET_CITY_HOTELS";
 export const GET_PAGE_HOTELS = "GET_PAGE_HOTELS";
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
+export const GET_FILTER_HOTELS = "GET_FILTER_HOTELS";
 
 export const GET_CITIES = "GET_CITIES";
 export const GET_LOCATION_TYPES = "GET_LOCATION_TYPES";

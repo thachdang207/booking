@@ -18,6 +18,7 @@ const User = React.lazy(() => import(`./components/User/UserProfile`));
 const SuperAdmin = React.lazy(() => import(`./components/SuperAdmin`));
 const Login = React.lazy(() => import(`./components/Login`));
 const Home = React.lazy(() => import(`./components/Home`));
+const FilteredHotel = React.lazy(() => import(`./components/FilteredHotel`))
 const Logout = React.lazy(() => import(`./components/Logout`));
 
 
@@ -40,6 +41,7 @@ function App() {
                         <Route exact path="/hotel/:id" component={Hotel}/>
                         <Route exact path="/room/:id" component={Room}/>
                         <Route exact path="/city/:id" component={City}/>
+                        <Route exact path="/search/hotel=:hotel?" component={FilteredHotel}/>
 
                         {/* USER */}
 

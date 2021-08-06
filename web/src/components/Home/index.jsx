@@ -7,6 +7,7 @@ import Hero from './Hero'
 import Hotels from './Hotels'
 import ClientReview from './ClientReview'
 import Cities from './Cities'
+import SearchHotel from '../Global/SearchHotel';
 
 function Home() {
     const myRef = useRef(null);
@@ -45,6 +46,10 @@ function Home() {
             <Cities />
 
             <Border/>
+
+            <SearchHotel
+                onSubmit={handleSearch}
+            />
 
             <Hotels/>
 

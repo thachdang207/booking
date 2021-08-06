@@ -4,6 +4,7 @@ import {
     GET_ALL_HOTELS,
     GET_PAGE_HOTELS,
     GET_CITY_HOTELS,
+    GET_FILTER_HOTELS
 } from "../actionTypes";
 import {setLoading} from "./commonActions";
 
@@ -78,6 +79,27 @@ export const getCityHotels = async (dispatch, cityId, page) => {
         });
         dispatch({
             type: GET_CITY_HOTELS,
+            payload: response.data
+        })
+        setLoading(dispatch, false);
+    } catch (error) {
+        console.log(error)
+    }
+};
+
+export const getFilterHotels = async (dispatch, hotelName, page) => {
+    setLoading(dispatch, true);
+    try {
+        const response = await axios.get(`${url}/customer/locations?s={"name":{"$contL":${hotelName}}}`, {
+            params: {
+                page: `${page}`,
+                // s : `${hotelName}`,
+                // join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+                sort: 'score,DESC',
+            }
+        });
+        dispatch({
+            type: GET_FILTER_HOTELS,
             payload: response.data
         })
         setLoading(dispatch, false);
