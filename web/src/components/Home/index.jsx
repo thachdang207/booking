@@ -36,10 +36,10 @@ function Home() {
 
             <Border/>
 
-            <Searchbar
+            {/* <Searchbar
                 onSubmit={handleSearch}
                 refProp={myRef}
-            />
+            /> */}
 
             <Border/>
 
