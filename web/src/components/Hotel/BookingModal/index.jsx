@@ -69,13 +69,23 @@ function BookingModal({room: {id, name, price, capacity}}) {
     }
 
     const onOpenBookingModal = () => {
-        if (!state.auth.isAuthenticated) {
-            setErrorAlert(true);
+        // if (!state.auth.isAuthenticated) {
+        //     setErrorAlert(true);
+        //     alert("You're not logged in yet!")
+        //     setTimeout(() => {
+        //         history.push("/login")
+        //     }, 3000);
+        // } else {
+        //     toggleShow()
+        // }
+
+        if(state.auth.isAuthenticated){
+            toggleShow()
+        }else{
+            alert("You're not logged in yet!")
             setTimeout(() => {
                 history.push("/login")
-            }, 3000);
-        } else {
-            toggleShow()
+            }, 1000);
         }
     }
 
