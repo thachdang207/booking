@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Hotels from '../Hotels'
 import {useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
+import SearchHotel from '../../../Global/SearchHotel';
 
 function HomeSuperAdmin() {
     const state = useSelector((state) => state);
@@ -22,6 +23,7 @@ function HomeSuperAdmin() {
 
     return (
         <div>
+            <SearchHotel linkTo={`/super-admin`}/>
             <Hotels/>
         </div>
     );

@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../Global/Footer';
-import {useRouteMatch, Switch, Route, Link, useHistory} from 'react-router-dom'
+import { useRouteMatch, Switch, Route, Link, useHistory } from 'react-router-dom'
 import SuperAdminLogin from "./pages/Login";
 import CreateOwner from "./pages/CreateOwner"
-import {Breadcrumb, BreadcrumbItem} from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import HomeSuperAdmin from "./pages/HomeSuperAdmin";
 import CreateOwnerForLocation from "./pages/CreateOwner/CreateOwnerForLocation";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import FilterHotels from './pages/FilterHotels';
 
 function SuperAdmin() {
     const match = useRouteMatch();
@@ -16,7 +17,7 @@ function SuperAdmin() {
 
     useEffect(() => {
         !state.sAdmin.isAuthenticated
-        && history.push(`${match.url}/login`);
+            && history.push(`${match.url}/login`);
     }, [state.sAdmin.isAuthenticated]); // eslint-disable-line
 
     const Error = () => {
@@ -52,12 +53,13 @@ function SuperAdmin() {
                                         </BreadcrumbItem>
                                     </Breadcrumb>
                                     <Switch>
-                                        <Route exact from={`${match.url}`} component={HomeSuperAdmin}/>
-                                        <Route exact path={`${match.url}/login`} component={SuperAdminLogin}/>
-                                        <Route exact path={`${match.url}/create-owner`} component={CreateOwner}/>
+                                        <Route exact from={`${match.url}`} component={HomeSuperAdmin} />
+                                        <Route exact path={`${match.url}/login`} component={SuperAdminLogin} />
+                                        <Route exact path={`${match.url}/create-owner`} component={CreateOwner} />
                                         <Route exact path={`${match.url}/create-owner/:id`}
-                                               component={CreateOwnerForLocation}/>
-                                        <Route exact component={Error}/>
+                                            component={CreateOwnerForLocation} />
+                                        <Route exact path={`${match.url}/search/hotel=:hotel?`} component={FilterHotels} />
+                                        <Route exact component={Error} />
                                     </Switch>
                                 </div>
                             </div>
@@ -65,7 +67,7 @@ function SuperAdmin() {
                     </div>
                 </main>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

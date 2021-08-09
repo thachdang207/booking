@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import {FormGroup, Spinner, Button, Modal, ModalBody, ModalFooter, Input} from "reactstrap"
+import React, { useState } from "react";
+import { FormGroup, Spinner, Button, Modal, ModalBody, ModalFooter, Input } from "reactstrap"
 import PropTypes from "prop-types";
-import {Formik, FastField, Form, Field} from "formik";
+import { Formik, FastField, Form, Field } from "formik";
 import InputField from "../../../../custom-fields/InputField";
 import Title from "../../../Global/Title";
 import SelectField from "../../../../custom-fields/SelectField";
-import {GUEST_OPTIONS} from "../../../../constants/global";
-import {Loading} from "../../../Global/Loading";
-import {useSelector} from "react-redux";
-import {formatPrice, nullOrNot} from "../../../../constants/function";
+import { GUEST_OPTIONS } from "../../../../constants/global";
+import { Loading } from "../../../Global/Loading";
+import { useSelector } from "react-redux";
+import { formatPrice, nullOrNot } from "../../../../constants/function";
 
 RoomEditForm.defaultProps = {
     onSubmit: null,
@@ -31,7 +31,7 @@ function RoomEditForm(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {values, isSubmitting} = formikProps;
+                const { values, isSubmitting } = formikProps;
                 return (
                     <div>
                         <Button onClick={toggleShow} color="primary">
@@ -43,9 +43,9 @@ function RoomEditForm(props) {
                             centered
                             isOpen={show} toggle={toggleShow}
                         >
-                            {state.admin.loading && <Loading/>}
-                            <Title title="Update room information" className="w-full"/>
-                            <hr/>
+                            {state.admin.loading && <Loading />}
+                            <Title title="Update room information" className="w-full" />
+                            <hr />
                             <ModalBody>
                                 <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
                                     <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
@@ -56,13 +56,13 @@ function RoomEditForm(props) {
                                                         name="name"
                                                         component={InputField}
                                                         placeholder="Name"
-                                                        value={values.name}
+                                                        value={values.name ? values.name : ""}
                                                     />
                                                     <FastField
                                                         name="price"
                                                         component={InputField}
                                                         placeholder="Price"
-                                                        value={formatPrice(values.price)}
+                                                        value={values.price}
                                                     />
                                                     <FastField
                                                         name="description"
@@ -77,8 +77,8 @@ function RoomEditForm(props) {
                                                         placeholder="Capacity"
                                                         options={GUEST_OPTIONS}
                                                         defaultValue={{
-                                                            value: values.capacity.toString(),
-                                                            label: values.capacity.toString()
+                                                            value: values.capacity ? values.capacity.toString() : "2",
+                                                            label: values.capacity ? values.capacity.toString() : "2"
                                                         }}
                                                     />
                                                     <FormGroup>
@@ -88,7 +88,7 @@ function RoomEditForm(props) {
                                                             color="primary"
                                                             onClick={toggleShow}
                                                         >
-                                                            {isSubmitting && <Spinner size="sm"/>}
+                                                            {isSubmitting && <Spinner size="sm" />}
                                                             Update
                                                         </Button>
                                                     </FormGroup>

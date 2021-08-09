@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import StaticHeader from "../Global/StaticHeader";
 import { Loading } from "../Global/Loading";
 import SearchHotel from "../Global/SearchHotel";
+import FilterSideBar from "./FilterSideBar";
 
 function FilteredHotel() {
     const dispatch = useDispatch();
@@ -46,15 +47,20 @@ function FilteredHotel() {
                 <SearchHotel
                 />
                 <Title title={`${state.hotel.pagination.total} results by searching with "${hotel}"`} />
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
-                    {state && state.hotel.filterHotels.map((hotel) => (
-                        <HotelCard hotel={hotel} key={hotel.id} />
-                    ))}
-                </div>
-                <Pagination
-                    pagination={pagination}
-                    onPageChange={handlePageChange}
-                />
+                <main className="min-h-screen flex flex-col md:flex-row md:justify-center p-0 text-gray-800">
+                    <FilterSideBar />
+                    <div className="w-full md:w-9/12 xl:w-10/12 md:ml-5 bg-gray-200 p-5 rounded-md">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
+                            {state && state.hotel.filterHotels.map((hotel) => (
+                                <HotelCard hotel={hotel} key={hotel.id} />
+                            ))}
+                        </div>
+                        <Pagination
+                            pagination={pagination}
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
+                </main>
             </section>
         </>
     );

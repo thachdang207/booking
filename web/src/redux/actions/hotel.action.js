@@ -12,8 +12,8 @@ const url = process.env.REACT_APP_API_URL;
 export const getAllHotels = (dispatch) => {
     axios.get(`${url}/customer/locations`, {
         params: {
-            "sort": 'score,DESC',
-            "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
+            sort: 'score,DESC',
+            join: ['locationType', 'city', 'rooms', 'serviceTypes'],
         }
     }).then(async (response) => {
         await dispatch({
@@ -29,9 +29,9 @@ export const getPageHotels = (dispatch, page) => {
     setLoading(dispatch, true);
     axios.get(`${url}/customer/locations`, {
         params: {
-            "page": `${page}`,
-            "sort": 'score,DESC',
-            "join": ['locationType', 'city', 'rooms', 'serviceTypes'],
+            page: `${page}`,
+            sort: 'score,DESC',
+            join: ['locationType', 'city', 'rooms', 'serviceTypes'],
         }
     }).then(async (response) => {
         await dispatch({

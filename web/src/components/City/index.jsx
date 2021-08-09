@@ -30,8 +30,11 @@ function City() {
 
     useEffect(() => {
         getCities(dispatch);
-        document.title = ``
     }, [])
+
+    useEffect(() => {
+        document.title = `${state.hotel.cityHotels[0].city.name}`
+    })
     useEffect(() => {
         const timer = setTimeout(() => {
             getCityHotels(dispatch, id, pagination.page)
@@ -46,7 +49,7 @@ function City() {
             <StaticHeader/>
             {state.hotel.loading && <Loading />}
             <section className="px-10 py-12 md:px-40 lg:px-56">
-                <Title title={`Hotels`}/>
+                <Title title={`${state.hotel.cityHotels[0].city.name}'s Hotels`}/>
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                     {state && state.hotel.cityHotels.map((hotel) => (
                         <HotelCard hotel={hotel} key={hotel.id}/>

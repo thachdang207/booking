@@ -10,6 +10,7 @@ function UserSideBar() {
         <div className="md:block w-full md:w-3/12 xl:w-2/12 bg-gray-200 pt-5 lg:p-6 rounded-sm">
             <Link
                 to={`/user/${id}`}
+                className="no-underline"
             >
                 <Button color="primary" className="block py-3 px-4">
                     My Profile
@@ -20,7 +21,7 @@ function UserSideBar() {
 
             <Link
                 to={`/user/${id}/bookings`}
-
+                className="no-underline"
             >
                 <Button color="primary" className="block py-3 px-4">
                     My Bookings

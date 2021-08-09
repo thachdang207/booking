@@ -45,7 +45,7 @@ function Hotel() {
         }, 3000);
         document.title = `${state.hotel.hotel.name}`;
         return () => clearTimeout(timer);
-    }, [state.hotel.hotel]); // eslint-disable-line
+    }); // eslint-disable-line
 
     const handleSearch = (values) => {
         getAvailableRoom(dispatch, state.hotel.hotel.id, values.startTime, values.endTime)

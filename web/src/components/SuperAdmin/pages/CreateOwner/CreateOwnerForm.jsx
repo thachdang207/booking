@@ -29,7 +29,7 @@ export default function CreateOwnerForm(props) {
     const validationSchema = Yup.object().shape({
         email: Yup.string().required('Email is required').nullable(),
         password: Yup.string().required('Password is required').nullable(),
-        fullName: Yup.string().required('Full name is required').nullable(),
+        fullName: Yup.string().required('Hotel name is required').nullable(),
     })
 
     return (
@@ -55,7 +55,7 @@ export default function CreateOwnerForm(props) {
                                         <FastField
                                             name="fullName"
                                             component={InputField}
-                                            placeholder="Full Name"
+                                            placeholder="Hotel Name"
                                             value={values.fullName}
                                         />
                                         <FastField

@@ -9,16 +9,20 @@ import InputField from '../../custom-fields/InputField'
 
 SearchHotel.propTypes = {
     onSubmit: PropTypes.func,
+    linkTo: PropTypes.string,
 }
 
 SearchHotel.defaultProps = {
     onSubmit: null,
+    linkTo: "",
 }
 
 export default function SearchHotel(props) {
     const initialValues = {
         hotel: ""
     }
+
+    console.log(props.linkTo);
 
     return (
         <Formik
@@ -50,7 +54,7 @@ export default function SearchHotel(props) {
                                         >
                                             <Link
                                                 className="no-underline text-white"
-                                                to={`/search/hotel=${values.hotel}`}
+                                                to={`${props.linkTo}/search/hotel=${values.hotel}`}
                                             >
                                                 <Button
                                                     type="submit"
