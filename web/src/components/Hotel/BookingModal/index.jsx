@@ -1,23 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {DatePicker} from "antd"
-import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from "reactstrap";
+import React, { useEffect, useState } from 'react';
+import { DatePicker } from "antd"
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import moment from "moment";
-import {countDiffDate, formatDate, formatPrice, formatStrDate} from "../../../constants/function";
-import {bookRoom} from "../../../redux/actions/booking.action";
-import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
+import { countDiffDate, formatDate, formatPrice, formatStrDate } from "../../../constants/function";
+import { bookRoom } from "../../../redux/actions/booking.action";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import ErrorMessage from "../../Global/ErrorMessage";
 import SuccessMessage from "../../Global/SuccessMessage";
-import {useSecureLs} from "../../Global/UseSecureLs";
-import {Loading} from "../../Global/Loading";
+import { useSecureLs } from "../../Global/UseSecureLs";
+import { Loading } from "../../Global/Loading";
+import { PeopleOutline, CashOutline } from "react-ionicons"
 
-const {RangePicker} = DatePicker;
-
-function BookingModal({room: {id, name, price, capacity}}) {
+const { RangePicker } = DatePicker;
+const url = process.env.REACT_APP_API_URL
+function BookingModal({ room: { id, name, price, capacity }, hotel }) {
     const initialValues = {
         startTime: "",
         endTime: "",
         roomId: id,
+        returnUrl: "localhost:3000",
+        cancelUrl: `localhost:3000/hotel/${hotel.id}`
     }
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -56,32 +59,28 @@ function BookingModal({room: {id, name, price, capacity}}) {
         const timer = setTimeout(() => {
             setSuccessAlert(false);
             setErrorAlert(false);
-        }, 4000)
+        }, 3000)
         return () => clearTimeout(timer)
     }, [state.book.success]);
 
     const history = useHistory();
     const onSubmitBooking = () => {
         bookRoom(dispatch, state.hotel.hotel.id, token, bookingReq);
-        setTimeout(() => {
-            toggleShow();
-        }, 3500)
+        const checkOutURL = state.book.bookData ? state.book.bookData.link.href : "";
+        if (state.book.success) {
+            window.open(checkOutURL);
+        } else {
+            const timer = setTimeout(() => {
+                toggleShow()
+            }, 3000)
+            return () => clearTimeout(timer)
+        }
     }
 
     const onOpenBookingModal = () => {
-        // if (!state.auth.isAuthenticated) {
-        //     setErrorAlert(true);
-        //     alert("You're not logged in yet!")
-        //     setTimeout(() => {
-        //         history.push("/login")
-        //     }, 3000);
-        // } else {
-        //     toggleShow()
-        // }
-
-        if(state.auth.isAuthenticated){
+        if (state.auth.isAuthenticated) {
             toggleShow()
-        }else{
+        } else {
             alert("You're not logged in yet!")
             setTimeout(() => {
                 history.push("/login")
@@ -95,19 +94,32 @@ function BookingModal({room: {id, name, price, capacity}}) {
     return (
         <div>
             <Button className="transform hover:scale-110" outline color="primary"
-                    onClick={onOpenBookingModal}>Book</Button>
+                onClick={onOpenBookingModal}>Book</Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
-                {state.book.loading && <Loading/>}
+                {state.book.loading && <Loading />}
                 {successAlert && <SuccessMessage message="Your booking request has been sent, please wait until the host
                     accepts the offer! "/>}
-                {errorAlert && <ErrorMessage errors={state.book.errors}/>}
+                {errorAlert && <ErrorMessage errors={state.book.errors} />}
                 <ModalHeader className="font-bold">
                     {name}
                 </ModalHeader>
                 <ModalBody className="text-2xl">
-                    <p className="font-semibold"><span className="font-light">Max guests: </span>{capacity > 2
-                        ? `${capacity} People` : `${capacity} Person`}</p>
-                    <p className="font-semibold"><span className="font-light">Price: </span>{formatPrice(price)} VND</p>
+                    <p className="font-semibold flex">
+                        <span className="font-light mr-3">
+                            <PeopleOutline
+                                color={'#00000'}
+                                height="30px"
+                                width="30px"
+                            />
+                        </span>{capacity > 2
+                            ? `${capacity} People` : `${capacity} Person`}</p>
+                    <p className="font-semibold flex">
+                        <span className="font-light mr-3">
+                            <CashOutline
+                                color={'#00000'}
+                                height="30px"
+                                width="30px"
+                            /> </span>{formatPrice(price)} VND</p>
                     <RangePicker
                         format="YYYY-MM-DD"
                         id="fromTo"
@@ -142,7 +154,7 @@ function BookingModal({room: {id, name, price, capacity}}) {
                     </p>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={onSubmitBooking}>Book</Button>
+                    <Button color="primary" onClick={onSubmitBooking}>Check out</Button>
                     <Button onClick={toggleShow}>Close</Button>
                 </ModalFooter>
             </Modal>

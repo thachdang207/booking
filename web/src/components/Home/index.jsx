@@ -34,12 +34,10 @@ function Home() {
                 onClick={scrollToBook}
             />
 
-            <Border/>
-
-            {/* <Searchbar
+            <Searchbar
                 onSubmit={handleSearch}
                 refProp={myRef}
-            /> */}
+            />
 
             <Border/>
 

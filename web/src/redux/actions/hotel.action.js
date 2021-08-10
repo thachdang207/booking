@@ -90,12 +90,14 @@ export const getCityHotels = async (dispatch, cityId, page) => {
 export const getFilterHotels = async (dispatch, hotelName, page) => {
     setLoading(dispatch, true);
     try {
-        const response = await axios.get(`${url}/customer/locations?s={"name":{"$contL":${hotelName}}}`, {
+        const response = 
+        await axios.get(`${url}/customer/locations?s={"name":{"$contL":${hotelName}}}`, 
+        {
             params: {
                 page: `${page}`,
-                // s : `${hotelName}`,
-                // join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
                 sort: 'score,DESC',
+                // filter: ``
             }
         });
         dispatch({

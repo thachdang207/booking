@@ -42,11 +42,11 @@ export default function Searchbar(props) {
                         <div className="items-center min-h-0 bg-white" data-aos="fade-up">
                             <div className="container mx-auto">
                                 <Form
-                                    className="sm:max-w-sm md:max-w-xl lg:max-w-4xl mx-auto my-5 xl:my-20 bg-gray-200 p-8 rounded-md shadow-sm">
+                                    className="sm:max-w-sm md:max-w-xl lg:max-w-4xl mx-auto my-5 xl:my-20 bg-yellow-300 p-8 rounded-md shadow-sm">
                                     <div className="text-center">
-                                        <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find
+                                        <h3 className="my-3 text-xl font-semibold text-gray-900 dark:text-gray-300">Find
                                             deals on hotels, homes, and much more...</h3>
-                                        <p className="text-gray-500 dark:text-gray-400">From cozy country homes to funky
+                                        <p className="text-gray-700 dark:text-gray-400">From cozy country homes to funky
                                             city apartments</p>
                                     </div>
                                     <div className="flex flex-col md:block md:w-full">

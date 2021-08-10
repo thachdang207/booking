@@ -43,7 +43,7 @@ function UserProfile(props) {
                 <ErrorMessage errors={state.user.errors}/>
             )}
             {state.user.success && <SuccessMessage message="Success"/>}
-            <main className="bg-gray-100 min-h-screen flex flex-col md:flex-row md:justify-center p-5 text-gray-800">
+            <main className="min-h-screen flex flex-col lg:flex-row lg:justify-center p-5 text-gray-800 sm:mx-12 md:mx-24 lg:mx-80">
                 <UserSideBar/>
                 <Switch>
                     <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`}/>

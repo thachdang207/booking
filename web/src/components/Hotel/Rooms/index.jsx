@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {getHotel} from "../../../redux/actions/hotel.action";
 
-function Rooms({rooms}) {
+function Rooms({rooms, hotel}) {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     let {id} = useParams();
@@ -15,10 +15,10 @@ function Rooms({rooms}) {
         getHotel(dispatch, id)
     }, []); // eslint-disable-line
     return (
-    <div className="lg:mx-20 xl:mx-40">
+    <div className="md:mx-12 lg:mx-40 xl:mx-80">
         <Table striped bordered hover data-aos="fade-up">
             <thead>
-            <tr className="text-xl">
+            <tr className="text-xl bg-blue-900 text-white">
                 <th>Services</th>
                 <th>Name</th>
                 <th>Maximum guests</th>
@@ -43,11 +43,11 @@ function Rooms({rooms}) {
                                 )
                             })}
                         </td>
-                        <td className="font-bold">{room.name}</td>
+                        <td className="font-bold text-blue-700">{room.name}</td>
                         <td>{room.capacity}</td>
-                        <td className="font-medium">{formatPrice(room.price)} {" "} VND</td>
+                        <td className="font-medium text-yellow-600">{formatPrice(room.price)} {" "} VND</td>
                         <td>
-                            <BookingModal room={room}/>
+                            <BookingModal room={room} hotel={hotel}/>
                         </td>
                     </tr>
                 )

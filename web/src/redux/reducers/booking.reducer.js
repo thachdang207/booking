@@ -17,7 +17,7 @@ export default function book(state = initialState, action) {
         case BOOK: {
             return {
                 ...state,
-                bookData: action.payload,
+                bookData: action.payload.bookData,
                 success: !action.payload.errors,
                 errors: action.payload.errors,
             };

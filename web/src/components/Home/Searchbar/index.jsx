@@ -60,12 +60,12 @@ export default function Searchbar(props) {
 
                 return (
                     <div ref={props.refProp}>
-                        <div className="items-center min-h-0 bg-white" data-aos="fade-up">
+                        <div className="items-center min-h-0 bg-gray-200 shadow-md" data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="sm:max-w-sm md:max-w-xl lg:max-w-6xl mx-auto my-5 xl:my-20 bg-gray-200 p-8 rounded-md shadow-sm">
-                                    <div className="text-center">
-                                        <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
-                                        <p className="text-gray-500 dark:text-gray-400">From cozy country homes to funky city apartments</p>
+                                <Form className="sm:max-w-sm md:max-w-xl lg:max-w-6xl mx-auto xl:my-20 bg-gray-200 px-12 py-28 rounded-md">
+                                    <div className="text-start">
+                                        <h1 className="my-3 text-2xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h1>
+                                        <p className="text-gray-700 dark:text-gray-400">From cozy country homes to funky city apartments</p>
                                     </div>
                                     <div className="flex flex-col md:block md:w-full">
                                         <div className="inline-block py-3 md:w-1/4">

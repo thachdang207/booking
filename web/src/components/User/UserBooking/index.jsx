@@ -19,14 +19,14 @@ function UserBooking() {
     })
 
     return (
-        <div className="w-full md:w-14/16 xl:w-15/16 bg-gray-200 rounded-sm">
+        <div className="w-full md:w-8/12 xl:w-9/12 mx-3 bg-gray-200 rounded-sm">
             {state.user.user && (
                 <Title title={`${state.user.user.fullName}'s Booking Histories`} data-aos="fade-up"/>
             )}
             <div className="sm:mx-0 md:mx-10 lg:mx-20 xl:mx-40">
                 <Table striped bordered hover>
                     <thead>
-                    <tr>
+                    <tr className="text-center bg-blue-900 text-white">
                         <th>ID</th>
                         <th>Created Day</th>
                         <th>Hotel</th>

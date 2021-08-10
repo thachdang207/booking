@@ -36,7 +36,7 @@ export default function SearchHotel(props) {
                     <div ref={props.refProp}>
                         <div className="items-center min-h-0 bg-white" data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="sm:max-w-sm md:max-w-xl lg:max-w-6xl mx-auto my-5 xl:my-20 bg-gray-200 p-8 rounded-md shadow-sm">
+                                <Form className="sm:max-w-sm md:max-w-xl lg:max-w-6xl mx-auto my-5 xl:my-20 bg-yellow-300 p-8 rounded-md shadow-sm">
                                     <div className="text-center">
                                         <h3 className="my-3 text-xl font-semibold text-gray-800 dark:text-gray-200">Find deals on hotels, homes, and much more...</h3>
                                     </div>

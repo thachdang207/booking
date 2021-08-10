@@ -42,7 +42,7 @@ function UserProfileMain() {
     };
 
     return (
-        <div className="w-full md:w-9/12 xl:w-10/12 md:ml-5 bg-gray-200 p-5 rounded-sm ">
+        <div className="w-full md:w-8/12 xl:w-9/12 md:ml-5 bg-gray-200 p-5 rounded-sm ">
             {state.user.user && (
                 <div className="relative mx-auto p-4">
                     <img

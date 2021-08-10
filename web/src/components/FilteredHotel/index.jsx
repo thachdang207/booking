@@ -43,7 +43,7 @@ function FilteredHotel() {
         <>
             <StaticHeader />
             {state.hotel.loading && <Loading />}
-            <section className="px-10 py-12 md:px-40 lg:px-56">
+            <section className="px-10 py-12 md:px-20 lg:px-32">
                 <SearchHotel
                 />
                 <Title title={`${state.hotel.pagination.total} results by searching with "${hotel}"`} />

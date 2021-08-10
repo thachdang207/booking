@@ -14,6 +14,8 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
             startTime: bookData.startTime,
             endTime: bookData.endTime,
             roomId: bookData.roomId,
+            returnUrl: bookData.returnUrl,
+            cancelUrl: bookData.cancelUrl,
         }
     })
         .then(async (response) => {
@@ -28,7 +30,6 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
                 setSuccess(dispatch, null);
                 setError(dispatch, null);
             }, 3000)
-
         })
         .catch(async (error) => {
             await dispatch({
