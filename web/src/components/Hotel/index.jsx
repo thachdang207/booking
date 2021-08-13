@@ -85,9 +85,7 @@ function Hotel() {
                 />
                 <p className="font-bold ml-4 mr-1">
                     We accept Paypal and many other payment methods.
-                </p>
-                <p>
-                    We will send you a booking confirmation email.
+                    <span className="font-normal">{" "} We will send you a booking confirmation email.</span>
                 </p>
             </div>
             <div className="bg-green-100 p-4 my-3 md:mx-24 lg:mx-64 flex">

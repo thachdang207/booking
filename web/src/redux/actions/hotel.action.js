@@ -32,6 +32,7 @@ export const getPageHotels = (dispatch, page) => {
             page: `${page}`,
             sort: 'score,DESC',
             join: ['locationType', 'city', 'rooms', 'serviceTypes'],
+            // fitler: "locationType.name||$eq||Homestay"
         }
     }).then(async (response) => {
         await dispatch({

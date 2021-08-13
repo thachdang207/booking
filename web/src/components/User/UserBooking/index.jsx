@@ -19,7 +19,7 @@ function UserBooking() {
     })
 
     return (
-        <div className="w-full md:w-8/12 xl:w-9/12 mx-3 bg-gray-200 rounded-sm">
+        <div className="w-full bg-gray-200 rounded-sm">
             {state.user.user && (
                 <Title title={`${state.user.user.fullName}'s Booking Histories`} data-aos="fade-up"/>
             )}
@@ -39,15 +39,15 @@ function UserBooking() {
                     <tbody>
                     {state.user.bookings && state.user.bookings.map((booking, key) => {
                         return (
-                            <tr key={key}>
+                            <tr key={key} className="font-semibold">
                                 <td className="grid grid-cols-5">
                                     {key + 1}
                                 </td>
                                 <td>{formatDate(booking.createdAt)}</td>
                                 <td className="font-bold">{booking.location.name}</td>
                                 <td>{booking.room.name}</td>
-                                <td>{formatDate(booking.startTime)}</td>
-                                <td>{formatDate(booking.endTime)}</td>
+                                <td className="text-green-600">{formatDate(booking.startTime)}</td>
+                                <td className="text-red-600">{formatDate(booking.endTime)}</td>
                                 <td><Button disabled color={
                                     booking.status === "PENDING"
                                         ? "dark"

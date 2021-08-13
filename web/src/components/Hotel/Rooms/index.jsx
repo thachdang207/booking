@@ -15,7 +15,7 @@ function Rooms({rooms, hotel}) {
         getHotel(dispatch, id)
     }, []); // eslint-disable-line
     return (
-    <div className="md:mx-12 lg:mx-40 xl:mx-80">
+    <div className="md:mx-12 lg:mx-40 xl:mx-60">
         <Table striped bordered hover data-aos="fade-up">
             <thead>
             <tr className="text-xl bg-blue-900 text-white">
@@ -45,7 +45,7 @@ function Rooms({rooms, hotel}) {
                         </td>
                         <td className="font-bold text-blue-700">{room.name}</td>
                         <td>{room.capacity}</td>
-                        <td className="font-medium text-yellow-600">{formatPrice(room.price)} {" "} VND</td>
+                        <td className="font-medium text-yellow-700">{formatPrice(room.price)} {" "} VND</td>
                         <td>
                             <BookingModal room={room} hotel={hotel}/>
                         </td>

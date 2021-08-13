@@ -39,10 +39,10 @@ export default function Searchbar(props) {
 
                 return (
                     <div ref={props.refProp}>
-                        <div className="items-center min-h-0 bg-white" data-aos="fade-up">
-                            <div className="container mx-auto">
+                        <div className="items-center min-h-0 bg-yellow-300 mx-64 rounded-md shadow-md" data-aos="fade-up">
+                            <div className="container mx-auto w-full">
                                 <Form
-                                    className="sm:max-w-sm md:max-w-xl lg:max-w-4xl mx-auto my-5 xl:my-20 bg-yellow-300 p-8 rounded-md shadow-sm">
+                                    className="sm:max-w-sm md:max-w-3xl lg:max-w-6xl mx-auto my-5 xl:my-20 p-8">
                                     <div className="text-center">
                                         <h3 className="my-3 text-xl font-semibold text-gray-900 dark:text-gray-300">Find
                                             deals on hotels, homes, and much more...</h3>

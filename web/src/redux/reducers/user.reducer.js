@@ -10,6 +10,7 @@ const initialState = {
     success: null,
     bookings: [],
     user: null,
+    updatedUser: null,
     errors: null,
     loading: false,
 };
@@ -31,9 +32,7 @@ export default function user(state = initialState, action) {
         case UPDATE_USER_INFO: {
             return {
                 ...state,
-                success: action.payload.success,
-                user: action.payload.success ? action.payload.user : null,
-                errors: action.payload.success ? null : action.payload.errors
+                updatedUser: action.payload,
             };
         }
         case UPDATE_USER_PASSWORD: {

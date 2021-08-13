@@ -61,3 +61,9 @@ export const isTruthy = (prop) => {
     return !(prop === false || prop === null || prop === undefined || isNaN(prop) || prop === 0);
 }
 
+
+export const getExtension = (filename) => {
+    let parts = filename.split('.');
+    let image = "image/"
+    return image.concat(parts[parts.length - 1]);
+  }

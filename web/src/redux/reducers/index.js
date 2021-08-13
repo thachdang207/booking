@@ -7,6 +7,7 @@ import room from "./room.reducer"
 import sAdmin from "./sAdmin.reducer"
 import city from './city.reducer'
 import book from './booking.reducer'
+import upload from './upload.reducer'
 
 
 export default combineReducers({
@@ -18,4 +19,5 @@ export default combineReducers({
     sAdmin,
     city,
     book,
+    upload,
 });

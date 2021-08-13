@@ -52,9 +52,10 @@ export const getBookingHistories = (dispatch, token) => {
 };
 // -----------------------------------------
 
-export const updateUserInfo = (dispatch, token, userInfo) => {
+export const updateUserInfo = async (dispatch, token, userInfo) => {
     setLoading(dispatch, true);
-    axios
+    try{
+        const response = await  axios
         .put(
             `${url}/customer/users/me`,
             {
@@ -67,15 +68,14 @@ export const updateUserInfo = (dispatch, token, userInfo) => {
                 headers: {Authorization: `Bearer ${token}`}
             }
         )
-        .then(async (response) => {
-            await dispatch({
-                type: UPDATE_USER_INFO,
-                payload: response.data.data
-            });
-            setLoading(dispatch, false);
-        })
-        .catch((error) => {
+        dispatch({
+            type: UPDATE_USER_INFO,
+            payload: response.data
         });
+        setLoading(dispatch, false);
+    }catch(e){
+        console.error(e);
+    }
 };
 // -----------------------------------------
 

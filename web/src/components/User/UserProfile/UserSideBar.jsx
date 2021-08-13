@@ -1,35 +1,49 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Button} from "reactstrap"
-import {useSecureLs} from "../../Global/UseSecureLs";
+import { Link } from "react-router-dom";
+import { useSecureLs } from "../../Global/UseSecureLs";
+import "./SideBar.css"
 
 function UserSideBar() {
     const [id] = useSecureLs("user_id")
 
     return (
-        <div className="md:block w-full md:w-4/12 xl:w-3/12 bg-gray-200 pt-5 lg:p-6 rounded-sm">
-            <Link
-                to={`/user/${id}`}
-                className="no-underline"
-            >
-                <Button color="primary" className="block py-3 px-4">
-                    My Profile
-                </Button>
-            </Link>
+        <div>
+            <nav className="main-menu">
+                <ul>
+                    <li>
+                        <Link to="/">
+                            <i className="fa fa-home fa-2x"></i>
+                            <span className="nav-text">
+                                Home
+                            </span>
+                        </Link>
 
-            <div className="hidden md:block border-t w-2/3 my-2"/>
-
-            <Link
-                to={`/user/${id}/bookings`}
-                className="no-underline"
-            >
-                <Button color="primary" className="block py-3 px-4">
-                    My Bookings
-                </Button>
-            </Link>
-
-            <div className="hidden md:block border-t w-2/3 my-2"/>
-        </div>
+                    </li>
+                    <li className="has-subnav">
+                        <Link
+                            to={`/user/${id}`}
+                            className="no-underline"
+                        >
+                            <i className="fa fa-user fa-2x"></i>
+                            <span className="nav-text">
+                                My profile
+                            </span>
+                        </Link>
+                    </li>
+                    <li className="has-subnav">
+                        <Link
+                            to={`/user/${id}/bookings`}
+                            className="no-underline"
+                        >
+                            <i className="fa fa-list fa-2x"></i>
+                            <span className="nav-text">
+                                My booking histories
+                            </span>
+                        </Link>
+                    </li>
+                </ul>
+            </nav >
+        </div >
     );
 }
 

@@ -11,6 +11,8 @@ import { MailOutline, HomeOutline, CallOutline, BusinessOutline } from 'react-io
 function UserProfileMain() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
+    const updatedUserInfo = useSelector((state) => state.user.updatedUser)
+
     const [token] = useSecureLs("token")
 
     useEffect(() => {
@@ -19,7 +21,7 @@ function UserProfileMain() {
             getUser(dispatch, token);
         }, 1000);
         return () => clearTimeout(timer);
-    }, []); // eslint-disable-line
+    }, [updatedUserInfo]); // eslint-disable-line
 
     useEffect(() => {
         document.title = `Profile`;
@@ -35,14 +37,14 @@ function UserProfileMain() {
     const onSubmitHandler = (values) => {
         updateUserInfo(dispatch, token, values);
 
-        const timer = setTimeout(() => {
-            window.location.reload();
-        }, 2000);
-        return () => clearTimeout(timer);
+        // const timer = setTimeout(() => {
+        //     window.location.reload();
+        // }, 2000);
+        // return () => clearTimeout(timer);
     };
 
     return (
-        <div className="w-full md:w-8/12 xl:w-9/12 md:ml-5 bg-gray-200 p-5 rounded-sm ">
+        <div className="w-full bg-gray-200 py-12 px-32 rounded-sm">
             {state.user.user && (
                 <div className="relative mx-auto p-4">
                     <img

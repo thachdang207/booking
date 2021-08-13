@@ -19,7 +19,7 @@ function BookingModal({ room: { id, name, price, capacity }, hotel }) {
         startTime: "",
         endTime: "",
         roomId: id,
-        returnUrl: "localhost:3000",
+        returnUrl: "localhost:3000/",
         cancelUrl: `localhost:3000/hotel/${hotel.id}`
     }
     const dispatch = useDispatch();
@@ -67,8 +67,8 @@ function BookingModal({ room: { id, name, price, capacity }, hotel }) {
     const onSubmitBooking = () => {
         bookRoom(dispatch, state.hotel.hotel.id, token, bookingReq);
         const checkOutURL = state.book.bookData ? state.book.bookData.link.href : "";
-        if (state.book.success) {
-            window.open(checkOutURL);
+        if (state.book.success === true) {
+            window.location.replace(checkOutURL);
         } else {
             const timer = setTimeout(() => {
                 toggleShow()

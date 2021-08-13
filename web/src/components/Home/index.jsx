@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import Searchbar from './Searchbar'
 import Header from '../Global/Header'
 import Border from '../Global/Border'
@@ -17,7 +17,7 @@ function Home() {
 
 
     const scrollToBook = () => {
-        myRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})
+        myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     };
 
     const handleSearch = (values) => {
@@ -28,7 +28,7 @@ function Home() {
 
     return (
         <>
-            <Header/>
+            <Header />
 
             <Hero
                 onClick={scrollToBook}
@@ -39,25 +39,28 @@ function Home() {
                 refProp={myRef}
             />
 
-            <Border/>
+            <Border />
 
             <Cities />
 
-            <Border/>
+            <Border />
 
             <SearchHotel
                 onSubmit={handleSearch}
             />
+            <Hotels />
 
-            <Hotels/>
+            <Border />
 
-            <Border/>
+            <ClientReview />
 
-            <ClientReview/>
+            <Border />
 
-            <Border/>
+            <div>
 
-            <Footer/>
+            </div>
+
+            <Footer />
         </>
     );
 }

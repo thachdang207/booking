@@ -48,7 +48,7 @@ function Cities() {
         ]
     };
     return (
-        <div className="w-3/4" style={{margin: "0 auto"}}>
+        <div className="w-full mx-auto">
             <Title title="The most attractive destinations in Vietnam"/>
                 <Slider {...settings}>
                     {state && state.city.cities.map((city) => (
