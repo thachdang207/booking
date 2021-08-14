@@ -11,15 +11,6 @@ function UserSideBar() {
             <nav className="main-menu">
                 <ul>
                     <li>
-                        <Link to="/">
-                            <i className="fa fa-home fa-2x"></i>
-                            <span className="nav-text">
-                                Home
-                            </span>
-                        </Link>
-
-                    </li>
-                    <li className="has-subnav">
                         <Link
                             to={`/user/${id}`}
                             className="no-underline"
@@ -30,7 +21,7 @@ function UserSideBar() {
                             </span>
                         </Link>
                     </li>
-                    <li className="has-subnav">
+                    <li>
                         <Link
                             to={`/user/${id}/bookings`}
                             className="no-underline"

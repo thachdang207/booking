@@ -43,17 +43,19 @@ export const nullOrNot = (prop) => {
 
 export const findValue = (obj, prop) => {
     if(prop !== null){
-        return obj.find(o => {
+        let result = obj.find(o => {
             return o.label === prop;
         })
+        return result ? result.value : result
     }
 }
 
 export const findLabel = (obj, prop) => {
     if(prop !== null) {
-        return obj.find(o => {
+        let result = obj.find(o => {
             return o.value === prop;
         })
+        return result ? result.label : result
     }
 }
 

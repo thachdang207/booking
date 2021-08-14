@@ -9,9 +9,10 @@ import { CITY_OPTIONS } from "../../../constants/global";
 import { useDispatch, useSelector } from "react-redux";
 import { getCities } from "../../../redux/actions/city.action";
 import { Loading } from "../../Global/Loading";
-import { nullOrNot, getExtension } from "../../../constants/function";
+import { nullOrNot, getExtension, findValue } from "../../../constants/function";
 import { signUrl, confirmUpload } from "../../../redux/actions/upload.action";
 import { useSecureLs } from "../../Global/UseSecureLs"
+import { SettingsSharp } from "react-ionicons"
 
 UserPersonalInfo.defaultProps = {
     onSubmit: null,
@@ -34,7 +35,7 @@ function UserPersonalInfo(props) {
     const defaultImage =
         props.user.avatar
             ? props.user.avatar
-            : "http://placehold.it/300x300?text=avatar";
+            : "https://source.unsplash.com/random";
     const [image, setImage] = useState(defaultImage)
     const [fileName, setFileName] = useState("");
     const [file, setFile] = useState(null);
@@ -63,9 +64,8 @@ function UserPersonalInfo(props) {
         fullName: props.user.fullName,
         phoneNumber: props.user.phoneNumber,
         address: props.user.address,
-        cityId: 1,
+        cityId: findValue(CITY_OPTIONS, props.user.city),
     }
-
 
     return (
         <Formik
@@ -86,13 +86,22 @@ function UserPersonalInfo(props) {
                     confirmUpload(dispatch, uploadUrl, file);
                     const timer = setTimeout(() => {
                         toggle()
-                    },1000)
+                    }, 1000)
                     return () => clearTimeout(timer)
                 }
 
                 return (
                     <div>
-                        <Button onClick={toggle} color="primary">Change Personal Information</Button>
+                        <button
+                            onClick={toggle}
+                            className="absolute w-20 h-20 -mt-10 bg-gray-200 inset-x-0 mx-auto border-none rounded-full hover:brightness-110">
+                            <SettingsSharp
+                                color={"#0275d8"}
+                                width="full"
+                                height="full"
+                                cssClasses="p-3"
+                            />
+                        </button>
                         <Modal
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
@@ -148,7 +157,8 @@ function UserPersonalInfo(props) {
                                                     <FastField
                                                         name="phoneNumber"
                                                         component={InputField}
-                                                        placeholder="Phone Number"
+                                                        placeholder="Phone Number (ex: +84 xxx xxx xxx)"
+                                                        type="tel"
                                                         value={nullOrNot(values.phoneNumber)}
                                                     />
                                                     <FastField
@@ -156,6 +166,10 @@ function UserPersonalInfo(props) {
                                                         component={SelectField}
                                                         placeholder="City"
                                                         options={CITY_OPTIONS}
+                                                        defaultValue={{
+                                                            value: values.cityId,
+                                                            label: props.user.city
+                                                        }}
                                                     />
                                                     <FormGroup>
                                                         <Button

@@ -12,10 +12,12 @@ export const GUEST_OPTIONS = [
 ];
 
 export const CITY_OPTIONS = [
-    { value: '1', label: 'Đà Lạt'},
-    { value: '2', label: 'Hội An'},
-    { value: '3', label: 'Đà Nẵng'},
-    { value: '4', label: 'Nha Trang'},
-    { value: '5', label: 'Hồ Chí Minh'},
+  {value: "a6fe6729-88b8-4b25-84e6-14cc44513c16", label: "Đà Lạt"},
+  {value: "03c14027-1aaf-4ae5-9664-95480bebd61b", label: "Hội An"},
+  {value: "86dae7e1-66c4-4bb7-a8a0-5095591ea887", label: "Đà Nẵng"},
+  {value: "939bf0a7-0d58-4f0a-9878-31b3b395e08a", label: "Nha Trang"},
+  {value: "df010d26-9eed-416a-a2f1-b2301fa916cb", label: "Hồ Chí Minh"},
 ];
+
+
 

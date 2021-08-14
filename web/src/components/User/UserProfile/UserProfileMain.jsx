@@ -44,76 +44,83 @@ function UserProfileMain() {
     };
 
     return (
-        <div className="w-full bg-gray-200 py-12 px-32 rounded-sm">
-            {state.user.user && (
-                <div className="relative mx-auto p-4">
-                    <img
-                        src={
-                            state.user.user.image
-                                ? state.user.user.image
-                                : "http://placehold.it/300x300?text=avatar"
-                        }
-                        alt="avatar"
-                        className="w-32 h-32 rounded-full object-cover"
-                    />
-                    <div className="text-xl">
-                        <h1 className="my-4 font-sans">
-                            {state.user.user.fullName}
-                        </h1>
-                        <p className="flex items-center">
-                            <MailOutline
-                                color={'#00000'}
-                                height="30px"
-                                width="30px"
-                            />
-                            <span className="font-semibold mt-2 ml-2">
-                                Email: <small className="font-medium ml-1">
-                                    {state.user.user.email}
-                                </small>
-                            </span>
-                        </p>
-                        <p className="flex items-center">
-                            <HomeOutline
-                                color={'#00000'}
-                                height="30px"
-                                width="30px"
-                            />
-                            <span className="font-semibold mt-2 ml-2">
-                                Address: <small className="font-medium ml-1">
-                                    {state.user.user.address}
-                                </small>
-                            </span>
-                        </p>
-                        <p className="flex items-center">
-                            <BusinessOutline
-                                color={'#00000'}
-                                height="30px"
-                                width="30px"
-                            />
-                            <span className="font-semibold mt-2 ml-2">
-                                City: <small className="font-medium ml-1">
-                                    {state.user.user.city}
-                                </small>
-                            </span>
-                        </p>
-                        <p className="flex items-center">
-                            <CallOutline
-                                color={'#00000'}
-                                height="30px"
-                                width="30px"
-                            />
-                            <span className="font-semibold mt-2 ml-2">
-                                Phone number: <small className="font-medium ml-1">
-                                    {state.user.user.phoneNumber}
-                                </small>
-                            </span>
-                        </p>
-                    </div>
-
-                    <UserPersonalInfo onSubmit={onSubmitHandler} user={state.user.user} />
+        <div className="w-full bg-gray-100 py-20 md:px-20 lg:px-32 xl:px-40 2xl:px-96 rounded-xl">
+            <div className="px-12 md:px-20 lg:px-32 xl:px-40 2xl:px-64 transform">
+                <div
+                    className="bg-gray-100 h-auto rounded-xl overflow-hidden shadow-lg mt-0"
+                >
+                    {state.user.user && (
+                        <div>
+                            <div className="relative">
+                                <img
+                                    src={
+                                        state.user.user.image
+                                            ? state.user.user.image
+                                            : "https://source.unsplash.com/random"
+                                    }
+                                    alt="avatar"
+                                    className="w-full h-80 object-cover shadow-md"
+                                />
+                            </div>
+                            <UserPersonalInfo onSubmit={onSubmitHandler} user={state.user.user} />
+                            <div className="py-10 sm:px-2 md:px-10 lg:px-24">
+                                <h1 className="my-4 font-sans text-center">
+                                    {state.user.user.fullName}
+                                </h1>
+                                <p className="flex items-center">
+                                    <MailOutline
+                                        color={"#0275d8"}
+                                        height="30px"
+                                        width="30px"
+                                    />
+                                    <span className="font-semibold mt-2 ml-2">
+                                        Email: <small className="font-medium ml-1">
+                                            {state.user.user.email}
+                                        </small>
+                                    </span>
+                                </p>
+                                <p className="flex items-center">
+                                    <HomeOutline
+                                        color={"#0275d8"}
+                                        height="30px"
+                                        width="30px"
+                                    />
+                                    <span className="font-semibold mt-2 ml-2">
+                                        Address: <small className="font-medium ml-1">
+                                            {state.user.user.address}
+                                        </small>
+                                    </span>
+                                </p>
+                                <p className="flex items-center">
+                                    <BusinessOutline
+                                        color={"#0275d8"}
+                                        height="30px"
+                                        width="30px"
+                                    />
+                                    <span className="font-semibold mt-2 ml-2">
+                                        City: <small className="font-medium ml-1">
+                                            {state.user.user.city}
+                                        </small>
+                                    </span>
+                                </p>
+                                <p className="flex items-center">
+                                    <CallOutline
+                                        color={"#0275d8"}
+                                        height="30px"
+                                        width="30px"
+                                    />
+                                    <span className="font-semibold mt-2 ml-2">
+                                        Phone number: <small className="font-medium ml-1">
+                                            {state.user.user.phoneNumber}
+                                        </small>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
-        </div>
+            </div>
+        </div >
     );
 }
 
