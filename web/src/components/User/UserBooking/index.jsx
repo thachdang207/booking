@@ -24,7 +24,7 @@ function UserBooking() {
                 <Title title={`${state.user.user.fullName}'s Booking Histories`} data-aos="fade-up"/>
             )}
             <div className="sm:mx-0 md:mx-10 lg:mx-20 xl:mx-40">
-                <Table striped bordered hover>
+                <Table striped bordered responsive hover>
                     <thead>
                     <tr className="text-center bg-blue-900 text-white">
                         <th>ID</th>

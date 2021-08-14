@@ -16,7 +16,7 @@ function Rooms({rooms, hotel}) {
     }, []); // eslint-disable-line
     return (
     <div className="md:mx-12 lg:mx-40 xl:mx-60">
-        <Table striped bordered hover data-aos="fade-up">
+        <Table striped bordered responsive hover>
             <thead>
             <tr className="text-xl bg-blue-900 text-white">
                 <th>Services</th>

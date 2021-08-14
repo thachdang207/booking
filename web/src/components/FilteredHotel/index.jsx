@@ -30,7 +30,7 @@ function FilteredHotel() {
 
     useEffect(() => {
         getFilterHotels(dispatch, JSON.stringify(hotel), pagination.page);
-    }, [])
+    }, [hotel])
 
 
     useEffect(() => {
@@ -46,7 +46,9 @@ function FilteredHotel() {
             <section className="px-10 py-12 md:px-20 lg:px-32">
                 <SearchHotel
                 />
-                <Title title={`${state.hotel.pagination.total} results by searching with "${hotel}"`} />
+                <Title
+                    title={`${state.hotel.pagination.total} ${state.hotel.pagination.total === 1 ? "result" : "results"} by searching with "${hotel}"`}
+                />
                 <main className="min-h-screen flex flex-col md:flex-row md:justify-center p-0 text-gray-800">
                     <FilterSideBar />
                     <div className="w-full md:w-9/12 xl:w-10/12 md:ml-5 bg-gray-200 p-5 rounded-md">

@@ -125,7 +125,7 @@ function UserPersonalInfo(props) {
                                                                 image ? image : defaultImage
                                                             }
                                                             alt="avatar"
-                                                            className="w-40 h-40 rounded-full object-cover mr-4"
+                                                            className="w-32 h-32 rounded-full object-cover mr-4"
                                                         />
                                                         <div>
                                                             <Label>Select image:</Label>
