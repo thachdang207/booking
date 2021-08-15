@@ -1,17 +1,18 @@
+/*-------------------------------------- SideBar ----------------------------*/
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
 .fa-2x {
-  font-size: 3em;
+  font-size: 2em;
 }
 .fa {
   position: relative;
   display: table-cell;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   vertical-align: middle;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 .main-menu:hover,
@@ -28,7 +29,7 @@ nav.main-menu.expanded {
   bottom: 0;
   height: 100%;
   left: 0;
-  width: 60px;
+  width: 50px;
   overflow: hidden;
   -webkit-transition: width 0.2s linear;
   transition: width 0.2s linear;
@@ -51,7 +52,7 @@ nav.main-menu.expanded {
   display: table;
   border-collapse: collapse;
   border-spacing: 0;
-  color: rgb(235, 245, 255);
+  color: rgb(180, 180, 180);
   font-family: arial;
   font-size: 17px;
   text-decoration: none;
@@ -74,7 +75,7 @@ nav.main-menu.expanded {
   position: relative;
   display: table-cell;
   vertical-align: middle;
-  width: 190px;
+  width: 200px;
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -112,4 +113,79 @@ nav.main-menu li.active > a,
 .dropdown-menu > .active > a:focus {
   color: #fff;
   background-color: #0275d8;
+}
+/*-----------------------------------Popup Image ----------------------------*/
+
+/* The Modal (background) */
+.popup__image {
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.popup__image-content {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  height: 95%;
+}
+
+/* Add Animation */
+.popup__image-content {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
 }

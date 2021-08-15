@@ -1,13 +1,13 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Footer from "../../Global/Footer";
 import StaticHeader from "../../Global/StaticHeader";
 import UserSideBar from "./UserSideBar";
 import UserProfileMain from "./UserProfileMain";
 import ErrorMessage from "../../Global/ErrorMessage";
 import SuccessMessage from "../../Global/SuccessMessage";
-import {useSelector} from "react-redux";
-import {Loading} from "../../Global/Loading";
-import {Redirect, Route, Switch, useHistory, useRouteMatch} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Loading } from "../../Global/Loading";
+import { Redirect, Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import UserBooking from "../UserBooking";
 
 function UserProfile(props) {
@@ -37,23 +37,22 @@ function UserProfile(props) {
 
     return (
         <>
-            <StaticHeader/>
-            {state.user.loading && <Loading/>}
+            {state.user.loading && <Loading />}
             {state.user.success === false && (
-                <ErrorMessage errors={state.user.errors}/>
+                <ErrorMessage errors={state.user.errors} />
             )}
-            {state.user.success && <SuccessMessage message="Success"/>}
-            <main className="min-h-screen flex lg:justify-center text-gray-800">
-                <UserSideBar/>
+            {state.user.success && <SuccessMessage message="Success" />}
+            <main className="min-h-screen flex text-gray-800">
+                <UserSideBar />
                 <Switch>
-                    <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`}/>
-                    <Route path={`${match.url}/:id`} exact component={UserProfileMain}/>
-                    <Route path={`${match.url}/:id/bookings`} exact component={UserBooking}/>
-                    <Route exact component={Error}/>
+                    <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`} />
+                    <Route path={`${match.url}/:id`} exact component={UserProfileMain} />
+                    <Route path={`${match.url}/:id/bookings`} exact component={UserBooking} />
+                    <Route exact component={Error} />
                 </Switch>
             </main>
 
-            <Footer/>
+            <Footer />
         </>
     );
 }

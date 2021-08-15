@@ -15,11 +15,12 @@ function FilteredHotel() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const { hotel } = useParams();
-    const [pagination, setPagination] = useState({
+    const initialPagination = {
         page: 1,
         count: 10,
-        total: 100,
-    });
+        total: 500,
+    }
+    const [pagination, setPagination] = useState(initialPagination);
 
     const handlePageChange = (newPage) => {
         setPagination({
@@ -30,6 +31,10 @@ function FilteredHotel() {
 
     useEffect(() => {
         getFilterHotels(dispatch, JSON.stringify(hotel), pagination.page);
+    }, [hotel, pagination])
+
+    useEffect(() => {
+        setPagination(initialPagination)
     }, [hotel])
 
 

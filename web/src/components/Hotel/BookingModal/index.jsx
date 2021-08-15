@@ -14,15 +14,16 @@ import { PeopleOutline, CashOutline } from "react-ionicons"
 
 const { RangePicker } = DatePicker;
 const url = process.env.REACT_APP_API_URL
-function BookingModal({ room: { id, name, price, capacity }, hotel }) {
+function BookingModal({ room: { id, name, price, capacity }, hotel, fromTo: { startTime, endTime } }) {
     const initialValues = {
         startTime: "",
         endTime: "",
         roomId: id,
-        returnUrl: "localhost:3000/",
-        cancelUrl: `localhost:3000/hotel/${hotel.id}`
+        returnUrl: "vibo.surge.sh/",
+        cancelUrl: `vibo.surge.sh/hotel/${hotel.id}`
     }
     const dispatch = useDispatch();
+    const dateFormat = "YYYY-MM-DD";
     const state = useSelector((state) => state);
     const [token] = useSecureLs("token");
 
@@ -121,7 +122,7 @@ function BookingModal({ room: { id, name, price, capacity }, hotel }) {
                                 width="30px"
                             /> </span>{formatPrice(price)} VND</p>
                     <RangePicker
-                        format="YYYY-MM-DD"
+                        format={dateFormat}
                         id="fromTo"
                         allowClear="true"
                         placeholder={["Check in", "Check out"]}
@@ -134,6 +135,10 @@ function BookingModal({ room: { id, name, price, capacity }, hotel }) {
                             cursor: "pointer",
                             marginBottom: "10px"
                         }}
+                        defaultValue={[
+                            moment(startTime),
+                            moment(endTime)
+                        ]}
                     />
                     <p className="font-semibold">
                         <span className="font-light">From: </span>

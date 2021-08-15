@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 
-function HotelCard({ hotel: { id, name, price, score, images, address } }) {
+function HotelCard({ hotel: { id, name, price, score, images, address, userId } }) {
     const formatPrice = (price) => {
         if (price !== null) return price.slice(1)
         else return 0
@@ -31,9 +31,14 @@ function HotelCard({ hotel: { id, name, price, score, images, address } }) {
                             <div className="absolute w-full h-full bg-gray-800 opacity-50" />
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
-                                    <h3>
+                                    <h4>
                                         <Badge color="primary">{score}</Badge>
-                                    </h3>
+                                    </h4>
+                                    {userId === null && (
+                                        <h4 className="ml-2">
+                                            <Badge color="danger">*Unregistered</Badge>
+                                        </h4>
+                                    )}
                                 </div>
                                 <div className="text-gray-100 font-semibold">
                                     Around {formatPrice(price)} VND

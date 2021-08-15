@@ -19,7 +19,7 @@ function UserBooking() {
     })
 
     return (
-        <div className="w-full bg-gray-200 rounded-sm">
+        <div className="absolute w-full h-full bg-gray-200">
             {state.user.user && (
                 <Title title={`${state.user.user.fullName}'s Booking Histories`} data-aos="fade-up"/>
             )}

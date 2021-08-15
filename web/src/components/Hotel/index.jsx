@@ -24,10 +24,18 @@ function Hotel() {
     const [_user_id] = useSecureLs("user_id");
     const [userId, setUserId] = useState(_user_id);
     const [isFinding, setIsFinding] = useState(false);
+    let today = new Date();
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const [fromTo, setFromTo] = useState({
+        startTime: today.toISOString(),
+        endTime: tomorrow.toISOString()
+    });
 
     useEffect(() => {
         getHotel(dispatch, id)
         setUserId(userId)
+        window.scrollTo(0, 0);
     }, []); // eslint-disable-line
 
 
@@ -51,6 +59,7 @@ function Hotel() {
     const handleSearch = (values) => {
         getAvailableRoom(dispatch, state.hotel.hotel.id, values.startTime, values.endTime)
         setIsFinding(true);
+        setFromTo(values);
         console.log("Search form: ", values);
     }
     const defaultLat = "16.06748182";
@@ -117,7 +126,7 @@ function Hotel() {
             {state.hotel.hotel && (
                 <Title title={`${state.hotel.hotel.name}'s Rooms`} color="gray" data-aos="fade-up" />
             )}
-            <Rooms rooms={isFinding ? state.room.availableRooms : state.hotel.hotel.rooms} hotel={state.hotel.hotel} />
+            <Rooms rooms={isFinding ? state.room.availableRooms : state.hotel.hotel.rooms} hotel={state.hotel.hotel} fromTo={fromTo}/>
 
             <Border my="16" />
 
@@ -128,7 +137,7 @@ function Hotel() {
                 />
             )}
 
-            <div className="relative w-full" style={{ height: "500px" }} data-aos="fade-up">
+            <div className="relative w-full" style={{ height: "500px" }}>
                 <HotelGoogleMap
                     x={(state.hotel.hotel.coordinates !== undefined && state.hotel.hotel.coordinates !== null)
                         ? state.hotel.hotel.coordinates.latitude

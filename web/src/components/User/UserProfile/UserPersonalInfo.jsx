@@ -94,7 +94,7 @@ function UserPersonalInfo(props) {
                     <div>
                         <button
                             onClick={toggle}
-                            className="absolute w-20 h-20 -mt-10 bg-gray-200 inset-x-0 mx-auto border-none rounded-full hover:brightness-110">
+                            className="absolute w-20 h-20 -mt-10 bg-gray-200 inset-x-0 mx-auto border-none rounded-full transform hover:rotate-90">
                             <SettingsSharp
                                 color={"#0275d8"}
                                 width="full"
