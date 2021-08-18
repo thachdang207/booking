@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-phone-input-2/lib/style.css'
 
 import {Provider} from 'react-redux';
 import store from './app/store'

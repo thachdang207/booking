@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal, ModalFooter, ModalBody, FormGroup, Spinner, Button, Input, Label } from "reactstrap"
+import { Modal, ModalFooter, ModalBody, FormGroup, Button, Input, Label } from "reactstrap"
 import PropTypes from "prop-types";
 import { Formik, FastField, Form } from "formik";
 import InputField from "../../../custom-fields/InputField";
@@ -13,6 +13,7 @@ import { nullOrNot, getExtension, findValue } from "../../../constants/function"
 import { signUrl, confirmUpload } from "../../../redux/actions/upload.action";
 import { useSecureLs } from "../../Global/UseSecureLs"
 import { SettingsSharp } from "react-ionicons"
+import PhoneInputField from "../../../custom-fields/PhoneInputField";
 
 UserPersonalInfo.defaultProps = {
     onSubmit: null,
@@ -53,6 +54,19 @@ function UserPersonalInfo(props) {
         signUrl(dispatch, fileData, token);
     }
 
+    const handleUpload = async ({ signedRequest, uploadFile }) => {
+        try {
+            const data = await confirmUpload({
+                dispatch: dispatch,
+                signedRequest: signedRequest,
+                uploadFile: uploadFile
+            })
+            console.log(data);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     const onChangeImage = (e) => {
         setFile(e.target.files[0]);
         setImage(URL.createObjectURL(e.target.files[0]));
@@ -64,7 +78,7 @@ function UserPersonalInfo(props) {
         fullName: props.user.fullName,
         phoneNumber: props.user.phoneNumber,
         address: props.user.address,
-        cityId: findValue(CITY_OPTIONS, props.user.city),
+        cityId: props.user.city ? findValue(CITY_OPTIONS, props.user.city) : "Đà Nẵng",
     }
 
     return (
@@ -73,17 +87,20 @@ function UserPersonalInfo(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const { values, setValues, isSubmitting } = formikProps;
+                const { values, setValues } = formikProps;
                 console.log(values);
                 const onClickHandler = () => {
                     setValues({
                         ...values,
-                        cityId: state.city.cities[values.cityId - 1].id,
                         avatar: state.upload.fileData ? state.upload.fileData.fileUrl : fileName
                     });
-                    let uploadUrl = state.upload.fileData ? state.upload.fileData.uploadUrl : "";
-                    console.log(uploadUrl, file);
-                    confirmUpload(dispatch, uploadUrl, file);
+                    if (file) {
+                        let signedRequest = state.upload.fileData ? state.upload.fileData.uploadUrl : "";
+                        handleUpload({
+                            signedRequest: signedRequest,
+                            uploadFile: file
+                        })
+                    }
                     const timer = setTimeout(() => {
                         toggle()
                     }, 1000)
@@ -156,9 +173,7 @@ function UserPersonalInfo(props) {
                                                     />
                                                     <FastField
                                                         name="phoneNumber"
-                                                        component={InputField}
-                                                        placeholder="Phone Number (ex: +84 xxx xxx xxx)"
-                                                        type="tel"
+                                                        component={PhoneInputField}
                                                         value={nullOrNot(values.phoneNumber)}
                                                     />
                                                     <FastField
@@ -178,7 +193,6 @@ function UserPersonalInfo(props) {
                                                             color="primary"
                                                             onClick={onClickHandler}
                                                         >
-                                                            {isSubmitting && <Spinner size="sm" />}
                                                             Update
                                                         </Button>
                                                     </FormGroup>

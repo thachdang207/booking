@@ -76,7 +76,7 @@ function UserProfileMain() {
                                                 : "https://source.unsplash.com/random"
                                         }
                                         alt="avatar"
-                                        className="w-full h-96 object-cover shadow-md transition hover:opacity-75 cursor-pointer"
+                                        className="w-full h-96 object-cover shadow-md transition hover:opacity-80 cursor-pointer"
                                         onClick={togglePopupImage}
                                     />
                                 </div>

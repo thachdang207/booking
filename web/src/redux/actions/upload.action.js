@@ -30,17 +30,16 @@ export const signUrl = async (dispatch, fileData, token) => {
     }
 };
 
-export const confirmUpload = async (dispatch, uploadUrl, uploadFile) => {
+export const confirmUpload = async ({dispatch, signedRequest, uploadFile}) => {
     setLoading(dispatch, true);
-    // const formData = new FormData();
-    // formData.append("image", uploadFile);
     try{
         const response = await axios({
             method: "PUT",
-            url: `${uploadUrl}`,
+            url: signedRequest,
             data: uploadFile,
             headers: { 
-                "Content-Type": [`image/jpeg`, `image/png`, `image/svg+xml`]
+                "Content-Type": uploadFile.type,
+                'x-amz-acl': 'public-read'
             }
         })
         dispatch({

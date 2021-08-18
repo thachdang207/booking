@@ -44,11 +44,11 @@ function UserSideBar() {
                         </Link>
                     </li>
                 </ul>
-                <ul class="logout">
+                <ul className="logout">
                     <li>
                         <Link to="/logout">
-                            <i class="fa fa-power-off fa-2x"></i>
-                            <span class="nav-text">
+                            <i className="fa fa-power-off fa-2x"></i>
+                            <span className="nav-text">
                                 Logout
                             </span>
                         </Link>
