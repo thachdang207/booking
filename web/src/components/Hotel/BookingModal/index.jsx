@@ -15,7 +15,7 @@ import ErrorMessage from "../../Global/ErrorMessage";
 import SuccessMessage from "../../Global/SuccessMessage";
 import { useSecureLs } from "../../Global/UseSecureLs";
 import { Loading } from "../../Global/Loading";
-import { PeopleOutline, CashOutline } from "react-ionicons";
+import { PeopleOutline, CashOutline, CalendarOutline } from "react-ionicons";
 import { setError, setSuccess } from "../../../redux/actions/commonActions";
 
 const { RangePicker } = DatePicker;
@@ -25,6 +25,7 @@ function BookingModal({
     fromTo: { startTime, endTime },
 }) {
     const [userId] = useSecureLs("user_id");
+    console.log(userId);
     const initialValues = {
         startTime: startTime,
         endTime: endTime,
@@ -167,15 +168,16 @@ function BookingModal({
                         }}
                         defaultValue={[moment(startTime), moment(endTime)]}
                     />
-                    <p className="font-semibold">
-                        <span className="font-light">From: </span>
+                    <p className="font-semibold text-lg">
+                        <span className="font-light mr-3">From: </span>
                         {bookingReq.startTime ? formatDate(bookingReq.startTime) : ""}
                     </p>
-                    <p className="font-semibold">
-                        <span className="font-light">To: </span>
+                    <p className="font-semibold text-lg">
+                        <span className="font-light mr-3">To: </span>
                         {bookingReq.endTime ? formatDate(bookingReq.endTime) : ""}
                     </p>
-                    <p className="font-semibold">
+                    <p className="flex font-semibold text-lg">
+                        <CalendarOutline color={"#00000"} height="30px" width="30px" cssClasses="mr-3" />{" "}
                         {bookingReq.startTime
                             ? diffDate > 1
                                 ? `${diffDate} days`
@@ -183,7 +185,7 @@ function BookingModal({
                             : `${0} day`}
                     </p>
                     <p className="font-semibold">
-                        <span className="font-light">Total price: </span>
+                        <span className="font-light mr-3">Total price: </span>
                         {bookingReq.startTime
                             ? formatPrice(price * diffDate)
                             : formatPrice(price)}{" "}

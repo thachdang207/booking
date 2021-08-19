@@ -56,12 +56,11 @@ function UserPersonalInfo(props) {
 
     const handleUpload = async ({ signedRequest, uploadFile }) => {
         try {
-            const data = await confirmUpload({
+            await confirmUpload({
                 dispatch: dispatch,
                 signedRequest: signedRequest,
                 uploadFile: uploadFile
             })
-            console.log(data);
         } catch (e) {
             console.log(e)
         }
@@ -88,7 +87,7 @@ function UserPersonalInfo(props) {
         >
             {formikProps => {
                 const { values, setValues } = formikProps;
-                console.log(values);
+                // console.log(values);
                 const onClickHandler = () => {
                     setValues({
                         ...values,
