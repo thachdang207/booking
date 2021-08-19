@@ -11,10 +11,11 @@ import SearchHotel from '../Global/SearchHotel';
 
 function Home() {
     const myRef = useRef(null);
+
+
     useEffect(() => {
         document.title = 'VIBO | Homepage';
     });
-
 
     const scrollToBook = () => {
         myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })

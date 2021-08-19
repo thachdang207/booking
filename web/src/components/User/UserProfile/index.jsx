@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Footer from "../../Global/Footer";
-import StaticHeader from "../../Global/StaticHeader";
 import UserSideBar from "./UserSideBar";
 import UserProfileMain from "./UserProfileMain";
 import ErrorMessage from "../../Global/ErrorMessage";

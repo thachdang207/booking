@@ -2,11 +2,13 @@ import {
     BOOK,
     SET_SUCCESS,
     SET_LOADING,
-    SET_ERROR
+    SET_ERROR,
+    CAPTURE_PAYMENT
 } from "../actionTypes";
 
 const initialState = {
     bookData: {},
+    paymentInfo: {},
     success: null,
     errors: null,
     loading: false,
@@ -21,6 +23,12 @@ export default function book(state = initialState, action) {
                 success: !action.payload.errors,
                 errors: action.payload.errors,
             };
+        }
+        case CAPTURE_PAYMENT: {
+            return {
+                ...state,
+                paymentInfo: action.payload
+            }
         }
         case SET_LOADING: {
             return {

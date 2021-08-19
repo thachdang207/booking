@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import { useSecureLs } from "../Global/UseSecureLs";
 import Searchbar from "./Searchbar";
 import { getAvailableRoom } from "../../redux/actions/room.action";
+import { setSuccess, setError } from "../../redux/actions/commonActions";
 import Rooms from "./Rooms";
 import { Loading } from "../Global/Loading";
 import { CardOutline, LockOpenOutline, AlertCircleOutline } from "react-ionicons"
@@ -35,6 +36,8 @@ function Hotel() {
     useEffect(() => {
         getHotel(dispatch, id)
         setUserId(userId)
+        setSuccess(dispatch, null);
+        setError(dispatch, null);
         window.scrollTo(0, 0);
     }, []); // eslint-disable-line
 
@@ -126,7 +129,7 @@ function Hotel() {
             {state.hotel.hotel && (
                 <Title title={`${state.hotel.hotel.name}'s Rooms`} color="gray" data-aos="fade-up" />
             )}
-            <Rooms rooms={isFinding ? state.room.availableRooms : state.hotel.hotel.rooms} hotel={state.hotel.hotel} fromTo={fromTo}/>
+            <Rooms rooms={isFinding ? state.room.availableRooms : state.hotel.hotel.rooms} hotel={state.hotel.hotel} fromTo={fromTo} />
 
             <Border my="16" />
 

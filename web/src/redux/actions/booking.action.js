@@ -26,10 +26,6 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
         },
       });
       setLoading(dispatch, false);
-      setTimeout(() => {
-          setSuccess(dispatch, null);
-          setError(dispatch, null);
-      }, 3000)
     })
     .catch(async (error) => {
       await dispatch({
@@ -39,18 +35,16 @@ export const bookRoom = (dispatch, hotelId, token, bookData) => {
         },
       });
       setLoading(dispatch, false);
-      setTimeout(() => {
-          setSuccess(dispatch, null);
-          setError(dispatch, null);
-      }, 3000)
     });
 };
 
-export default async function capturePayment(dispatch, roomId, bookingId) {
+export default async function capturePayment(dispatch, roomId, bookingId, token) {
   try {
-    const res = await axios.post(
-      `${url}/customer/locations/${roomId}/bookings/${bookingId}/capture-payment`
-    );
+    const res = await  axios({
+        method: "POST",
+        url: `${url}/customer/locations/${roomId}/bookings/${bookingId}/capture-payment`,
+        headers: { Authorization: `Bearer ${token}` },
+    })
     dispatch({
         type: CAPTURE_PAYMENT,
         payload: res.data
