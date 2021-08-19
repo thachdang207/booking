@@ -29,10 +29,10 @@ function BookingModal({
         startTime: startTime,
         endTime: endTime,
         roomId: id,
-        // returnUrl: "https://vibo.surge.sh",
-        // cancelUrl: `https://vibo.surge.sh/hotel/${hotel.id}`
-        returnUrl: `http://localhost:3000/user/${userId}/bookings`,
-        cancelUrl: `http://localhost:3000/hotel/${hotel.id}`,
+        returnUrl: `https://vibo.surge.sh/user/${userId}/bookings`,
+        cancelUrl: `https://vibo.surge.sh/hotel/${hotel.id}`
+        // returnUrl: `http://localhost:3000/user/${userId}/bookings`,
+        // cancelUrl: `http://localhost:3000/hotel/${hotel.id}`,
     };
     const dispatch = useDispatch();
     const dateFormat = "YYYY-MM-DD";
