@@ -7,7 +7,7 @@ function UserSideBar() {
     const [id] = useSecureLs("user_id")
 
     return (
-        <div className="md:block w-full md:w-4/12 xl:w-3/12 bg-gray-200 pt-5 lg:p-6 rounded-sm">
+        <div className="md:block w-full md:w-3/12 xl:w-2/12 bg-gray-200 pt-5 lg:p-6 rounded-sm border-r-2 border-gray-800">
             <Link
                 to={`/user/${id}`}
                 className="no-underline"
