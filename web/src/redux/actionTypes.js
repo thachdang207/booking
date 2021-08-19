@@ -11,6 +11,7 @@ export const CREATE_ROOM = "CREATE_ROOM";
 export const UPDATE_ROOM = "UPDATE_ROOM";
 
 export const BOOK = "BOOK";
+export const CAPTURE_PAYMENT = "CAPTURE_PAYMENT";
 
 export const SADMIN_SIGN_IN= "SADMIN_SIGN_IN";
 export const SADMIN_CHECK_AUTH= "SADMIN_CHECK_AUTH";

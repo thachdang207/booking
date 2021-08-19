@@ -13,14 +13,13 @@ import { Loading } from "../../Global/Loading";
 import { PeopleOutline, CashOutline } from "react-ionicons"
 
 const { RangePicker } = DatePicker;
-const url = process.env.REACT_APP_API_URL
 function BookingModal({ room: { id, name, price, capacity }, hotel, fromTo: { startTime, endTime } }) {
     const initialValues = {
-        startTime: "",
-        endTime: "",
+        startTime: startTime,
+        endTime: endTime,
         roomId: id,
-        returnUrl: "vibo.surge.sh/",
-        cancelUrl: `vibo.surge.sh/hotel/${hotel.id}`
+        returnUrl: "https://vibo.surge.sh/",
+        cancelUrl: `https://vibo.surge.sh/hotel/${hotel.id}`
     }
     const dispatch = useDispatch();
     const dateFormat = "YYYY-MM-DD";
@@ -52,24 +51,36 @@ function BookingModal({ room: { id, name, price, capacity }, hotel, fromTo: { st
     }
 
     useEffect(() => {
+        setBookingReq({
+            ...bookingReq,
+            startTime: startTime,
+            endTime: endTime,
+        })
+    }, [startTime, endTime])
+
+    useEffect(() => {
+        if (state.book.success) {
+            const checkOutURL = state.book.bookData ? state.book.bookData.link.href : "";
+            console.log(checkOutURL);
+            setTimeout(() => {
+                window.location.replace(checkOutURL);
+            }, 3000)
+        }
+    }, [state.book.bookData, state.book.success]);
+
+    useEffect(() => {
         setTimeout(() => {
             state.book.success === true
                 ? setSuccessAlert(true)
                 : setErrorAlert(true)
-        }, 100)
-        const timer = setTimeout(() => {
-            setSuccessAlert(false);
-            setErrorAlert(false);
-        }, 3000)
-        return () => clearTimeout(timer)
-    }, [state.book.success]);
+        })
+    },[state.book.success])
 
     const history = useHistory();
     const onSubmitBooking = () => {
         bookRoom(dispatch, state.hotel.hotel.id, token, bookingReq);
-        const checkOutURL = state.book.bookData ? state.book.bookData.link.href : "";
-        if (state.book.success === true) {
-            window.location.replace(checkOutURL);
+        if (state.book.success) {
+
         } else {
             const timer = setTimeout(() => {
                 toggleShow()

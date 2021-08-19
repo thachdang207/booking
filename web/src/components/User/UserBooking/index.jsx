@@ -33,7 +33,7 @@ function UserBooking() {
                         <th>Room</th>
                         <th>Check-in</th>
                         <th>Check-out</th>
-                        <th>Status</th>
+                        <th>Payment Status</th>
                     </tr>
                     </thead>
                     <tbody>

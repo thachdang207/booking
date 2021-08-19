@@ -10,7 +10,7 @@ function Hotels() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [pagination, setPagination] = useState({
-        page: 3,
+        page: 2,
         count: 10,
         total: 606,
     });
@@ -32,7 +32,7 @@ function Hotels() {
 
 
     return (
-        <section className="px-10 py-12 md:px-40 lg:px-56">
+        <section className="px-10 py-12 lg:px-32 xl:px-40 2xl:px-56">
             <Title title="Featured Hotels"/>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                 {state && state.hotel.pageHotels.map((hotel) => (

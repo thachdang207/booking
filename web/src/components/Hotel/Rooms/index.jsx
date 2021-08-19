@@ -45,7 +45,7 @@ function Rooms({ rooms, hotel, fromTo}) {
                                 </td>
                                 <td className="font-bold text-blue-700">{room.name}</td>
                                 <td>{room.capacity}</td>
-                                <td className="font-medium text-yellow-700">{formatPrice(room.price)} {" "} VND</td>
+                                <td className="font-medium text-green-500">{formatPrice(room.price)} {" "} VND</td>
                                 <td>
                                     <BookingModal room={room} hotel={hotel} fromTo={fromTo}/>
                                 </td>

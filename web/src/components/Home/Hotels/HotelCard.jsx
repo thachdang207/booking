@@ -24,20 +24,20 @@ function HotelCard({ hotel: { id, name, price, score, images, address, userId } 
                                     images[0] :
                                     "http://placehold.it/500x500?text=hotel"
                             }
-                            className="w-full md:h-40 xl:h-64 object-cover"
+                            className="w-full h-40 xl:h-64 object-cover"
                             alt="hotel"
                         />
                         <div className="flex items-center justify-between w-full absolute bottom-0">
                             <div className="absolute w-full h-full bg-gray-800 opacity-50" />
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
-                                    <h4>
+                                    <h5>
                                         <Badge color="primary">{score}</Badge>
-                                    </h4>
+                                    </h5>
                                     {userId === null && (
-                                        <h4 className="ml-2">
+                                        <h5 className="ml-2">
                                             <Badge color="danger">*Unregistered</Badge>
-                                        </h4>
+                                        </h5>
                                     )}
                                 </div>
                                 <div className="text-gray-100 font-semibold">
@@ -49,7 +49,7 @@ function HotelCard({ hotel: { id, name, price, score, images, address, userId } 
                     <p className="p-4 text-xl uppercase font-bold font-sans text-center text-blue-800 hover:text-gray-600">
                         {name}
                         <br />
-                        <span className="hidden lg:inline-block text-sm font-semibold mx-3 text-gray-700">
+                        <span className="inline-block text-sm font-semibold mx-3 text-gray-700">
                             <FontAwesomeIcon className="text-blue-800" icon={faMapMarkerAlt} />
                             {" "} {address}
                         </span>
