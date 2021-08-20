@@ -10,6 +10,8 @@ import StaticHeader from "../Global/StaticHeader";
 import { getCities } from "../../redux/actions/city.action";
 import { setLoading } from "../../redux/actions/commonActions";
 import { Loading } from "../Global/Loading";
+import { findLabel } from "../../constants/function";
+import { CITY_OPTIONS } from "../../constants/global";
 
 function City() {
     const dispatch = useDispatch();
@@ -28,12 +30,14 @@ function City() {
         });
     }
 
+    const cityName = findLabel(CITY_OPTIONS, id)
+
     useEffect(() => {
         getCities(dispatch);
     }, [])
 
     useEffect(() => {
-        document.title = `${state.hotel.cityHotels[0].city.name}`
+        document.title = `${cityName}`
     })
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -49,8 +53,8 @@ function City() {
         <>
             <StaticHeader />
             {state.hotel.loading && <Loading />}
-            <section className="px-10 py-12 md:px-40 lg:px-56">
-                <Title title={`${state.hotel.cityHotels[0].city.name}'s Hotels`} />
+            <section className="px-10 py-12 lg:px-28 xl:px-40 2xl:px-56">
+                <Title title={`${cityName}'s Hotels`} />
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                     {state && state.hotel.cityHotels.map((hotel) => (
                         <HotelCard hotel={hotel} key={hotel.id} />

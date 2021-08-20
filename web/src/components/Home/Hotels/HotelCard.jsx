@@ -31,13 +31,13 @@ function HotelCard({ hotel: { id, name, price, score, images, address, userId } 
                             <div className="absolute w-full h-full bg-gray-800 opacity-50" />
                             <div className="flex items-center justify-between p-2 w-full z-10 h-12">
                                 <div className="flex items-center justify-between">
-                                    <h5>
+                                    <h4>
                                         <Badge color="primary">{score}</Badge>
-                                    </h5>
+                                    </h4>
                                     {userId === null && (
-                                        <h5 className="ml-2">
+                                        <h4 className="ml-2">
                                             <Badge color="danger">*Unregistered</Badge>
-                                        </h5>
+                                        </h4>
                                     )}
                                 </div>
                                 <div className="text-gray-100 font-semibold">
