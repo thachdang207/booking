@@ -43,7 +43,7 @@ function UserProfileMain() {
     };
 
     return (
-        <div className="absolute w-full h-full bg-gray-200">
+        <div className="absolute w-full h-full bg-gray-200 py-24">
             {state.user.user && (
                 <div className="popup__image" style={{ "display": popupImage ? "block" : "none" }}>
                     <span

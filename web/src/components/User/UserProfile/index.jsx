@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Footer from "../../Global/Footer";
-import UserSideBar from "./UserSideBar";
 import UserProfileMain from "./UserProfileMain";
 import ErrorMessage from "../../Global/ErrorMessage";
+import StaticHeader from "../../Global/StaticHeader";
 import SuccessMessage from "../../Global/SuccessMessage";
 import { useSelector } from "react-redux";
 import { Loading } from "../../Global/Loading";
@@ -42,7 +42,7 @@ function UserProfile(props) {
             )}
             {state.user.success && <SuccessMessage message="Success" />}
             <main className="min-h-screen flex text-gray-800">
-                <UserSideBar />
+                <StaticHeader />
                 <Switch>
                     <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`} />
                     <Route path={`${match.url}/:id`} exact component={UserProfileMain} />

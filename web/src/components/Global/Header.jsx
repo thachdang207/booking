@@ -1,22 +1,29 @@
-import React, {useState} from 'react'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTimes, faBars} from '@fortawesome/free-solid-svg-icons'
-import {Link} from 'react-router-dom'
-import {useSelector} from "react-redux";
-import {useSecureLs} from './UseSecureLs'
-
+import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+import { useSecureLs } from './UseSecureLs'
+import { getUser } from '../../redux/actions/user.action';
+import LoggedInInfo from './LoggedInInfo';
 import './Global.css'
 
 function Header() {
-
+    const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [isClicked, toggleClick] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
-    const [id] = useSecureLs("user_id")
+    const [token] = useSecureLs("token")
 
     const handleClickChange = () => {
         toggleClick(!isClicked);
     }
+
+    useEffect(() => {
+        if(state.auth.isAuthenticated){
+            getUser(dispatch, token);
+        }
+    },[dispatch, state.auth.isAuthenticated, token])
 
     const navOnScrolling = () => {
         if (window.scrollY >= 20) {
@@ -34,8 +41,8 @@ function Header() {
             <header className={isScrolling ? 'header-items active' : 'header-items'}>
                 <a href="/" className="header-logo">VIBO.com</a>
                 <div className="menu-icon"
-                     onClick={handleClickChange}>
-                    <FontAwesomeIcon icon={isClicked ? faTimes : faBars}/>
+                    onClick={handleClickChange}>
+                    <FontAwesomeIcon icon={isClicked ? faTimes : faBars} />
                 </div>
                 <ul className={isClicked ? 'header-menu active' : 'header-menu'}>
                     {!state.auth.isAuthenticated ? (
@@ -57,24 +64,7 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <li>
-                                <Link to={`/user/${id}`}
-                                      className="header-links"
-                                >
-                                    <button>
-                                        Your profile
-                                    </button>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/logout"
-                                      className="header-links"
-                                >
-                                    <button>
-                                        Logout
-                                    </button>
-                                </Link>
-                            </li>
+                            <LoggedInInfo user={state.user.user}/>
                         </>
                     )}
                 </ul>
