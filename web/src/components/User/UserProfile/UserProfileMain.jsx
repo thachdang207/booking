@@ -39,11 +39,12 @@ function UserProfileMain() {
     }, [state.user.success]); // eslint-disable-line
 
     const onSubmitHandler = (values) => {
+        console.log(values);
         updateUserInfo(dispatch, token, values);
     };
 
     return (
-        <div className="absolute w-full h-full bg-gray-200 py-24">
+        <div className="relative w-full h-full bg-gray-200 py-4">
             {state.user.user && (
                 <div className="popup__image" style={{ "display": popupImage ? "block" : "none" }}>
                     <span
@@ -53,8 +54,8 @@ function UserProfileMain() {
                     <img
                         className="popup__image-content"
                         src={
-                            state.user.user.image
-                                ? state.user.user.image
+                            state.user.user.avatar
+                                ? state.user.user.avatar
                                 : "https://source.unsplash.com/random"
                         }
                         alt="avatar"
@@ -71,8 +72,8 @@ function UserProfileMain() {
                                 <div className="relative">
                                     <img
                                         src={
-                                            state.user.user.image
-                                                ? state.user.user.image
+                                            state.user.user.avatar
+                                                ? state.user.user.avatar
                                                 : "https://source.unsplash.com/random"
                                         }
                                         alt="avatar"

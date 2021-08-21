@@ -69,7 +69,7 @@ function UserPersonalInfo(props) {
     const onChangeImage = (e) => {
         setFile(e.target.files[0]);
         setImage(URL.createObjectURL(e.target.files[0]));
-        setFileName(e.target.value);
+        setFileName(e.target.files[0].name);
     }
 
     const initialValues = {
@@ -77,7 +77,7 @@ function UserPersonalInfo(props) {
         fullName: props.user.fullName,
         phoneNumber: props.user.phoneNumber,
         address: props.user.address,
-        cityId: props.user.city ? findValue(CITY_OPTIONS, props.user.city) : "Đà Nẵng",
+        city: props.user.city ? findValue(CITY_OPTIONS, props.user.city) : "Đà Nẵng",
     }
 
     return (

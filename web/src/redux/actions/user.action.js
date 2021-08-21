@@ -59,10 +59,11 @@ export const updateUserInfo = async (dispatch, token, userInfo) => {
         .put(
             `${url}/customer/users/me`,
             {
-                email: userInfo.email,
+                avatar: userInfo.avatar,
                 fullName: userInfo.fullName,
                 address: userInfo.address,
                 city: userInfo.city,
+                phoneNumber: userInfo.phoneNumber,
             },
             {
                 headers: {Authorization: `Bearer ${token}`}

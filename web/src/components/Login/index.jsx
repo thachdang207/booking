@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import AdminLoginForm from "./AdminLoginForm"
 import StaticHeader from '../Global/StaticHeader'
+import Footer from "../Global/Footer"
 import { AccountContext } from "./accountContext";
 
 import './Login.css'
@@ -73,6 +74,7 @@ function Login() {
                 {status === "adminLogin" && <AdminLoginForm />}
                 <br/>
             </div>
+            <Footer/>
         </AccountContext.Provider>
     );
 }

@@ -7,6 +7,7 @@ import Pagination from "../Global/Pagination";
 import Title from "../Global/Title"
 import { useParams } from "react-router-dom";
 import StaticHeader from "../Global/StaticHeader";
+import Footer from "../Global/Footer"
 import { getCities } from "../../redux/actions/city.action";
 import { setLoading } from "../../redux/actions/commonActions";
 import { Loading } from "../Global/Loading";
@@ -65,6 +66,7 @@ function City() {
                     onPageChange={handlePageChange}
                 />
             </section>
+            <Footer/>
         </>
     );
 }

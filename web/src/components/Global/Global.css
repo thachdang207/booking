@@ -15,7 +15,7 @@
 
 .static-header-items {
   background: #000;
-  position: absolute;
+  position: relative;
   height: 80px;
   display: flex;
   justify-content: space-between;
