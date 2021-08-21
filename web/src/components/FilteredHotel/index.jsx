@@ -28,6 +28,9 @@ function FilteredHotel() {
             page: newPage
         });
     }
+    const onSubmitHandler = (values) => {
+        console.log(values);
+    }
 
     useEffect(() => {
         getFilterHotels(dispatch, JSON.stringify(hotel), pagination.page);
@@ -41,22 +44,21 @@ function FilteredHotel() {
     useEffect(() => {
         document.title = `Searching with "${hotel}"`
     })
-    console.log(hotel);
 
 
     return (
         <>
             <StaticHeader />
             {state.hotel.loading && <Loading />}
-            <section className="px-10 py-12 md:px-20 lg:px-32">
+            <section className="px-6 py-12 md:px-12 lg:px-16 xl:px-20">
                 <SearchHotel
                 />
                 <Title
                     title={`${state.hotel.pagination.total} ${state.hotel.pagination.total === 1 ? "result" : "results"} by searching with "${hotel}"`}
                 />
-                <main className="min-h-screen flex flex-col md:flex-row md:justify-center p-0 text-gray-800">
-                    <FilterSideBar />
-                    <div className="w-full md:w-9/12 xl:w-10/12 md:ml-5 bg-gray-200 p-5 rounded-md">
+                <main className="min-h-screen flex flex-col lg:flex-row md:justify-center p-0 text-gray-800">
+                    <FilterSideBar onSubmit={onSubmitHandler}/>
+                    <div className="w-full xl:w-9/12 xl:ml-5 mt-3 bg-gray-200 p-5 rounded-md">
                         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                             {state && state.hotel.filterHotels.map((hotel) => (
                                 <HotelCard hotel={hotel} key={hotel.id} />

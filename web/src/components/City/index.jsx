@@ -5,11 +5,12 @@ import { getCityHotels } from "../../redux/actions/hotel.action";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "../Global/Pagination";
 import Title from "../Global/Title"
+import Border from "../Global/Border"
 import { useParams } from "react-router-dom";
 import StaticHeader from "../Global/StaticHeader";
 import Footer from "../Global/Footer"
+import Cities from "../Home/Cities"
 import { getCities } from "../../redux/actions/city.action";
-import { setLoading } from "../../redux/actions/commonActions";
 import { Loading } from "../Global/Loading";
 import { findLabel } from "../../constants/function";
 import { CITY_OPTIONS } from "../../constants/global";
@@ -53,6 +54,9 @@ function City() {
     return (
         <>
             <StaticHeader />
+            <Border/>
+            <Cities/>
+            <Border/>
             {state.hotel.loading && <Loading />}
             <section className="px-10 py-12 lg:px-28 xl:px-40 2xl:px-56">
                 <Title title={`${cityName}'s Hotels`} />

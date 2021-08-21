@@ -89,7 +89,7 @@ function Hotel() {
 
 
             <hr />
-            <div className="bg-green-100 p-4 my-3 md:mx-24 lg:mx-64 flex">
+            <div className="bg-green-100 p-4 my-3 md:mx-20 lg:mx-60 flex" data-aos="fade-up">
                 <CardOutline
                     color={"#00000"}
                     width="30px"
@@ -100,7 +100,7 @@ function Hotel() {
                     <span className="font-normal">{" "} We will send you a booking confirmation email.</span>
                 </p>
             </div>
-            <div className="bg-green-100 p-4 my-3 md:mx-24 lg:mx-64 flex">
+            <div className="bg-green-100 p-4 my-3 md:mx-20 lg:mx-60 flex" data-aos="fade-up">
                 <LockOpenOutline
                     color={"#00000"}
                     width="30px"
@@ -110,7 +110,7 @@ function Hotel() {
                     Secure a great price for your upcoming vacation.
                 </p>
             </div>
-            <div className="bg-yellow-100 p-4 my-3 md:mx-24 lg:mx-64 flex">
+            <div className="bg-yellow-100 p-4 my-3 md:mx-20 lg:mx-60 flex" data-aos="fade-up">
                 <AlertCircleOutline
                     color={"#00000"}
                     width="30px"
@@ -140,7 +140,7 @@ function Hotel() {
                 />
             )}
 
-            <div className="relative w-full" style={{ height: "500px" }}>
+            <div className="relative w-full" style={{ height: "500px" }} data-aos="fade-up">
                 <HotelGoogleMap
                     x={(state.hotel.hotel.coordinates !== undefined && state.hotel.hotel.coordinates !== null)
                         ? state.hotel.hotel.coordinates.latitude

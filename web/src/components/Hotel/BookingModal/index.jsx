@@ -25,7 +25,6 @@ function BookingModal({
     fromTo: { startTime, endTime },
 }) {
     const [userId] = useSecureLs("user_id");
-    console.log(userId);
     const initialValues = {
         startTime: startTime,
         endTime: endTime,

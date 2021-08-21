@@ -22,8 +22,6 @@ export default function SearchHotel(props) {
         hotel: ""
     }
 
-    console.log(props.linkTo);
-
     return (
         <Formik
             initialValues={initialValues}

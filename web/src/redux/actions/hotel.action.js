@@ -98,7 +98,7 @@ export const getFilterHotels = async (dispatch, hotelName, page) => {
                 page: `${page}`,
                 join: ['locationType', 'city', 'rooms', 'serviceTypes'],
                 sort: 'score,DESC',
-                // filter: ``
+                // filter: `id||$eq||${"487292a4-d7a9-434f-b648-410cafa070c9"}`
             }
         });
         dispatch({
