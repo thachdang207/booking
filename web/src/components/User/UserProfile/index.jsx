@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { Loading } from "../../Global/Loading";
 import { Redirect, Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import UserBooking from "../UserBooking";
-
+import Dashboard from "../../Thach/pages/Dashboard"
 function UserProfile(props) {
     const state = useSelector((state) => state);
     const match = useRouteMatch();
@@ -35,24 +35,30 @@ function UserProfile(props) {
     }, [state.auth.isAuthenticated]); // eslint-disable-line
 
     return (
-        <>
-            {state.user.loading && <Loading />}
-            {state.user.success === false && (
-                <ErrorMessage errors={state.user.errors} />
-            )}
-            {state.user.success && <SuccessMessage message="Success" />}
-            <main className="min-h-screen text-gray-800">
-                <StaticHeader />
-                <Switch>
-                    <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`} />
-                    <Route path={`${match.url}/:id`} exact component={UserProfileMain} />
-                    <Route path={`${match.url}/:id/bookings`} exact component={UserBooking} />
-                    <Route exact component={Error} />
-                </Switch>
-            </main>
-
-            <Footer />
-        </>
+        // <>
+        //     {state.user.loading && <Loading />}
+        //     {state.user.success === false && (
+        //         <ErrorMessage errors={state.user.errors} />
+        //     )}
+        //     {state.user.success && <SuccessMessage message="Success" />}
+        //     <main className="min-h-screen text-gray-800">
+        //         <StaticHeader />
+        //         <Switch>
+        //             <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`} />
+        //             <Route path={`${match.url}/:id`} exact component={UserProfileMain} />
+        //             <Route path={`${match.url}/:id/bookings`} exact component={UserBooking} />
+        //             <Route exact component={Error} />
+        //         </Switch>
+        //     </main>
+        //
+        //     <Footer />
+        // </>
+        <Switch>
+            <Redirect exact from={`${match.url}`} to={`${match.url}/:id/`}/>
+            <Route path={`${match.url}/:id`} exact component={Dashboard}/>
+            <Route path={`${match.url}/:id/bookings`} exact component={UserBooking}/>
+            <Route exact component={Error}/>
+        </Switch>
     );
 }
 
