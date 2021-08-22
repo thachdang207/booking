@@ -13,7 +13,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import './assets/styles/App.css'
 
-const Admin = React.lazy(() => import(`./components/Admin`));
+const Admin = React.lazy(() => import(`./components/Thach/pages/Dashboard`));
 const User = React.lazy(() => import(`./components/User/UserProfile`));
 const SuperAdmin = React.lazy(() => import(`./components/SuperAdmin`));
 const Login = React.lazy(() => import(`./components/Login`));

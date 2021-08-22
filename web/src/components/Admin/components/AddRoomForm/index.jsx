@@ -1,16 +1,15 @@
-import React, {useState} from "react";
-import {Modal, ModalFooter, ModalBody, FormGroup, Spinner, Button} from "reactstrap"
+import React, { useState } from "react";
+import { Modal, ModalFooter, ModalBody, FormGroup, Spinner, Button } from "reactstrap"
 import PropTypes from "prop-types";
-import {Formik, FastField, Form} from "formik";
+import { Formik, FastField, Form } from "formik";
 import InputField from "../../../../custom-fields/InputField";
 import Title from "../../../Global/Title";
 import SelectField from "../../../../custom-fields/SelectField";
-import {GUEST_OPTIONS} from "../../../../constants/global";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import { GUEST_OPTIONS } from "../../../../constants/global";
+import { AddCircleOutline } from "react-ionicons";
 import * as Yup from "yup";
-import {Loading} from "../../../Global/Loading";
-import {useSelector} from "react-redux";
+import { Loading } from "../../../Global/Loading";
+import { useSelector } from "react-redux";
 
 AddRoomForm.defaultProps = {
     onSubmit: null,
@@ -45,17 +44,13 @@ function AddRoomForm(props) {
             onSubmit={props.onSubmit}
         >
             {formikProps => {
-                const {values, isSubmitting} = formikProps;
+                const { values, isSubmitting } = formikProps;
                 return (
                     <div>
-                        <FontAwesomeIcon
-                            icon={faPlusCircle}
-                            style={{
-                                width: "20px",
-                                height: "20px",
-                                cursor: "pointer",
-                                margin: "10px"
-                            }}
+                        <AddCircleOutline
+                            width="30px"
+                            height="30px"
+                            cssClasses="cursor-pointer mt-3"
                             onClick={toggleShow}
                         />
                         <Modal
@@ -65,8 +60,8 @@ function AddRoomForm(props) {
                             isOpen={show} toggle={toggleShow}
                         >
                             {state.admin.loading && <Loading />}
-                            <Title title="Create a new room" className="w-full"/>
-                            <hr/>
+                            <Title title="Create a new room" className="w-full" />
+                            <hr />
                             <ModalBody>
                                 <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
                                     <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
@@ -105,7 +100,7 @@ function AddRoomForm(props) {
                                                             color="primary"
                                                             onClick={toggleShow}
                                                         >
-                                                            {isSubmitting && <Spinner size="sm"/>}
+                                                            {isSubmitting && <Spinner size="sm" />}
                                                             Create
                                                         </Button>
                                                     </FormGroup>

@@ -7,7 +7,7 @@ import RoomManagement from './pages/RoomManagement'
 import HomeAdmin from './pages/HomeAdmin'
 import Nav from './components/Layouts/Nav'
 import UpdateLocation from "./pages/UpdateLocation";
-
+import Dashboard from "../Thach/pages/Dashboard"
 
 function Admin() {
     const match = useRouteMatch();
@@ -20,27 +20,27 @@ function Admin() {
         )
     }
     return (
-        <div className="h-full min-h-screen flex flex-col md:flex-col justify-between">
-            <div>
-                <Nav/>
-                <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
-                    <div className="max-w-full mx-auto py-6 sm:px-6 md:px-12 lg:px-16 xl:px-20 min-h-screen">
-                        <div className="py-5 sm:px-0.5 min-h-screen">
-                            <div className="box-border py-3 border-4 bg-white rounded-md min-h-screen">
+    //     <div className="h-full min-h-screen flex flex-col md:flex-col justify-between">
+    //         <div>
+    //             <Nav/>
+    //             <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
+    //                 <div className="max-w-full mx-auto py-6 sm:px-6 md:px-12 lg:px-16 xl:px-20 min-h-screen">
+    //                     <div className="py-5 sm:px-0.5 min-h-screen">
+    //                         <div className="box-border py-3 border-4 bg-white rounded-md min-h-screen">
                                 <Switch>
-                                    <Route exact path={`${match.url}`} component={HomeAdmin}/>
+                                    <Route exact path={`${match.url}`} component={Dashboard}/>
                                     <Route path={`${match.url}/room/`} exact component={RoomManagement}/>
                                     <Route path={`${match.url}/update-location/`} exact component={UpdateLocation}/>
                                     <Route path={`${match.url}/booking`} exact component={BookingManagement}/>
                                     <Route exact component={Error}/>
                                 </Switch>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            <Footer/>
-        </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </main>
+        //     </div>
+        //     <Footer/>
+        // </div>
     );
 }
 
