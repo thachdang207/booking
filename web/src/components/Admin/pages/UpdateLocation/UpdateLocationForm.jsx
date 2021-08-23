@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, FastField } from 'formik'
-import { Button, FormGroup, Spinner } from 'reactstrap'
+import { Button, FormGroup, Spinner, Label } from 'reactstrap'
 import PropTypes from 'prop-types'
 
 import SelectField from '../../../../custom-fields/SelectField'
 import InputField from '../../../../custom-fields/InputField'
+import PhoneInputField from '../../../../custom-fields/PhoneInputField'
 import { getLocationTypes } from "../../../../redux/actions/city.action";
 import { TimePicker } from "antd";
 import { Loading } from "../../../Global/Loading";
@@ -84,21 +85,17 @@ export default function UpdateLocationForm(props) {
                 const { values, setValues, isSubmitting } = formikProps;
                 const locationTypeName = values.locationTypeId === "0aea2461-d162-4fa8-8fbb-c90fdba946fa" ? "Hotel" : "Homestay";
                 return (
-                    <div className="w-full xl:px-40 lg:px-36 md:px-23 sm:p-0 items-center min-h-screen bg-white">
-                        <div className="text-center">
-                            <h1 className="my-3 font-semibold font-serif text-gray-800 dark:text-gray-200">Update
-                                Location Information</h1>
-                        </div>
+                    <div className="w-full xl:px-40 lg:px-36 md:px-23 sm:p-0 items-center min-h-screen">
                         {state.admin.loading && <Loading />}
-                        <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
-                            data-aos="fade-up">
+                        <div className="w-full xl:p-10 lg:p-5 md:p-1 items-center min-h-screen">
                             <div className="container mx-auto">
-                                <Form className="max-w-full mx-auto bg-gray-200 p-16 rounded-md shadow-sm">
+                                <Form className="max-w-full mx-auto bg-gray-200 px-28 py-8 rounded-md shadow-sm">
                                     <div className="flex flex-col w-full">
                                         <FastField
                                             name="name"
                                             component={InputField}
                                             placeholder="Name"
+                                            label="Hotel name"
                                             value={values.name}
                                         />
                                         <div className="block w-full">
@@ -106,6 +103,7 @@ export default function UpdateLocationForm(props) {
                                                 <FastField
                                                     name="address"
                                                     component={InputField}
+                                                    label="Address"
                                                     placeholder="Address"
                                                     value={values.address}
                                                 />
@@ -113,6 +111,7 @@ export default function UpdateLocationForm(props) {
                                             <div className="inline-block w-1/3">
                                                 <FastField
                                                     name="cityId"
+                                                    label="City"
                                                     component={SelectField}
                                                     options={CITY_OPTIONS}
                                                     defaultValue={{
@@ -125,6 +124,7 @@ export default function UpdateLocationForm(props) {
                                         <FastField
                                             name="locationTypeId"
                                             component={SelectField}
+                                            label="Location type"
                                             placeholder="Location Type"
                                             options={LOCATION_TYPES_OPTIONS}
                                             defaultValue={{
@@ -132,6 +132,7 @@ export default function UpdateLocationForm(props) {
                                                 label: locationTypeName,
                                             }}
                                         />
+                                        <Label for="workingTime" className="font-bold">Working time</Label>
                                         <RangePicker
                                             format="HH:mm"
                                             id="workingTime"
@@ -162,14 +163,15 @@ export default function UpdateLocationForm(props) {
                                                     name="contactEmail"
                                                     component={InputField}
                                                     placeholder="Email"
+                                                    label="Contact email"
                                                     value={nullOrNot(values.contactEmail)}
                                                 />
                                             </div>
                                             <div className="inline-block w-1/2">
                                                 <FastField
                                                     name="contactPhoneNumber"
-                                                    component={InputField}
-                                                    placeholder="Phone Number"
+                                                    label="Phone number"
+                                                    component={PhoneInputField}
                                                     value={nullOrNot(values.contactPhoneNumber)}
                                                 />
                                             </div>
@@ -178,20 +180,21 @@ export default function UpdateLocationForm(props) {
                                             name="price"
                                             component={InputField}
                                             placeholder="Average Price"
+                                            label="Average Price"
                                             value={values.price}
                                         />
                                         <FastField
                                             name="description"
                                             component={InputField}
                                             placeholder="Description"
+                                            label="Description"
                                             value={values.description}
                                             type="textarea"
                                         />
                                         <FormGroup>
                                             <Button
                                                 type="submit"
-                                                className="w-full pt-1 text-white focus:outline-none"
-                                                color="primary"
+                                                className="w-full pt-1 text-gray-900 bg- focus:outline-none"
                                             >
                                                 {isSubmitting && <Spinner size="sm" />}
                                                 Update

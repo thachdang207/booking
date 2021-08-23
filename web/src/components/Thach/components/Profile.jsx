@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { MailOutline, CallOutline, BusinessOutline, HomeOutline } from "react-ionicons"
+import { MailOutline, CallOutline, BusinessOutline, HomeOutline, ArrowBackOutline, ArrowForwardOutline } from "react-ionicons"
 import "../../User/UserProfile/UserProfile.css"
 
 function Profile({ admin }) {
@@ -50,7 +50,7 @@ function Profile({ admin }) {
                                     >
                                         {admin && (
                                             <div>
-                                                <div className="relative">
+                                                <div className="relative bg-indigo-200 flex p-3 justify-center items-center">
                                                     <img
                                                         src={
                                                             admin.user.avatar
@@ -58,14 +58,14 @@ function Profile({ admin }) {
                                                                 : "https://source.unsplash.com/random"
                                                         }
                                                         alt="avatar"
-                                                        className="w-full h-80 object-cover shadow-md transition hover:opacity-80 cursor-pointer"
+                                                        className="w-28 h-28 rounded-full object-cover shadow-md transition hover:opacity-80 cursor-pointer mr-3"
                                                         onClick={togglePopupImage}
                                                     />
+                                                    <h2 className="my-4 font-sans text-center font-bold">
+                                                        {admin.user.fullName}
+                                                    </h2>
                                                 </div>
                                                 <div className="py-4 sm:px-2 md:px-8 xl:px-12">
-                                                    <h1 className="my-4 font-sans text-center font-bold">
-                                                        {admin.user.fullName}
-                                                    </h1>
                                                     <p className="flex items-center">
                                                         <MailOutline
                                                             color={"#818CF8"}
@@ -124,19 +124,33 @@ function Profile({ admin }) {
                     </div>
                     <div className="relative w-full xl:w-2/3 h-full mb-6 lg:mr-6">
                         <div className="relative w-full h-full">
-                            {admin && admin.user.location.images.map((image, key) => (
-                                <div className="popup__image" style={{ "display": popupImage ? "block" : "none" }} key={key}>
-                                    <span
-                                        className="close"
-                                        onClick={togglePopupImage}
-                                    >&times;</span>
-                                    <img
-                                        className="popup__image-content"
-                                        src={image}
-                                        alt="hotel-images"
+                            <div className="popup__image" style={{ "display": popupImage ? "block" : "none" }}>
+                                <span
+                                    className="close"
+                                    onClick={togglePopupImage}
+                                >&times;</span>
+                                <div className="absolute w-full h-full flex items-center justify-between px-10">
+                                    <ArrowBackOutline
+                                        cssClasses="z-10 cursor-pointer"
+                                        color={"#f1f1f1"}
+                                        width="40px"
+                                        height="40px"
+                                        onClick={handlePrevSlider}
+                                    />
+                                    <ArrowForwardOutline
+                                        cssClasses="z-10 cursor-pointer"
+                                        color={"#f1f1f1"}
+                                        width="40px"
+                                        height="40px"
+                                        onClick={handleNextSlider}
                                     />
                                 </div>
-                            ))}
+                                <img
+                                    className="popup__image-content"
+                                    src={hotelSliders[index]}
+                                    alt="hotel-images"
+                                />
+                            </div>
                             <div className="p-10 rounded-xl">
                                 <div className="transform">
                                     <div
@@ -144,18 +158,20 @@ function Profile({ admin }) {
                                     >
                                         {admin && (
                                             <div>
-                                                <div className="relative">
+                                                <div className="relative flex items-center justify-center p-3 bg-indigo-200">
                                                     <img
                                                         src={hotelSliders[index]}
                                                         alt="hotel-images"
-                                                        className="w-full h-80 object-cover shadow-md transition hover:opacity-80 cursor-pointer"
+                                                        className="w-28 h-28 rounded-full object-cover shadow-md transition hover:opacity-80 cursor-pointer mr-3
+                                                        "
                                                         onClick={togglePopupImage}
                                                     />
+                                                    <h1 className="my-4 font-sans text-center font-semibold">
+                                                        {admin.user.location.name} Hotel
+                                                    </h1>
                                                 </div>
                                                 <div className="py-4 sm:px-2 md:px-10 lg:px-24">
-                                                    <h1 className="my-4 font-sans text-center font-bold">
-                                                        {admin.user.location.name}
-                                                    </h1>
+
                                                     <p className="flex items-center">
                                                         <MailOutline
                                                             color={"#818CF8"}

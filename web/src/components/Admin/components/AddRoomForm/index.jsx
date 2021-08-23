@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { Formik, FastField, Form } from "formik";
 import InputField from "../../../../custom-fields/InputField";
 import Title from "../../../Global/Title";
-import SelectField from "../../../../custom-fields/SelectField";
-import { GUEST_OPTIONS } from "../../../../constants/global";
 import { AddCircleOutline } from "react-ionicons";
 import * as Yup from "yup";
 import { Loading } from "../../../Global/Loading";
@@ -60,38 +58,41 @@ function AddRoomForm(props) {
                             isOpen={show} toggle={toggleShow}
                         >
                             {state.admin.loading && <Loading />}
-                            <Title title="Create a new room" className="w-full" />
-                            <hr />
                             <ModalBody>
+                                <Title title="Create a new room" className="w-full" />
                                 <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
                                     <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
                                         <div className="container mx-auto">
-                                            <Form className="max-w-full mx-auto p-16">
+                                            <Form className="max-w-full mx-auto px-12 py-4">
                                                 <div className="flex flex-col w-full">
                                                     <FastField
                                                         name="name"
                                                         component={InputField}
                                                         placeholder="Name"
+                                                        label="Room name"
                                                         value={values.name}
                                                     />
                                                     <FastField
                                                         name="price"
                                                         component={InputField}
+                                                        label="Price"
                                                         placeholder="Price"
                                                         value={values.price}
                                                     />
                                                     <FastField
                                                         name="description"
+                                                        label="Description"
+                                                        type="textarea"
                                                         component={InputField}
                                                         placeholder="Description"
                                                         value={values.description}
                                                     />
                                                     <FastField
                                                         name="capacity"
-                                                        component={SelectField}
+                                                        label="Capacity"
+                                                        component={InputField}
                                                         placeholder="Capacity"
-                                                        options={GUEST_OPTIONS}
-
+                                                        value={values.capacity}
                                                     />
                                                     <FormGroup>
                                                         <Button

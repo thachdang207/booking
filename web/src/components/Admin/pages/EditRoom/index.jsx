@@ -10,10 +10,6 @@ function EditRoom({id, room}) {
     const [adminToken] = useSecureLs("admin_token")
     const onSubmitHandler = (values) => {
         updateRoom(dispatch, adminToken, id, values);
-        const timer = setTimeout(() => {
-            window.location.reload();
-        },1000);
-        return () => clearTimeout(timer);
     }
     useEffect(() => {
         document.title = `Edit room information`;

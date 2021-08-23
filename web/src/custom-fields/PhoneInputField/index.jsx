@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2'
 import PropTypes from 'prop-types';
 import { getIn } from 'formik';
+import { Label } from 'reactstrap'
 
 PhoneInputField.propTypes = {
     className: PropTypes.string,
@@ -10,6 +11,7 @@ PhoneInputField.propTypes = {
     onChange: PropTypes.func,
     country: PropTypes.string,
     disabled: PropTypes.bool,
+    label: PropTypes.string,
 };
 
 PhoneInputField.defaultProps = {
@@ -17,6 +19,7 @@ PhoneInputField.defaultProps = {
     onChange: null,
     country: 'vn',
     disabled: false,
+    label: '',
 };
 
 function PhoneInputField(props) {
@@ -27,6 +30,7 @@ function PhoneInputField(props) {
             errors, handleBlur, setFieldValue, touched,
         },
         form,
+        label,
         country,
         onChange,
         disabled,
@@ -55,6 +59,7 @@ function PhoneInputField(props) {
 
     return (
         <div className={`${className} ${errorStyle} ${filledStyle} ${disabledStyle} text-input-group`}>
+            {label && <Label for={name} className="font-bold">{label}</Label>}
             <PhoneInput
                 placeholder="Enter phone number"
                 enableAreaCodes={true}

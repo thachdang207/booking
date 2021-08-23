@@ -34,7 +34,7 @@ function InputField(props) {
     return (
         <div>
             <FormGroup>
-                {label && <Label for={name}>{label}</Label>}
+                {label && <Label for={name} className="font-bold">{label}</Label>}
 
                 <Input
                     id={name}

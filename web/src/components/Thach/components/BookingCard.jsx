@@ -70,7 +70,9 @@ function BookingCard({ bookings }) {
                                             <div className="text-lg text-left">{booking.room.capacity}</div>
                                         </td>
                                         <td className="p-2 whitespace-nowrap">
-                                            <div className="text-lg text-left">{booking.paymentStatus}</div>
+                                            <div className={booking.paymentStatus === "APPROVED" ? "text-green-300 text-lg text-left font-bold" : "text-gray-900 text-lg text-left font-bold"}>
+                                                {booking.paymentStatus}
+                                            </div>
                                         </td>
                                     </tr>
                                 )

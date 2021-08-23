@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { formatPrice } from "../../../constants/function";
 import EditRoom from "../../Admin/pages/EditRoom";
 import {
@@ -10,7 +10,14 @@ import {
 } from "react-ionicons";
 import AddRoom from "../../Admin/pages/AddRoom";
 
-function Card({ rooms }) {
+function Card(props) {
+    console.log(props);
+    const [rooms, setRooms] = useState(props.rooms)
+
+    useEffect(() => {
+        setRooms(props.rooms);
+    }, [props.rooms])
+
     return (
         <>
             <div className="p-3">

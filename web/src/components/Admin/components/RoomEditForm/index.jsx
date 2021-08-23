@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { FormGroup, Spinner, Button, Modal, ModalBody, ModalFooter, Input } from "reactstrap"
+import { FormGroup, Spinner, Button, Modal, ModalBody, ModalFooter } from "reactstrap"
 import PropTypes from "prop-types";
-import { Formik, FastField, Form, Field } from "formik";
+import { Formik, FastField, Form } from "formik";
 import InputField from "../../../../custom-fields/InputField";
 import Title from "../../../Global/Title";
-import SelectField from "../../../../custom-fields/SelectField";
-import { GUEST_OPTIONS } from "../../../../constants/global";
 import { Loading } from "../../../Global/Loading";
 import { useSelector } from "react-redux";
-import { formatPrice, nullOrNot } from "../../../../constants/function";
+import { nullOrNot } from "../../../../constants/function";
 import { CreateOutline } from "react-ionicons"
 
 RoomEditForm.defaultProps = {
@@ -35,7 +33,7 @@ function RoomEditForm(props) {
                 const { values, isSubmitting } = formikProps;
                 return (
                     <div>
-                        <CreateOutline onClick={toggleShow} cssClasses="cursor-pointer"/>
+                        <CreateOutline onClick={toggleShow} cssClasses="cursor-pointer" />
                         <Modal
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
@@ -43,10 +41,9 @@ function RoomEditForm(props) {
                             isOpen={show} toggle={toggleShow}
                         >
                             {state.admin.loading && <Loading />}
-                            <Title title="Update room information" className="w-full" />
-                            <hr />
                             <ModalBody>
-                                <div className="w-full xl:px-20 lg:px-16 md:px-3 sm:px-0 items-center bg-white">
+                                <Title title="Update room information" className="w-full" />
+                                <div className="w-full xl:px-16 lg:px-12 md:px-4 sm:px-1 items-center bg-white">
                                     <div className="w-full xl:px-4 lg:px-5 md:px-1 items-center bg-white">
                                         <div className="container mx-auto">
                                             <Form className="max-w-full mx-auto px-12 py-4">
@@ -76,13 +73,9 @@ function RoomEditForm(props) {
                                                     <FastField
                                                         name="capacity"
                                                         label="Capacity"
-                                                        component={SelectField}
+                                                        component={InputField}
                                                         placeholder="Capacity"
-                                                        options={GUEST_OPTIONS}
-                                                        defaultValue={{
-                                                            value: values.capacity ? values.capacity.toString() : "2",
-                                                            label: values.capacity ? values.capacity.toString() : "2"
-                                                        }}
+                                                        value={values.capacity}
                                                     />
                                                     <FormGroup>
                                                         <Button
