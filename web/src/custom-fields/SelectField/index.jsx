@@ -55,7 +55,7 @@ function SelectField(props) {
     return (
         <div>
             <FormGroup>
-                {label && <Label for={name} className="font-bold">{label}</Label>}
+                {label && <Label for={name} className="font-bold text-lg">{label}</Label>}
                 <Select
                     id={name}
                     {...field}

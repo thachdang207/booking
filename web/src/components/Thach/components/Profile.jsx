@@ -3,8 +3,12 @@ import { MailOutline, CallOutline, BusinessOutline, HomeOutline, ArrowBackOutlin
 import "../../User/UserProfile/UserProfile.css"
 
 function Profile({ admin }) {
+    const [popupAvatarImage, setPopupAvatarImage] = useState(false);
+    const togglePopupAvatarImage = () => setPopupAvatarImage(!popupAvatarImage)
+
     const [popupImage, setPopupImage] = useState(false);
     const togglePopupImage = () => setPopupImage(!popupImage)
+
     const hotelSliders = admin.user.location ? admin.user.location.images : [
         "https://source.unsplash.com/random",
         "https://source.unsplash.com/random",
@@ -27,10 +31,10 @@ function Profile({ admin }) {
                     <div className="relative w-full xl:w-1/3 h-full mb-6">
                         <div className="relative w-full h-full">
                             {admin && (
-                                <div className="popup__image" style={{ "display": popupImage ? "block" : "none" }}>
+                                <div className="popup__image" style={{ "display": popupAvatarImage ? "block" : "none" }}>
                                     <span
                                         className="close"
-                                        onClick={togglePopupImage}
+                                        onClick={togglePopupAvatarImage}
                                     >&times;</span>
                                     <img
                                         className="popup__image-content"
@@ -59,7 +63,7 @@ function Profile({ admin }) {
                                                         }
                                                         alt="avatar"
                                                         className="w-28 h-28 rounded-full object-cover shadow-md transition hover:opacity-80 cursor-pointer mr-3"
-                                                        onClick={togglePopupImage}
+                                                        onClick={togglePopupAvatarImage}
                                                     />
                                                     <h2 className="my-4 font-sans text-center font-bold">
                                                         {admin.user.fullName}

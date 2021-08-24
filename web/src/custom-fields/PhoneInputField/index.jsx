@@ -59,7 +59,7 @@ function PhoneInputField(props) {
 
     return (
         <div className={`${className} ${errorStyle} ${filledStyle} ${disabledStyle} text-input-group`}>
-            {label && <Label for={name} className="font-bold">{label}</Label>}
+            {label && <Label for={name} className="font-bold text-lg">{label}</Label>}
             <PhoneInput
                 placeholder="Enter phone number"
                 enableAreaCodes={true}

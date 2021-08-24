@@ -11,7 +11,6 @@ import {
 import AddRoom from "../../Admin/pages/AddRoom";
 
 function Card(props) {
-    console.log(props);
     const [rooms, setRooms] = useState(props.rooms)
 
     useEffect(() => {
@@ -40,19 +39,19 @@ function Card(props) {
                                     </div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left flex items-center">
+                                    <div className="font-semibold text-left flex justify-center items-center">
                                         Capacity
                                         <PeopleCircleOutline cssClasses="ml-2" />
                                     </div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">Edit</div>
+                                    <div className="font-semibold text-center">Edit</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">Delete</div>
+                                    <div className="font-semibold text-center">Delete</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">More details</div>
+                                    <div className="font-semibold text-center">More details</div>
                                 </th>
                             </tr>
                         </thead>
@@ -78,16 +77,16 @@ function Card(props) {
                                             </div>
                                         </td>
                                         <td className="p-2 whitespace-nowrap">
-                                            <div className="text-lg text-left">{room.capacity}</div>
+                                            <div className="text-lg text-center">{room.capacity}</div>
                                         </td>
-                                        <td>
+                                        <td className="text-center">
                                             <EditRoom id={room.id} room={room} />
                                         </td>
                                         <td>
-                                            <TrashOutline cssClasses="cursor-pointer" />
+                                            <TrashOutline cssClasses="cursor-pointer mx-auto" />
                                         </td>
                                         <td>
-                                            <EllipsisHorizontalOutline cssClasses="cursor-pointer" />
+                                            <EllipsisHorizontalOutline cssClasses="cursor-pointer mx-auto" />
                                         </td>
                                     </tr>
                                 );

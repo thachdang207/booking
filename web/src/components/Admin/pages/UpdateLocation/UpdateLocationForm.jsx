@@ -87,9 +87,9 @@ export default function UpdateLocationForm(props) {
                 return (
                     <div className="w-full xl:px-40 lg:px-36 md:px-23 sm:p-0 items-center min-h-screen">
                         {state.admin.loading && <Loading />}
-                        <div className="w-full xl:p-10 lg:p-5 md:p-1 items-center min-h-screen">
+                        <div className="w-full xl:p-8 lg:p-4 md:p-1 items-center min-h-screen">
                             <div className="container mx-auto">
-                                <Form className="max-w-full mx-auto bg-gray-200 px-28 py-8 rounded-md shadow-sm">
+                                <Form className="max-w-full mx-auto px-0 py-4">
                                     <div className="flex flex-col w-full">
                                         <FastField
                                             name="name"

@@ -68,4 +68,11 @@ export const getExtension = (filename) => {
     let parts = filename.split('.');
     let image = "image/"
     return image.concat(parts[parts.length - 1]);
-  }
+}
+
+
+export const formatPriceString = (price) => {
+    if(price){
+        return parseInt(price.replace(/^D ./g,''));
+    }
+}

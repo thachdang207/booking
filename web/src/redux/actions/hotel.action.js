@@ -1,4 +1,5 @@
 import axios from "axios";
+import { formatPriceString } from "../../constants/function";
 import {
     GET_HOTEL,
     GET_ALL_HOTELS,
@@ -6,7 +7,7 @@ import {
     GET_CITY_HOTELS,
     GET_FILTER_HOTELS
 } from "../actionTypes";
-import {setLoading} from "./commonActions";
+import { setLoading } from "./commonActions";
 
 const url = process.env.REACT_APP_API_URL;
 export const getAllHotels = (dispatch) => {
@@ -88,19 +89,26 @@ export const getCityHotels = async (dispatch, cityId, page) => {
     }
 };
 
-export const getFilterHotels = async (dispatch, hotelName, page) => {
+export const getFilterHotels = async (dispatch, hotelName, filter, page) => {
     setLoading(dispatch, true);
+    const defaultFindingHotel = JSON.stringify(" ");
     try {
-        const response = 
-        await axios.get(`${url}/customer/locations?s={"name":{"$contL":${hotelName}}}`, 
-        {
-            params: {
-                page: `${page}`,
-                join: ['locationType', 'city', 'rooms', 'serviceTypes'],
-                sort: 'score,DESC',
-                // filter: `id||$eq||${"487292a4-d7a9-434f-b648-410cafa070c9"}`
-            }
-        });
+        const response =
+            await axios.get(`${url}/customer/locations`,
+                {
+                    params: {
+                        page: `${page}`,
+                        join: ['locationType', 'city'],
+                        sort: 'score,DESC',
+                        filter: [
+                            `name||$contL||${hotelName ? hotelName : defaultFindingHotel}`,
+                            `locationType.name||$eq||${filter.locationType}`,
+                            `cityId||$eq||${filter.cityId}`,
+                            `isFeatured||$eq||${filter.isFeatured}`,
+                            `score||$in||${Object.values(filter.score)}`,
+                        ]
+                    }
+                });
         dispatch({
             type: GET_FILTER_HOTELS,
             payload: response.data

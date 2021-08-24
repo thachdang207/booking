@@ -33,7 +33,7 @@ function RoomEditForm(props) {
                 const { values, isSubmitting } = formikProps;
                 return (
                     <div>
-                        <CreateOutline onClick={toggleShow} cssClasses="cursor-pointer" />
+                        <CreateOutline onClick={toggleShow} cssClasses="cursor-pointer mx-auto" />
                         <Modal
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
