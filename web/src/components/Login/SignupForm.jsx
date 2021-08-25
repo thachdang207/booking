@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from 'react';
 import { useSecureLs } from '../Global/UseSecureLs'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,13 +6,20 @@ import { signUp } from '../../redux/actions/auth.action'
 import { useHistory } from 'react-router-dom'
 import { Loading } from '../Global/Loading'
 import ErrorMessage from '../Global/ErrorMessage'
-
-import './Login.css'
 import JSONDATA from '../Home/data.json'
+import {
+    BoldLink,
+    BoxContainer,
+    FormContainer,
+    Input,
+    MutedLink,
+    SubmitButton,
+    Select,
+} from "./common";
 
 
 function SignupForm(props) {
-    const { switchToSignin, switchToAdminLogin } = useContext(AccountContext);
+    const { switchToSignin } = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -50,47 +54,44 @@ function SignupForm(props) {
     }, []);
 
     return (
-        <div className="inner-container">
+        <>
             {state.auth.loading && <Loading />}
             {state.auth.success === false && (
                 <ErrorMessage errors={state.auth.errors} />
             )}
-            <div className="box-container">
-                <form className="form-container" onSubmit={handleSubmit}>
-                    <input
+            <BoxContainer>
+                <FormContainer onSubmit={handleSubmit}>
+                    <Input
                         id="fullName"
                         type="text"
-                        className="input"
                         placeholder="Full name"
                         aria-required="true"
                         onChange={(e) =>
                             setUser({ ...user, fullName: e.target.value })
                         }
                     />
-                    <input
+                    <Input
                         id="email"
                         type="email"
-                        className="input"
                         placeholder="Email"
                         aria-required="true"
                         onChange={(e) =>
                             setUser({ ...user, email: e.target.value })
                         }
                     />
-                    <input
+                    <Input
                         id="address"
                         type="text"
-                        className="input"
                         placeholder="Address"
                         aria-required="true"
                         onChange={(e) =>
                             setUser({ ...user, address: e.target.value })
                         }
                     />
-                    <select
+                    <Select
                         id="city"
                         placeholder="City"
-                        className="input"
+                        type="select"
                         aria-required="true"
                         onChange={(e) =>
                             setUser({ ...user, city: e.target.value })
@@ -105,8 +106,8 @@ function SignupForm(props) {
                                     </option>
                                 );
                             })}
-                    </select>
-                    <input
+                    </Select>
+                    <Input
                         id="password"
                         type="password"
                         className="input"
@@ -116,21 +117,25 @@ function SignupForm(props) {
                             setUser({ ...user, password: e.target.value })
                         }
                     />
-                    <button className="submit-button" type="submit">
+                    <div className="mt-3 mb-2">
+
+                    </div>
+                    <SubmitButton type="submit">
                         Create
-                    </button>
-                </form>
-                <p className="muted-link">
-                    Already have an account?
-                        <span
-                        className="bold-link"
-                        onClick={switchToSignin}
-                    >
-                        Sign in
-                        </span>
-                </p>
-            </div>
-        </div>
+                    </SubmitButton>
+                </FormContainer>
+                <div className="mt-2">
+                    <MutedLink>
+                        Already have an account?
+                        <BoldLink
+                            onClick={switchToSignin}
+                        >
+                            Sign in
+                        </BoldLink>
+                    </MutedLink>
+                </div>
+            </BoxContainer>
+        </>
     );
 };
 

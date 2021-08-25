@@ -8,6 +8,7 @@ import Hotels from './Hotels'
 import ClientReview from './ClientReview'
 import Cities from './Cities'
 import SearchHotel from '../Global/SearchHotel';
+import Title from "../Global/Title";
 
 function Home() {
     const myRef = useRef(null);
@@ -41,6 +42,8 @@ function Home() {
             />
 
             <Border />
+
+            <Title title="Explore one of the most attractive destinations in Vietnam"/>
 
             <Cities />
 

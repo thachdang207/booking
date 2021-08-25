@@ -39,7 +39,7 @@ export default function Searchbar(props) {
 
                 return (
                     <div ref={props.refProp}>
-                        <div className="items-center min-h-0 bg-yellow-300 mx-64 rounded-md shadow-md" data-aos="fade-up">
+                        <div className="items-center min-h-0 bg-indigo-200 mx-64 rounded-md shadow-md" data-aos="fade-up">
                             <div className="container mx-auto w-full">
                                 <Form
                                     className="sm:max-w-sm md:max-w-3xl lg:max-w-6xl mx-auto my-5 xl:my-20 p-8">

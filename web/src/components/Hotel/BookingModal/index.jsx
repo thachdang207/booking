@@ -126,7 +126,7 @@ function BookingModal({
                 color="primary"
                 onClick={onOpenBookingModal}
             >
-                Book
+                Reserve
             </Button>
             <Modal isOpen={show} toggle={toggleShow} centered size="lg">
                 {state.book.loading && <Loading />}

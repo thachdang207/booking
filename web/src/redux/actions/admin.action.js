@@ -7,46 +7,47 @@ import {
     UPDATE_ROOM
 } from '../actionTypes'
 import axios from "axios";
-import {setLoading} from "./commonActions";
+import { setLoading } from "./commonActions";
 
 //-----------------------------------------
 const url = process.env.REACT_APP_API_URL;
 
-export const getAdmin = (dispatch, token) => {
+export const getAdmin = async (dispatch, token) => {
     setLoading(dispatch, true);
-    axios(`${url}/admin/users/me`, {
-        headers: {Authorization: `Bearer ${token}`}
-    })
-        .then( async (response) => {
-            await dispatch({
-                type: GET_ADMIN_INFO,
-                payload: {
-                    user: response.data
-                }
-            });
-            setLoading(dispatch, false);
+    try {
+        const response = await axios.get(`${url}/admin/users/me`, {
+            headers: { Authorization: `Bearer ${token}` }
         })
-        .catch((error) => {
+        dispatch({
+            type: GET_ADMIN_INFO,
+            payload: {
+                user: response.data
+            }
         });
+        setLoading(dispatch, false);
+    } catch (e) {
+        console.error(e);
+    }
 };
 
-export const getBookingRequests = (dispatch, token) => {
+export const getBookingRequests = async (dispatch, token) => {
     setLoading(dispatch, true);
-    axios(`${url}/admin/bookings`, {
-        headers: {Authorization: `Bearer ${token}`},
-        params: {
-            "order": "createdAt",
-        }
-    })
-        .then(async (response) => {
-            await dispatch({
-                type: GET_BOOKING_REQUEST,
-                payload: response.data.results
-            });
-            setLoading(dispatch, false);
+    try {
+        const response = await axios.get(`${url}/admin/bookings`, {
+            headers: { Authorization: `Bearer ${token}` },
+            params: {
+                "order": "createdAt",
+            }
         })
-        .catch((error) => {
+        dispatch({
+            type: GET_BOOKING_REQUEST,
+            payload: response.data.results
         });
+        setLoading(dispatch, false);
+    }
+    catch (e) {
+        console.error(e);
+    }
 };
 
 export const responseBookingRequests = (dispatch, token, bookingId, status) => {
@@ -57,7 +58,7 @@ export const responseBookingRequests = (dispatch, token, bookingId, status) => {
                 status: status
             },
             {
-                headers: {Authorization: `Bearer ${token}`}
+                headers: { Authorization: `Bearer ${token}` }
             })
         .then(async (response) => {
             setLoading(dispatch, false);
@@ -72,81 +73,80 @@ export const responseBookingRequests = (dispatch, token, bookingId, status) => {
 
 //-----------------------------------------
 
-export const updateLocation = (dispatch, token, locationData, locationId) => {
+export const updateLocation = async (dispatch, token, locationData, locationId) => {
     setLoading(dispatch, true);
-    axios({
-        method: "PUT",
-        url: `${url}/admin/locations/${locationId}`,
-        headers: { Authorization: `Bearer ${token}` },
-        data: {
-            name: locationData.name,
-            address: locationData.address,
-            city: locationData.city,
-            locationTypeId: locationData.locationTypeId,
-            contactPhoneNumber: locationData.contactPhoneNumber,
-            contactEmail: locationData.contactEmail,
-            price: locationData.price,
-            description: locationData.description,
-            workingTime: locationData.workingTime,
-        }
-    })
-        .then(async (response) => {
-            await dispatch({
-                type: UPDATE_LOCATION,
-                payload: response.data
-            });
-            setLoading(dispatch, false);
+    try {
+        const response = await axios({
+            method: "PUT",
+            url: `${url}/admin/locations/${locationId}`,
+            headers: { Authorization: `Bearer ${token}` },
+            data: {
+                name: locationData.name,
+                address: locationData.address,
+                city: locationData.city,
+                locationTypeId: locationData.locationTypeId,
+                contactPhoneNumber: locationData.contactPhoneNumber,
+                contactEmail: locationData.contactEmail,
+                price: locationData.price,
+                description: locationData.description,
+                workingTime: locationData.workingTime,
+            }
         })
-        .catch((error) => {
-            setLoading(dispatch, true);
-            console.log(error.message)
+        dispatch({
+            type: UPDATE_LOCATION,
+            payload: response.data
         });
+        setLoading(dispatch, false);
+    } catch (e) {
+        console.log(e.message)
+    }
 };
 
-export const createRoom = (dispatch, token, roomData) => {
+export const createRoom = async (dispatch, token, roomData) => {
     setLoading(dispatch, true);
-    axios
-        .post(`${url}/admin/room/create`,
-            {
-                name: roomData.name,
-                price: roomData.price,
-                description: roomData.description,
-                capacity: roomData.capacity,
-            },
-            {
-                headers: {Authorization: `Bearer ${token}`}
-            })
-        .then(async (response) => {
-            await dispatch({
-                type: CREATE_ROOM,
-                payload: response.data
-            });
-            setLoading(dispatch, false);
-        })
-        .catch((error) => {
+    try {
+        const response = await axios
+            .post(`${url}/admin/room/create`,
+                {
+                    name: roomData.name,
+                    price: roomData.price,
+                    description: roomData.description,
+                    capacity: roomData.capacity,
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+        dispatch({
+            type: CREATE_ROOM,
+            payload: response.data
         });
+        setLoading(dispatch, false);
+    }
+    catch (e) {
+        console.error(e);
+    }
 }
 
-export const updateRoom = (dispatch, token, roomId, roomData) => {
+export const updateRoom = async (dispatch, token, roomId, roomData) => {
     setLoading(dispatch, true);
-    axios
-        .put(`${url}/admin/room/${roomId}/update`,
-            {
-                name: roomData.name,
-                price: roomData.price,
-                description: roomData.description,
-                capacity: roomData.capacity,
-            },
-            {
-                headers: {Authorization: `Bearer ${token}`}
-            })
-        .then(async (response) => {
-            await dispatch({
-                type: UPDATE_ROOM,
-                payload: response.data
-            });
-            setLoading(dispatch, false);
-        })
-        .catch((error) => {
+    try {
+        const response = await axios
+            .put(`${url}/admin/room/${roomId}/update`,
+                {
+                    name: roomData.name,
+                    price: roomData.price,
+                    description: roomData.description,
+                    capacity: roomData.capacity,
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+        dispatch({
+            type: UPDATE_ROOM,
+            payload: response.data
         });
+        setLoading(dispatch, false);
+    } catch (e) {
+        console.error(e);
+    }
 }

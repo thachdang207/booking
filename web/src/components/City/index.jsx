@@ -56,7 +56,6 @@ function City() {
             <StaticHeader />
             <Border/>
             <Cities/>
-            <Border/>
             {state.hotel.loading && <Loading />}
             <section className="px-10 py-12 lg:px-28 xl:px-40 2xl:px-56">
                 <Title title={`${cityName}'s Hotels`} />

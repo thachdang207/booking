@@ -3,7 +3,6 @@ import {getCities} from "../../../redux/actions/city.action";
 import {useDispatch, useSelector} from "react-redux";
 import CityCard from "./CityCard";
 import Slider from "react-slick"
-import Title from "../../Global/Title";
 
 function Cities() {
     const dispatch = useDispatch();
@@ -49,7 +48,6 @@ function Cities() {
     };
     return (
         <div className="w-full mx-auto">
-            <Title title="The most attractive destinations in Vietnam"/>
                 <Slider {...settings}>
                     {state && state.city.cities.map((city) => (
                             <CityCard key={city.id} city={city}/>

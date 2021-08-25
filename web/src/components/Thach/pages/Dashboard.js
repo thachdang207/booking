@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import Breadcrumb from '../partials/dashboard/Breadcrumb';
@@ -8,8 +7,19 @@ import Rooms from './Rooms'
 import Bookings from './Booking';
 import AdminProfile from './Profile';
 import UpdateLocation from '../../Admin/pages/UpdateLocation';
+import { useSelector, useDispatch } from "react-redux";
+import { getAdmin } from "../../../redux/actions/admin.action";
+import { useSecureLs } from "../../Global/UseSecureLs";
 
 function Dashboard() {
+  const admin  = useSelector((state) => state.admin);
+  const dispatch = useDispatch();
+  const [token] = useSecureLs("admin_token");
+
+  useEffect(() => {
+    getAdmin(dispatch, token);
+  },[dispatch, token]);
+
   useEffect(() => {
     document.title = `Admin`
   })
@@ -40,7 +50,7 @@ function Dashboard() {
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
 
         {/*  Site header */}
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} admin={admin}/>
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">

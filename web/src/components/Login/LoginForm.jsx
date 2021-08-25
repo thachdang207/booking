@@ -1,20 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useContext, useEffect} from 'react';
-import {useSecureLs} from '../Global/UseSecureLs'
-import {useDispatch, useSelector} from 'react-redux'
-import {AccountContext} from './accountContext';
-import {signIn} from '../../redux/actions/auth.action'
-import {useHistory} from 'react-router-dom'
-import {Loading} from '../Global/Loading'
+import React, { useState, useContext, useEffect } from 'react';
+import { useSecureLs } from '../Global/UseSecureLs'
+import { useDispatch, useSelector } from 'react-redux'
+import { AccountContext } from './accountContext';
+import { signIn } from '../../redux/actions/auth.action'
+import { useHistory } from 'react-router-dom'
+import { Loading } from '../Global/Loading'
 import ErrorMessage from '../Global/ErrorMessage'
-
-import './Login.css'
+import {
+    BoldLink,
+    BoxContainer,
+    FormContainer,
+    Input,
+    MutedLink,
+    SubmitButton,
+} from "./common";
 
 function LoginForm() {
 
-    const {switchToSignup, switchToAdminLogin} = useContext(AccountContext);
+    const { switchToSignup, switchToAdminLogin } = useContext(AccountContext);
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -42,59 +45,57 @@ function LoginForm() {
     }, []);
 
     return (
-        <div className="inner-container">
-            {state.auth.loading && <Loading/>}
+        <>
+            {state.auth.loading && <Loading />}
             {state.auth.success === false && (
-                <ErrorMessage errors={state.auth.errors}/>
+                <ErrorMessage errors={state.auth.errors} />
             )}
-            <div className="box-container">
-                <form className="form-container" onSubmit={handleSubmit}>
-                    <input
+            <BoxContainer>
+                <FormContainer onSubmit={handleSubmit}>
+                    <Input
                         id="email"
                         type="email"
-                        className="input"
                         aria-required="true"
                         placeholder="Email"
                         onChange={(e) =>
-                            setUser({...user, email: e.target.value})
+                            setUser({ ...user, email: e.target.value })
                         }
                     />
-                    <input
+                    <Input
                         id="password"
                         type="password"
                         aria-required="true"
-                        className="input"
                         placeholder="Password"
                         onChange={(e) =>
-                            setUser({...user, password: e.target.value})
+                            setUser({ ...user, password: e.target.value })
                         }
                     />
-                    <div className="flex flex-row items-center justify-center">
-                        <p className="muted-link">
+                    <div className="flex flex-row items-center justify-center mt-5 mb-2">
+                        <MutedLink>
                             Connect with us as an owner?
-                            <span
-                                className="bold-link"
+                            <BoldLink
                                 onClick={switchToAdminLogin}
                             >
                                 Sign in
-                            </span>
-                        </p>
+                            </BoldLink>
+                        </MutedLink>
                     </div>
-                    <button className="submit-button" type="submit">
+                    <SubmitButton type="submit">
                         Sign in
-                    </button>
-                </form>
-                <p className="muted-link">
-                    Don't have an account yet?
-                    <span
-                        className="bold-link"
-                        onClick={switchToSignup}
-                    >
-                        Sign up
-                    </span>
-                </p>
-            </div>
-        </div>
+                    </SubmitButton>
+                </FormContainer>
+                <div className="mt-2">
+                    <MutedLink>
+                        Don't have an account yet?
+                        <BoldLink
+                            onClick={switchToSignup}
+                        >
+                            Sign up
+                        </BoldLink>
+                    </MutedLink>
+                </div>
+            </BoxContainer>
+        </>
     );
 };
 

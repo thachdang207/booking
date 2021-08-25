@@ -1,5 +1,12 @@
-import React, { useState, useCallback } from "react";
-import { MailOutline, CallOutline, BusinessOutline, HomeOutline, ArrowBackOutline, ArrowForwardOutline } from "react-ionicons"
+import React, { useState, useCallback, useEffect } from "react";
+import {
+    MailOutline,
+    CallOutline,
+    BusinessOutline,
+    HomeOutline,
+    ArrowBackOutline,
+    ArrowForwardOutline
+} from "react-ionicons"
 import "../../User/UserProfile/UserProfile.css"
 
 function Profile({ admin }) {
@@ -8,11 +15,17 @@ function Profile({ admin }) {
 
     const [popupImage, setPopupImage] = useState(false);
     const togglePopupImage = () => setPopupImage(!popupImage)
+    const [hotelSliders, setHotelSliders] = useState([
+            "https://source.unsplash.com/random",
+            "https://source.unsplash.com/random",
+    ])
 
-    const hotelSliders = admin.user.location ? admin.user.location.images : [
-        "https://source.unsplash.com/random",
-        "https://source.unsplash.com/random",
-    ]
+    useEffect(() => {
+        if (admin.user) {
+            setHotelSliders(admin.user.location.images);
+        }
+    }, [admin.user])
+
     const [index, setIndex] = useState(0);
 
     const handlePrevSlider = useCallback(() => {
@@ -30,7 +43,7 @@ function Profile({ admin }) {
                 <div className="w-full h-screen flex flex-col xl:flex-row">
                     <div className="relative w-full xl:w-1/3 h-full mb-6">
                         <div className="relative w-full h-full">
-                            {admin && (
+                            {admin.user && (
                                 <div className="popup__image" style={{ "display": popupAvatarImage ? "block" : "none" }}>
                                     <span
                                         className="close"
@@ -52,7 +65,7 @@ function Profile({ admin }) {
                                     <div
                                         className="bg-gray-100 h-auto rounded-2xl overflow-hidden shadow-lg mt-0"
                                     >
-                                        {admin && (
+                                        {admin.user && (
                                             <div>
                                                 <div className="relative bg-indigo-200 flex p-3 justify-center items-center">
                                                     <img
@@ -160,7 +173,7 @@ function Profile({ admin }) {
                                     <div
                                         className="bg-gray-100 h-auto rounded-2xl overflow-hidden shadow-lg mt-0"
                                     >
-                                        {admin && (
+                                        {admin.user && (
                                             <div>
                                                 <div className="relative flex items-center justify-center p-3 bg-indigo-200">
                                                     <img
