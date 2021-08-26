@@ -20,10 +20,10 @@ function Header() {
     }
 
     useEffect(() => {
-        if(state.auth.isAuthenticated){
+        if (state.auth.isAuthenticated) {
             getUser(dispatch, token);
         }
-    },[dispatch, state.auth.isAuthenticated, token])
+    }, [dispatch, state.auth.isAuthenticated, token])
 
     const navOnScrolling = () => {
         if (window.scrollY >= 20) {
@@ -64,7 +64,9 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <LoggedInInfo user={state.user.user}/>
+                            {state.user.user && (
+                                <LoggedInInfo user={state.user.user} />
+                            )}
                         </>
                     )}
                 </ul>

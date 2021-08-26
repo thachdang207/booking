@@ -15,7 +15,7 @@ function HomeSuperAdmin() {
     useEffect(() => {
         state.sAdmin.success = null;
         state.sAdmin.errors = null;
-    }, []);
+    },[state.sAdmin]);
 
     useEffect(() => {
         document.title = "Hotels"

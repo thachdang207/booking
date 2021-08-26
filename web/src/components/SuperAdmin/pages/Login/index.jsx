@@ -30,8 +30,7 @@ function SuperAdminLogin() {
         document.title = `Super Admin Login`;
     }, []); // eslint-disable-line
     return (
-        <div className="w-full bg-gray-100 flex flex-col justify-center items-center py-24">
-            {state.sAdmin.loading && <Loading/>}
+        <div className="w-2/3 xl:1/2 mx-auto flex flex-col justify-center items-center py-24">
             {state.sAdmin.success === false && (
                 <ErrorMessage errors={state.sAdmin.errors}/>
             )}
@@ -73,7 +72,7 @@ function SuperAdminLogin() {
 
                 <div className="mt-5 flex flex-col md:flex-row justify-center items-center">
                     <button
-                        className="text-center bg-yellow-600 text-white hover:bg-yellow-700 uppercase text-sm px-12 py-4 shadow
+                        className="text-center bg-indigo-600 text-white hover:bg-indigo-700 uppercase text-sm px-12 py-4 shadow
                     hover:shadow-lg"
                         type="submit"
                     >

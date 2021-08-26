@@ -41,14 +41,14 @@ export const Input = styled.input`
   transition: all 200ms ease-in-out;
   font-size: 15px;
   &::placeholder {
-    color: rgba(200, 200, 200, 1);
+    color: rgba(220, 220, 220, 1);
   }
   &:not(:last-of-type) {
     border-bottom: 1.5px solid rgba(200, 200, 200, 0.4);
   }
   &:focus {
     outline: none;
-    border-bottom: 2px solid rgb(75, 0, 130);
+    border-bottom: 2px solid rgb(75, 0, 150);
   }
 `;
 
@@ -63,14 +63,14 @@ export const Select = styled.select`
   transition: all 200ms ease-in-out;
   font-size: 12px;
   &::placeholder {
-    color: rgba(200, 200, 200, 1);
+    color: rgba(220, 220, 220, 1);
   }
   &:not(:last-of-type) {
     border-bottom: 1.5px solid rgba(200, 200, 200, 0.4);
   }
   &:focus {
     outline: none;
-    border-bottom: 2px solid rgb(75, 0, 130);
+    border-bottom: 2px solid rgb(75, 0, 150);
   }
 `;
 
@@ -87,8 +87,8 @@ export const SubmitButton = styled.button`
   background: rgb(75, 0, 130);
   background: linear-gradient(
     58deg,
-    rgba(75, 0, 130) 20%,
-    rgba(143, 0, 255) 100%
+    rgba(75, 0, 150) 20%,
+    rgba(120, 0, 255) 100%
   );
   &:hover {
     filter: brightness(1.03);

@@ -8,7 +8,6 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import HomeSuperAdmin from "./pages/HomeSuperAdmin";
 import CreateOwnerForLocation from "./pages/CreateOwner/CreateOwnerForLocation";
 import { useSelector } from "react-redux";
-import FilterHotels from './pages/FilterHotels';
 
 function SuperAdmin() {
     const match = useRouteMatch();
@@ -31,10 +30,10 @@ function SuperAdmin() {
         <div className="h-full min-h-screen flex flex-col md:flex-col justify-between">
             <div>
                 <main className="bg-gray-100 bg-opacity-100 min-h-screen ">
-                    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-2 min-h-screen">
+                    <div className="w-full mx-auto py-6 sm:px-6 lg:px-2 min-h-screen">
                         <div className="px-4 py-6 sm:px-0 min-h-screen">
                             <div className="box-border p-4 border-4 bg-white rounded-md min-h-screen">
-                                <div className="container my-12 mx-auto px-4 md:px-12">
+                                <div className="my-12 mx-auto px-4 md:px-6">
                                     <Breadcrumb>
                                         <BreadcrumbItem>
                                             <Link to={`${match.url}`}>
@@ -42,8 +41,8 @@ function SuperAdmin() {
                                             </Link>
                                         </BreadcrumbItem>
                                         <BreadcrumbItem>
-                                            <Link to={`${match.url}/create-owner`}>
-                                                Create new owner
+                                            <Link to={`${match.url}/register`}>
+                                                Register a new location
                                             </Link>
                                         </BreadcrumbItem>
                                         <BreadcrumbItem>
@@ -55,10 +54,10 @@ function SuperAdmin() {
                                     <Switch>
                                         <Route exact from={`${match.url}`} component={HomeSuperAdmin} />
                                         <Route exact path={`${match.url}/login`} component={SuperAdminLogin} />
-                                        <Route exact path={`${match.url}/create-owner`} component={CreateOwner} />
-                                        <Route exact path={`${match.url}/create-owner/:id`}
+                                        <Route exact path={`${match.url}/register`} component={CreateOwner} />
+                                        <Route exact path={`${match.url}/register/:id`}
                                             component={CreateOwnerForLocation} />
-                                        <Route exact path={`${match.url}/search/hotel=:hotel?`} component={FilterHotels} />
+                                        <Route exact path={`${match.url}/search/hotel=:hotel?`} component={HomeSuperAdmin} />
                                         <Route exact component={Error} />
                                     </Switch>
                                 </div>

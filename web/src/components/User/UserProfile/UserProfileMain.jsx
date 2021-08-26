@@ -88,7 +88,7 @@ function UserProfileMain() {
                                     </h1>
                                     <p className="flex items-center ">
                                         <MailOutline
-                                            color={"#0275d8"}
+                                            color={"#4338CA"}
                                             height="30px"
                                             width="30px"
                                         />
@@ -100,7 +100,7 @@ function UserProfileMain() {
                                     </p>
                                     <p className="flex items-center mt-2">
                                         <HomeOutline
-                                            color={"#0275d8"}
+                                            color={"#4338CA"}
                                             height="30px"
                                             width="30px"
                                         />
@@ -112,7 +112,7 @@ function UserProfileMain() {
                                     </p>
                                     <p className="flex items-center mt-2">
                                         <BusinessOutline
-                                            color={"#0275d8"}
+                                            color={"#4338CA"}
                                             height="30px"
                                             width="30px"
                                         />
@@ -124,7 +124,7 @@ function UserProfileMain() {
                                     </p>
                                     <p className="flex items-center mt-2">
                                         <CallOutline
-                                            color={"#0275d8"}
+                                            color={"#4338CA"}
                                             height="30px"
                                             width="30px"
                                         />

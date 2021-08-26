@@ -18,7 +18,7 @@ function Rooms({ rooms, hotel, fromTo }) {
         getHotel(dispatch, id)
     }, []); // eslint-disable-line
     return (
-        <div className="md:mx-12 lg:mx-40 xl:mx-60 p-3 bg-indigo-100 shadow-lg">
+        <div className="md:mx-12 lg:mx-40 xl:mx-60 p-3 bg-indigo-50 shadow-lg">
             <div className="overflow-x-auto">
                 <table className="table-auto w-full">
                     <thead className="text-xs font-semibold uppercase text-gray-700 bg-gray-50">
@@ -46,7 +46,7 @@ function Rooms({ rooms, hotel, fromTo }) {
                             </th>
                         </tr>
                     </thead>
-                    <tbody className="text-sm divide-y divide-gray-100">
+                    <tbody className="text-sm divide-y-4 divide-indigo-100">
                         {rooms.map((room) => {
                             return (
                                 <tr key={room.id}>

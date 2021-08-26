@@ -51,7 +51,9 @@ function StaticHeader() {
                         </>
                     ) : (
                         <>
-                            <LoggedInInfo user={state.user.user} />
+                            {state.user.user && (
+                                <LoggedInInfo user={state.user.user} />
+                            )}
                         </>
                     )}
                 </ul>

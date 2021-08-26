@@ -10,13 +10,13 @@ import { AccountContext } from "./accountContext";
 import { useSelector } from "react-redux";
 
 const BoxContainer = styled.div`
-  width: 25rem;
+  width: 30rem;
   min-height: 40rem;
   display: flex;
   flex-direction: column;
-  border-radius: 19px;
+  border-radius: 25px;
   background-color: #fff;
-  box-shadow: 0 0 4px rgba(15, 15, 15, 0.28);
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
   position: relative;
   overflow: hidden;
   margin: 3rem auto 7rem auto;
@@ -41,13 +41,13 @@ const BackDrop = styled(motion.div)`
   border-radius: 50%;
   transform: rotate(60deg);
   z-index: 1;
-  top: -390px;
-  left: -210px;
-  background: rgb(75, 0, 130);
+  top: -400px;
+  left: -250px;
+  background: rgb(75, 0, 150);
   background: linear-gradient(
     58deg,
-    rgba(75, 0, 130) 20%,
-    rgba(143, 0, 255) 100%
+    rgba(75, 0, 150) 20%,
+    rgba(120, 0, 255) 100%
   );
 `;
 
@@ -55,7 +55,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
+  margin: 3rem 0 0 1rem;
 `;
 
 const HeaderText = styled.h2`

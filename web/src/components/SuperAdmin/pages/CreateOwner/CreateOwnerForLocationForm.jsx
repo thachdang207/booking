@@ -26,7 +26,7 @@ export default function CreateOwnerForLocationForm(props) {
     }
 
     useEffect(() => {
-        document.title = "Create an owner for location";
+        document.title = "Register an owner for location";
     }, [])
 
     const validationSchema = Yup.object().shape({
@@ -47,24 +47,26 @@ export default function CreateOwnerForLocationForm(props) {
                 return (
                     <div className="w-full xl:px-40 lg:px-30 md:px-20 sm:p-0 items-center min-h-screen bg-white">
                         <div className="text-center">
-                            <h1 className="my-3 font-semibold font-serif text-gray-700 dark:text-gray-100">Create an
+                            <h1 className="mt-10 mb-3 font-semibold font-serif text-gray-700 dark:text-gray-100">Register an
                                 owner for this location</h1>
                         </div>
                         <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
                             data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="max-w-full mx-auto bg-gray-200 p-10 rounded-md shadow-sm">
+                                <Form className="w-2/3 mx-auto bg-gray-200 py-16 px-24 rounded-md shadow-sm">
                                     <div className="flex flex-col w-full">
                                         <FastField
                                             name="fullName"
                                             component={InputField}
                                             placeholder="Full Name"
+                                            label="Full Name"
                                             value={values.fullName}
                                         />
                                         <FastField
                                             name="email"
                                             component={InputField}
                                             placeholder="Email"
+                                            label="Email"
                                             type="email"
                                             value={values.email}
                                         />
@@ -72,6 +74,7 @@ export default function CreateOwnerForLocationForm(props) {
                                             name="password"
                                             component={InputField}
                                             placeholder="Password"
+                                            label="Password"
                                             type="password"
                                             value={values.password}
                                         />

@@ -23,7 +23,7 @@ export default function CreateOwnerForm(props) {
     }
 
     useEffect(() => {
-        document.title = "Create a new owner";
+        document.title = "Register a new owner";
     }, [])
 
     const validationSchema = Yup.object().shape({
@@ -42,32 +42,34 @@ export default function CreateOwnerForm(props) {
                 const { values, isSubmitting } = formikProps;
 
                 return (
-                    <div className="w-full xl:px-40 lg:px-30 md:px-20 sm:p-0 items-center min-h-screen bg-white">
+                    <div className="w-full xl:px-44 lg:px-36 md:px-24 sm:p-0 items-center min-h-screen bg-white">
                         <div className="text-center">
-                            <h1 className="my-3 font-semibold font-serif text-gray-700 dark:text-gray-100">Create a new
-                                owner</h1>
+                            <h1 className="my-3 font-semibold font-serif text-gray-700 dark:text-gray-100 mt-10">Register a new location</h1>
                         </div>
-                        <div className="w-full xl:p-4 lg:p-5 md:p-1 items-center min-h-screen bg-white"
+                        <div className="w-full xl:p-10 lg:p-5 md:p-1 items-center min-h-screen bg-white"
                             data-aos="fade-up">
                             <div className="container mx-auto">
-                                <Form className="max-w-full mx-auto bg-gray-200 p-10 rounded-md shadow-sm">
+                                <Form className="w-2/3 mx-auto bg-gray-200 py-16 px-24 rounded-md shadow-sm">
                                     <div className="flex flex-col w-full">
                                         <FastField
                                             name="fullName"
                                             component={InputField}
                                             placeholder="Hotel Name"
+                                            label="Hotel Name"
                                             value={values.fullName}
                                         />
                                         <FastField
                                             name="email"
                                             component={InputField}
                                             placeholder="Email"
+                                            label="Email"
                                             type="email"
                                             value={values.email}
                                         />
                                         <FastField
                                             name="password"
                                             component={InputField}
+                                            label="Password"
                                             placeholder="Password"
                                             type="password"
                                             value={values.password}
@@ -78,7 +80,7 @@ export default function CreateOwnerForm(props) {
                                                 className="w-full pt-1 text-white focus:outline-none"
                                                 color="primary"
                                             >
-                                                Create
+                                                Register
                                             </Button>
                                         </FormGroup>
                                     </div>

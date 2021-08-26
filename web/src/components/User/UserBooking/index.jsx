@@ -71,7 +71,7 @@ function UserBooking() {
                                 </th>
                             </tr>
                         </thead>
-                        <tbody className="text-md divide-y divide-gray-100">
+                        <tbody className="text-md divide-y-4 divide-indigo-100">
                             {state.user.bookings && state.user.bookings.map((booking, key) => {
                                 return (
                                     <tr key={key}>
