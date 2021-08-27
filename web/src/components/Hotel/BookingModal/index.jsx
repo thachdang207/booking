@@ -138,58 +138,61 @@ function BookingModal({
                 )}
                 {errorAlert && <ErrorMessage errors={state.book.errors} />}
                 <ModalHeader className="font-bold">{name}</ModalHeader>
-                <ModalBody className="text-2xl">
-                    <p className="font-semibold flex">
-                        <span className="font-light mr-3">
-                            <PeopleOutline color={"#00000"} height="30px" width="30px" />
-                        </span>
-                        {capacity > 2 ? `${capacity} People` : `${capacity} Person`}
-                    </p>
-                    <p className="font-semibold flex">
-                        <span className="font-light mr-3">
-                            <CashOutline color={"#00000"} height="30px" width="30px" />{" "}
-                        </span>
-                        {formatPrice(price)} VND
-                    </p>
-                    <RangePicker
-                        format={dateFormat}
-                        id="fromTo"
-                        allowClear="true"
-                        placeholder={["Check in", "Check out"]}
-                        onChange={onDateSelection}
-                        disabledDate={(current) => disablePastDates(current)}
-                        size="large"
-                        style={{
-                            height: "auto",
-                            width: "100%",
-                            cursor: "pointer",
-                            marginBottom: "10px",
-                        }}
-                        defaultValue={[moment(startTime), moment(endTime)]}
-                    />
-                    <p className="font-semibold text-lg">
-                        <span className="font-light mr-3">From: </span>
-                        {bookingReq.startTime ? formatDate(bookingReq.startTime) : ""}
-                    </p>
-                    <p className="font-semibold text-lg">
-                        <span className="font-light mr-3">To: </span>
-                        {bookingReq.endTime ? formatDate(bookingReq.endTime) : ""}
-                    </p>
-                    <p className="flex font-semibold text-lg">
-                        <CalendarOutline color={"#00000"} height="30px" width="30px" cssClasses="mr-3" />{" "}
-                        {bookingReq.startTime
-                            ? diffDate > 1
-                                ? `${diffDate} days`
-                                : `${diffDate} day`
-                            : `${0} day`}
-                    </p>
-                    <p className="font-semibold">
-                        <span className="font-light mr-3">Total price: </span>
-                        {bookingReq.startTime
-                            ? formatPrice(price * diffDate)
-                            : formatPrice(price)}{" "}
-                        VND
-                    </p>
+                <ModalBody className="text-xl">
+                    <div className="px-12 py-2">
+                        <div className="font-semibold flex mb-3">
+                            <span className="font-light mr-3">
+                                <PeopleOutline color={"#00000"} height="30px" width="30px" />
+                            </span>
+                            {capacity > 2 ? `${capacity} People` : `${capacity} Person`}
+                        </div>
+                        <div className="font-semibold flex mb-3">
+                            <span className="font-light mr-3">
+                                <CashOutline color={"#00000"} height="30px" width="30px" />{" "}
+                            </span>
+                            {formatPrice(price)} VND
+                        </div>
+                        <div className="mb-3">
+                            <RangePicker
+                                format={dateFormat}
+                                id="fromTo"
+                                allowClear="true"
+                                placeholder={["Check in", "Check out"]}
+                                onChange={onDateSelection}
+                                disabledDate={(current) => disablePastDates(current)}
+                                size="large"
+                                style={{
+                                    height: "auto",
+                                    width: "100%",
+                                    cursor: "pointer",
+                                }}
+                                defaultValue={[moment(startTime), moment(endTime)]}
+                            />
+                        </div>
+                        <div className="w-1/2 font-semibold text-lg mb-3 flex justify-between text-green-500">
+                            <span className="font-light mr-3 text-gray-700">From: </span>
+                            {bookingReq.startTime ? formatDate(bookingReq.startTime) : ""}
+                        </div>
+                        <div className="w-1/2 font-semibold text-lg mb-3 flex justify-between text-red-500">
+                            <span className="font-light mr-3 text-gray-700">To: </span>
+                            {bookingReq.endTime ? formatDate(bookingReq.endTime) : ""}
+                        </div>
+                        <div className="w-1/2 flex font-semibold text-lg mb-3 justify-between">
+                            <CalendarOutline color={"#00000"} height="30px" width="30px" cssClasses="mr-3" />{" "}
+                            {bookingReq.startTime
+                                ? diffDate > 1
+                                    ? `${diffDate} days`
+                                    : `${diffDate} day`
+                                : `${0} day`}
+                        </div>
+                        <div className="w-1/2 font-semibold flex justify-between">
+                            <span className="font-light text-lg mr-3">Total price: </span>
+                            {bookingReq.startTime
+                                ? formatPrice(price * diffDate)
+                                : formatPrice(price)}{" "}
+                            VND
+                        </div>
+                    </div>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={onSubmitBooking}>

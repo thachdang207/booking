@@ -6,6 +6,7 @@ import { Switch, Route, useRouteMatch, useLocation } from "react-router-dom"
 import Rooms from './Rooms'
 import Bookings from './Booking';
 import AdminProfile from './Profile';
+import UserBooking from './UserBooking';
 import UpdateLocation from '../../Admin/pages/UpdateLocation';
 import { useSelector, useDispatch } from "react-redux";
 import { getAdmin } from "../../../redux/actions/admin.action";
@@ -30,13 +31,15 @@ function Dashboard() {
   const renderBreadcrumb = (pathname) => {
     switch (pathname) {
       case `${match.url}/booking`:
-        return 'Reserved Requests';
+        return 'Reserved requests';
       case `${match.url}/room`:
-        return 'Rooms Management';
+        return 'Rooms management';
+      case `${match.url}`:
+        return 'Dashboard';
       case `${match.url}/update-location`:
-        return 'Update Hotel Information';
+        return 'Update hotel information';
       default:
-        return 'Dashboard'
+        return 'Room details'
     }
   }
 
@@ -60,6 +63,7 @@ function Dashboard() {
                 <Switch>
                   <Route exact path={`${match.url}`} component={AdminProfile} />
                   <Route path={`${match.url}/room`} exact component={Rooms} />
+                  <Route path={`${match.url}/room/:id`} exact component={UserBooking} />
                   <Route path={`${match.url}/update-location/`} exact component={UpdateLocation} />
                   <Route path={`${match.url}/booking`} exact component={Bookings} />
                   <Route exact component={Error} />

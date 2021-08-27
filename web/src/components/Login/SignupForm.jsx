@@ -6,7 +6,6 @@ import { signUp } from '../../redux/actions/auth.action'
 import { useHistory } from 'react-router-dom'
 import { Loading } from '../Global/Loading'
 import ErrorMessage from '../Global/ErrorMessage'
-import JSONDATA from '../Home/data.json'
 import {
     BoldLink,
     BoxContainer,
@@ -16,6 +15,7 @@ import {
     SubmitButton,
     Select,
 } from "./common";
+import { CITY_OPTIONS } from '../../constants/global';
 
 
 function SignupForm(props) {
@@ -99,10 +99,10 @@ function SignupForm(props) {
                     >
                         <option value="all">All Cities</option>
                         {
-                            JSONDATA.map((val, key) => {
+                            CITY_OPTIONS.map((val, key) => {
                                 return (
-                                    <option value={val.city} key={key}>
-                                        {val.city}
+                                    <option value={val.value} key={key}>
+                                        {val.label}
                                     </option>
                                 );
                             })}

@@ -9,7 +9,7 @@ export const formatPrice = (price) => {
             num = '0' + num;
         }
         priceString = '.' + num + priceString;
-        price = Math.floor(price/ 1000);
+        price = Math.floor(price / 1000);
         if (price <= 999) {
             priceString = price + '' + priceString;
             break;
@@ -36,13 +36,13 @@ export const countDiffDate = (date1, date2) => {
 }
 
 export const nullOrNot = (prop) => {
-    if(prop !== null) return prop
+    if (prop !== null) return prop
     else return ""
 }
 
 
 export const findValue = (obj, prop) => {
-    if(prop !== null){
+    if (prop !== null) {
         let result = obj.find(o => {
             return o.label === prop;
         })
@@ -51,11 +51,15 @@ export const findValue = (obj, prop) => {
 }
 
 export const findLabel = (obj, prop) => {
-    if(prop !== null) {
-        let result = obj.find(o => {
-            return o.value === prop;
-        })
-        return result ? result.label : result
+    const regexExp
+        = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
+    if (prop !== null) {
+        if (regexExp.test(prop)) {
+            let result = obj.find(o => {
+                return o.value === prop;
+            })
+            return result ? result.label : result
+        }
     }
 }
 
@@ -72,7 +76,7 @@ export const getExtension = (filename) => {
 
 
 export const formatPriceString = (price) => {
-    if(price){
-        return parseInt(price.replace(/^D ./g,''));
+    if (price) {
+        return parseInt(price.replace(/^D ./g, ''));
     }
 }

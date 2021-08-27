@@ -1,8 +1,8 @@
 import React from "react";
-import { formatPrice, formatDate } from "../../../constants/function"
-import { CashOutline, PeopleCircleOutline, LogoPaypal, CheckmarkCircleOutline } from "react-ionicons"
+import { formatPrice, formatDate, countDiffDate } from "../../../constants/function"
+import { CheckmarkCircleOutline } from "react-ionicons"
 
-function BookingCard({ bookings }) {
+function BookingCard({ bookings, skip }) {
     return (
         <>
             <div className="p-3">
@@ -10,6 +10,9 @@ function BookingCard({ bookings }) {
                     <table className="table-auto w-full">
                         <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
+                                <th className="p-2 whitespace-nowrap">
+                                    <div className="font-semibold text-left">ID</div>
+                                </th>
                                 <th className="p-2 whitespace-nowrap">
                                     <div className="font-semibold text-left">Room name</div>
                                 </th>
@@ -26,33 +29,27 @@ function BookingCard({ bookings }) {
                                     <div className="font-semibold text-left">Check out</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left flex items-center">
+                                    <div className="font-semibold text-left">
                                         Price
-                                        <CashOutline cssClasses="ml-2" />
                                     </div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left flex items-center">
-                                        Capacity
-                                        <PeopleCircleOutline cssClasses="ml-2" />
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left flex items-center">
+                                    <div className="font-semibold text-center">
                                         Payment Status
-                                        <LogoPaypal cssClasses="ml-2" />
                                     </div>
                                 </th>
                             </tr>
                         </thead>
                         <tbody className="text-sm divide-y divide-gray-100">
-                            {bookings && bookings.map((booking) => {
+                            {bookings && bookings.map((booking, key) => {
+                                let diffDate = countDiffDate(booking.startTime, booking.endTime);
                                 return (
                                     <tr key={booking.id}>
                                         <td className="p-3 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="font-semibold text-gray-800">{booking.room.name}</div>
-                                            </div>
+                                            <div className="font-semibold text-left text-gray-800">{skip + key + 1}</div>
+                                        </td>
+                                        <td className="p-3 whitespace-nowrap">
+                                            <div className="font-semibold text-left text-gray-800">{booking.room.name}</div>
                                         </td>
                                         <td className="p-2 whitespace-nowrap">
                                             <div className="text-left font-medium">{formatDate(booking.createdAt)}</div>
@@ -64,16 +61,14 @@ function BookingCard({ bookings }) {
                                             <div className="text-md text-red-600 font-medium text-left">{formatDate(booking.endTime)}</div>
                                         </td>
                                         <td className="p-2 whitespace-nowrap">
-                                            <div className="text-md text-green-700 font-medium text-left">{formatPrice(booking.room.price)} VND</div>
+                                            <div className="text-md text-green-600 font-medium text-left">{formatPrice(booking.room.price * diffDate)} VND</div>
                                         </td>
                                         <td className="p-2 whitespace-nowrap">
-                                            <div className="text-lg text-left">{booking.room.capacity}</div>
-                                        </td>
-                                        <td className="p-2 whitespace-nowrap">
-                                            <div className={booking.paymentStatus === "APPROVED" ? "text-green-300 text-lg text-left font-bold" : "text-gray-900 text-lg text-left font-bold"}>
-                                                {booking.paymentStatus}
+                                            <div className={booking.paymentStatus === "APPROVED" ? "text-green-600 text-lg text-center font-bold" : "text-gray-900 text-lg text-center font-bold"}>
+                                                {booking.paymentStatus === "CREATED" ? "UNPAID" : "PAID"}
                                             </div>
                                         </td>
+                                        
                                     </tr>
                                 )
                             }

@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Title from "../../Global/Title";
 import { Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookingHistories } from "../../../redux/actions/user.action";
 import { formatDate } from "../../../constants/function";
 import { useSecureLs } from "../../Global/UseSecureLs";
+import TakeSkip from '../../Global/TakeSkip';
 import { useLocation } from 'react-router-dom'
 import capturePayment from '../../../redux/actions/booking.action';
 import { CheckmarkCircleOutline } from "react-ionicons"
@@ -16,6 +17,7 @@ function UserBooking() {
 
     const query = new URLSearchParams(useLocation().search);
     const [user_token] = useSecureLs("token")
+    const [skip, setSkip] = useState(0)
     const payerId = query.get("PayerID");
     const token = query.get("token");
 
@@ -28,12 +30,17 @@ function UserBooking() {
     }, []);
 
     useEffect(() => {
-        getBookingHistories(dispatch, user_token);
-    }, [dispatch, user_token, state.book.paymentInfo])
+        getBookingHistories(dispatch, user_token, skip);
+    }, [dispatch, user_token, state.book.paymentInfo, skip])
 
     useEffect(() => {
         document.title = `Booking Histories`
     })
+
+
+    const handlePageChange = (newSkip) => {
+        setSkip(newSkip)
+    }
 
     return (
         <>
@@ -45,7 +52,7 @@ function UserBooking() {
                     <table className="table-auto w-full">
                         <thead className="text-xs font-semibold uppercase text-gray-700 bg-gray-50">
                             <tr>
-                            <th className="p-2 whitespace-nowrap">
+                                <th className="p-2 whitespace-nowrap">
                                     <div className="font-semibold text-left">ID</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
@@ -78,7 +85,7 @@ function UserBooking() {
                                         <td className="p-3 whitespace-nowrap">
                                             <div className="flex items-center">
                                                 <div className="font-medium text-gray-800">
-                                                    {key + 1}
+                                                    {skip + key + 1}
                                                 </div>
                                             </div>
                                         </td>
@@ -88,7 +95,11 @@ function UserBooking() {
                                         <td className="p-2 whitespace-nowrap">
                                             <div className="text-left font-semibold">{booking.location.name}</div>
                                         </td>
-                                        <td>{booking.room.name}</td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-left">
+                                                {booking.room.name}
+                                            </div>
+                                        </td>
                                         <td className="p-2 whitespace-nowrap">
                                             <div className="text-left text-green-600 font-medium">{formatDate(booking.startTime)}</div>
                                         </td>
@@ -106,6 +117,7 @@ function UserBooking() {
                         </tbody>
                     </table>
                 </div>
+                <TakeSkip skip={skip} total={state.user.total} onPageChange={handlePageChange} />
             </div>
         </>
     );

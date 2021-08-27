@@ -13,6 +13,8 @@ const initialState = {
     updatedUser: null,
     errors: null,
     loading: false,
+    total: null,
+    page_total: null,
 };
 
 export default function user(state = initialState, action) {
@@ -26,7 +28,9 @@ export default function user(state = initialState, action) {
         case GET_BOOKING_HISTORIES: {
             return {
                 ...state,
-                bookings: action.payload,
+                bookings: action.payload.results,
+                total: action.payload.total,
+                page_total: action.payload.page_total,
             };
         }
         case UPDATE_USER_INFO: {

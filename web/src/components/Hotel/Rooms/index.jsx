@@ -32,13 +32,11 @@ function Rooms({ rooms, hotel, fromTo }) {
                             <th className="p-2 whitespace-nowrap">
                                     <div className="font-semibold text-left flex justify-start items-center">
                                         Capacity
-                                        <PeopleCircleOutline cssClasses="ml-2" />
                                     </div>
                                 </th>
                             <th className="p-2 whitespace-nowrap">
                                     <div className="font-semibold text-left flex items-center justify-start">
                                         Price
-                                        <CashOutline cssClasses="ml-2" />
                                     </div>
                                 </th>
                             <th className="p-2 whitespace-nowrap">

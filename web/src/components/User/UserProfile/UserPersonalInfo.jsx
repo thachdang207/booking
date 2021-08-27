@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, ModalFooter, ModalBody, FormGroup, Button, Input, Label } from "reactstrap"
-import PropTypes from "prop-types";
 import { Formik, FastField, Form } from "formik";
+import PropTypes from "prop-types";
 import InputField from "../../../custom-fields/InputField";
 import Title from "../../Global/Title";
 import SelectField from "../../../custom-fields/SelectField";
@@ -9,7 +9,7 @@ import { CITY_OPTIONS } from "../../../constants/global";
 import { useDispatch, useSelector } from "react-redux";
 import { getCities } from "../../../redux/actions/city.action";
 import { Loading } from "../../Global/Loading";
-import { nullOrNot, getExtension, findValue } from "../../../constants/function";
+import { nullOrNot, getExtension, findValue, findLabel } from "../../../constants/function";
 import { signUrl, confirmUpload } from "../../../redux/actions/upload.action";
 import { useSecureLs } from "../../Global/UseSecureLs"
 import { SettingsSharp } from "react-ionicons"
@@ -77,7 +77,7 @@ function UserPersonalInfo(props) {
         fullName: props.user.fullName,
         phoneNumber: props.user.phoneNumber,
         address: props.user.address,
-        city: props.user.city ? findValue(CITY_OPTIONS, props.user.city) : "Đà Nẵng",
+        city: props.user.city,
     }
 
     return (
@@ -176,13 +176,13 @@ function UserPersonalInfo(props) {
                                                         value={nullOrNot(values.phoneNumber)}
                                                     />
                                                     <FastField
-                                                        name="cityId"
+                                                        name="city"
                                                         component={SelectField}
                                                         placeholder="City"
                                                         options={CITY_OPTIONS}
                                                         defaultValue={{
-                                                            value: values.cityId,
-                                                            label: props.user.city
+                                                            value: props.user.city,
+                                                            label: findLabel(props.user.city)
                                                         }}
                                                     />
                                                     <FormGroup>

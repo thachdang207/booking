@@ -29,7 +29,7 @@ export const getUser = (dispatch, token) => {
         });
 };
 // -----------------------------------------
-export const getBookingHistories = (dispatch, token) => {
+export const getBookingHistories = (dispatch, token, skip) => {
     setLoading(dispatch, true);
     axios(`${url}/customer/booking-histories`,
         {
@@ -37,13 +37,15 @@ export const getBookingHistories = (dispatch, token) => {
             Authorization: `Bearer ${token}`,
         },
         params: {
-            "order": "-createdAt",
+            order: "-createdAt",
+            take: 10,
+            skip: `${skip ? skip : 0}`
         }
     })
         .then(async (response) => {
             await dispatch({
                 type: GET_BOOKING_HISTORIES,
-                payload: response.data.results
+                payload: response.data
             });
             setLoading(dispatch, false);
         })

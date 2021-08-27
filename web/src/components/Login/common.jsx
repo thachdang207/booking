@@ -15,7 +15,7 @@ export const FormContainer = styled.form`
   margin-bot: 1rem;
 `;
 
-export const MutedLink = styled.a`
+export const MutedLink = styled.p`
   font-size: 13px;
   color: rgba(200, 200, 200, 0.8);
   font-weight: 500;

@@ -1,7 +1,8 @@
 import {
     UPDATE_LOCATION,
     GET_ADMIN_INFO,
-    GET_BOOKING_REQUEST,
+    GET_ALL_BOOKING_INFO,
+    GET_BOOKING_INFO,
     RESPONSE_BOOKING_REQUEST,
     CREATE_ROOM,
     UPDATE_ROOM
@@ -30,18 +31,20 @@ export const getAdmin = async (dispatch, token) => {
     }
 };
 
-export const getBookingRequests = async (dispatch, token) => {
+export const getAllBookingInfo = async (dispatch, token, skip) => {
     setLoading(dispatch, true);
     try {
         const response = await axios.get(`${url}/admin/bookings`, {
             headers: { Authorization: `Bearer ${token}` },
             params: {
-                "order": "createdAt",
+                order: "-createdAt",
+                take: 10,
+                skip: `${skip ? skip : 0}`,
             }
         })
         dispatch({
-            type: GET_BOOKING_REQUEST,
-            payload: response.data.results
+            type: GET_ALL_BOOKING_INFO,
+            payload: response.data
         });
         setLoading(dispatch, false);
     }
@@ -49,6 +52,27 @@ export const getBookingRequests = async (dispatch, token) => {
         console.error(e);
     }
 };
+
+export const getBookingInfo = async (dispatch, token, id, skip) => {
+    setLoading(dispatch, true);
+    try{
+        const response = await axios.get(`${url}/admin/room/${id}/bookings`,{
+            headers: { Authorization: `Bearer ${token}` },
+            params: {
+                order: "-createdAt",
+                take: 10,
+                skip: `${skip ? skip : 0}`,
+            }
+        })
+        dispatch({
+            type: GET_BOOKING_INFO,
+            payload: response.data
+        })
+        setLoading(dispatch, false);
+    }catch(e){
+        console.error(e);
+    }
+}
 
 export const responseBookingRequests = (dispatch, token, bookingId, status) => {
     setLoading(dispatch, true);

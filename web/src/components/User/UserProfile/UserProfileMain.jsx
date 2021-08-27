@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import UserPersonalInfo from "./UserPersonalInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,7 +5,9 @@ import { getUser, updateUserInfo } from "../../../redux/actions/user.action";
 import { setSuccess } from "../../../redux/actions/commonActions";
 import { getCities } from "../../../redux/actions/city.action";
 import { useSecureLs } from "../../Global/UseSecureLs";
-import { MailOutline, HomeOutline, CallOutline, BusinessOutline, Toggle } from 'react-ionicons'
+import { findLabel } from "../../../constants/function";
+import { CITY_OPTIONS } from "../../../constants/global";
+import { MailOutline, HomeOutline, CallOutline, BusinessOutline } from 'react-ionicons'
 import "./UserProfile.css"
 
 function UserProfileMain() {
@@ -39,7 +40,6 @@ function UserProfileMain() {
     }, [state.user.success]); // eslint-disable-line
 
     const onSubmitHandler = (values) => {
-        console.log(values);
         updateUserInfo(dispatch, token, values);
     };
 
@@ -83,9 +83,9 @@ function UserProfileMain() {
                                 </div>
                                 <UserPersonalInfo onSubmit={onSubmitHandler} user={state.user.user} />
                                 <div className="py-10 sm:px-2 md:px-10 lg:px-24">
-                                    <h1 className="my-4 font-sans text-center font-bold">
+                                    <div className="my-4 text-3xl font-sans text-center font-bold">
                                         {state.user.user.fullName}
-                                    </h1>
+                                    </div>
                                     <p className="flex items-center ">
                                         <MailOutline
                                             color={"#4338CA"}
@@ -118,7 +118,7 @@ function UserProfileMain() {
                                         />
                                         <span className="font-semibold mt-2 ml-2">
                                             City: <small className="font-medium ml-1 text-lg">
-                                                {state.user.user.city}
+                                                {findLabel(CITY_OPTIONS, state.user.user.city)}
                                             </small>
                                         </span>
                                     </p>

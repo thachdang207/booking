@@ -8,16 +8,7 @@ import {
 } from "../actionTypes";
 
 const initialState = {
-    room: {
-        id: null,
-        name: "",
-        description: "",
-        price: "",
-        capacity: "",
-        locationId: "",
-        created_at: "",
-        updated_at: ""
-    },
+    room: null,
     allRooms: [],
     availableRooms: [],
     success: null,

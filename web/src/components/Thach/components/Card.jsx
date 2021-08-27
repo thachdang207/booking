@@ -3,11 +3,12 @@ import { formatPrice } from "../../../constants/function";
 import EditRoom from "../../Admin/pages/EditRoom";
 import {
     TrashOutline,
-    EllipsisHorizontalOutline,
     CashOutline,
     PeopleCircleOutline,
-    DocumentTextOutline
+    DocumentTextOutline,
+    EllipsisHorizontalOutline
 } from "react-ionicons";
+import { Link } from "react-router-dom"
 import AddRoom from "../../Admin/pages/AddRoom";
 
 function Card(props) {
@@ -86,7 +87,9 @@ function Card(props) {
                                             <TrashOutline cssClasses="cursor-pointer mx-auto" />
                                         </td>
                                         <td>
-                                            <EllipsisHorizontalOutline cssClasses="cursor-pointer mx-auto" />
+                                            <Link to={`/admin/room/${room.id}`}>
+                                                <EllipsisHorizontalOutline cssClasses="cursor-pointer mx-auto" />
+                                            </Link>
                                         </td>
                                     </tr>
                                 );

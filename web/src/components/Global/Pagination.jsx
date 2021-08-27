@@ -34,7 +34,6 @@ function Pagination(props) {
             <h3>
                 <Badge>{pagination.page}</Badge>
             </h3>
-
             <Button
                 color="dark"
                 className="px-3 mx-3"

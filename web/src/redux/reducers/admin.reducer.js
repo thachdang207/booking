@@ -1,11 +1,16 @@
 import {
     SET_LOADING,
-    SET_SUCCESS, GET_ADMIN_INFO, GET_BOOKING_REQUEST, UPDATE_LOCATION
+    SET_SUCCESS, GET_ADMIN_INFO, GET_ALL_BOOKING_INFO, GET_BOOKING_INFO, UPDATE_LOCATION
 } from "../actionTypes";
 
 const initialState = {
     success: null,
-    requests: [],
+    bookings: [],
+    room: null,
+    pagination: {
+        total: null,
+        page_total: null,
+    },
     user: null,
     errors: null,
     loading: false,
@@ -19,10 +24,20 @@ export default function admin(state = initialState, action) {
                 user: action.payload.user,
             };
         }
-        case GET_BOOKING_REQUEST: {
+        case GET_ALL_BOOKING_INFO: {
             return {
                 ...state,
-                requests: action.payload,
+                bookings: action.payload.results,
+                total: action.payload.total,
+                page_total: action.payload.page_total
+            };
+        }
+        case GET_BOOKING_INFO: {
+            return {
+                ...state,
+               room: action.payload.results,
+               total: action.payload.total,
+               page_total: action.payload.page_total
             };
         }
         case UPDATE_LOCATION: {

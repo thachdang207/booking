@@ -84,7 +84,7 @@ function LoginForm() {
                         Sign in
                     </SubmitButton>
                 </FormContainer>
-                <div className="mt-2">
+                <div className="mt-3">
                     <MutedLink>
                         Don't have an account yet?
                         <BoldLink

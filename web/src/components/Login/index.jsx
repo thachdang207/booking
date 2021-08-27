@@ -10,7 +10,7 @@ import { AccountContext } from "./accountContext";
 import { useSelector } from "react-redux";
 
 const BoxContainer = styled.div`
-  width: 30rem;
+  width: 28rem;
   min-height: 40rem;
   display: flex;
   flex-direction: column;
@@ -41,8 +41,8 @@ const BackDrop = styled(motion.div)`
   border-radius: 50%;
   transform: rotate(60deg);
   z-index: 1;
-  top: -400px;
-  left: -250px;
+  top: -380px;
+  left: -200px;
   background: rgb(75, 0, 150);
   background: linear-gradient(
     58deg,
@@ -92,7 +92,7 @@ const backdropVariants = {
     collapsed: {
         width: "160%",
         height: "540px",
-        borderRadius: "40%",
+        borderRadius: "50%",
         transform: "rotate(60deg)",
     },
 };
@@ -120,21 +120,21 @@ function Login() {
         playExpandingAnimation();
         setTimeout(() => {
             setStatus("signup");
-        }, 200)
+        }, 100)
     }
 
     const switchToSignin = () => {
         playExpandingAnimation();
         setTimeout(() => {
             setStatus("signin");
-        }, 200)
+        }, 100)
     }
 
     const switchToAdminLogin = () => {
         playExpandingAnimation();
         setTimeout(() => {
             setStatus("adminLogin");
-        }, 200)
+        }, 100)
     }
 
     useEffect(() => {

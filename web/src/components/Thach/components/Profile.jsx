@@ -78,9 +78,9 @@ function Profile({ admin }) {
                                                         className="w-28 h-28 rounded-full object-cover shadow-md transition hover:opacity-80 cursor-pointer mr-3"
                                                         onClick={togglePopupAvatarImage}
                                                     />
-                                                    <h2 className="my-4 font-sans text-center font-bold">
+                                                    <div className="my-4 text-3xl font-sans text-center font-bold">
                                                         {admin.user.fullName}
-                                                    </h2>
+                                                    </div>
                                                 </div>
                                                 <div className="py-4 sm:px-2 md:px-8 xl:px-12">
                                                     <p className="flex items-center">
@@ -183,9 +183,9 @@ function Profile({ admin }) {
                                                         "
                                                         onClick={togglePopupImage}
                                                     />
-                                                    <h1 className="my-4 font-sans text-center font-semibold">
-                                                        {admin.user.location.name} Hotel
-                                                    </h1>
+                                                    <div className="my-4 text-3xl font-sans text-center font-semibold">
+                                                        {admin.user.location.name}
+                                                    </div>
                                                 </div>
                                                 <div className="py-4 sm:px-2 md:px-10 lg:px-24">
 
